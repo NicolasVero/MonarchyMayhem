@@ -7,16 +7,15 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     const float speed = 10f;
-
+    const float sensitivity = 10;
     const float attackSpeed = 2f;
 	public bool canAttack = false;
-
 
     // attributs
     int xp = -1;
     int level = 0;
     int health;
-    int resistance = 0;
+    int resistance = 75;
     int attack = 5;
 
     // controlleur attributs
@@ -27,16 +26,13 @@ public class PlayerController : MonoBehaviour
     int maxAttack = 50;
 
 
-    float vertical;
-    float horizontal;
-    float sensitivity = 10;
-
     FloatingHB healthBar;
     Slider slider_player;
 
     Rigidbody rb;
     GameObject sword;
     EnemyAiController enemy;
+
 
     void Awake(){
         healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
@@ -57,11 +53,10 @@ public class PlayerController : MonoBehaviour
 
     // Taking damage when triggering object
     public void TakeDamage(int dmgAmount){
-        if (this.health > dmgAmount){
+        if(this.health > dmgAmount){
             this.health -= dmgAmount;
             healthBar.UpdateHealthBar(slider_player, this.health, maxHealth);
-        }
-        else{
+        } else {
             Destroy(gameObject);
             Debug.Log("Vous êtes mort.");
             Time.timeScale = 0;
@@ -69,17 +64,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Healing when triggering object
-    public void HealHB(int healAmount){
-        if (this.health < (maxHealth-healAmount)){
-            this.health += healAmount;
-            healthBar.UpdateHealthBar(slider_player, this.health, maxHealth);
-        }
-        else if (this.health < maxHealth){
+    public void HealHB(int healAmount) {
+        this.health += healAmount;
+        if(this.health >= maxHealth) 
             this.health = maxHealth;
-            healthBar.UpdateHealthBar(slider_player, this.health, maxHealth);
-        }
-        else Debug.Log("Votre vie est au maximum: " + this.health);
         
+        healthBar.UpdateHealthBar(slider_player, this.health, maxHealth);
     }
 
 
@@ -100,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     
     void FixedUpdate(){
-// Marche là où le perso regarde
+        // Marche là où le perso regarde
         transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
@@ -132,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
 
     // Modifications gain level
-
     private void updateAttributs() {
         Debug.Log("LEVEL UP !");
         updateResistance();
