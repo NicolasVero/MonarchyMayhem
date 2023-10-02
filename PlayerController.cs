@@ -188,4 +188,6 @@ public class PlayerController : MonoBehaviour
     }
 	
 
+    public int getResistance() { return resistance; }
+
 }
