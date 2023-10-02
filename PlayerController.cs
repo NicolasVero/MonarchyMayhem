@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     const float speed = 10f;
 
-    const int attack = 5;
     const float attackSpeed = 2f;
 	public bool canAttack = false;
 
@@ -17,11 +16,15 @@ public class PlayerController : MonoBehaviour
     int xp = -1;
     int level = 0;
     int health;
+    int resistance = 0;
+    int attack = 5;
 
     // controlleur attributs
     int xpRequired = 0;
     int maxHealth = 50;
     int maxLevel = 20;
+    int maxResistance = 75;
+    int maxAttack = 50;
 
 
     float vertical;
@@ -87,9 +90,8 @@ public class PlayerController : MonoBehaviour
         if(xp >= xpRequired && level < maxLevel) {
             level++;
             xpRequired += XPRequired();
-            updateHealth();
+            updateAttributs();
         }
-
     }
 
     private int XPRequired() {
@@ -98,38 +100,16 @@ public class PlayerController : MonoBehaviour
 
     
     void FixedUpdate(){
-// Marche dans la dir de la map
-//         vertical = Input.GetAxisRaw("Vertical");
-//         horizontal = Input.GetAxisRaw("Horizontal");
-//         Vector3 mvmt = new Vector3(horizontal, 0, vertical).normalized;
-//         rb.velocity = new Vector3(mvmt.x * speed, rb.velocity.y, mvmt.z * speed);
-
-
 // Marche là où le perso regarde
         transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
-// Rotation flinguée
-//         Vector3 desiredRotation = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-//         // Regarde dans la dernière direction enregistrée
-//         if (desiredRotation != Vector3.zero){
-//             Quaternion rotation = Quaternion.LookRotation(desiredRotation);
-//             // Rotation Behaviour (1 = Harsh turn, 0.1 = Smoother)
-//             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
-//         }
-// Rotation flinguée n°2
-        // transform.Rotate(Vector3.up * Time.fixedDeltaTime * speed*20 * (Input.GetAxis("Vertical") * Input.GetAxis("Horizontal")));
-
         // ISO Cam
         float y = Input.GetAxis("Mouse X") * sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-// FPS Cam
-//         float x = -(Input.GetAxis("Mouse Y") * sensitivity);
-//         float y = Input.GetAxis("Mouse X") * sensitivity;
-//         transform.eulerAngles = new Vector3(transform.eulerAngles.x + x, transform.eulerAngles.y + y, 0);
 
 
-// Pause mais sah j'comprends aps
+        // Pause mais sah j'comprends aps
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0){
             Time.timeScale = 1;
             Debug.Log("Pause désactivé.");
@@ -139,15 +119,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Jeu en pause.");
         }
 
-// Attack
+        // Attack
         if (Input.GetKeyDown(KeyCode.Space)){
-            // enemy = GameObject.Find("Zombie").GetComponent<EnemyAiController>();
-            // enemy.AttackEnemy(attack);
             Debug.Log(sword.transform.eulerAngles.z);
             sword.transform.eulerAngles = new Vector3(sword.transform.eulerAngles.x, sword.transform.eulerAngles.y, 290);
 			canAttack = true;
             StartCoroutine(AnimateSwordCharge());
-
         }
 
     }
@@ -156,14 +133,27 @@ public class PlayerController : MonoBehaviour
 
     // Modifications gain level
 
-    private void updateSpeed() {
-        
+    private void updateAttributs() {
+        Debug.Log("LEVEL UP !");
+        updateResistance();
+        updateHealth();
+        updateAttack();
+    }
+
+    private void updateResistance() {
+        resistance += 10;
+        if(resistance > maxResistance) resistance = maxResistance;
     }
 
     private void updateHealth() {
         this.health += 10;
-        Debug.Log("LEVEL UP ! : " + this.health);
+        if(this.health > maxHealth) this.health = maxHealth;
         healthBar.UpdateHealthBar(slider_player, this.health, maxHealth);
+    }
+
+    private void updateAttack() {
+        this.attack += 2;
+        if(attack > maxAttack) attack = maxAttack;
     }
 
 
