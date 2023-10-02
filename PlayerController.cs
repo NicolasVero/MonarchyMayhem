@@ -12,12 +12,17 @@ public class PlayerController : MonoBehaviour
     const float attackSpeed = 2f;
 	public bool canAttack = false;
 
-    int health;
-    int maxHealth = 50;
 
+    // attributs
     int xp = -1;
-    int niveau = 0;
+    int level = 0;
+    int health;
+
+    // controlleur attributs
     int xpRequired = 0;
+    int maxHealth = 50;
+    int maxLevel = 20;
+
 
     float vertical;
     float horizontal;
@@ -79,8 +84,8 @@ public class PlayerController : MonoBehaviour
         xp += xpAmount;
         Debug.Log(xp + " / " + xpRequired);
         
-        if(xp >= xpRequired) {
-            niveau++;
+        if(xp >= xpRequired && level < maxLevel) {
+            level++;
             xpRequired += XPRequired();
             updateHealth();
         }
@@ -88,7 +93,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private int XPRequired() {
-        return (int)(5 * Math.Pow(1.5, niveau - 1));
+        return (int)(5 * Math.Pow(1.5, level - 1));
     }
 
     
@@ -149,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // Modifications gain niveau
+    // Modifications gain level
 
     private void updateSpeed() {
         
