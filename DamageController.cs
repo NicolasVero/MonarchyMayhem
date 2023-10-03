@@ -36,11 +36,5 @@ public class DamageController : MonoBehaviour
         Debug.Log("REAL DAMAGE : " + (int)(damage * (1.0 - resistance / 100.0)));
         return (int)(damage * (1.0 - resistance / 100.0));
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
 }

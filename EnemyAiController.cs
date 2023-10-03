@@ -18,34 +18,34 @@ public class EnemyAiController : MonoBehaviour
 
     private void Awake()
     {
-        pc = GameObject.Find("Knight").GetComponent<PlayerController>();
-        player = GameObject.Find("Knight").transform;
-        agent = GetComponent<NavMeshAgent>();
+        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.player = GameObject.Find("Knight").transform;
+        this.agent = GetComponent<NavMeshAgent>();
         
-        healthBar = slider_enemy.GetComponent<FloatingHB>();
+        this.healthBar = slider_enemy.GetComponent<FloatingHB>();
         // slider_enemy = GameObject.Find("Enemy_Healthbar").GetComponent<Slider>();
         
-        enemy_health = maxHealth;
-        healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
+        this.enemy_health = maxHealth;
+        this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
     }
     
 
     // Taking damage when attacked by player
     public void AttackEnemy(int dmgAmount){
-        if (enemy_health > dmgAmount){
-            enemy_health -= dmgAmount;
-            healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
+        if (this.enemy_health > dmgAmount){
+            this.enemy_health -= dmgAmount;
+            this.healthBar.UpdateHealthBar(this.slider_enemy, this.enemy_health, this.maxHealth);
         }
         else{
-            Destroy(gameObject);
-            pc.enemyKillCounter++;
+            Destroy(this.gameObject);
+            this.pc.enemyKillCounter++;
         }
     }
 
     private void FixedUpdate()
     {
-        if (player){
-            agent.SetDestination(player.position);
+        if (this.player){
+            this.agent.SetDestination(this.player.position);
         }
     }
 }
