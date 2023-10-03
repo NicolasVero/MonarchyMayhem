@@ -22,7 +22,7 @@ public class EnemyAiController : MonoBehaviour
         this.player = GameObject.Find("Knight").transform;
         this.agent = GetComponent<NavMeshAgent>();
         
-        this.healthBar = slider_enemy.GetComponent<FloatingHB>();
+        this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();
         // slider_enemy = GameObject.Find("Enemy_Healthbar").GetComponent<Slider>();
         
         this.enemy_health = maxHealth;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     int maxAttack = 50;
     int minAttackSpeed = 10;
 
+    private Animator _animator;
+
     FloatingHB healthBar;
     Slider slider_player;
 
@@ -50,8 +53,10 @@ public class PlayerController : MonoBehaviour
 
         // Initialization of health
         Debug.Log("Start");
-        this.health = maxHealth;
+        this.health = this.maxHealth;
         this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+
+        _animator = GetComponentInChildren<Animator>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -92,9 +97,10 @@ public class PlayerController : MonoBehaviour
             this.health -= dmgAmount;
             this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
         } else {
-            Destroy(gameObject);
+            _animator.SetTrigger("Death");
+            //Destroy(gameObject);
             Debug.Log("Vous êtes mort.");
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
     }
 
@@ -126,6 +132,25 @@ public class PlayerController : MonoBehaviour
         return (int)(5 * Math.Pow(1.5, this.level - 1));
     }
 
+    
+    void FixedUpdate(){
+        // Marche là où le perso regarde
+        transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        
+        // ISO Cam
+        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+    }
+
+    public void OnAttack(InputValue value){
+        // Debug.Log("Attack");
+        _animator.SetTrigger("Attack");
+    }
+
+
+
     // Modifications gain level
     private void updateAttributs() {
         Debug.Log("LEVEL UP !");
@@ -151,33 +176,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-   	private IEnumerator AnimateSwordCharge(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i <= 310){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i++;
-        	yield return new WaitForSeconds(.00001f);
-        }
-        StartCoroutine(AnimateSwordAttack());
-    }
-   	private IEnumerator AnimateSwordAttack(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i >= 250){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i--;
-        	yield return new WaitForSeconds(.00005f);
-        }
-        StartCoroutine(AnimateSwordBack());
-    }
-  	private IEnumerator AnimateSwordBack(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i != 290){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i++;
-        	yield return new WaitForSeconds(.0001f);
-        }
-		this.canAttack = false;
-    }
 	
 
     public int getResistance() { return this.resistance; }

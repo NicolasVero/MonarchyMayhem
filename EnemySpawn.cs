@@ -6,20 +6,22 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject[] spawnPoint;
     public GameObject[] enemyObject;
-    private GameObject verif;
+
+    private GameObject[] verifEnemy;
+
     private int randomSpawnSpot;
     private int randomEnemy;
 
-    PlayerController pc;
+    private PlayerController pc;
     
-    float spawnTime = 2f;
+    private float spawnTime = 2f;
     float waveBreak = 20f;
 
-    int enemyCount;
-    int compteur;
-    int waveNumber = 0;
+    private int enemyCount;
+    private int compteur;
+    private int waveNumber = 0;
     
-    bool waveInProgress = false;
+    private bool waveInProgress = false;
     
     void Awake(){
         pc = GameObject.Find("Knight").GetComponent<PlayerController>();
@@ -30,7 +32,9 @@ public class EnemySpawn : MonoBehaviour
             ResetWave();
             this.waveInProgress = true;
         }
-        
+        verifEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+        if (verifEnemy.Length==4 && this.waveInProgress)
+            StartCoroutine(Break());
     }
 
     void ResetWave(){
@@ -48,12 +52,13 @@ public class EnemySpawn : MonoBehaviour
             Instantiate(this.enemyObject[randomEnemy], this.spawnPoint[randomSpawnSpot].transform.position, Quaternion.identity);
             this.compteur++;
         	yield return new WaitForSeconds(this.spawnTime);
+            Debug.Log(verifEnemy.Length);
         }
-        StartCoroutine(Break());
         Debug.Log("Vague Terminée");
     }
 
    	private IEnumerator Break(){
+        Debug.Log("Début de la pause");
         yield return new WaitForSeconds(this.waveBreak);
         this.waveInProgress = false;
         Debug.Log("Pause terminée");
