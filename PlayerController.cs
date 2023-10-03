@@ -81,14 +81,6 @@ public class PlayerController : MonoBehaviour
         // ISO Cam
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-
-        // Attack
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log(this.sword.transform.eulerAngles.z);
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, 290);
-			this.canAttack = true;
-            StartCoroutine(AnimateSwordCharge());
-        }
     }
 
     // Taking damage when triggering object
@@ -130,18 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private int XPRequired() {
         return (int)(5 * Math.Pow(1.5, this.level - 1));
-    }
-
-    
-    void FixedUpdate(){
-        // Marche là où le perso regarde
-        transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
-        
-        // ISO Cam
-        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-
     }
 
     public void OnAttack(InputValue value){
