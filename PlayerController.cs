@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject levelUpPanel;
+
     const float speed = 10f;
     const float sensitivity = 10;
-    const float attackSpeed = 2f;
 	public bool canAttack = false;
     public int enemyKillCounter;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     int health;
     int resistance = 75;
     int attack = 5;
+    float attackSpeed = 2f;
 
     // controlleur attributs
     int xpRequired = 0;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     int maxLevel = 20;
     int maxResistance = 75;
     int maxAttack = 50;
+    int minAttackSpeed = 10;
 
     FloatingHB healthBar;
     Slider slider_player;
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
 
     void Awake() {
+        // this.levelUpPanel.SetActive(false);
         this.healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
         this.slider_player = GameObject.Find("Player_Healthbar").GetComponent<Slider>();
 
@@ -49,6 +53,30 @@ public class PlayerController : MonoBehaviour
         this.sword = GameObject.Find("Sword");
 
         this.rb = GetComponent<Rigidbody>();
+    }
+
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.P)) 
+            Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+    }
+
+
+    void FixedUpdate(){
+        // Marche là où le perso regarde
+        transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        
+        // ISO Cam
+        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+        // Attack
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log(this.sword.transform.eulerAngles.z);
+            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, 290);
+			this.canAttack = true;
+            StartCoroutine(AnimateSwordCharge());
+        }
     }
 
     // Taking damage when triggering object
@@ -80,6 +108,9 @@ public class PlayerController : MonoBehaviour
         if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
             this.xpRequired += XPRequired();
+
+            // this.levelUpPanel.SetActive(true);
+
             updateAttributs();
         }
     }
@@ -87,39 +118,6 @@ public class PlayerController : MonoBehaviour
     private int XPRequired() {
         return (int)(5 * Math.Pow(1.5, this.level - 1));
     }
-
-    
-    void FixedUpdate(){
-        // Marche là où le perso regarde
-        transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
-        
-        // ISO Cam
-        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-
-
-        // Pause mais sah j'comprends aps
-        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0){
-            Time.timeScale = 1;
-            Debug.Log("Pause désactivé.");
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0){
-            Time.timeScale = 0;
-            Debug.Log("Jeu en pause.");
-        }
-
-        // Attack
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log(this.sword.transform.eulerAngles.z);
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, 290);
-			this.canAttack = true;
-            StartCoroutine(AnimateSwordCharge());
-        }
-
-    }
-
-
 
     // Modifications gain level
     private void updateAttributs() {
