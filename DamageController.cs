@@ -11,7 +11,7 @@ public class DamageController : MonoBehaviour
 
     private void OnTriggerEnter(Collider c){
         
-        Debug.Log(pc.getResistance());
+        //Debug.Log(this.pc.getResistance());
         this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
         // Knight tagged as player needs to be on the "BaseCharacter" > "Body" part
         if (c.gameObject.CompareTag("Player")){

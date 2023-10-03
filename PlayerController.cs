@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     int maxResistance = 75;
     int maxAttack = 50;
 
+    private Animator _animator;
+
     FloatingHB healthBar;
     Slider slider_player;
 
@@ -40,8 +43,10 @@ public class PlayerController : MonoBehaviour
 
         // Initialization of health
         Debug.Log("Start");
-        this.health = maxHealth;
+        this.health = this.maxHealth;
         this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+
+        _animator = GetComponentInChildren<Animator>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -57,9 +62,10 @@ public class PlayerController : MonoBehaviour
             this.health -= dmgAmount;
             this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
         } else {
-            Destroy(gameObject);
+            _animator.SetTrigger("Death");
+            //Destroy(gameObject);
             Debug.Log("Vous êtes mort.");
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
     }
 
@@ -98,25 +104,11 @@ public class PlayerController : MonoBehaviour
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
+    }
 
-        // Pause mais sah j'comprends aps
-        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0){
-            Time.timeScale = 1;
-            Debug.Log("Pause désactivé.");
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0){
-            Time.timeScale = 0;
-            Debug.Log("Jeu en pause.");
-        }
-
-        // Attack
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log(this.sword.transform.eulerAngles.z);
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, 290);
-			this.canAttack = true;
-            StartCoroutine(AnimateSwordCharge());
-        }
-
+    public void OnAttack(InputValue value){
+        // Debug.Log("Attack");
+        _animator.SetTrigger("Attack");
     }
 
 
@@ -146,33 +138,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-   	private IEnumerator AnimateSwordCharge(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i <= 310){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i++;
-        	yield return new WaitForSeconds(.00001f);
-        }
-        StartCoroutine(AnimateSwordAttack());
-    }
-   	private IEnumerator AnimateSwordAttack(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i >= 250){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i--;
-        	yield return new WaitForSeconds(.00005f);
-        }
-        StartCoroutine(AnimateSwordBack());
-    }
-  	private IEnumerator AnimateSwordBack(){
-        var i = this.sword.transform.eulerAngles.z;
-        while (i != 290){
-            this.sword.transform.eulerAngles = new Vector3(this.sword.transform.eulerAngles.x, this.sword.transform.eulerAngles.y, i);
-            i++;
-        	yield return new WaitForSeconds(.0001f);
-        }
-		this.canAttack = false;
-    }
 	
 
     public int getResistance() { return this.resistance; }
