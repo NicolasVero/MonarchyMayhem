@@ -12,18 +12,18 @@ public class DamageController : MonoBehaviour
     private void OnTriggerEnter(Collider c){
         
         Debug.Log(pc.getResistance());
-        pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
         // Knight tagged as player needs to be on the "BaseCharacter" > "Body" part
         if (c.gameObject.CompareTag("Player")){
-            pc.TakeDamage(getRealDamage(getDamage(), pc.getResistance()));
+            this.pc.TakeDamage(getRealDamage(getDamage(), this.pc.getResistance()));
         }
     }
     private void OnTriggerStay(Collider c){
-        pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
         if (c.gameObject.CompareTag("Player")){
             if( (Time.time - SavedTime) > DelayTime ) {
                 SavedTime=Time.time;   
-                pc.TakeDamage(getRealDamage(getDamage(), pc.getResistance()));
+                this.pc.TakeDamage(getRealDamage(getDamage(), pc.getResistance()));
             }
         }
     }
@@ -35,12 +35,6 @@ public class DamageController : MonoBehaviour
     private int getRealDamage(int damage, int resistance) {
         Debug.Log("REAL DAMAGE : " + (int)(damage * (1.0 - resistance / 100.0)));
         return (int)(damage * (1.0 - resistance / 100.0));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
 }
