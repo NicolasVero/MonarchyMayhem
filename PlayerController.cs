@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     const float sensitivity = 10;
     const float attackSpeed = 2f;
 	public bool canAttack = false;
+    public int enemyKillCounter;
 
     // attributs
     int xp = -1;

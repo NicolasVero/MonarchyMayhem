@@ -9,6 +9,8 @@ public class EnemyAiController : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
 
+    PlayerController pc;
+
     int maxHealth = 50;
     int enemy_health;
     FloatingHB healthBar;
@@ -16,6 +18,7 @@ public class EnemyAiController : MonoBehaviour
 
     private void Awake()
     {
+        pc = GameObject.Find("Knight").GetComponent<PlayerController>();
         player = GameObject.Find("Knight").transform;
         agent = GetComponent<NavMeshAgent>();
         
@@ -35,6 +38,7 @@ public class EnemyAiController : MonoBehaviour
         }
         else{
             Destroy(gameObject);
+            pc.enemyKillCounter++;
         }
     }
 
