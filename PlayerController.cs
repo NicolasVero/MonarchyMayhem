@@ -38,6 +38,12 @@ public class PlayerController : MonoBehaviour
 
 
     void Awake() {
+
+
+
+        // Affiche le nom du personnage
+        Debug.Log(Names.MainCharacter);
+
         // this.levelUpPanel.SetActive(false);
         this.healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
         this.slider_player = GameObject.Find("Player_Healthbar").GetComponent<Slider>();
@@ -62,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
 
     void FixedUpdate(){
+
         // Marche là où le perso regarde
         transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
