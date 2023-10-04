@@ -18,8 +18,8 @@ public class EnemyAiController : MonoBehaviour
 
     private void Awake()
     {
-        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
-        this.player = GameObject.Find("Knight").transform;
+        this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
+        this.player = GameObject.Find(Names.MainCharacter).transform;
         this.agent = GetComponent<NavMeshAgent>();
         
         this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();

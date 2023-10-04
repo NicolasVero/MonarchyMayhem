@@ -7,7 +7,7 @@ public class SwordController : MonoBehaviour
     EnemyAiController enemy;
     PlayerController player;
     void Awake(){
-        this.player = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.player = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
     }
     // enemy = GameObject.Find("Zombie").GetComponent<EnemyAiController>();
     // enemy.AttackEnemy(attack);

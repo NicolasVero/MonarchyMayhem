@@ -12,7 +12,7 @@ public class DamageController : MonoBehaviour
     private void OnTriggerEnter(Collider c){
         
         //Debug.Log(this.pc.getResistance());
-        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
         Debug.Log(this.pc.getResistance());
         // Knight tagged as player needs to be on the "BaseCharacter" > "Body" part
         if (c.gameObject.CompareTag("Player")){
@@ -20,7 +20,7 @@ public class DamageController : MonoBehaviour
         }
     }
     private void OnTriggerStay(Collider c){
-        this.pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
         if (c.gameObject.CompareTag("Player")){
             if( (Time.time - SavedTime) > DelayTime ) {
                 SavedTime=Time.time;   

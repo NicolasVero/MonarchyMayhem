@@ -24,7 +24,7 @@ public class EnemySpawn : MonoBehaviour
     private bool waveInProgress = false;
     
     void Awake(){
-        pc = GameObject.Find("Knight").GetComponent<PlayerController>();
+        pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
     }
 
     void FixedUpdate(){
@@ -32,7 +32,7 @@ public class EnemySpawn : MonoBehaviour
             ResetWave();
             this.waveInProgress = true;
         }
-        verifEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+        verifEnemy = GameObject.FindGameObjectsWithTag(Names.BaseEnemy);
         if (verifEnemy.Length==4 && this.waveInProgress)
             StartCoroutine(Break());
     }
