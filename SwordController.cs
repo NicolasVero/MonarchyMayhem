@@ -13,7 +13,7 @@ public class SwordController : MonoBehaviour
     // enemy.AttackEnemy(attack);
     void OnTriggerEnter(Collider c){
         if (this.player.canAttack){
-            if (c.gameObject.CompareTag("Enemy")){
+            if (c.gameObject.CompareTag(Names.BaseEnemy)){
                 c.gameObject.GetComponent<EnemyAiController>().AttackEnemy(10);
             }
         }

@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject levelUpPanel;
-
     const float speed = 10f;
     const float sensitivity = 10;
 	public bool canAttack = false;
@@ -18,7 +16,7 @@ public class PlayerController : MonoBehaviour
     int xp = -1;
     int level = 0;
     int health;
-    int resistance = 75;
+    int resistance = 0;
     int attack = 5;
     float attackSpeed = 2f;
 
@@ -41,8 +39,6 @@ public class PlayerController : MonoBehaviour
 
 
     void Awake() {
-
-
 
         // Affiche le nom du personnage
         Debug.Log(Names.MainCharacter);
@@ -68,7 +64,11 @@ public class PlayerController : MonoBehaviour
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.P)) 
-            Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+            changeGameState();
+    }
+
+    void changeGameState() {
+        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }
 
 
@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
 
     // Modifications gain level
     private void updateAttributs() {
+        // appear();
         Debug.Log("LEVEL UP !");
         this.updateResistance();
         this.updateHealth();
