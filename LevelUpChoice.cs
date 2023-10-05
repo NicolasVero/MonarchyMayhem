@@ -10,20 +10,21 @@ public class LevelUpChoice : MonoBehaviour {
     public GameObject choice03;
     public int choiceMade;
 
+    public PlayerController playerController;
     public GameObject levelUpPanel;
 
     public void choiceOption1() {
-        Debug.Log("Choice 1");
+        playerController.updateAttack();
         resumeGame();
     }
 
     public void choiceOption2() {
-        Debug.Log("Choice 2");
+        playerController.updateHealth();
         resumeGame();
     }
 
     public void choiceOption3() {
-        Debug.Log("Choice 3");
+        playerController.updateResistance();
         resumeGame();
     }
 

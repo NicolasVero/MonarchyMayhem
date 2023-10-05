@@ -65,11 +65,6 @@ public class PlayerController : MonoBehaviour
             GameController.setGameState();
     }
 
-    // public void resumeGame() {
-    //     GameController.setPanelVisibility(levelUpPanel, false);
-    // }
-
-
     void FixedUpdate(){
 
         // Marche là où le perso regarde
@@ -104,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void XPGain(int xpAmount) {
         this.xp += xpAmount;
-        Debug.Log(xp + " / " + xpRequired);
+        // Debug.Log(xp + " / " + xpRequired);
         
         if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
@@ -113,7 +108,7 @@ public class PlayerController : MonoBehaviour
             GameController.setPanelVisibility(levelUpPanel, true);
             GameController.setCursorVisibility(true);
 
-            updateAttributs();
+            // updateAttributs();
         }
     }
 
@@ -122,33 +117,33 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnAttack(InputValue value){
-        // Debug.Log("Attack");
         _animator.SetTrigger("Attack");
     }
 
 
 
     // Modifications gain level
-    private void updateAttributs() {
-        // appear();
-        Debug.Log("LEVEL UP !");
-        this.updateResistance();
-        this.updateHealth();
-        this.updateAttack();
-    }
+    // private void updateAttributs() {
+        // this.updateResistance();
+        // this.updateHealth();
+        // this.updateAttack();
+    // }
 
-    private void updateResistance() {
+    public void updateResistance() {
+        Debug.Log("Resistance améliorée");
         this.resistance += 10;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
-    private void updateHealth() {
+    public void updateHealth() {
+        Debug.Log("Vie améliorée");
         this.health += 10;
         if(this.health > this.maxHealth) this.health = this.maxHealth;
-        healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+            healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
     }
 
-    private void updateAttack() {
+    public void updateAttack() {
+        Debug.Log("Attaque améliorée");
         this.attack += 2;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
