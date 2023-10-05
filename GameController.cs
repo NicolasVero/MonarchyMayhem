@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
         Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
-    public static void setLevelUpPanelVisibility(bool state) {
-        levelUpPanel.SetActive(state);
+    public static void setPanelVisibility(GameObject panel, bool state) {
+        panel.SetActive(state);
     }
 }

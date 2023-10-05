@@ -38,13 +38,10 @@ public class PlayerController : MonoBehaviour
     EnemyAiController enemy;
 
     public GameObject levelUpPanel;
-    // GameController gameController;
+    GameController gameController;
 
 
     void Awake() {
-
-        // Affiche le nom du personnage
-        Debug.Log(Names.MainCharacter);
 
         // this.levelUpPanel.SetActive(false);
         this.healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
@@ -58,7 +55,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         this.sword = GameObject.Find("Sword");
-        setLevelUpPanelVisibility(false);
+        GameController.setPanelVisibility(levelUpPanel, false);
 
         this.rb = GetComponent<Rigidbody>();
     }
@@ -68,20 +65,9 @@ public class PlayerController : MonoBehaviour
             GameController.setGameState();
     }
 
-
-
-    // void changeGameState() {
-    //     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+    // public void resumeGame() {
+    //     GameController.setPanelVisibility(levelUpPanel, false);
     // }
-
-    void setCursorVisibility(bool state) {
-        Cursor.visible = state;
-        Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
-    }
-
-    void setLevelUpPanelVisibility(bool state) {
-        levelUpPanel.SetActive(state);
-    }
 
 
     void FixedUpdate(){
@@ -102,9 +88,7 @@ public class PlayerController : MonoBehaviour
             this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
         } else {
             _animator.SetTrigger("Death");
-            //Destroy(gameObject);
             Debug.Log("Vous êtes mort.");
-            // Time.timeScale = 0;
         }
     }
 
@@ -125,10 +109,9 @@ public class PlayerController : MonoBehaviour
         if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
             this.xpRequired += XPRequired();
-            // this.changeGameState();
-            this.setLevelUpPanelVisibility(true);
-            this.setCursorVisibility(true);
-            // this.levelUpPanel.SetActive(true);
+            GameController.setGameState(false);
+            GameController.setPanelVisibility(levelUpPanel, true);
+            GameController.setCursorVisibility(true);
 
             updateAttributs();
         }
