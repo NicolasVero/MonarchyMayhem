@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     GameObject sword;
     EnemyAiController enemy;
 
+    public GameObject levelUpPanel;
+
 
     void Awake() {
 
@@ -54,10 +56,8 @@ public class PlayerController : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         this.sword = GameObject.Find("Sword");
+        setLevelUpPanelVisibility(false);
 
         this.rb = GetComponent<Rigidbody>();
     }
@@ -67,8 +67,19 @@ public class PlayerController : MonoBehaviour
             changeGameState();
     }
 
+
+
     void changeGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+    }
+
+    void setCursorVisibility(bool state) {
+        Cursor.visible = state;
+        Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    void setLevelUpPanelVisibility(bool state) {
+        levelUpPanel.SetActive(state);
     }
 
 
@@ -113,7 +124,9 @@ public class PlayerController : MonoBehaviour
         if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
             this.xpRequired += XPRequired();
-
+            this.changeGameState();
+            this.setLevelUpPanelVisibility(true);
+            this.setCursorVisibility(true);
             // this.levelUpPanel.SetActive(true);
 
             updateAttributs();
