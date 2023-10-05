@@ -5,31 +5,27 @@ using UnityEngine.UI;
 
 public class LevelUpChoice : MonoBehaviour {
 
-    public GameObject choice01;
-    public GameObject choice02;
-    public GameObject choice03;
+    public GameObject attack;
+    public GameObject health;
+    public GameObject resistance;
     public int choiceMade;
 
     public PlayerController playerController;
     public GameObject levelUpPanel;
 
-    public void choiceOption1() {
+    public void choiceAttack() {
         playerController.updateAttack();
         resumeGame();
     }
 
-    public void choiceOption2() {
+    public void choiceHealth() {
         playerController.updateHealth();
         resumeGame();
     }
 
-    public void choiceOption3() {
+    public void choiceResistance() {
         playerController.updateResistance();
         resumeGame();
-    }
-
-    static void breakGame() {
-
     }
 
     void resumeGame() {
@@ -40,9 +36,9 @@ public class LevelUpChoice : MonoBehaviour {
 
     void Update() {
         if(choiceMade >= 1) {
-            choice01.SetActive(false);
-            choice02.SetActive(false);
-            choice03.SetActive(false);
+            attack.SetActive(false);
+            health.SetActive(false);
+            resistance.SetActive(false);
         }
     }
 }
