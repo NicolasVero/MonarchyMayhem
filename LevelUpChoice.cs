@@ -10,12 +10,9 @@ public class levelUpPanel : MonoBehaviour {
     public GameObject choice03;
     public int choiceMade;
 
-    public void appear() {
-        Debug.Log("MONTE DE NIVEAU !");
-    }
-
     public void choiceOption1() {
         Debug.Log("Choice 1");
+        
     }
 
     public void choiceOption2() {

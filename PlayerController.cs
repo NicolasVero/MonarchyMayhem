@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     EnemyAiController enemy;
 
     public GameObject levelUpPanel;
+    // GameController gameController;
 
 
     void Awake() {
@@ -64,14 +65,14 @@ public class PlayerController : MonoBehaviour
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.P)) 
-            changeGameState();
+            GameController.setGameState();
     }
 
 
 
-    void changeGameState() {
-        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
-    }
+    // void changeGameState() {
+    //     Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+    // }
 
     void setCursorVisibility(bool state) {
         Cursor.visible = state;
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
         if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
             this.xpRequired += XPRequired();
-            this.changeGameState();
+            // this.changeGameState();
             this.setLevelUpPanelVisibility(true);
             this.setCursorVisibility(true);
             // this.levelUpPanel.SetActive(true);
