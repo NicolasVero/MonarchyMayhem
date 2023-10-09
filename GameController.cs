@@ -12,6 +12,10 @@ public class GameController : MonoBehaviour {
         Time.timeScale = (state) ? 1 : 0;
     }
 
+    public static int getGameState() {
+        return Time.timeScale;
+    }
+
     public static void setCursorVisibility(bool state) {
         Cursor.visible = state;
         Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
