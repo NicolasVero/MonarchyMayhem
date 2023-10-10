@@ -13,7 +13,7 @@ public class DamageController : MonoBehaviour
         
         //Debug.Log(this.pc.getResistance());
         this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
-        Debug.Log(this.pc.getResistance());
+        // Debug.Log(this.pc.getResistance());
         // Knight tagged as player needs to be on the "BaseCharacter" > "Body" part
         if (c.gameObject.CompareTag("Player")){
             this.pc.TakeDamage(this.getRealDamage(this.getDamage(), this.pc.getResistance()));
@@ -34,7 +34,7 @@ public class DamageController : MonoBehaviour
     }
 
     private int getRealDamage(int damage, int resistance) {
-        Debug.Log("REAL DAMAGE : " + (int)(damage * (1.0 - resistance / 100.0)));
+        // Debug.Log("REAL DAMAGE : " + (int)(damage * (1.0 - resistance / 100.0)));
         return (int)(damage * (1.0 - resistance / 100.0));
     }
     

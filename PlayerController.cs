@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator _animator;
 
+    public HealthBar healthBar2;
+
     FloatingHB healthBar;
     Slider slider_player;
 
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if(this.health > dmgAmount){
             this.health -= dmgAmount;
             this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+            this.healthBar2.setHealthBar(this.health);
         } else {
             _animator.SetTrigger("Death");
             Debug.Log("Vous êtes mort.");
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
             this.health = this.maxHealth;
         
         this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+        this.healthBar2.setHealthBar(this.health);
     }
 
 
@@ -135,11 +139,14 @@ public class PlayerController : MonoBehaviour
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
+     
     public void updateHealth() {
         Debug.Log("Vie améliorée");
         this.health += 10;
         if(this.health > this.maxHealth) this.health = this.maxHealth;
             healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+
+        this.healthBar2.setHealthBar(this.health);
     }
 
     public void updateAttack() {
@@ -148,8 +155,7 @@ public class PlayerController : MonoBehaviour
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
 
-
-	
-
     public int getResistance() { return this.resistance; }
+    public int getHealth() { return this.health; }
+    public int getMaxHealth() { return this.maxHealth; }
 }

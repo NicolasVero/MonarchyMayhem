@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour {
         Time.timeScale = (state) ? 1 : 0;
     }
 
-    public static int getGameState() {
-        return Time.timeScale;
+    public static bool getGameState() {
+        return Time.timeScale == 0;
     }
 
     public static void setCursorVisibility(bool state) {
