@@ -8,25 +8,25 @@ public class LevelUpChoice : MonoBehaviour {
     public GameObject attack;
     public GameObject health;
     public GameObject resistance;
-    public int choiceMade;
-    public HUDStats hudStats;
+    public HUDStats   hudStats;
+    public int        choiceMade;
 
     public PlayerController playerController;
-    public GameObject levelUpPanel;
+    public GameObject       levelUpPanel;
 
     public void choiceAttack() {
-        playerController.updateAttack();
-        resumeGame();
+        this.playerController.updateAttack();
+        this.resumeGame();
     }
 
     public void choiceHealth() {
-        playerController.updateHealth();
-        resumeGame();
+        this.playerController.updateHealth();
+        this.resumeGame();
     }
 
     public void choiceResistance() {
-        playerController.updateResistance();
-        resumeGame();
+        this.playerController.updateResistance();
+        this.resumeGame();
     }
 
     void resumeGame() {
@@ -38,9 +38,9 @@ public class LevelUpChoice : MonoBehaviour {
 
     void Update() {
         if(choiceMade >= 1) {
-            attack.SetActive(false);
-            health.SetActive(false);
-            resistance.SetActive(false);
+            this.attack.SetActive(false);
+            this.health.SetActive(false);
+            this.resistance.SetActive(false);
         }
     }
 }

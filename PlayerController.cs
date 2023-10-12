@@ -37,9 +37,6 @@ public class PlayerController : MonoBehaviour
 
     public HUDStats hudStats;
 
-    // FloatingHB healthBar;
-    // Slider slider_player;
-
     Rigidbody rb;
     GameObject sword;
     EnemyAiController enemy;
@@ -170,10 +167,10 @@ public class PlayerController : MonoBehaviour
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
 
-    public int getResistance() { return this.resistance; }
-    public int getAttack() { return this.attack; }
-    public int getHealth() { return this.health; }
-    public int getMaxHealth() { return this.maxHealth; }
-    public int getLevel() { return this.level; }
+    public int   getResistance()  { return this.resistance;  }
+    public int   getAttack()      { return this.attack;      }
+    public int   getHealth()      { return this.health;      }
+    public int   getMaxHealth()   { return this.maxHealth;   }
+    public int   getLevel()       { return this.level;       }
     public float getAttackSpeed() { return this.attackSpeed; }
 }
