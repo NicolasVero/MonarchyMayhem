@@ -8,12 +8,14 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     const float speed = 10f;
-    const float sensitivity = 10;
+    const float sensitivity = 0;
 	public bool canAttack = false;
     public int enemyKillCounter;
 
     // attributs
-    int xp = -1;
+    int total_xp = -1;
+    int xp = 0;
+    int xpToNext = 1;
     int level = 0;
     int health;
     int resistance = 0;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     public HealthBar healthBar2;
+    public XPBar xpBar;
 
     FloatingHB healthBar;
     Slider slider_player;
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
             GameController.setGameState();
     }
 
-    void FixedUpdate(){
+    void FixedUpdate() {
 
         // Marche là où le perso regarde
         transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Taking damage when triggering object
-    public void TakeDamage(int dmgAmount){
+    public void TakeDamage(int dmgAmount) {
         if(this.health > dmgAmount){
             this.health -= dmgAmount;
             this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
@@ -102,12 +105,21 @@ public class PlayerController : MonoBehaviour
 
 
     public void XPGain(int xpAmount) {
-        this.xp += xpAmount;
-        // Debug.Log(xp + " / " + xpRequired);
+        this.total_xp += xpAmount;
+        this.xpBar.addXPBar(xpAmount);
+        // Debug.Log(total_xp + " / " + xpRequired);
         
-        if(this.xp >= this.xpRequired && this.level < this.maxLevel) {
+        if(this.total_xp >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
-            this.xpRequired += XPRequired();
+            this.xpToNext = XPRequired();
+            this.xpRequired += this.xpToNext;
+            this.xp = 0;
+
+            Debug.Log(this.xpBar);
+
+            this.xpBar.setXPBarMax(this.xpToNext);
+            this.xpBar.setXPBar(0);
+
             GameController.setGameState(false);
             GameController.setPanelVisibility(levelUpPanel, true);
             GameController.setCursorVisibility(true);

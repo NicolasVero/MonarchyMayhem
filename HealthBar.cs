@@ -13,11 +13,15 @@ public class HealthBar : MonoBehaviour {
         Debug.Log(healthBar);
         Debug.Log(player.getHealth());
 
-        healthBar.maxValue = player.getMaxHealth();
-        healthBar.value = player.getHealth();
+        this.healthBar.maxValue = player.getMaxHealth();
+        this.healthBar.value = player.getHealth();
     }
  
     public void setHealthBar(int hp) {
-        healthBar.value = hp;
+        this.healthBar.value = hp;
+    }
+
+    public void setHealthBarMax(int max) {
+        this.healthBar.maxValue = max;
     }
 }
