@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     const float speed = 10f;
-    const float sensitivity = 0;
+    const float sensitivity = 10;
 	public bool canAttack = false;
     public int enemyKillCounter;
 
@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
 
     private Animator _animator;
 
-    public HealthBar healthBar2;
+    public HealthBar healthBar;
     public XPBar xpBar;
 
-    FloatingHB healthBar;
-    Slider slider_player;
+    // FloatingHB healthBar;
+    // Slider slider_player;
 
     Rigidbody rb;
     GameObject sword;
@@ -49,13 +49,13 @@ public class PlayerController : MonoBehaviour
     void Awake() {
 
         // this.levelUpPanel.SetActive(false);
-        this.healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
-        this.slider_player = GameObject.Find("Player_Healthbar").GetComponent<Slider>();
+        // this.healthBar = GameObject.Find("Player_Healthbar").GetComponent<FloatingHB>();
+        // this.slider_player = GameObject.Find("Player_Healthbar").GetComponent<Slider>();
 
         // Initialization of health
         Debug.Log("Start");
         this.health = this.maxHealth;
-        this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+        // this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
 
         _animator = GetComponentInChildren<Animator>();
 
@@ -85,10 +85,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int dmgAmount) {
         if(this.health > dmgAmount){
             this.health -= dmgAmount;
-            this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
-            this.healthBar2.setHealthBar(this.health);
+            // this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+            this.healthBar.setHealthBar(this.health);
         } else {
-            _animator.SetTrigger("Death");
+            // _animator.SetTrigger("Death");
             Debug.Log("Vous êtes mort.");
         }
     }
@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour
         if(this.health >= this.maxHealth) 
             this.health = this.maxHealth;
         
-        this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
-        this.healthBar2.setHealthBar(this.health);
+        // this.healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+        this.healthBar.setHealthBar(this.health);
     }
 
 
@@ -155,10 +155,11 @@ public class PlayerController : MonoBehaviour
     public void updateHealth() {
         Debug.Log("Vie améliorée");
         this.health += 10;
-        if(this.health > this.maxHealth) this.health = this.maxHealth;
-            healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
-
-        this.healthBar2.setHealthBar(this.health);
+        if(this.health > this.maxHealth) 
+            this.health = this.maxHealth;
+            
+        // healthBar.UpdateHealthBar(this.slider_player, this.health, this.maxHealth);
+        this.healthBar.setHealthBar(this.health);
     }
 
     public void updateAttack() {
@@ -168,6 +169,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public int getResistance() { return this.resistance; }
+    public int getAttack() { return this.attack; }
     public int getHealth() { return this.health; }
     public int getMaxHealth() { return this.maxHealth; }
 }
