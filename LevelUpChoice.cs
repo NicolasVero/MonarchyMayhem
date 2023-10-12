@@ -9,6 +9,7 @@ public class LevelUpChoice : MonoBehaviour {
     public GameObject health;
     public GameObject resistance;
     public int choiceMade;
+    public HUDStats hudStats;
 
     public PlayerController playerController;
     public GameObject levelUpPanel;
@@ -29,6 +30,7 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     void resumeGame() {
+        this.hudStats.updateStats();
         GameController.setGameState(true);
         GameController.setCursorVisibility(false);
         GameController.setPanelVisibility(levelUpPanel, false);   

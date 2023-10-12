@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
     public XPBar xpBar;
 
+    public HUDStats hudStats;
+
     // FloatingHB healthBar;
     // Slider slider_player;
 
@@ -120,10 +122,10 @@ public class PlayerController : MonoBehaviour
             this.xpBar.setXPBarMax(this.xpToNext);
             this.xpBar.setXPBar(0);
 
+
             GameController.setGameState(false);
             GameController.setPanelVisibility(levelUpPanel, true);
             GameController.setCursorVisibility(true);
-
             // updateAttributs();
         }
     }
@@ -172,4 +174,6 @@ public class PlayerController : MonoBehaviour
     public int getAttack() { return this.attack; }
     public int getHealth() { return this.health; }
     public int getMaxHealth() { return this.maxHealth; }
+    public int getLevel() { return this.level; }
+    public float getAttackSpeed() { return this.attackSpeed; }
 }
