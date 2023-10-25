@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     int resistance = 0;
     int attack = 5;
     float attackSpeed = 2f;
+    float range = 2.0f;
 
     // controlleur attributs
     int xpRequired = 0;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     int maxResistance = 75;
     int maxAttack = 50;
     int minAttackSpeed = 10;
+    float maxRange = 4f;
 
     private Animator _animator;
 
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour
         // ISO Cam
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+        Attack();
     }
 
     // Taking damage when triggering object
@@ -150,6 +154,12 @@ public class PlayerController : MonoBehaviour
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
+    public void updateRange() {
+        Debug.Log("range améliorée");
+        this.range += 0.2f;
+        if(this.range > this.maxRange) this.range = this.maxRange;
+    }
+
      
     public void updateHealth() {
         Debug.Log("Vie améliorée");
@@ -167,10 +177,30 @@ public class PlayerController : MonoBehaviour
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
 
+    void Attack()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+
+        // Parcourez les ennemis trouvés
+        foreach (Collider col in hitColliders)
+        {
+            // Vérifiez si l'objet en collision a un composant de santé (Health Component)
+            EnemyAiController enemyHealth = col.GetComponent<EnemyAiController>();
+            // int enemyHealth = hitColliders.getHealth();
+
+            // Si l'ennemi a un composant de santé, infligez-lui des dégâts
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(attack);
+            }
+        }
+    }
+
     public int   getResistance()  { return this.resistance;  }
     public int   getAttack()      { return this.attack;      }
     public int   getHealth()      { return this.health;      }
     public int   getMaxHealth()   { return this.maxHealth;   }
     public int   getLevel()       { return this.level;       }
     public float getAttackSpeed() { return this.attackSpeed; }
+    public float getRange()       { return this.range;       }
 }

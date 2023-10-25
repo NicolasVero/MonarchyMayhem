@@ -48,4 +48,17 @@ public class EnemyAiController : MonoBehaviour
             this.agent.SetDestination(this.player.position);
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        enemy_health -= damage;
+        Debug.Log(enemy_health);
+
+        if (enemy_health <= 0)
+        {
+            Debug.Log("Ennemie mort");
+        }
+    }
+
+    public int getHealth() { return this.enemy_health; }
 }

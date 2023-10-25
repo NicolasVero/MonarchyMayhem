@@ -10,6 +10,7 @@ public class HUDStats : MonoBehaviour
     public TextMeshProUGUI  attackStat;
     public TextMeshProUGUI  resistanceStat;
     public TextMeshProUGUI  attackSpeedStat;
+    public TextMeshProUGUI  rangeStat;
 
     void Start() {
         this.updateStats();
@@ -24,5 +25,6 @@ public class HUDStats : MonoBehaviour
         attackStat.text      = player.getAttack()      + "";
         resistanceStat.text  = player.getResistance()  + "";
         attackSpeedStat.text = player.getAttackSpeed() + "";
+        rangeStat.text       = player.getRange()       + "";
     }
 }
