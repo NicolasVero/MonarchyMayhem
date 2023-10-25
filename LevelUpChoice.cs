@@ -9,6 +9,7 @@ public class LevelUpChoice : MonoBehaviour {
     public GameObject health;
     public GameObject resistance;
     public GameObject range;
+    public GameObject attackSpeed;
     public HUDStats   hudStats;
     public int        choiceMade;
 
@@ -27,6 +28,11 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void choiceResistance() {
         this.playerController.updateResistance();
+        this.resumeGame();
+    }
+
+    public void choiceAttackSpeed() {
+        this.playerController.updateAttackSpeed();
         this.resumeGame();
     }
 

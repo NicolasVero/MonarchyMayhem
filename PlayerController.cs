@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
     int resistance = 0;
     int attack = 5;
     float attackSpeed = 2f;
-    float range = 2.0f;
+    float range = 6.0f;
+
+    private float timeSinceLastAttack = 0f;
+    // private float attackInterval = 2.0f;
 
     // controlleur attributs
     int xpRequired = 0;
@@ -29,8 +32,9 @@ public class PlayerController : MonoBehaviour
     int maxLevel = 20;
     int maxResistance = 75;
     int maxAttack = 50;
-    int minAttackSpeed = 10;
+    // int minAttackSpeed = 10;
     float maxRange = 4f;
+    float minAttackSpeed = 0.1f;
 
     private Animator _animator;
 
@@ -81,7 +85,27 @@ public class PlayerController : MonoBehaviour
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
-        Attack();
+        // Attack();
+        // InvokeRepeating("Attack", 2.0f, attackSpeed);
+        // attackTimer += Time.fixedDeltaTime;
+
+        // // Si le compteur de temps dépasse l'intervalle, effectuez une attaque.
+        // if (attackTimer >= attackSpeed) {
+        //     Attack();
+        //     // Réinitialisez le compteur de temps.
+        //     attackTimer = 0f;
+        // }
+    
+            // Augmentez le compteur de temps depuis la dernière attaque à chaque mise à jour FixedUpdate.
+        timeSinceLastAttack += Time.fixedDeltaTime;
+
+        // Si le temps écoulé dépasse l'intervalle d'attaque, effectuez une attaque.
+        if (timeSinceLastAttack >= attackSpeed) {
+            Debug.Log("attaque");
+            Attack();
+            // Réinitialisez le temps écoulé.
+            timeSinceLastAttack = 0f;
+        }
     }
 
     // Taking damage when triggering object
@@ -154,6 +178,12 @@ public class PlayerController : MonoBehaviour
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
+    public void updateAttackSpeed() {
+        Debug.Log("Vitesse attaque améliorée");
+        this.attackSpeed = 0.1f;
+        // if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
+    }
+
     public void updateRange() {
         Debug.Log("range améliorée");
         this.range += 0.2f;
@@ -180,7 +210,8 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
-
+        // Debug.Log("Nombre d'ennemis touchés : " + hitColliders.Length);
+        // Debug.Log(hitColliders);
         // Parcourez les ennemis trouvés
         foreach (Collider col in hitColliders)
         {
@@ -189,8 +220,10 @@ public class PlayerController : MonoBehaviour
             // int enemyHealth = hitColliders.getHealth();
 
             // Si l'ennemi a un composant de santé, infligez-lui des dégâts
+            // Debug.Log(enemyHealth);
             if (enemyHealth != null)
             {
+                Debug.Log("on attack");
                 enemyHealth.TakeDamage(attack);
             }
         }
