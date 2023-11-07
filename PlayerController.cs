@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     int resistance = 0;
     int attack = 5;
     float attackSpeed = 2f;
-    float range = 6.0f;
+    float range = 3.0f;
 
     private float timeSinceLastAttack = 0f;
     // private float attackInterval = 2.0f;
@@ -159,9 +159,9 @@ public class PlayerController : MonoBehaviour
         return (int)(5 * Math.Pow(1.5, this.level - 1));
     }
 
-    public void OnAttack(InputValue value){
-        _animator.SetTrigger("Attack");
-    }
+    // public void OnAttack(InputValue value){
+    //     _animator.SetTrigger("Attack");
+    // }
 
 
 
@@ -180,8 +180,8 @@ public class PlayerController : MonoBehaviour
 
     public void updateAttackSpeed() {
         Debug.Log("Vitesse attaque améliorée");
-        this.attackSpeed = 0.1f;
-        // if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
+        this.attackSpeed -= 0.2f;
+        if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
     }
 
     public void updateRange() {
@@ -209,22 +209,21 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
+
         // Debug.Log("Nombre d'ennemis touchés : " + hitColliders.Length);
         // Debug.Log(hitColliders);
         // Parcourez les ennemis trouvés
-        foreach (Collider col in hitColliders)
-        {
-            // Vérifiez si l'objet en collision a un composant de santé (Health Component)
-            EnemyAiController enemyHealth = col.GetComponent<EnemyAiController>();
-            // int enemyHealth = hitColliders.getHealth();
+        Debug.Log("-- NEW --");
+        Debug.Log("LEN : " + hitColliders.Length);
 
-            // Si l'ennemi a un composant de santé, infligez-lui des dégâts
-            // Debug.Log(enemyHealth);
-            if (enemyHealth != null)
-            {
+        foreach (Collider col in hitColliders) {
+            EnemyAiController enemy = col.GetComponent<EnemyAiController>();
+            Debug.Log(enemy);
+
+            if(enemy is EnemyAiController) {
                 Debug.Log("on attack");
-                enemyHealth.TakeDamage(attack);
+                enemy.TakeDamage(attack);
             }
         }
     }

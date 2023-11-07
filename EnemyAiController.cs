@@ -53,7 +53,7 @@ public class EnemyAiController : MonoBehaviour
     {
         enemy_health -= damage;
         Debug.Log(enemy_health);
-
+        this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
         if (enemy_health <= 0)
         {
             Debug.Log("Ennemie mort");
