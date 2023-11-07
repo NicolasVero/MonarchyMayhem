@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     int health;
     int resistance = 0;
     int attack = 5;
-    float attackSpeed = 2f;
+    float attackSpeed = 2.0f;
     float range = 3.0f;
 
     private float timeSinceLastAttack = 0f;
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         // Si le temps écoulé dépasse l'intervalle d'attaque, effectuez une attaque.
         if (timeSinceLastAttack >= attackSpeed) {
-            Debug.Log("attaque");
+            // Debug.Log("attaque");
             Attack();
             // Réinitialisez le temps écoulé.
             timeSinceLastAttack = 0f;
@@ -209,23 +209,28 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        int temp = 0;
+
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
         // Debug.Log("Nombre d'ennemis touchés : " + hitColliders.Length);
         // Debug.Log(hitColliders);
         // Parcourez les ennemis trouvés
-        Debug.Log("-- NEW --");
-        Debug.Log("LEN : " + hitColliders.Length);
+        // Debug.Log("-- NEW --");
+        // Debug.Log("LEN : " + hitColliders.Length);
 
         foreach (Collider col in hitColliders) {
             EnemyAiController enemy = col.GetComponent<EnemyAiController>();
             Debug.Log(enemy);
 
             if(enemy is EnemyAiController) {
-                Debug.Log("on attack");
+                // Debug.Log("on attack");
+                temp++;
                 enemy.TakeDamage(attack);
             }
         }
+
+        Debug.Log("Nombre de zombies : " + temp);
     }
 
     public int   getResistance()  { return this.resistance;  }

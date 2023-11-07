@@ -10,8 +10,8 @@ public class HealthBar : MonoBehaviour {
  
     private void Start() {
         
-        Debug.Log(healthBar);
-        Debug.Log(player.getHealth());
+        // Debug.Log(healthBar);
+        // Debug.Log(player.getHealth());
 
         this.healthBar.maxValue = player.getMaxHealth();
         this.healthBar.value = player.getHealth();
