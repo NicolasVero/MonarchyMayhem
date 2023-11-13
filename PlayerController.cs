@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour
     void Update() {
         if(Input.GetKeyDown(KeyCode.P)) 
             GameController.setGameState();
+
+
+        // timerAttack();
     }
 
     void FixedUpdate() {
@@ -84,6 +87,8 @@ public class PlayerController : MonoBehaviour
         // ISO Cam
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+        timerAttack();
 
         // Attack();
         // InvokeRepeating("Attack", 2.0f, attackSpeed);
@@ -97,15 +102,9 @@ public class PlayerController : MonoBehaviour
         // }
     
             // Augmentez le compteur de temps depuis la dernière attaque à chaque mise à jour FixedUpdate.
-        timeSinceLastAttack += Time.fixedDeltaTime;
 
         // Si le temps écoulé dépasse l'intervalle d'attaque, effectuez une attaque.
-        if (timeSinceLastAttack >= attackSpeed) {
-            // Debug.Log("attaque");
-            Attack();
-            // Réinitialisez le temps écoulé.
-            timeSinceLastAttack = 0f;
-        }
+
     }
 
     // Taking damage when triggering object
@@ -231,6 +230,16 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.Log("Nombre de zombies : " + temp);
+    }
+
+    public void timerAttack() {
+        if (timeSinceLastAttack >= attackSpeed) {
+            // Debug.Log("attaque");
+            Attack();
+            // Réinitialisez le temps écoulé.
+            timeSinceLastAttack = 0f;
+        }
+        timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
     public int   getResistance()  { return this.resistance;  }
