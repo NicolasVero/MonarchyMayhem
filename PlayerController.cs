@@ -45,9 +45,52 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         this.health = this.maxHealth;
-
+        loadPlayerAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
     }
+
+    void loadPlayerAttributes()
+    {
+        // Utilisez simplement le nom du fichier sans extension dans le dossier "Resources"
+        string path = "PlayerBaseStats";
+        TextAsset jsonFile = Resources.Load<TextAsset>(path);
+
+        Debug.Log(jsonFile);
+
+        if (jsonFile != null)
+        {
+            JsonUtility.FromJsonOverwrite(jsonFile.text, this);
+
+            // Vous pouvez maintenant accéder directement aux propriétés
+            Debug.Log("totalXP: " + totalXP);
+            Debug.Log("xp: " + xp);
+            // ... (accédez aux autres propriétés de la même manière)
+        }
+        else
+        {
+            Debug.LogError("Fichier JSON non trouvé.");
+        }
+    }
+
+    // void loadPlayerAttributes()
+    // {
+    //     string path = "Assets/Scripts/data/PlayerBaseStats.json";
+    //     TextAsset jsonFile = Resources.Load<TextAsset>(path);
+
+    //     Debug.Log(path);
+
+    //     if (jsonFile != null)
+    //     {
+    //         JsonUtility.FromJsonOverwrite(jsonFile.text, this);
+
+    //         // Vous pouvez maintenant accéder directement aux propriétés
+    //         Debug.Log("totalXP: " + totalXP);
+    //         Debug.Log("xp: " + xp);
+    //         // ... (accédez aux autres propriétés de la même manière)
+    //     } else {
+    //         Debug.LogError("Fichier JSON non trouvé.");
+    //     }
+    // }
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.P)) 
