@@ -208,12 +208,14 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+
+        //! OnColliderTrigger() 
         int temp = 0;
 
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
-        // Debug.Log("Nombre d'ennemis touchés : " + hitColliders.Length);
-        // Debug.Log(hitColliders);
+        Debug.Log("Nombre d'ennemis touchés : " + hitColliders.Length);
+        // Debug.Log(hitColliders.Length);
         // Parcourez les ennemis trouvés
         // Debug.Log("-- NEW --");
         // Debug.Log("LEN : " + hitColliders.Length);
