@@ -6,62 +6,49 @@ using UnityEngine.AI;
 
 public class EnemyAiController : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform player;
-
-    PlayerController pc;
-
-    int maxHealth = 50;
-    int enemy_health;
-    FloatingHB healthBar;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Transform player;
     [SerializeField] Slider slider_enemy;
 
-    private void Awake()
-    {
+    private PlayerController pc;
+
+    private int maxHealth = 50;
+    private int enemy_health;
+    private FloatingHB healthBar;
+
+    private void Awake() {
         this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
         this.player = GameObject.Find(Names.MainCharacter).transform;
         this.agent = GetComponent<NavMeshAgent>();
         
         this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();
-        // slider_enemy = GameObject.Find("Enemy_Healthbar").GetComponent<Slider>();
         
         this.enemy_health = maxHealth;
         this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
     }
     
-
-    // Taking damage when attacked by player
     public void AttackEnemy(int dmgAmount){
         if (this.enemy_health > dmgAmount){
             this.enemy_health -= dmgAmount;
             this.healthBar.UpdateHealthBar(this.slider_enemy, this.enemy_health, this.maxHealth);
-        }
-        else{
+        } else{
             Destroy(this.gameObject);
-            this.pc.enemyKillCounter++;
+            this.pc.incrementKillCounter();
         }
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         if (this.player){
             this.agent.SetDestination(this.player.position);
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        
+    public void TakeDamage(int damage) {
         enemy_health -= damage;
-        // Debug.Log(enemy_health);
         this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
-        
-        
+                
         if (enemy_health <= 0)
-        {
-
             Debug.Log("Ennemie mort");
-        }
     }
 
     public int getHealth() { return this.enemy_health; }

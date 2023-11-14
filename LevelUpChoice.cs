@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class LevelUpChoice : MonoBehaviour {
 
-    public GameObject attack;
-    public GameObject health;
-    public GameObject resistance;
-    public GameObject range;
-    public GameObject attackSpeed;
-    public HUDStats   hudStats;
-    public int        choiceMade;
+    [SerializeField] private GameObject attack;
+    [SerializeField] private GameObject health;
+    [SerializeField] private GameObject resistance;
+    [SerializeField] private GameObject range;
+    [SerializeField] private GameObject attackSpeed;
+    [SerializeField] private HUDStats   hudStats;
+   
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject       levelUpPanel;
+   
+    private int choiceMade;
 
-    public PlayerController playerController;
-    public GameObject       levelUpPanel;
 
     public void choiceAttack() {
         this.playerController.updateAttack();

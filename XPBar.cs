@@ -5,14 +5,10 @@ using UnityEngine.UI;
 
 public class XPBar : MonoBehaviour {
 
-    public Slider xpBar;
-    public PlayerController player;
+    [SerializeField] private Slider xpBar;
+    [SerializeField] private PlayerController player;
  
     private void Start() {
-        
-        Debug.Log(xpBar);
-        Debug.Log(player.getHealth());
-
         xpBar.maxValue = 1;
         xpBar.value = 0;
         // xpBar.maxValue = player.getMaxHealth();
@@ -20,14 +16,14 @@ public class XPBar : MonoBehaviour {
     }
  
     public void setXPBar(int xp) {
-        xpBar.value = xp;
+        this.xpBar.value = xp;
     }
 
     public void addXPBar(int xp) {
-        xpBar.value += xp;
+        this.xpBar.value += xp;
     } 
 
     public void setXPBarMax(int max) {
-        xpBar.maxValue = max;
+        this.xpBar.maxValue = max;
     }
 }

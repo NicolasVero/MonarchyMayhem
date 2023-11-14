@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FloatingHB : MonoBehaviour
-{
-
+public class FloatingHB : MonoBehaviour {
     [SerializeField] private Slider slider;
-    public void UpdateHealthBar(Slider slider, float currentValue, float maxValue){
-        slider.value = currentValue / maxValue;
-    }
 
+    public void UpdateHealthBar(Slider slider, float currentValue, float maxValue) {
+        this.slider.value = currentValue / maxValue;
+    }
 }

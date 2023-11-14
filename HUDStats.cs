@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HUDStats : MonoBehaviour
-{
-    public PlayerController player;
-    public TextMeshProUGUI  levelStat;
-    public TextMeshProUGUI  attackStat;
-    public TextMeshProUGUI  resistanceStat;
-    public TextMeshProUGUI  attackSpeedStat;
-    public TextMeshProUGUI  rangeStat;
+public class HUDStats : MonoBehaviour {
+    [SerializeField] private PlayerController player;
+    [SerializeField] private TextMeshProUGUI  levelStat;
+    [SerializeField] private TextMeshProUGUI  attackStat;
+    [SerializeField] private TextMeshProUGUI  resistanceStat;
+    [SerializeField] private TextMeshProUGUI  attackSpeedStat;
+    [SerializeField] private TextMeshProUGUI  rangeStat;
 
     void Start() {
         this.updateStats();
-    }
-
-    void Update() {
-        
     }
 
     public void updateStats() {
