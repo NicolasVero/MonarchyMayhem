@@ -5,35 +5,40 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController : MonoBehaviour {
     
+    private PlayerBaseStats playerBaseStats;
+    private PlayerMaxStats playerMaxStats;
+
     private const float speed = 10f;
     private const float sensitivity = 10;
     private int enemyKillCounter;
 	[SerializeField] private bool canAttack = false;
 
     // attributs
-    private int totalXP = -1;
-    private int xp = 0;
-    private int xpToNext = 1;
-    private int level = 0;
+    private int totalXP;
+    private int xp;
+    private int xpToNext;
+    private int level;
     private int health;
     private int resistance;
-    private int attack = 5;
-    private float attackSpeed = 2.0f;
-    private float range = 3.0f;
+    private int attack;
+    private float attackSpeed;
+    private float range;
 
     private float timeSinceLastAttack = 0f;
     // private float attackInterval = 2.0f;
 
     // controlleur attributs
     private int xpRequired = 0;
-    private int maxHealth = 50;
-    private int maxLevel = 20;
-    private int maxResistance = 75;
-    private int maxAttack = 50;
-    private float maxRange = 4f;
-    private float minAttackSpeed = 0.1f;
+
+    private int maxHealth;
+    private int maxLevel;
+    private int maxResistance;
+    private int maxAttack;
+    private float maxRange;
+    private float minAttackSpeed;
 
     public HealthBar healthBar;
     public XPBar xpBar;
@@ -45,54 +50,37 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         this.health = this.maxHealth;
-        loadPlayerAttributes();
+        loadAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
     }
 
-    void loadPlayerAttributes()
-    {
-        // Utilisez simplement le nom du fichier sans extension dans le dossier "Resources"
-        string path = "PlayerBaseStats";
-        TextAsset jsonFile = Resources.Load<TextAsset>(path);
+    public void loadAttributes() {
+        TextAsset baseStats = Resources.Load<TextAsset>("PlayerBaseStats");
+        TextAsset maxStats  = Resources.Load<TextAsset>("PlayerMaxStats");
 
-        Debug.Log(jsonFile);
+        if (baseStats != null && maxStats != null) {
+            PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);
+            PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
 
-        if (jsonFile != null)
-        {
-            JsonUtility.FromJsonOverwrite(jsonFile.text, this);
+            this.totalXP     = playerBaseStats.totalXP;
+            this.xp          = playerBaseStats.xp;
+            this.xpToNext    = playerBaseStats.xpToNext;
+            this.level       = playerBaseStats.level;
+            this.health      = playerBaseStats.health;
+            this.resistance  = playerBaseStats.resistance;
+            this.attack      = playerBaseStats.attack;
+            this.attackSpeed = playerBaseStats.attackSpeed;
+            this.range       = playerBaseStats.range;
 
-            // Vous pouvez maintenant accéder directement aux propriétés
-            Debug.Log("totalXP: " + totalXP);
-            Debug.Log("xp: " + xp);
-            Debug.Log("res: " + resistance);
 
-            // ... (accédez aux autres propriétés de la même manière)
-        }
-        else
-        {
-            Debug.LogError("Fichier JSON non trouvé.");
+            this.maxHealth = playerMaxStats.maxHealth;
+            this.maxLevel = playerMaxStats.maxLevel;
+            this.maxResistance = playerMaxStats.maxResistance;
+            this.maxAttack = playerMaxStats.maxAttack;
+            this.maxRange = playerMaxStats.maxRange;
+            this.minAttackSpeed = playerMaxStats.minAttackSpeed;
         }
     }
-
-    // void loadPlayerAttributes()
-    // {
-    //     string path = "Assets/Scripts/data/PlayerBaseStats.json";
-    //     TextAsset jsonFile = Resources.Load<TextAsset>(path);
-
-    //     Debug.Log(path);
-
-    //     if (jsonFile != null)
-    //     {
-    //         JsonUtility.FromJsonOverwrite(jsonFile.text, this);
-
-    //         // Vous pouvez maintenant accéder directement aux propriétés
-    //         Debug.Log("totalXP: " + totalXP);
-    //         Debug.Log("xp: " + xp);
-    //         // ... (accédez aux autres propriétés de la même manière)
-    //     } else {
-    //         Debug.LogError("Fichier JSON non trouvé.");
-    //     }
-    // }
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.P)) 
