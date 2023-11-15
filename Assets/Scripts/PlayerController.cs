@@ -62,22 +62,21 @@ public class PlayerController : MonoBehaviour {
             PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);
             PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
 
-            this.totalXP     = playerBaseStats.totalXP;
-            this.xp          = playerBaseStats.xp;
-            this.xpToNext    = playerBaseStats.xpToNext;
-            this.level       = playerBaseStats.level;
-            this.health      = playerBaseStats.health;
-            this.resistance  = playerBaseStats.resistance;
-            this.attack      = playerBaseStats.attack;
-            this.attackSpeed = playerBaseStats.attackSpeed;
-            this.range       = playerBaseStats.range;
+            this.totalXP        = playerBaseStats.totalXP;
+            this.xp             = playerBaseStats.xp;
+            this.xpToNext       = playerBaseStats.xpToNext;
+            this.level          = playerBaseStats.level;
+            this.health         = playerBaseStats.health;
+            this.resistance     = playerBaseStats.resistance;
+            this.attack         = playerBaseStats.attack;
+            this.attackSpeed    = playerBaseStats.attackSpeed;
+            this.range          = playerBaseStats.range;
 
-
-            this.maxHealth = playerMaxStats.maxHealth;
-            this.maxLevel = playerMaxStats.maxLevel;
-            this.maxResistance = playerMaxStats.maxResistance;
-            this.maxAttack = playerMaxStats.maxAttack;
-            this.maxRange = playerMaxStats.maxRange;
+            this.maxHealth      = playerMaxStats.maxHealth;
+            this.maxLevel       = playerMaxStats.maxLevel;
+            this.maxResistance  = playerMaxStats.maxResistance;
+            this.maxAttack      = playerMaxStats.maxAttack;
+            this.maxRange       = playerMaxStats.maxRange;
             this.minAttackSpeed = playerMaxStats.minAttackSpeed;
         }
     }
@@ -87,12 +86,53 @@ public class PlayerController : MonoBehaviour {
             GameController.setGameState();
 
         // timerAttack();
+        DrawCircleAroundPlayer();
+    }
+
+
+    void Attack() {
+        int temp = 0;
+
+        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
+
+        Debug.Log(transform.position);
+
+        foreach (Collider col in hitColliders) {
+            EnemyAiController enemy = col.GetComponent<EnemyAiController>();
+
+            if(enemy is EnemyAiController) {
+                enemy.TakeDamage(attack);
+            }
+        }
+    }
+
+    public void timerAttack() {
+        if (timeSinceLastAttack >= attackSpeed) {
+            Attack();
+            timeSinceLastAttack = 0f;
+        }
+
+        timeSinceLastAttack += Time.fixedDeltaTime;
+    }
+
+    void DrawCircleAroundPlayer() {
+        int numRays = 36;
+        float angleIncrement = 360.0f / numRays;
+
+        for (int i = 0; i < numRays; i++) {
+            float angle = i * angleIncrement;
+            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
+            float z = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+
+            Vector3 rayDirection = new Vector3(x, 0.0f, z);
+            Debug.DrawRay(transform.position, rayDirection, Color.red);
+        }
     }
 
     void FixedUpdate() {
 
         transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        transform.Translate(Vector3.right   * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
@@ -172,30 +212,6 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Attaque améliorée");
         this.attack += 2;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
-    }
-
-    void Attack() {
-        //! OnColliderTrigger() 
-        int temp = 0;
-
-        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
-
-        foreach (Collider col in hitColliders) {
-            EnemyAiController enemy = col.GetComponent<EnemyAiController>();
-
-            if(enemy is EnemyAiController) {
-                enemy.TakeDamage(attack);
-            }
-        }
-    }
-
-    public void timerAttack() {
-        if (timeSinceLastAttack >= attackSpeed) {
-            Attack();
-            timeSinceLastAttack = 0f;
-        }
-
-        timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
     public void incrementKillCounter() {
