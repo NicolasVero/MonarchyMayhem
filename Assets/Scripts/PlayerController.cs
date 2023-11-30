@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     
     private PlayerBaseStats playerBaseStats;
     private PlayerMaxStats playerMaxStats;
+    private PlayerIncreaseStats playerIncreaseStats;
 
     private const float speed = 10f;
     private const float sensitivity = 10;
@@ -40,6 +41,12 @@ public class PlayerController : MonoBehaviour {
     private float maxRange;
     private float minAttackSpeed;
 
+    private int increaseHealth;
+    private int increaseResistance;
+    private int increaseAttack;
+    private float increaseAttackSpeed;
+    private float increaseRange;
+
     public HealthBar healthBar;
     public XPBar xpBar;
     public HUDStats hudStats;
@@ -55,29 +62,37 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void loadAttributes() {
-        TextAsset baseStats = Resources.Load<TextAsset>("PlayerBaseStats");
-        TextAsset maxStats  = Resources.Load<TextAsset>("PlayerMaxStats");
-
-        if (baseStats != null && maxStats != null) {
+        TextAsset baseStats     = Resources.Load<TextAsset>("PlayerBaseStats");
+        TextAsset maxStats      = Resources.Load<TextAsset>("PlayerMaxStats");
+        TextAsset increaseStats = Resources.Load<TextAsset>("PlayerIncreaseStats");
+        
+        if(baseStats != null && maxStats != null && increaseStats != null) {
             PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);
             PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
+            PlayerIncreaseStats playerIncreaseStats = JsonUtility.FromJson<PlayerIncreaseStats>(increaseStats.text);
 
-            this.totalXP        = playerBaseStats.totalXP;
-            this.xp             = playerBaseStats.xp;
-            this.xpToNext       = playerBaseStats.xpToNext;
-            this.level          = playerBaseStats.level;
-            this.health         = playerBaseStats.health;
-            this.resistance     = playerBaseStats.resistance;
-            this.attack         = playerBaseStats.attack;
-            this.attackSpeed    = playerBaseStats.attackSpeed;
-            this.range          = playerBaseStats.range;
+            this.totalXP             = playerBaseStats.totalXP;
+            this.xp                  = playerBaseStats.xp;
+            this.xpToNext            = playerBaseStats.xpToNext;
+            this.level               = playerBaseStats.level;
+            this.health              = playerBaseStats.health;
+            this.resistance          = playerBaseStats.resistance;
+            this.attack              = playerBaseStats.attack;
+            this.attackSpeed         = playerBaseStats.attackSpeed;
+            this.range               = playerBaseStats.range;
+     
+            this.maxHealth           = playerMaxStats.maxHealth;
+            this.maxLevel            = playerMaxStats.maxLevel;
+            this.maxResistance       = playerMaxStats.maxResistance;
+            this.maxAttack           = playerMaxStats.maxAttack;
+            this.maxRange            = playerMaxStats.maxRange;
+            this.minAttackSpeed      = playerMaxStats.minAttackSpeed;
 
-            this.maxHealth      = playerMaxStats.maxHealth;
-            this.maxLevel       = playerMaxStats.maxLevel;
-            this.maxResistance  = playerMaxStats.maxResistance;
-            this.maxAttack      = playerMaxStats.maxAttack;
-            this.maxRange       = playerMaxStats.maxRange;
-            this.minAttackSpeed = playerMaxStats.minAttackSpeed;
+            this.increaseHealth      = playerIncreaseStats.increaseHealth;
+            this.increaseResistance  = playerIncreaseStats.increaseResistance;
+            this.increaseAttack      = playerIncreaseStats.increaseAttack;
+            this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
+            this.increaseRange       = playerIncreaseStats.increaseRange;
         }
     }
 
@@ -116,13 +131,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     void DrawCircleAroundPlayer() {
-        int numRays = 36;
-        float angleIncrement = 360.0f / numRays;
+        const int numRays = 36;
+        const float angleIncrement = 360.0f / numRays;
 
         for (int i = 0; i < numRays; i++) {
             float angle = i * angleIncrement;
-            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
-            float z = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * this.range;
+            float z = Mathf.Sin(Mathf.Deg2Rad * angle) * this.range;
 
             Vector3 rayDirection = new Vector3(x, 0.0f, z);
             Debug.DrawRay(transform.position, rayDirection, Color.red);
@@ -182,26 +197,25 @@ public class PlayerController : MonoBehaviour {
 
     public void updateResistance() {
         Debug.Log("Resistance améliorée");
-        this.resistance += 10;
+        this.resistance += this.increaseResistance;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
     public void updateAttackSpeed() {
         Debug.Log("Vitesse attaque améliorée");
-        this.attackSpeed -= 0.2f;
+        this.attackSpeed += this.increaseAttackSpeed;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
     }
 
     public void updateRange() {
         Debug.Log("range améliorée");
-        this.range += 0.2f;
+        this.range += this.increaseRange;
         if(this.range > this.maxRange) this.range = this.maxRange;
     }
 
-     
     public void updateHealth() {
         Debug.Log("Vie améliorée");
-        this.health += 10;
+        this.health += this.increaseHealth;
         if(this.health > this.maxHealth) 
             this.health = this.maxHealth;
             
@@ -210,7 +224,7 @@ public class PlayerController : MonoBehaviour {
 
     public void updateAttack() {
         Debug.Log("Attaque améliorée");
-        this.attack += 2;
+        this.attack += this.increaseAttack;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
 
