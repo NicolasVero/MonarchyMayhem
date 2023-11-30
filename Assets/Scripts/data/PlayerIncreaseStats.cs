@@ -4,4 +4,5 @@ public class PlayerIncreaseStats {
     public int increaseAttack;
     public float increaseAttackSpeed;
     public float increaseRange;
+    public float increaseSpeed;
 }

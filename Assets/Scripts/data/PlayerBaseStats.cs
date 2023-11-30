@@ -8,4 +8,5 @@ public class PlayerBaseStats {
     public int attack;
     public float attackSpeed;
     public float range;
+    public float speed;
 }

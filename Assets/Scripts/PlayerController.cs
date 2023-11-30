@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     private PlayerMaxStats playerMaxStats;
     private PlayerIncreaseStats playerIncreaseStats;
 
-    private const float speed = 10f;
+    private const float baseSpeed = 10f;
     private const float sensitivity = 10;
     private int enemyKillCounter;
 	[SerializeField] private bool canAttack = false;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private int attack;
     private float attackSpeed;
     private float range;
+    private float speed;
 
     private float timeSinceLastAttack = 0f;
     // private float attackInterval = 2.0f;
@@ -40,12 +41,14 @@ public class PlayerController : MonoBehaviour {
     private int maxAttack;
     private float maxRange;
     private float minAttackSpeed;
+    private float maxSpeed;
 
     private int increaseHealth;
     private int increaseResistance;
     private int increaseAttack;
     private float increaseAttackSpeed;
     private float increaseRange;
+    private float increaseSpeed;
 
     public HealthBar healthBar;
     public XPBar xpBar;
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour {
             this.attack              = playerBaseStats.attack;
             this.attackSpeed         = playerBaseStats.attackSpeed;
             this.range               = playerBaseStats.range;
+            this.speed               = playerBaseStats.speed;
      
             this.maxHealth           = playerMaxStats.maxHealth;
             this.maxLevel            = playerMaxStats.maxLevel;
@@ -87,12 +91,14 @@ public class PlayerController : MonoBehaviour {
             this.maxAttack           = playerMaxStats.maxAttack;
             this.maxRange            = playerMaxStats.maxRange;
             this.minAttackSpeed      = playerMaxStats.minAttackSpeed;
+            this.maxSpeed            = playerMaxStats.maxSpeed;
 
             this.increaseHealth      = playerIncreaseStats.increaseHealth;
             this.increaseResistance  = playerIncreaseStats.increaseResistance;
             this.increaseAttack      = playerIncreaseStats.increaseAttack;
             this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
             this.increaseRange       = playerIncreaseStats.increaseRange;
+            this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
         }
     }
 
@@ -146,8 +152,8 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        transform.Translate(Vector3.forward * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right   * PlayerController.speed * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.forward * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.right   * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);

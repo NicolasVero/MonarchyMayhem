@@ -5,4 +5,5 @@ public class PlayerMaxStats {
     public int maxAttack;
     public float maxRange;
     public float minAttackSpeed;
+    public float maxSpeed;
 }
