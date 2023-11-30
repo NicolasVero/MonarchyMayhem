@@ -10,6 +10,7 @@ public class LevelUpChoice : MonoBehaviour {
     [SerializeField] private GameObject resistance;
     [SerializeField] private GameObject range;
     [SerializeField] private GameObject attackSpeed;
+    [SerializeField] private GameObject speed;
     [SerializeField] private HUDStats   hudStats;
    
     [SerializeField] private PlayerController playerController;
@@ -40,6 +41,11 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void choiceRange() {
         this.playerController.updateRange();
+        this.resumeGame();
+    }
+
+    public void choiceSpeed() {
+        this.playerController.updateSpeed();
         this.resumeGame();
     }
 

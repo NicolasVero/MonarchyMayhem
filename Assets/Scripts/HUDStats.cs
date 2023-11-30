@@ -10,6 +10,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI  resistanceStat;
     [SerializeField] private TextMeshProUGUI  attackSpeedStat;
     [SerializeField] private TextMeshProUGUI  rangeStat;
+    [SerializeField] private TextMeshProUGUI  speedStat;
 
     void Start() {
         this.updateStats();
@@ -21,5 +22,6 @@ public class HUDStats : MonoBehaviour {
         resistanceStat.text  = player.getResistance()  + "";
         attackSpeedStat.text = player.getAttackSpeed() + "";
         rangeStat.text       = player.getRange()       + "";
+        speedStat.text       = player.getSpeed()       + "";
     }
 }

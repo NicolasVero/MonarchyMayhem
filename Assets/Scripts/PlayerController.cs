@@ -234,6 +234,12 @@ public class PlayerController : MonoBehaviour {
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
     }
 
+    public void updateSpeed() {
+        Debug.Log("Vitesse améliorée");
+        this.speed += this.increaseSpeed;
+        if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
+    }
+
     public void incrementKillCounter() {
         this.enemyKillCounter++;
     }
@@ -245,4 +251,5 @@ public class PlayerController : MonoBehaviour {
     public int   getLevel()       { return this.level;       }
     public float getAttackSpeed() { return this.attackSpeed; }
     public float getRange()       { return this.range;       }
+    public float getSpeed()       { return this.speed;       }
 }
