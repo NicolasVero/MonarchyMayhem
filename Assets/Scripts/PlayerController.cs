@@ -110,6 +110,16 @@ public class PlayerController : MonoBehaviour {
         DrawCircleAroundPlayer();
     }
 
+    void FixedUpdate() {
+
+        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.forward * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.right   * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        
+        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+        timerAttack();
+    }
 
     void Attack() {
         int temp = 0;
@@ -123,17 +133,20 @@ public class PlayerController : MonoBehaviour {
 
             if(enemy is EnemyAiController) {
                 enemy.TakeDamage(attack);
+                enemy.ApplyKnockback();
             }
         }
     }
 
     public void timerAttack() {
-        if (timeSinceLastAttack >= attackSpeed) {
+        if (this.timeSinceLastAttack >= this.attackSpeed) {
             Attack();
-            timeSinceLastAttack = 0f;
+            this.timeSinceLastAttack = 0f;
+            Debug.Log("On the timer attack");   
         }
 
-        timeSinceLastAttack += Time.fixedDeltaTime;
+        Debug.Log("Timer attack");
+        this.timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
     void DrawCircleAroundPlayer() {
@@ -148,17 +161,6 @@ public class PlayerController : MonoBehaviour {
             Vector3 rayDirection = new Vector3(x, 0.0f, z);
             Debug.DrawRay(transform.position, rayDirection, Color.red);
         }
-    }
-
-    void FixedUpdate() {
-
-        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.forward * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.right   * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
-        
-        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-
-        timerAttack();
     }
 
     public void TakeDamage(int dmgAmount) {

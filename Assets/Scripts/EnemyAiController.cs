@@ -51,5 +51,29 @@ public class EnemyAiController : MonoBehaviour
             Debug.Log("Ennemie mort");
     }
 
+    public void ApplyKnockback()
+    {
+        Vector3 knockbackDirection = -transform.forward;
+        float knockbackDistance = 1f; 
+        float knockbackDuration = 0.2f; 
+
+        StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
+    }
+
+    IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float step = distance * (Time.deltaTime / duration);
+            transform.position += direction * step;
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
     public int getHealth() { return this.enemy_health; }
 }
