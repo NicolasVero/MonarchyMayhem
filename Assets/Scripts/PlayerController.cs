@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     private float attackSpeed;
     private float range;
     private float speed;
+    private float knockback;
 
     private float timeSinceLastAttack = 0f;
     // private float attackInterval = 2.0f;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     private float maxRange;
     private float minAttackSpeed;
     private float maxSpeed;
+    private float maxKnockback;
 
     private int increaseHealth;
     private int increaseResistance;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour {
     private float increaseAttackSpeed;
     private float increaseRange;
     private float increaseSpeed;
+    private float increaseKnockback;
 
     public HealthBar healthBar;
     public XPBar xpBar;
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour {
             this.attackSpeed         = playerBaseStats.attackSpeed;
             this.range               = playerBaseStats.range;
             this.speed               = playerBaseStats.speed;
+            this.knockback           = playerBaseStats.knockback;
      
             this.maxHealth           = playerMaxStats.maxHealth;
             this.maxLevel            = playerMaxStats.maxLevel;
@@ -92,6 +96,7 @@ public class PlayerController : MonoBehaviour {
             this.maxRange            = playerMaxStats.maxRange;
             this.minAttackSpeed      = playerMaxStats.minAttackSpeed;
             this.maxSpeed            = playerMaxStats.maxSpeed;
+            this.maxKnockback        = playerMaxStats.maxKnockback;
 
             this.increaseHealth      = playerIncreaseStats.increaseHealth;
             this.increaseResistance  = playerIncreaseStats.increaseResistance;
@@ -99,6 +104,7 @@ public class PlayerController : MonoBehaviour {
             this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
             this.increaseRange       = playerIncreaseStats.increaseRange;
             this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
+            this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
         }
     }
 
@@ -234,6 +240,9 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Attaque améliorée");
         this.attack += this.increaseAttack;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
+
+        this.knockback += this.increaseKnockback;
+        if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
     }
 
     public void updateSpeed() {

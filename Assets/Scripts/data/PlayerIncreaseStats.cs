@@ -5,4 +5,5 @@ public class PlayerIncreaseStats {
     public float increaseAttackSpeed;
     public float increaseRange;
     public float increaseSpeed;
+    public float increaseKnockback;
 }

@@ -9,4 +9,5 @@ public class PlayerBaseStats {
     public float attackSpeed;
     public float range;
     public float speed;
+    public float knockback;
 }
