@@ -51,9 +51,9 @@ public class EnemyAiController : MonoBehaviour {
             Debug.Log("Ennemie mort");
     }
 
-    public void ApplyKnockback() {
+    public void ApplyKnockback(float multiply) {
         Vector3 knockbackDirection = -transform.forward;
-        float knockbackDistance = 1f; 
+        float knockbackDistance = 1f * multiply; 
         float knockbackDuration = 0.2f; 
 
         StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));

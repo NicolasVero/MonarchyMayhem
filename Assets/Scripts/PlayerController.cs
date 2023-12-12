@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour {
             this.increaseRange       = playerIncreaseStats.increaseRange;
             this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
             this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
+
+            Debug.Log("Knock : " + this.knockback);
         }
     }
 
@@ -142,7 +144,7 @@ public class PlayerController : MonoBehaviour {
 
             if(enemy is EnemyAiController) {
                 enemy.TakeDamage(attack);
-                enemy.ApplyKnockback();
+                enemy.ApplyKnockback(this.knockback);
             }
         }
     }

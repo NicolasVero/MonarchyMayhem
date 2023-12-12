@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,7 @@ public class LevelUpChoice : MonoBehaviour {
 
     private GameObject[] banners;
     private int bannersLength = 6;
-   
-    // [SerializeField] private GameObject attackBanner;
+    private System.Random random = new System.Random();
 
     private int choiceMade;
 
@@ -39,11 +39,16 @@ public class LevelUpChoice : MonoBehaviour {
             this.speed
         };
 
-        System.Random rnd = new System.Random();
+        int[] excludes = this.generateUniquesRandom();
+
+        for(int i = 0; i < excludes.Length; i++) {
+            Debug.Log(excludes[i]);
+        }
 
         GameController.setGameState(false);
         GameController.setPanelVisibility(levelUpPanel, true);
-        GameController.setPanelVisibility(banners[rnd.Next(this.bannersLength - 1)], false);
+        // GameController.setPanelVisibility(banners[this.random.Next(this.bannersLength - 1)], false);
+        this.hideBanners(excludes);
         GameController.setCursorVisibility(true);
     }
 
@@ -86,9 +91,7 @@ public class LevelUpChoice : MonoBehaviour {
 
         GameController.setGameState(true);
         GameController.setCursorVisibility(false);
-        GameController.setPanelVisibility(levelUpPanel, false); 
-
-          
+        GameController.setPanelVisibility(levelUpPanel, false);   
     }
 
     void Update() {
@@ -98,5 +101,43 @@ public class LevelUpChoice : MonoBehaviour {
             this.resistance.SetActive(false);
             this.range.SetActive(false);
         }
+    }
+
+    public int[] generateUniquesRandom(int min = 0, int max = 6) {        
+        return Enumerable.Range(min, max)
+            .OrderBy(_ => this.random.Next())
+            .Take(3)
+            .ToArray();
+    }
+
+    private void hideBanners(int[] excludes) {
+        int[][] positions = {
+            new int[] { 400, 350},
+            new int[] { 700, 350},
+            new int[] {1000, 350}
+        };
+
+        for(int i = 0; i < excludes.Length; i++) {
+            GameController.setPanelVisibility(banners[excludes[i]], false);
+            // Debug.Log(banners[excludes[i]].position.x);
+            Transform bannerTransform = banners[excludes[i]].transform;
+            Debug.Log($"Position x de la bannière {excludes[i]} : {bannerTransform.position.x}");
+        }
+
+        int cpt = 0;
+        // int[] includes = new int[3];
+
+        for(int i = 0; i < this.bannersLength; i++) {
+            if(Array.IndexOf(excludes, i) == -1) {
+                // includes[cpt] = i;
+                banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
+                cpt++;
+            }
+        }
+
+        // Debug.Log("TEEEEST : " + includes[0]);
+        // Debug.Log("TEEEEST : " + includes[1]);
+        // Debug.Log("TEEEEST : " + includes[2]);
+
     }
 }
