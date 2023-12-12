@@ -56,6 +56,14 @@ public class PlayerController : MonoBehaviour {
     private float increaseSpeed;
     private float increaseKnockback;
 
+
+    private int healthLevel = 1;
+    private int resistanceLevel = 1;
+    private int attackLevel = 1;
+    private int attackSpeedLevel = 1;
+    private int RangeLevel = 1;
+    private int SpeedLevel = 1;
+
     public HealthBar healthBar;
     public XPBar xpBar;
     public HUDStats hudStats;
