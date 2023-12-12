@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,36 @@ public class LevelUpChoice : MonoBehaviour {
    
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject       levelUpPanel;
+
+    private GameObject[] banners;
+    private int bannersLength = 6;
    
+    // [SerializeField] private GameObject attackBanner;
+
     private int choiceMade;
 
+    public void Awake() {
+        
+    }
+
+    public void updateStatsDisplay() {
+
+        this.banners = new GameObject[] {
+            this.attack, 
+            this.health, 
+            this.resistance, 
+            this.range, 
+            this.attackSpeed, 
+            this.speed
+        };
+
+        System.Random rnd = new System.Random();
+
+        GameController.setGameState(false);
+        GameController.setPanelVisibility(levelUpPanel, true);
+        GameController.setPanelVisibility(banners[rnd.Next(this.bannersLength - 1)], false);
+        GameController.setCursorVisibility(true);
+    }
 
     public void choiceAttack() {
         this.playerController.updateAttack();
@@ -52,9 +80,15 @@ public class LevelUpChoice : MonoBehaviour {
     void resumeGame() {
         this.playerController.setCanResume(true);
         this.hudStats.updateStats();
+        
+        for(int i = 0; i < this.bannersLength; i++)
+            GameController.setPanelVisibility(banners[i], true);
+
         GameController.setGameState(true);
         GameController.setCursorVisibility(false);
-        GameController.setPanelVisibility(levelUpPanel, false);   
+        GameController.setPanelVisibility(levelUpPanel, false); 
+
+          
     }
 
     void Update() {

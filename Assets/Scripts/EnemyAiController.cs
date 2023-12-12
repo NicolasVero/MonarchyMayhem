@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class EnemyAiController : MonoBehaviour
-{
+public class EnemyAiController : MonoBehaviour {
+    
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
     [SerializeField] Slider slider_enemy;
@@ -51,8 +51,7 @@ public class EnemyAiController : MonoBehaviour
             Debug.Log("Ennemie mort");
     }
 
-    public void ApplyKnockback()
-    {
+    public void ApplyKnockback() {
         Vector3 knockbackDirection = -transform.forward;
         float knockbackDistance = 1f; 
         float knockbackDuration = 0.2f; 
@@ -60,12 +59,10 @@ public class EnemyAiController : MonoBehaviour
         StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
     }
 
-    IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration)
-    {
+    IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
         float elapsed = 0f;
 
-        while (elapsed < duration)
-        {
+        while (elapsed < duration) {
             float step = distance * (Time.deltaTime / duration);
             transform.position += direction * step;
 

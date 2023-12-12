@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private PlayerBaseStats playerBaseStats;
     private PlayerMaxStats playerMaxStats;
     private PlayerIncreaseStats playerIncreaseStats;
+    [SerializeField] private LevelUpChoice levelUpChoice;
 
     private const float baseSpeed = 10f;
     private const float sensitivity = 10;
@@ -153,7 +154,7 @@ public class PlayerController : MonoBehaviour {
             this.timeSinceLastAttack = 0f;
         }
 
-        Debug.Log("Timer attack");
+        // Debug.Log("Timer attack");
         this.timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
@@ -203,9 +204,8 @@ public class PlayerController : MonoBehaviour {
             this.xpBar.setXPBar(0);
 
             this.setCanResume(false);
-            GameController.setGameState(false);
-            GameController.setPanelVisibility(levelUpPanel, true);
-            GameController.setCursorVisibility(true);
+
+            this.levelUpChoice.updateStatsDisplay();
         }
     }
 
