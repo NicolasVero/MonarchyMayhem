@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
     public static void setGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }

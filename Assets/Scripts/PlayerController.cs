@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     private const float sensitivity = 10;
     private int enemyKillCounter;
 	[SerializeField] private bool canAttack = false;
+    private bool canResume = true;
+    private bool isAlive = true;
 
     // attributs
     private int totalXP;
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.P)) 
+        if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
             GameController.setGameState();
 
         // timerAttack();
@@ -145,10 +147,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void timerAttack() {
-        if (this.timeSinceLastAttack >= this.attackSpeed) {
+        if(this.timeSinceLastAttack >= this.attackSpeed) {
+            Debug.Log("On the timer attack");   
             Attack();
             this.timeSinceLastAttack = 0f;
-            Debug.Log("On the timer attack");   
         }
 
         Debug.Log("Timer attack");
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour {
             this.healthBar.setHealthBar(this.health);
         } else {
             Debug.Log("Vous êtes mort.");
+            this.isAlive = false;
         }
     }
 
@@ -199,10 +202,19 @@ public class PlayerController : MonoBehaviour {
             this.xpBar.setXPBarMax(this.xpToNext);
             this.xpBar.setXPBar(0);
 
+            this.setCanResume(false);
             GameController.setGameState(false);
             GameController.setPanelVisibility(levelUpPanel, true);
             GameController.setCursorVisibility(true);
         }
+    }
+
+    public bool getCanResume() {
+        return this.canResume && this.isAlive;
+    }
+
+    public void setCanResume(bool statut) {
+        this.canResume = statut;
     }
 
     private int XPRequired() {

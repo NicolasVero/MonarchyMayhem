@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageController : MonoBehaviour
-{
-
+public class DamageController : MonoBehaviour {
+    
     PlayerController pc;
     float SavedTime = 0;
     float DelayTime = 2;

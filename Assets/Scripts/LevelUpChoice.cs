@@ -50,6 +50,7 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     void resumeGame() {
+        this.playerController.setCanResume(true);
         this.hudStats.updateStats();
         GameController.setGameState(true);
         GameController.setCursorVisibility(false);
