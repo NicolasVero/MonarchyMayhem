@@ -126,11 +126,20 @@ public class LevelUpChoice : MonoBehaviour {
 
         int cpt = 0;
         // int[] includes = new int[3];
+        // Sprite banner = Resources.Load<Sprite>("Interface/banners/banner");
 
         for(int i = 0; i < this.bannersLength; i++) {
             if(Array.IndexOf(excludes, i) == -1) {
                 // includes[cpt] = i;
                 banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
+
+
+                Debug.Log("banner img");
+                Debug.Log(banners[i].gameObject.GetComponent<Image>().sprite);
+                Debug.Log("sprite ");
+                Debug.Log(LoadBannerSprite("spriteName"));
+
+                banners[i].GetComponent<Image>().sprite = LoadBannerSprite("spriteName");
                 cpt++;
             }
         }
@@ -139,5 +148,9 @@ public class LevelUpChoice : MonoBehaviour {
         // Debug.Log("TEEEEST : " + includes[1]);
         // Debug.Log("TEEEEST : " + includes[2]);
 
+    }
+
+    private Sprite LoadBannerSprite(string spriteName) {
+        return Resources.Load<Sprite>("Interface/Banners/banner");
     }
 }
