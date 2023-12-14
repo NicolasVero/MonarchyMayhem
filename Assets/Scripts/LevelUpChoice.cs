@@ -19,6 +19,8 @@ public class LevelUpChoice : MonoBehaviour {
     [SerializeField] private GameObject       levelUpPanel;
 
     private GameObject[] banners;
+    private string[] bannersNames;
+    private int[] bannersLevel;
     private int bannersLength = 6;
     private System.Random random = new System.Random();
 
@@ -39,11 +41,25 @@ public class LevelUpChoice : MonoBehaviour {
             this.speed
         };
 
-        int[] excludes = this.generateUniquesRandom();
+        this.bannersNames = new string[] {
+            "attack_",
+            "health_",
+            "resistance_",
+            "range_",
+            "attack_speed_",
+            "speed_"
+        };
 
-        // for(int i = 0; i < excludes.Length; i++) {
-        //     // Debug.Log(excludes[i]);
-        // }
+        this.bannersLevel = new int[] {
+            this.playerController.getAttackLevel(),
+            this.playerController.getHealthLevel(),
+            this.playerController.getResistanceLevel(),
+            this.playerController.getRangeLevel(),
+            this.playerController.getAttackSpeedLevel(),
+            this.playerController.getSpeedLevel()
+        };
+
+        int[] excludes = this.generateUniquesRandom();
 
         GameController.setGameState(false);
         GameController.setPanelVisibility(levelUpPanel, true);
@@ -131,19 +147,13 @@ public class LevelUpChoice : MonoBehaviour {
                 RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
                 rectTransform.sizeDelta = new Vector2(175, 350);
 
-    
-                Debug.Log("banner img");
-                Debug.Log(banners[i].gameObject.GetComponent<Image>().sprite);
-                Debug.Log("sprite ");
-                Debug.Log(LoadBannerSprite("spriteName"));
-
-                banners[i].GetComponent<Image>().sprite = LoadBannerSprite("spriteName");
+                banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
                 cpt++;
             }
         }
     }
 
-    private Sprite LoadBannerSprite(string spriteName) {
-        return Resources.Load<Sprite>("Interface/Banners/attack_speed_5");
+    private Sprite LoadBannerSprite(string spriteName, int level) {
+        return Resources.Load<Sprite>("Interface/Banners/" + spriteName + level);
     }
 }

@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour {
     private int resistanceLevel = 1;
     private int attackLevel = 1;
     private int attackSpeedLevel = 1;
-    private int RangeLevel = 1;
-    private int SpeedLevel = 1;
+    private int rangeLevel = 1;
+    private int speedLevel = 1;
 
     public HealthBar healthBar;
     public XPBar xpBar;
@@ -244,8 +244,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateRange() {
-        this.RangeLevel++;
-        Debug.Log("range améliorée : lvl " + this.RangeLevel);
+        this.rangeLevel++;
+        Debug.Log("range améliorée : lvl " + this.rangeLevel);
         this.range += this.increaseRange;
         if(this.range > this.maxRange) this.range = this.maxRange;
     }
@@ -272,8 +272,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateSpeed() {
-        Debug.Log("Vitesse améliorée : lvl " + this.SpeedLevel);
-        this.SpeedLevel++;
+        this.speedLevel++;
+        Debug.Log("Vitesse améliorée : lvl " + this.speedLevel);
         this.speed += this.increaseSpeed;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
     }
@@ -290,4 +290,11 @@ public class PlayerController : MonoBehaviour {
     public float getAttackSpeed() { return this.attackSpeed; }
     public float getRange()       { return this.range;       }
     public float getSpeed()       { return this.speed;       }
+
+    public int getHealthLevel()      { return this.healthLevel;      }
+    public int getResistanceLevel()  { return this.resistanceLevel;  }
+    public int getAttackLevel()      { return this.attackLevel;      }
+    public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
+    public int getRangeLevel()       { return this.rangeLevel;       }
+    public int getSpeedLevel()       { return this.speedLevel;       }
 }
