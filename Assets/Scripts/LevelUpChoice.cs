@@ -119,21 +119,19 @@ public class LevelUpChoice : MonoBehaviour {
 
         for(int i = 0; i < excludes.Length; i++) {
             GameController.setPanelVisibility(banners[excludes[i]], false);
-            // Debug.Log(banners[excludes[i]].position.x);
             Transform bannerTransform = banners[excludes[i]].transform;
-            // Debug.Log($"Position x de la bannière {excludes[i]} : {bannerTransform.position.x}");
         }
 
         int cpt = 0;
-        // int[] includes = new int[3];
-        // Sprite banner = Resources.Load<Sprite>("Interface/banners/banner");
 
         for(int i = 0; i < this.bannersLength; i++) {
             if(Array.IndexOf(excludes, i) == -1) {
-                // includes[cpt] = i;
+                
                 banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
+                RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(175, 350);
 
-
+    
                 Debug.Log("banner img");
                 Debug.Log(banners[i].gameObject.GetComponent<Image>().sprite);
                 Debug.Log("sprite ");
@@ -143,14 +141,9 @@ public class LevelUpChoice : MonoBehaviour {
                 cpt++;
             }
         }
-
-        // Debug.Log("TEEEEST : " + includes[0]);
-        // Debug.Log("TEEEEST : " + includes[1]);
-        // Debug.Log("TEEEEST : " + includes[2]);
-
     }
 
     private Sprite LoadBannerSprite(string spriteName) {
-        return Resources.Load<Sprite>("Interface/Banners/banner");
+        return Resources.Load<Sprite>("Interface/Banners/attack_speed_5");
     }
 }
