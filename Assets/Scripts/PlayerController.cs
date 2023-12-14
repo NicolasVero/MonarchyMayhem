@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void loadAttributes() {
-        TextAsset baseStats     = Resources.Load<TextAsset>("PlayerBaseStats");
-        TextAsset maxStats      = Resources.Load<TextAsset>("PlayerMaxStats");
-        TextAsset increaseStats = Resources.Load<TextAsset>("PlayerIncreaseStats");
+        TextAsset baseStats     = Resources.Load<TextAsset>("Data/PlayerBaseStats");
+        TextAsset maxStats      = Resources.Load<TextAsset>("Data/PlayerMaxStats");
+        TextAsset increaseStats = Resources.Load<TextAsset>("Data/PlayerIncreaseStats");
         
         if(baseStats != null && maxStats != null && increaseStats != null) {
             PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);

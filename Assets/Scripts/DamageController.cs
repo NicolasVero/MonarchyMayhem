@@ -19,7 +19,7 @@ public class DamageController : MonoBehaviour {
 
     private void OnTriggerStay(Collider c) {
         this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
-        if (c.gameObject.CompareTag("Player")){
+        if(c.gameObject.CompareTag("Player")){
             if( (Time.time - SavedTime) > DelayTime ) {
                 SavedTime = Time.time;   
                 this.pc.TakeDamage(this.getRealDamage(this.getDamage(), this.pc.getResistance()));
