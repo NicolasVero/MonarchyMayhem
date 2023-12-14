@@ -116,8 +116,6 @@ public class PlayerController : MonoBehaviour {
             this.increaseRange       = playerIncreaseStats.increaseRange;
             this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
             this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
-
-            Debug.Log("Knock : " + this.knockback);
         }
     }
 
@@ -159,7 +157,7 @@ public class PlayerController : MonoBehaviour {
 
     public void timerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {
-            Debug.Log("On the timer attack");   
+            // Debug.Log("On the timer attack");   
             Attack();
             this.timeSinceLastAttack = 0f;
         }
@@ -232,25 +230,29 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateResistance() {
-        Debug.Log("Resistance améliorée");
+        this.resistanceLevel++;
+        Debug.Log("Resistance améliorée : lvl " + this.resistanceLevel);
         this.resistance += this.increaseResistance;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
     public void updateAttackSpeed() {
-        Debug.Log("Vitesse attaque améliorée");
+        this.attackSpeedLevel++;
+        Debug.Log("Vitesse attaque améliorée : lvl " + this.attackSpeedLevel);
         this.attackSpeed += this.increaseAttackSpeed;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
     }
 
     public void updateRange() {
-        Debug.Log("range améliorée");
+        this.RangeLevel++;
+        Debug.Log("range améliorée : lvl " + this.RangeLevel);
         this.range += this.increaseRange;
         if(this.range > this.maxRange) this.range = this.maxRange;
     }
 
     public void updateHealth() {
-        Debug.Log("Vie améliorée");
+        this.healthLevel++;
+        Debug.Log("Vie améliorée : lvl " + this.healthLevel);
         this.health += this.increaseHealth;
         if(this.health > this.maxHealth) 
             this.health = this.maxHealth;
@@ -259,7 +261,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateAttack() {
-        Debug.Log("Attaque améliorée");
+        this.attackLevel++;
+        Debug.Log("Attaque améliorée : lvl " + this.attackLevel);
+
         this.attack += this.increaseAttack;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
 
@@ -268,7 +272,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateSpeed() {
-        Debug.Log("Vitesse améliorée");
+        Debug.Log("Vitesse améliorée : lvl " + this.SpeedLevel);
+        this.SpeedLevel++;
         this.speed += this.increaseSpeed;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
     }

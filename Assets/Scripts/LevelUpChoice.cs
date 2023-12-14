@@ -41,9 +41,9 @@ public class LevelUpChoice : MonoBehaviour {
 
         int[] excludes = this.generateUniquesRandom();
 
-        for(int i = 0; i < excludes.Length; i++) {
-            Debug.Log(excludes[i]);
-        }
+        // for(int i = 0; i < excludes.Length; i++) {
+        //     // Debug.Log(excludes[i]);
+        // }
 
         GameController.setGameState(false);
         GameController.setPanelVisibility(levelUpPanel, true);
@@ -121,7 +121,7 @@ public class LevelUpChoice : MonoBehaviour {
             GameController.setPanelVisibility(banners[excludes[i]], false);
             // Debug.Log(banners[excludes[i]].position.x);
             Transform bannerTransform = banners[excludes[i]].transform;
-            Debug.Log($"Position x de la bannière {excludes[i]} : {bannerTransform.position.x}");
+            // Debug.Log($"Position x de la bannière {excludes[i]} : {bannerTransform.position.x}");
         }
 
         int cpt = 0;
