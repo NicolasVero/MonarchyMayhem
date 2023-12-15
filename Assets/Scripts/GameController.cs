@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
         Time.timeScale = (state) ? 1 : 0;
     }
 
-    public static bool getGameState() {
+    public static bool gameIsFreeze() {
         return Time.timeScale == 0;
     }
 

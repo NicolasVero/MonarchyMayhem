@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     private const float baseSpeed = 10f;
     private const float sensitivity = 10;
     private int enemyKillCounter;
-	[SerializeField] private bool canAttack = false;
+	private bool canAttack = true;
     private bool canResume = true;
     private bool isAlive = true;
 
@@ -116,17 +116,6 @@ public class PlayerController : MonoBehaviour {
             this.increaseRange       = playerIncreaseStats.increaseRange;
             this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
             this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
-
-            Debug.Log("playerIncreaseStats.increaseRange");
-            Debug.Log(playerIncreaseStats.increaseRange[0]);
-
-            // this.increaseHealth      = playerIncreaseStats.increaseHealth;
-            // this.increaseResistance  = playerIncreaseStats.increaseResistance;
-            // this.increaseAttack      = playerIncreaseStats.increaseAttack;
-            // this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
-            // this.increaseRange       = playerIncreaseStats.increaseRange;
-            // this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
-            // this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
         }
     }
 
@@ -159,7 +148,7 @@ public class PlayerController : MonoBehaviour {
         foreach (Collider col in hitColliders) {
             EnemyAiController enemy = col.GetComponent<EnemyAiController>();
 
-            if(enemy is EnemyAiController) {
+            if(enemy is EnemyAiController && this.canAttack) {
                 enemy.TakeDamage(attack);
                 enemy.ApplyKnockback(this.knockback);
             }
