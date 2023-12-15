@@ -48,13 +48,13 @@ public class PlayerController : MonoBehaviour {
     private float maxSpeed;
     private float maxKnockback;
 
-    private int increaseHealth;
-    private int increaseResistance;
-    private int increaseAttack;
-    private float increaseAttackSpeed;
-    private float increaseRange;
-    private float increaseSpeed;
-    private float increaseKnockback;
+    private int[] increaseHealth;
+    private int[] increaseResistance;
+    private int[] increaseAttack;
+    private float[] increaseAttackSpeed;
+    private float[] increaseRange;
+    private float[] increaseSpeed;
+    private float[] increaseKnockback;
 
 
     private int healthLevel = 1;
@@ -116,6 +116,17 @@ public class PlayerController : MonoBehaviour {
             this.increaseRange       = playerIncreaseStats.increaseRange;
             this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
             this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
+
+            Debug.Log("playerIncreaseStats.increaseRange");
+            Debug.Log(playerIncreaseStats.increaseRange[0]);
+
+            // this.increaseHealth      = playerIncreaseStats.increaseHealth;
+            // this.increaseResistance  = playerIncreaseStats.increaseResistance;
+            // this.increaseAttack      = playerIncreaseStats.increaseAttack;
+            // this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
+            // this.increaseRange       = playerIncreaseStats.increaseRange;
+            // this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
+            // this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
         }
     }
 
@@ -226,34 +237,31 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        return (int)(5 * Math.Pow(1.5, this.level - 1));
+        // return (int)(5 * Math.Pow(1.5, this.level - 1));
+        return 5;
     }
 
     public void updateResistance() {
+        this.resistance += this.increaseResistance[this.resistanceLevel];
         this.resistanceLevel++;
-        Debug.Log("Resistance améliorée : lvl " + this.resistanceLevel);
-        this.resistance += this.increaseResistance;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
 
     public void updateAttackSpeed() {
+        this.attackSpeed += this.increaseAttackSpeed[this.attackSpeedLevel - 1];
         this.attackSpeedLevel++;
-        Debug.Log("Vitesse attaque améliorée : lvl " + this.attackSpeedLevel);
-        this.attackSpeed += this.increaseAttackSpeed;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
     }
 
     public void updateRange() {
+        this.range += this.increaseRange[this.rangeLevel - 1];
         this.rangeLevel++;
-        Debug.Log("range améliorée : lvl " + this.rangeLevel);
-        this.range += this.increaseRange;
         if(this.range > this.maxRange) this.range = this.maxRange;
     }
 
     public void updateHealth() {
+        this.health += this.increaseHealth[this.healthLevel - 1];
         this.healthLevel++;
-        Debug.Log("Vie améliorée : lvl " + this.healthLevel);
-        this.health += this.increaseHealth;
         if(this.health > this.maxHealth) 
             this.health = this.maxHealth;
             
@@ -261,20 +269,17 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateAttack() {
+        this.attack += this.increaseAttack[this.attackLevel - 1];
+        this.knockback += this.increaseKnockback[this.attackLevel - 1];
         this.attackLevel++;
-        Debug.Log("Attaque améliorée : lvl " + this.attackLevel);
-
-        this.attack += this.increaseAttack;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
-
-        this.knockback += this.increaseKnockback;
         if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
+
     }
 
     public void updateSpeed() {
+        this.speed += this.increaseSpeed[this.speedLevel];
         this.speedLevel++;
-        Debug.Log("Vitesse améliorée : lvl " + this.speedLevel);
-        this.speed += this.increaseSpeed;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
     }
 

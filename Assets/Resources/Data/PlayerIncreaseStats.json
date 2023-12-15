@@ -1,9 +1,23 @@
 {
-    "increaseHealth" : 10,
-    "increaseResistance" : 10,
-    "increaseAttack" : 2,
-    "increaseAttackSpeed" : -0.2,
-    "increaseRange" : 0.2,
-    "increaseSpeed" : 0.2,
-    "increaseKnockback" : 0.2
+    "increaseAttack" : [
+        2, 2, 2, 2, 2
+    ],
+    "increaseHealth" : [
+        10, 10, 10, 10, 10
+    ],
+    "increaseResistance" : [
+        10, 10, 10, 10, 10
+    ],
+    "increaseAttackSpeed" : [
+        -0.2, -0.2, -0.2, -0.2, -0.2
+    ],
+    "increaseRange" : [
+        0.2, 0.2, 0.2, 0.2, 0.2
+    ],
+    "increaseSpeed" : [
+        0.2, 0.2, 0.2, 0.2, 0.2
+    ],
+    "increaseKnockback" : [
+        0.2, 0.2, 0.2, 0.2, 0.2
+    ]
 }
