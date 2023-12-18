@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
-        Debug.Log(transform.position);
+        // Debug.Log(transform.position);
 
         foreach (Collider col in hitColliders) {
             EnemyAiController enemy = col.GetComponent<EnemyAiController>();
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour {
             this.health -= dmgAmount;
             this.healthBar.setHealthBar(this.health);
         } else {
-            Debug.Log("Vous êtes mort.");
+            // Debug.Log("Vous êtes mort.");
             this.isAlive = false;
         }
     }
@@ -227,11 +227,11 @@ public class PlayerController : MonoBehaviour {
 
     private int XPRequired() {
         // return (int)(5 * Math.Pow(1.5, this.level - 1));
-        return 5;
+        return 2;
     }
 
     public void updateResistance() {
-        this.resistance += this.increaseResistance[this.resistanceLevel];
+        this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
     }
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void updateSpeed() {
-        this.speed += this.increaseSpeed[this.speedLevel];
+        this.speed += this.increaseSpeed[this.speedLevel - 1];
         this.speedLevel++;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
     }
