@@ -27,12 +27,7 @@ public class LevelUpChoice : MonoBehaviour {
     private int choiceMade;
 
     public void Awake() {
-        
-    }
-
-    public void updateStatsDisplay() {
-
-        this.banners = new GameObject[] {
+            this.banners = new GameObject[] {
             this.attack, 
             this.health, 
             this.resistance, 
@@ -49,6 +44,9 @@ public class LevelUpChoice : MonoBehaviour {
             "attack_speed_",
             "speed_"
         };
+    }
+
+    public void updateStatsDisplay() {
 
         this.bannersLevel = new int[] {
             this.playerController.getAttackLevel(),
