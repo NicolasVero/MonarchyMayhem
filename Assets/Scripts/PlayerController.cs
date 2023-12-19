@@ -139,16 +139,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Attack() {
-        int temp = 0;
 
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
-        Debug.Log(transform.position);
-
         foreach (Collider col in hitColliders) {
-            EnemyAiController enemy = col.GetComponent<EnemyAiController>();
+            if(col.CompareTag("Enemy") && this.canAttack) {
 
-            if(enemy is EnemyAiController && this.canAttack) {
+                EnemyAiController enemy = col.GetComponent<EnemyAiController>();
                 enemy.TakeDamage(attack);
                 enemy.ApplyKnockback(this.knockback);
             }

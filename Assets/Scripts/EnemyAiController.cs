@@ -8,29 +8,29 @@ public class EnemyAiController : MonoBehaviour {
     
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
-    [SerializeField] Slider slider_enemy;
+    // [SerializeField] Slider slider_enemy;
 
     private PlayerController pc;
 
     private int maxHealth = 50;
-    private int enemy_health;
-    private FloatingHB healthBar;
+    private int health;
+    // private FloatingHB healthBar;
 
     private void Awake() {
         this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
         this.player = GameObject.Find(Names.MainCharacter).transform;
         this.agent = GetComponent<NavMeshAgent>();
         
-        this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();
+        // this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();
         
-        this.enemy_health = maxHealth;
-        this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
+        this.health = maxHealth;
+        // this.healthBar.UpdateHealthBar(slider_enemy, health, maxHealth);
     }
     
     public void AttackEnemy(int dmgAmount){
-        if (this.enemy_health > dmgAmount){
-            this.enemy_health -= dmgAmount;
-            this.healthBar.UpdateHealthBar(this.slider_enemy, this.enemy_health, this.maxHealth);
+        if (this.health > dmgAmount){
+            this.health -= dmgAmount;
+            // this.healthBar.UpdateHealthBar(this.slider_enemy, this.health, this.maxHealth);
         } else{
             Destroy(this.gameObject);
             this.pc.incrementKillCounter();
@@ -44,10 +44,11 @@ public class EnemyAiController : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
-        enemy_health -= damage;
-        this.healthBar.UpdateHealthBar(slider_enemy, enemy_health, maxHealth);
+        health -= damage;
+        Debug.Log(this.health);
+        // this.healthBar.UpdateHealthBar(slider_enemy, health, maxHealth);
                 
-        if (enemy_health <= 0)
+        if (health <= 0)
             Debug.Log("Ennemie mort");
     }
 
@@ -72,5 +73,5 @@ public class EnemyAiController : MonoBehaviour {
         }
     }
 
-    public int getHealth() { return this.enemy_health; }
+    public int getHealth() { return this.health; }
 }
