@@ -27,12 +27,7 @@ public class LevelUpChoice : MonoBehaviour {
     private int choiceMade;
 
     public void Awake() {
-        
-    }
-
-    public void updateStatsDisplay() {
-
-        this.banners = new GameObject[] {
+            this.banners = new GameObject[] {
             this.attack, 
             this.health, 
             this.resistance, 
@@ -49,6 +44,9 @@ public class LevelUpChoice : MonoBehaviour {
             "attack_speed_",
             "speed_"
         };
+    }
+
+    public void updateStatsDisplay() {
 
         this.bannersLevel = new int[] {
             this.playerController.getAttackLevel(),
@@ -59,11 +57,17 @@ public class LevelUpChoice : MonoBehaviour {
             this.playerController.getSpeedLevel()
         };
 
-        int[] excludes = this.generateUniquesRandom();
+        List<int> isMaxLevel = new List<int>();
+
+        for(int i = 0; i < this.bannersLevel.Length; i++) 
+            if(this.bannersLevel[i] > 5) 
+                isMaxLevel.Add(i);
+            
+        int[] excludes = this.generateUniquesRandom(0, 6, isMaxLevel.ToArray());
+
 
         GameController.setGameState(false);
         GameController.setPanelVisibility(levelUpPanel, true);
-        // GameController.setPanelVisibility(banners[this.random.Next(this.bannersLength - 1)], false);
         this.hideBanners(excludes);
         GameController.setCursorVisibility(true);
     }
@@ -119,12 +123,19 @@ public class LevelUpChoice : MonoBehaviour {
         }
     }
 
-    public int[] generateUniquesRandom(int min = 0, int max = 6) {        
-        return Enumerable.Range(min, max)
-            .OrderBy(_ => this.random.Next())
-            .Take(3)
-            .ToArray();
+    public int[] generateUniquesRandom(int min, int max, int[] excludes) {
+        HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
+
+        while (uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
+            int randomNumber = random.Next(min, max + 1);
+
+            if (!uniqueNumbers.Contains(randomNumber)) 
+                uniqueNumbers.Add(randomNumber);     
+        }
+
+        return uniqueNumbers.ToArray();
     }
+
 
     private void hideBanners(int[] excludes) {
         int[][] positions = {
@@ -133,22 +144,24 @@ public class LevelUpChoice : MonoBehaviour {
             new int[] {1000, 350}
         };
 
-        for(int i = 0; i < excludes.Length; i++) {
-            GameController.setPanelVisibility(banners[excludes[i]], false);
-            Transform bannerTransform = banners[excludes[i]].transform;
-        }
-
+        for (int i = 0; i < this.bannersLength; i++) 
+            GameController.setPanelVisibility(banners[i], false);
+        
         int cpt = 0;
 
-        for(int i = 0; i < this.bannersLength; i++) {
-            if(Array.IndexOf(excludes, i) == -1) {
-                
+        for (int i = 0; i < this.bannersLength; i++) {
+            if (Array.IndexOf(excludes, i) == -1) {
                 banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
                 RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
                 rectTransform.sizeDelta = new Vector2(175, 350);
 
                 banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
+                GameController.setPanelVisibility(banners[i], true);
+
                 cpt++;
+
+                if (cpt >= excludes.Length) 
+                    break;    
             }
         }
     }
