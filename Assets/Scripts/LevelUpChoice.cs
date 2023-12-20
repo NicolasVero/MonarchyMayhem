@@ -7,16 +7,18 @@ using UnityEngine.UI;
 
 public class LevelUpChoice : MonoBehaviour {
 
+    [Header("Attributs")]
     [SerializeField] private GameObject attack;
     [SerializeField] private GameObject health;
     [SerializeField] private GameObject resistance;
     [SerializeField] private GameObject range;
     [SerializeField] private GameObject attackSpeed;
     [SerializeField] private GameObject speed;
-    [SerializeField] private HUDStats   hudStats;
-   
+    [SerializeField] private GameObject levelUpPanel;
+
+    [Header("Classes utilitaires")]
+    [SerializeField] private HUDStats hudStats;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private GameObject       levelUpPanel;
 
     private GameObject[] banners;
     private string[] bannersNames;

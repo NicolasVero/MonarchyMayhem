@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyAiController : MonoBehaviour {
     
+    [Header("Suivi du joueur")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
     // [SerializeField] Slider slider_enemy;
@@ -48,8 +49,8 @@ public class EnemyAiController : MonoBehaviour {
         Debug.Log(this.health);
         // this.healthBar.UpdateHealthBar(slider_enemy, health, maxHealth);
                 
-        if (health <= 0)
-            Debug.Log("Ennemie mort");
+        if(health <= 0) {}
+            // Debug.Log("Ennemie mort");
     }
 
     public void ApplyKnockback(float multiply) {

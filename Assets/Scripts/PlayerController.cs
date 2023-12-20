@@ -123,6 +123,9 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
             GameController.setGameState();
 
+        if(Input.GetKeyDown(KeyCode.L))
+            this.XPGain(2);
+
         // timerAttack();
         DrawCircleAroundPlayer();
     }
@@ -143,6 +146,7 @@ public class PlayerController : MonoBehaviour {
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
         foreach (Collider col in hitColliders) {
+            Debug.Log("COL TAG : " + col.tag);
             if(col.CompareTag("Enemy") && this.canAttack) {
 
                 EnemyAiController enemy = col.GetComponent<EnemyAiController>();
@@ -153,8 +157,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void timerAttack() {
-        if(this.timeSinceLastAttack >= this.attackSpeed) {
-            // Debug.Log("On the timer attack");   
+        if(this.timeSinceLastAttack >= this.attackSpeed) {  
             Attack();
             this.timeSinceLastAttack = 0f;
         }

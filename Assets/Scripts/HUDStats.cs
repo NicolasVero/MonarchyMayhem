@@ -4,14 +4,17 @@ using UnityEngine;
 using TMPro;
 
 public class HUDStats : MonoBehaviour {
-    [SerializeField] private PlayerController player;
-    [SerializeField] private TextMeshProUGUI  levelStat;
-    [SerializeField] private TextMeshProUGUI  attackStat;
-    [SerializeField] private TextMeshProUGUI  resistanceStat;
-    [SerializeField] private TextMeshProUGUI  attackSpeedStat;
-    [SerializeField] private TextMeshProUGUI  rangeStat;
-    [SerializeField] private TextMeshProUGUI  speedStat;
 
+    [Header("Text Mesh")]
+    [SerializeField] private TextMeshProUGUI levelStat;
+    [SerializeField] private TextMeshProUGUI attackStat;
+    [SerializeField] private TextMeshProUGUI resistanceStat;
+    [SerializeField] private TextMeshProUGUI attackSpeedStat;
+    [SerializeField] private TextMeshProUGUI rangeStat;
+    [SerializeField] private TextMeshProUGUI speedStat;
+
+    [Header("Joueur")]
+    [SerializeField] private PlayerController player;
     void Start() {
         this.updateStats();
     }
