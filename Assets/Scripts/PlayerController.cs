@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour {
     private float knockback;
 
     private float timeSinceLastAttack = 0f;
-    // private float attackInterval = 2.0f;
 
     // controlleur attributs
     private int xpRequired = 0;
@@ -140,8 +139,6 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.T)) 
             this.TakeDamage(5);
         
-
-        // timerAttack();
         DrawCircleAroundPlayer();
     }
 
@@ -158,15 +155,18 @@ public class PlayerController : MonoBehaviour {
 
     void Attack() {
 
-        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
+
+        int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range, enemyLayerMask);
+
+        // Debug.Log("COL LEN : " + hitColliders.Length);
 
         foreach (Collider col in hitColliders) {
-            // Debug.Log("COL TAG : " + col.tag);
             if(col.CompareTag("Enemy") && this.canAttack) {
 
                 EnemyAiController enemy = col.GetComponent<EnemyAiController>();
                 enemy.TakeDamage(attack);
-                enemy.ApplyKnockback(this.knockback);
+                // enemy.ApplyKnockback(this.knockback);
             }
         }
     }
@@ -177,7 +177,6 @@ public class PlayerController : MonoBehaviour {
             this.timeSinceLastAttack = 0f;
         }
 
-        // Debug.Log("Timer attack");
         this.timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
@@ -201,7 +200,6 @@ public class PlayerController : MonoBehaviour {
             this.health -= dmgAmount;
             this.setHealthBar(this.health);
         } else {
-            // Debug.Log("Vous êtes mort.");
             this.isAlive = false;
         }
     }
@@ -309,24 +307,23 @@ public class PlayerController : MonoBehaviour {
     public int getSpeedLevel()       { return this.speedLevel;       }
 
 
-    public void setXPBar(int xp) {
+    private void setXPBar(int xp) {
         this.xpBar.value = xp;
     }
 
-    public void addXPBar(int xp) {
+    private void addXPBar(int xp) {
         this.xpBar.value += xp;
     } 
 
-    public void setXPBarMax(int max) {
+    private void setXPBarMax(int max) {
         this.xpBar.maxValue = max;
     }
 
-
-    public void setHealthBar(int hp) {
+    private void setHealthBar(int hp) {
         this.healthBar.value = hp;
     }
 
-    public void setHealthBarMax(int max) {
+    private void setHealthBarMax(int max) {
         this.healthBar.maxValue = max;
     }
 }
