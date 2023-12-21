@@ -8,10 +8,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     
+    [Header("Sliders")]
+    [SerializeField] private Slider xpBar;
+    [SerializeField] private Slider healthBar;
+
+    [Header("Scripts")]
+    [SerializeField] private LevelUpChoice levelUpChoice;
+    [SerializeField] private HUDStats hudStats;
+
+    [Header("HUD")] 
+    [SerializeField] private GameObject levelUpPanel;
+
     private PlayerBaseStats playerBaseStats;
     private PlayerMaxStats playerMaxStats;
     private PlayerIncreaseStats playerIncreaseStats;
-    [SerializeField] private LevelUpChoice levelUpChoice;
 
     private const float baseSpeed = 10f;
     private const float sensitivity = 10;
@@ -64,11 +74,6 @@ public class PlayerController : MonoBehaviour {
     private int rangeLevel = 1;
     private int speedLevel = 1;
 
-    public HealthBar healthBar;
-    public XPBar xpBar;
-    public HUDStats hudStats;
-
-    public GameObject levelUpPanel;
     private GameController gameController;
 
 
@@ -76,6 +81,12 @@ public class PlayerController : MonoBehaviour {
         this.health = this.maxHealth;
         loadAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
+
+        this.xpBar.maxValue = 1;
+        this.xpBar.value = 0;
+
+        this.healthBar.maxValue = this.getMaxHealth();
+        this.healthBar.value = this.getHealth();
     }
 
     public void loadAttributes() {
@@ -124,7 +135,11 @@ public class PlayerController : MonoBehaviour {
             GameController.setGameState();
 
         if(Input.GetKeyDown(KeyCode.L))
-            this.XPGain(2);
+            this.XPGain(1);
+
+        if(Input.GetKeyDown(KeyCode.T)) 
+            this.TakeDamage(5);
+        
 
         // timerAttack();
         DrawCircleAroundPlayer();
@@ -146,7 +161,7 @@ public class PlayerController : MonoBehaviour {
         Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range);
 
         foreach (Collider col in hitColliders) {
-            Debug.Log("COL TAG : " + col.tag);
+            // Debug.Log("COL TAG : " + col.tag);
             if(col.CompareTag("Enemy") && this.canAttack) {
 
                 EnemyAiController enemy = col.GetComponent<EnemyAiController>();
@@ -181,9 +196,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void TakeDamage(int dmgAmount) {
+
         if(this.health > dmgAmount){
             this.health -= dmgAmount;
-            this.healthBar.setHealthBar(this.health);
+            this.setHealthBar(this.health);
         } else {
             // Debug.Log("Vous êtes mort.");
             this.isAlive = false;
@@ -195,12 +211,12 @@ public class PlayerController : MonoBehaviour {
         if(this.health >= this.maxHealth) 
             this.health = this.maxHealth;
         
-        this.healthBar.setHealthBar(this.health);
+        this.setHealthBar(this.health);
     }
 
     public void XPGain(int xpAmount) {
         this.totalXP += xpAmount;
-        this.xpBar.addXPBar(xpAmount);
+        this.addXPBar(xpAmount);
         
         if(this.totalXP >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
@@ -208,8 +224,8 @@ public class PlayerController : MonoBehaviour {
             this.xpRequired += this.xpToNext;
             this.xp = 0;
 
-            this.xpBar.setXPBarMax(this.xpToNext);
-            this.xpBar.setXPBar(0);
+            this.setXPBarMax(this.xpToNext);
+            this.setXPBar(0);
 
             this.setCanResume(false);
 
@@ -227,7 +243,7 @@ public class PlayerController : MonoBehaviour {
 
     private int XPRequired() {
         // return (int)(5 * Math.Pow(1.5, this.level - 1));
-        return 2;
+        return 5;
     }
 
     public void updateResistance() {
@@ -254,7 +270,7 @@ public class PlayerController : MonoBehaviour {
         if(this.health > this.maxHealth) 
             this.health = this.maxHealth;
             
-        this.healthBar.setHealthBar(this.health);
+        this.setHealthBar(this.health);
     }
 
     public void updateAttack() {
@@ -291,4 +307,26 @@ public class PlayerController : MonoBehaviour {
     public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
     public int getRangeLevel()       { return this.rangeLevel;       }
     public int getSpeedLevel()       { return this.speedLevel;       }
+
+
+    public void setXPBar(int xp) {
+        this.xpBar.value = xp;
+    }
+
+    public void addXPBar(int xp) {
+        this.xpBar.value += xp;
+    } 
+
+    public void setXPBarMax(int max) {
+        this.xpBar.maxValue = max;
+    }
+
+
+    public void setHealthBar(int hp) {
+        this.healthBar.value = hp;
+    }
+
+    public void setHealthBarMax(int max) {
+        this.healthBar.maxValue = max;
+    }
 }

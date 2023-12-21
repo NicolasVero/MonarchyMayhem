@@ -11,16 +11,17 @@ public class EnemyAiController : MonoBehaviour {
     [SerializeField] private Transform player;
     // [SerializeField] Slider slider_enemy;
 
-    private PlayerController pc;
+    public PlayerController pc;
 
     private int maxHealth = 50;
     private int health;
     // private FloatingHB healthBar;
 
     private void Awake() {
-        this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
-        this.player = GameObject.Find(Names.MainCharacter).transform;
-        this.agent = GetComponent<NavMeshAgent>();
+        // Debug.Log(GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>());
+        // this.pc = GameObject.Find(Names.MainCharacter).GetComponent<PlayerController>();
+        // this.player = GameObject.Find(Names.MainCharacter).transform;
+        // this.agent = GetComponent<NavMeshAgent>();
         
         // this.healthBar = this.slider_enemy.GetComponent<FloatingHB>();
         
@@ -46,7 +47,7 @@ public class EnemyAiController : MonoBehaviour {
 
     public void TakeDamage(int damage) {
         health -= damage;
-        Debug.Log(this.health);
+        // Debug.Log(this.health);
         // this.healthBar.UpdateHealthBar(slider_enemy, health, maxHealth);
                 
         if(health <= 0) {}

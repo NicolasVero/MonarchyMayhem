@@ -15,6 +15,8 @@ public class HUDStats : MonoBehaviour {
 
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
+
+    
     void Start() {
         this.updateStats();
     }
