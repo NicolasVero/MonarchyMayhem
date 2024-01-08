@@ -75,10 +75,12 @@ public class PlayerController : MonoBehaviour {
 
     private GameController gameController;
     private bool goingAttack = false;
+    private SphereCollider rangeCollider;
 
 
     void Awake() {
         this.health = this.maxHealth;
+        this.rangeCollider = GetComponent<SphereCollider>();
         loadAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
 
@@ -99,34 +101,35 @@ public class PlayerController : MonoBehaviour {
             PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
             PlayerIncreaseStats playerIncreaseStats = JsonUtility.FromJson<PlayerIncreaseStats>(increaseStats.text);
 
-            this.totalXP             = playerBaseStats.totalXP;
-            this.xp                  = playerBaseStats.xp;
-            this.xpToNext            = playerBaseStats.xpToNext;
-            this.level               = playerBaseStats.level;
-            this.health              = playerBaseStats.health;
-            this.resistance          = playerBaseStats.resistance;
-            this.attack              = playerBaseStats.attack;
-            this.attackSpeed         = playerBaseStats.attackSpeed;
-            this.range               = playerBaseStats.range;
-            this.speed               = playerBaseStats.speed;
-            this.knockback           = playerBaseStats.knockback;
+            this.totalXP              = playerBaseStats.totalXP;
+            this.xp                   = playerBaseStats.xp;
+            this.xpToNext             = playerBaseStats.xpToNext;
+            this.level                = playerBaseStats.level;
+            this.health               = playerBaseStats.health;
+            this.resistance           = playerBaseStats.resistance;
+            this.attack               = playerBaseStats.attack;
+            this.attackSpeed          = playerBaseStats.attackSpeed;
+            this.range                = playerBaseStats.range;
+            this.rangeCollider.radius = playerBaseStats.range;
+            this.speed                = playerBaseStats.speed;
+            this.knockback            = playerBaseStats.knockback;
      
-            this.maxHealth           = playerMaxStats.maxHealth;
-            this.maxLevel            = playerMaxStats.maxLevel;
-            this.maxResistance       = playerMaxStats.maxResistance;
-            this.maxAttack           = playerMaxStats.maxAttack;
-            this.maxRange            = playerMaxStats.maxRange;
-            this.minAttackSpeed      = playerMaxStats.minAttackSpeed;
-            this.maxSpeed            = playerMaxStats.maxSpeed;
-            this.maxKnockback        = playerMaxStats.maxKnockback;
+            this.maxHealth            = playerMaxStats.maxHealth;
+            this.maxLevel             = playerMaxStats.maxLevel;
+            this.maxResistance        = playerMaxStats.maxResistance;
+            this.maxAttack            = playerMaxStats.maxAttack;
+            this.maxRange             = playerMaxStats.maxRange;
+            this.minAttackSpeed       = playerMaxStats.minAttackSpeed;
+            this.maxSpeed             = playerMaxStats.maxSpeed;
+            this.maxKnockback         = playerMaxStats.maxKnockback;
 
-            this.increaseHealth      = playerIncreaseStats.increaseHealth;
-            this.increaseResistance  = playerIncreaseStats.increaseResistance;
-            this.increaseAttack      = playerIncreaseStats.increaseAttack;
-            this.increaseAttackSpeed = playerIncreaseStats.increaseAttackSpeed;
-            this.increaseRange       = playerIncreaseStats.increaseRange;
-            this.increaseSpeed       = playerIncreaseStats.increaseSpeed;
-            this.increaseKnockback   = playerIncreaseStats.increaseKnockback;
+            this.increaseHealth       = playerIncreaseStats.increaseHealth;
+            this.increaseResistance   = playerIncreaseStats.increaseResistance;
+            this.increaseAttack       = playerIncreaseStats.increaseAttack;
+            this.increaseAttackSpeed  = playerIncreaseStats.increaseAttackSpeed;
+            this.increaseRange        = playerIncreaseStats.increaseRange;
+            this.increaseSpeed        = playerIncreaseStats.increaseSpeed;
+            this.increaseKnockback    = playerIncreaseStats.increaseKnockback;
         }
     }
 
@@ -155,29 +158,29 @@ public class PlayerController : MonoBehaviour {
         timerAttack();
     }
 
-    void Attack() {
+    // void Attack() {
 
-        int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
-        // this.hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
+    //     int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+    //     Collider[]? hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
+    //     // this.hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
 
-        Debug.Log("COL LEN : " + hitColliders.Length);
+    //     Debug.Log("COL LEN : " + hitColliders.Length);
 
-        foreach(Collider col in hitColliders) {
-            if(col.CompareTag("Enemy") && this.canAttack) {
+    //     foreach(Collider col in hitColliders) {
+    //         if(col.CompareTag("Enemy") && this.canAttack) {
 
-                EnemyAiController enemy = col.GetComponent<EnemyAiController>();
-                enemy.TakeDamage(attack);
-                // enemy.ApplyKnockback(this.knockback);
-            }
-        }
+    //             EnemyAiController enemy = col.GetComponent<EnemyAiController>();
+    //             enemy.TakeDamage(attack);
+    //             // enemy.ApplyKnockback(this.knockback);
+    //         }
+    //     }
 
-        Array.Clear(hitColliders, 0, hitColliders.Length);
-    }
+    //     Array.Clear(hitColliders, 0, hitColliders.Length);
+    // }
 
     public void timerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
-            Attack();
+            // Attack();
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
         }
@@ -265,6 +268,8 @@ public class PlayerController : MonoBehaviour {
         this.range += this.increaseRange[this.rangeLevel - 1];
         this.rangeLevel++;
         if(this.range > this.maxRange) this.range = this.maxRange;
+
+        this.rangeCollider.radius = this.range;
     }
 
     public void updateHealth() {
@@ -333,19 +338,10 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-
-
-
-    // private void OnTriggerEnter(Collider other) {
-    //     Debug.Log("ENTRE : " + other);
-    // }
-
     private void OnTriggerStay(Collider other) {
         if(this.goingAttack && other.CompareTag("Enemy")) {
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
-            Debug.Log("touché");
             enemy.ApplyKnockback(this.knockback);
-
         }
     }
 }
