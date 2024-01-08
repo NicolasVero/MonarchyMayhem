@@ -9,22 +9,21 @@ public class EnemyAiController : MonoBehaviour {
     [Header("Suivi du joueur")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
-    // [SerializeField] Slider slider_enemy;
 
     public PlayerController pc;
 
-    private int maxHealth = 50;
+    private int maxHealth = 15;
     private int health;
 
     private void Awake() {
         this.health = maxHealth;
     }
     
-    public void AttackEnemy(int dmgAmount){
+    public void TakeDamage(int damage){
 
-        if (this.health > dmgAmount){
-            this.health -= dmgAmount;
-        } else{
+        this.health -= damage;
+
+        if(this.health <= 0) {
             Destroy(this.gameObject);
             this.pc.incrementKillCounter();
         }
@@ -34,15 +33,6 @@ public class EnemyAiController : MonoBehaviour {
         if (this.player){
             this.agent.SetDestination(this.player.position);
         }
-    }
-
-    public void TakeDamage(int damage) {
-        health -= damage;
-        // Debug.Log(this.health);
-        // this.healthBar.UpdateHealthBar(slider_enemy, health, maxHealth);
-                
-        if(health <= 0) {}
-            // Debug.Log("Ennemie mort");
     }
 
     public void ApplyKnockback(float multiply) {

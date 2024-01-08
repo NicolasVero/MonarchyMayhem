@@ -341,6 +341,7 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if(this.goingAttack && other.CompareTag("Enemy")) {
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
+            enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);
         }
     }
