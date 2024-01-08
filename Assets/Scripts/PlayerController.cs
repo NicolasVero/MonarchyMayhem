@@ -25,9 +25,11 @@ public class PlayerController : MonoBehaviour {
     private const float baseSpeed = 10f;
     private const float sensitivity = 10;
     private int enemyKillCounter;
+    private bool goingAttack = false;
 	private bool canAttack = true;
     private bool canResume = true;
     private bool isAlive = true;
+
 
     // attributs
     private int totalXP;
@@ -73,7 +75,6 @@ public class PlayerController : MonoBehaviour {
     private int speedLevel = 1;
 
     private GameController gameController;
-    private bool goingAttack = false;
     private SphereCollider rangeCollider;
 
 
@@ -157,29 +158,8 @@ public class PlayerController : MonoBehaviour {
         timerAttack();
     }
 
-    // void Attack() {
-
-    //     int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-    //     Collider[]? hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
-    //     // this.hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
-
-    //     Debug.Log("COL LEN : " + hitColliders.Length);
-
-    //     foreach(Collider col in hitColliders) {
-    //         if(col.CompareTag("Enemy") && this.canAttack) {
-
-    //             EnemyAiController enemy = col.GetComponent<EnemyAiController>();
-    //             enemy.TakeDamage(attack);
-    //             // enemy.ApplyKnockback(this.knockback);
-    //         }
-    //     }
-
-    //     Array.Clear(hitColliders, 0, hitColliders.Length);
-    // }
-
     public void timerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
-            // Attack();
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
         }
@@ -201,12 +181,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(int dmgAmount) {
+    public void TakeDamage(int damage) {
 
-        if(this.health > dmgAmount){
-            this.health -= dmgAmount;
-            this.setHealthBar(this.health);
-        } else {
+        this.health -= damage;
+        this.setHealthBar(this.health);
+
+        if(this.health <= 0) {
             this.isAlive = false;
         }
     }
@@ -274,8 +254,7 @@ public class PlayerController : MonoBehaviour {
     public void updateHealth() {
         this.health += this.increaseHealth[this.healthLevel - 1];
         this.healthLevel++;
-        if(this.health > this.maxHealth) 
-            this.health = this.maxHealth;
+        if(this.health > this.maxHealth) this.health = this.maxHealth;
             
         this.setHealthBar(this.health);
     }
@@ -338,7 +317,7 @@ public class PlayerController : MonoBehaviour {
 
 
     private void OnTriggerStay(Collider other) {
-        if(this.goingAttack && other.CompareTag(Names.BaseEnemy)) {
+        if(this.goingAttack && this.canAttack && other.CompareTag(Names.BaseEnemy)) {
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);

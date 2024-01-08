@@ -116,15 +116,6 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.setPanelVisibility(levelUpPanel, false);   
     }
 
-    // void Update() {
-    //     if(choiceMade >= 1) {
-    //         this.attack.SetActive(false);
-    //         this.health.SetActive(false);
-    //         this.resistance.SetActive(false);
-    //         this.range.SetActive(false);
-    //     }
-    // }
-
     public int[] generateUniquesRandom(int min, int max, int[] excludes) {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
 

@@ -9,8 +9,8 @@ public class EnemyAiController : MonoBehaviour {
     private Transform player;
     private PlayerController playerController;
     private NavMeshAgent agent;
-
     private int health = 50;
+    
 
     private void Awake() {
         this.agent = GetComponent<NavMeshAgent>();
@@ -19,7 +19,7 @@ public class EnemyAiController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (this.player){
+        if(this.player){
             this.agent.SetDestination(this.player.position);
         }
     }
