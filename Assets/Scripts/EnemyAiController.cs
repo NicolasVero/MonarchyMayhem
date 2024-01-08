@@ -6,17 +6,22 @@ using UnityEngine.AI;
 
 public class EnemyAiController : MonoBehaviour {
     
-    [Header("Suivi du joueur")]
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    private Transform player;
+    private PlayerController playerController;
+    private NavMeshAgent agent;
 
-    public PlayerController pc;
-
-    private int maxHealth = 15;
-    private int health;
+    private int health = 50;
 
     private void Awake() {
-        this.health = maxHealth;
+        this.agent = GetComponent<NavMeshAgent>();
+        this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
+        this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+    }
+
+    private void FixedUpdate() {
+        if (this.player){
+            this.agent.SetDestination(this.player.position);
+        }
     }
     
     public void TakeDamage(int damage){
@@ -25,13 +30,7 @@ public class EnemyAiController : MonoBehaviour {
 
         if(this.health <= 0) {
             Destroy(this.gameObject);
-            this.pc.incrementKillCounter();
-        }
-    }
-
-    private void FixedUpdate() {
-        if (this.player){
-            this.agent.SetDestination(this.player.position);
+            this.playerController.incrementKillCounter();
         }
     }
 
@@ -46,7 +45,7 @@ public class EnemyAiController : MonoBehaviour {
     IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
         float elapsed = 0f;
 
-        while (elapsed < duration) {
+        while(elapsed < duration) {
             float step = distance * (Time.deltaTime / duration);
             transform.position += direction * step;
 

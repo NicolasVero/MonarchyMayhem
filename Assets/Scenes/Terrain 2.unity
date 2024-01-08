@@ -532,12 +532,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 351485698}
+  - component: {fileID: 351485693}
+  - component: {fileID: 351485692}
   - component: {fileID: 351485697}
   - component: {fileID: 351485696}
   - component: {fileID: 351485695}
   - component: {fileID: 351485694}
-  - component: {fileID: 351485693}
-  - component: {fileID: 351485692}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -579,9 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 351485692}
-  player: {fileID: 562133459}
-  pc: {fileID: 562133455}
 --- !u!54 &351485694
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -718,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &392704761
 Transform:
   m_ObjectHideFlags: 0
@@ -768,9 +765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 392704762}
-  player: {fileID: 562133459}
-  pc: {fileID: 562133455}
 --- !u!54 &392704764
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -961,7 +955,7 @@ GameObject:
   - component: {fileID: 397964867}
   - component: {fileID: 397964868}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1249,14 +1243,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 562133459}
+  - component: {fileID: 562133455}
   - component: {fileID: 562133458}
   - component: {fileID: 562133457}
   - component: {fileID: 562133456}
   - component: {fileID: 562133454}
-  - component: {fileID: 562133455}
+  - component: {fileID: 562133460}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1302,9 +1297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpBar: {fileID: 272265702}
   healthBar: {fileID: 1329644704}
+  levelUpPanel: {fileID: 2018713877}
   levelUpChoice: {fileID: 1041285417}
   hudStats: {fileID: 434141872}
-  levelUpPanel: {fileID: 2018713877}
 --- !u!136 &562133456
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1387,13 +1382,34 @@ Transform:
   m_GameObject: {fileID: 562133453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30, y: 1, z: 0}
+  m_LocalPosition: {x: -30.1, y: 1, z: -0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1857712857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &562133460
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562133453}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.00001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &696904540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2219,7 @@ Transform:
   m_GameObject: {fileID: 1192701362}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.787037, y: -1.5769253, z: 5.57}
+  m_LocalPosition: {x: -5.26, y: -1.5769253, z: 7.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2243,9 +2259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1192701364}
-  player: {fileID: 562133459}
-  pc: {fileID: 562133455}
 --- !u!54 &1192701366
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3677,13 +3690,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857712856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 8.25, y: 7.5, z: -7.5}
+  m_LocalRotation: {x: 0.28190625, y: -0.3644332, z: 0.11676939, w: 0.8798194}
+  m_LocalPosition: {x: 6.79, y: 7.34, z: -6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 562133459}
-  m_LocalEulerAnglesHint: {x: 30, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.532, y: -45, z: 0}
 --- !u!81 &1857712858
 AudioListener:
   m_ObjectHideFlags: 0

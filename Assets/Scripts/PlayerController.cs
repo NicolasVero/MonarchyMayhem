@@ -8,16 +8,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     
-    [Header("Sliders")]
+    [Header("HUD")] 
     [SerializeField] private Slider xpBar;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private GameObject levelUpPanel;
 
     [Header("Scripts")]
     [SerializeField] private LevelUpChoice levelUpChoice;
     [SerializeField] private HUDStats hudStats;
 
-    [Header("HUD")] 
-    [SerializeField] private GameObject levelUpPanel;
 
     private PlayerBaseStats playerBaseStats;
     private PlayerMaxStats playerMaxStats;
@@ -339,7 +338,7 @@ public class PlayerController : MonoBehaviour {
 
 
     private void OnTriggerStay(Collider other) {
-        if(this.goingAttack && other.CompareTag("Enemy")) {
+        if(this.goingAttack && other.CompareTag(Names.BaseEnemy)) {
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);
