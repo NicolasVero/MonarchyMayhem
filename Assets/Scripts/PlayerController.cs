@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour {
     private int speedLevel = 1;
 
     private GameController gameController;
+    private bool goingAttack = false;
 
 
     void Awake() {
@@ -150,18 +151,19 @@ public class PlayerController : MonoBehaviour {
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
+        this.goingAttack = false;
         timerAttack();
     }
 
     void Attack() {
 
-
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, range, enemyLayerMask);
+        Collider[]? hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
+        // this.hitColliders = Physics.OverlapSphere(transform.position, this.range, enemyLayerMask);
 
-        // Debug.Log("COL LEN : " + hitColliders.Length);
+        Debug.Log("COL LEN : " + hitColliders.Length);
 
-        foreach (Collider col in hitColliders) {
+        foreach(Collider col in hitColliders) {
             if(col.CompareTag("Enemy") && this.canAttack) {
 
                 EnemyAiController enemy = col.GetComponent<EnemyAiController>();
@@ -169,11 +171,14 @@ public class PlayerController : MonoBehaviour {
                 // enemy.ApplyKnockback(this.knockback);
             }
         }
+
+        Array.Clear(hitColliders, 0, hitColliders.Length);
     }
 
     public void timerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
             Attack();
+            this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
         }
 
@@ -325,5 +330,22 @@ public class PlayerController : MonoBehaviour {
 
     private void setHealthBarMax(int max) {
         this.healthBar.maxValue = max;
+    }
+
+
+
+
+
+    // private void OnTriggerEnter(Collider other) {
+    //     Debug.Log("ENTRE : " + other);
+    // }
+
+    private void OnTriggerStay(Collider other) {
+        if(this.goingAttack && other.CompareTag("Enemy")) {
+            EnemyAiController enemy = other.GetComponent<EnemyAiController>();
+            Debug.Log("touché");
+            enemy.ApplyKnockback(this.knockback);
+
+        }
     }
 }
