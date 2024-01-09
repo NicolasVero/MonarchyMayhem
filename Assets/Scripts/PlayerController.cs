@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour {
     private PlayerMaxStats playerMaxStats;
     private PlayerIncreaseStats playerIncreaseStats;
 
-    private const float baseSpeed = 10f;
     private const float sensitivity = 10;
     private int enemyKillCounter;
     private bool goingAttack = false;
@@ -76,11 +75,14 @@ public class PlayerController : MonoBehaviour {
 
     private GameController gameController;
     private SphereCollider rangeCollider;
+    private Animator _animator;
+    private Vector3 moveDirection;
 
 
     void Awake() {
         this.health = this.maxHealth;
         this.rangeCollider = GetComponent<SphereCollider>();
+        this._animator = GetComponentInChildren<Animator>();
         loadAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
 
@@ -95,11 +97,12 @@ public class PlayerController : MonoBehaviour {
         TextAsset baseStats     = Resources.Load<TextAsset>("Data/PlayerBaseStats");
         TextAsset maxStats      = Resources.Load<TextAsset>("Data/PlayerMaxStats");
         TextAsset increaseStats = Resources.Load<TextAsset>("Data/PlayerIncreaseStats");
-        
+
         if(baseStats != null && maxStats != null && increaseStats != null) {
             PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);
             PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
             PlayerIncreaseStats playerIncreaseStats = JsonUtility.FromJson<PlayerIncreaseStats>(increaseStats.text);
+
 
             this.totalXP              = playerBaseStats.totalXP;
             this.xp                   = playerBaseStats.xp;
@@ -148,20 +151,20 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.forward * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(this.speed * PlayerController.baseSpeed * Vector3.right   * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
-        
+        this.Move();
+
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
         this.goingAttack = false;
-        timerAttack();
+        this.timerAttack();
     }
 
     public void timerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
+            this._animator.SetTrigger("Attack");
         }
 
         this.timeSinceLastAttack += Time.fixedDeltaTime;
@@ -188,6 +191,7 @@ public class PlayerController : MonoBehaviour {
 
         if(this.health <= 0) {
             this.isAlive = false;
+            this._animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         }
     }
 
@@ -316,8 +320,74 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+
+    void Move(){
+        // Marche là où le perso regarde
+        transform.Translate(Vector3.forward * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(Vector3.right * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        float moveZ = Input.GetAxis("Vertical");
+        this.moveDirection = new Vector3(0, 0, moveZ);
+        this.moveDirection = this.transform.TransformDirection(this.moveDirection);
+
+        // Debug.Log(Input.GetAxis("Vertical"));
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        moveAnims();
+    }
+
+
+    void resetAnims(){
+        // Resets
+        this._animator.SetBool("Idle", false);
+        this._animator.SetInteger("Walk", 0);
+        this._animator.SetInteger("Strafe", 0);
+        this._animator.SetInteger("Strafe_Forward", 0);
+        this._animator.SetInteger("Strafe_Backward", 0);
+    }
+    void moveAnims(){
+        // Start Anims Forward
+        resetAnims();
+        if (Input.GetAxis("Vertical") > 0){
+            if (Input.GetAxis("Horizontal") > 0){
+                this._animator.SetInteger("Strafe_Forward", 1);
+            }
+            else if (Input.GetAxis("Horizontal") < 0){
+                this._animator.SetInteger("Strafe_Forward", -1);
+            }
+            else{
+                this._animator.SetInteger("Walk", 1);
+            }
+        }
+        // Start Anims Backward
+        else if (Input.GetAxis("Vertical") < 0){
+            if (Input.GetAxis("Horizontal") > 0){
+                this._animator.SetInteger("Strafe_Backward", 1);
+            }
+            else if (Input.GetAxis("Horizontal") < 0){
+                this._animator.SetInteger("Strafe_Backward", -1);
+            }
+            else{
+                this._animator.SetInteger("Walk", -1);
+            }
+        }
+        // Start Anims Still
+        else{
+            if (Input.GetAxis("Horizontal") > 0){
+                this._animator.SetInteger("Strafe", 1);
+            }
+            else if (Input.GetAxis("Horizontal") < 0){
+                this._animator.SetInteger("Strafe", -1);
+            }
+            else{
+                this._animator.SetBool("Idle", true);
+            }
+        }
+    }
+
+
     private void OnTriggerStay(Collider other) {
-        if(this.goingAttack && this.canAttack && other.CompareTag(Names.BaseEnemy)) {
+        Debug.Log("off");
+        if(this.goingAttack && this.canAttack && this.isAlive && other.CompareTag(Names.BaseEnemy)) {
+        Debug.Log("on");
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);
