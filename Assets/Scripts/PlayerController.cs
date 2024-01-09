@@ -147,8 +147,8 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.T)) 
             this.TakeDamage(5);
 
-        if(Input.GetKeyDown(KeyCode.M))
-            enableAutomaticAttack = !enableAutomaticAttack;
+        if(Input.GetMouseButtonDown(0))
+            this.enableAutomaticAttack = !this.enableAutomaticAttack;
         
         DrawCircleAroundPlayer();
     }
@@ -349,40 +349,29 @@ public class PlayerController : MonoBehaviour {
     void moveAnims(){
         // Start Anims Forward
         resetAnims();
-        if (Input.GetAxis("Vertical") > 0){
-            if (Input.GetAxis("Horizontal") > 0){
+        
+        if (Input.GetAxis("Vertical") > 0) {
+            if(Input.GetAxis("Horizontal") > 0) 
                 this._animator.SetInteger("Strafe_Forward", 1);
-            }
-            else if (Input.GetAxis("Horizontal") < 0){
+            else if(Input.GetAxis("Horizontal") < 0) 
                 this._animator.SetInteger("Strafe_Forward", -1);
-            }
-            else{
+            else 
                 this._animator.SetInteger("Walk", 1);
-            }
-        }
-        // Start Anims Backward
-        else if (Input.GetAxis("Vertical") < 0){
-            if (Input.GetAxis("Horizontal") > 0){
+            
+        } else if(Input.GetAxis("Vertical") < 0) {
+            if(Input.GetAxis("Horizontal") > 0)
                 this._animator.SetInteger("Strafe_Backward", 1);
-            }
-            else if (Input.GetAxis("Horizontal") < 0){
+            else if (Input.GetAxis("Horizontal") < 0)
                 this._animator.SetInteger("Strafe_Backward", -1);
-            }
-            else{
+            else
                 this._animator.SetInteger("Walk", -1);
-            }
-        }
-        // Start Anims Still
-        else{
-            if (Input.GetAxis("Horizontal") > 0){
+        } else {
+            if(Input.GetAxis("Horizontal") > 0)
                 this._animator.SetInteger("Strafe", 1);
-            }
-            else if (Input.GetAxis("Horizontal") < 0){
+            else if (Input.GetAxis("Horizontal") < 0)
                 this._animator.SetInteger("Strafe", -1);
-            }
-            else{
+            else
                 this._animator.SetBool("Idle", true);
-            }
         }
     }
 

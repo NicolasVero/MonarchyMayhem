@@ -15,10 +15,11 @@ public class EnemyAiController : MonoBehaviour {
     
     private ParticleSystem collectParticle;
     private float delayActivation = 0.3f;
-    private float cooldownTime = 1.0f; // Temps de récupération entre chaque activation
+    private float cooldownTime = 1.0f;
     private float lastActivationTime = 0f;
 
     private float attackSpeed = 2f;
+    private float speed = 1;
 
     private bool canMove = true, canAttack = true, isAlive = true;
     private float timeSinceLastAttack;
@@ -30,6 +31,7 @@ public class EnemyAiController : MonoBehaviour {
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.agentPos = this.agent.transform;
         this._animator = GetComponentInChildren<Animator>();
+        this.agent.speed = speed;
     }
 
     private void FixedUpdate() {
@@ -37,9 +39,8 @@ public class EnemyAiController : MonoBehaviour {
         if(isAlive) {
 
             resetAnims();
-            // Look at the player at all times
-            this.agentPos.transform.LookAt(this.player);
 
+            this.agentPos.transform.LookAt(this.player);
             this.timeSinceLastAttack += Time.fixedDeltaTime;
 
             if(this.player){
@@ -47,17 +48,14 @@ public class EnemyAiController : MonoBehaviour {
             }
 
             if (this.player && this.canMove){
-                // Attack
-                // Check distance -> if close enough, stop
                 if (Vector3.Distance(this.player.position, this.agentPos.position) <= this.agent.stoppingDistance){
                     this._animator.SetBool("Idle", true);
-                    // Check if can attack
+
                     if (this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
                         this.Attack();
                         this.timeSinceLastAttack = 0f;
                     }
                 }
-                // else Move
                 else{
                     this.Move();
                 }
@@ -68,11 +66,9 @@ public class EnemyAiController : MonoBehaviour {
     public void TakeDamage(int damage){
 
         this.health -= damage;
-        Debug.Log("degats pris : " + this.health);
 
         if(this.health <= 0) {
             this.Death();
-            // Destroy(this.gameObject);
             this.playerController.incrementKillCounter();
         }
     }
@@ -100,29 +96,19 @@ public class EnemyAiController : MonoBehaviour {
 
     public int getHealth() { return this.health; }
 
-
-
-
-
-        void Move(){
-        // Move towards the player
+    void Move(){
         this._animator.SetBool("Walk", true);
-        // this.agent.SetDestination(this.player.position);
     }
     void Attack(){
-        Debug.Log("Attack");
         this.ActivateCollectParticle();
         this._animator.SetTrigger("Attack");
     }
 
-
     void resetAnims(){
-        // Resets
         this._animator.SetBool("Idle", false);
         this._animator.SetBool("Walk", false);
     }
 
-    // OnDeath : canMove = false, canAttack = false
     void Death(){
         this._animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         canMove = false;
@@ -138,6 +124,6 @@ public class EnemyAiController : MonoBehaviour {
     }
 
     void ActivateCollectParticle(){
-        collectParticle.Play();
+        this.collectParticle.Play();
     }
 }
