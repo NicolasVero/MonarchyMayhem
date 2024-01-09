@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 	private bool canAttack = true;
     private bool canResume = true;
     private bool isAlive = true;
+    private bool enableAutomaticAttack = true;
 
 
     // attributs
@@ -145,6 +146,9 @@ public class PlayerController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.T)) 
             this.TakeDamage(5);
+
+        if(Input.GetKeyDown(KeyCode.M))
+            enableAutomaticAttack = !enableAutomaticAttack;
         
         DrawCircleAroundPlayer();
     }
@@ -164,7 +168,6 @@ public class PlayerController : MonoBehaviour {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
-            this._animator.SetTrigger("Attack");
         }
 
         this.timeSinceLastAttack += Time.fixedDeltaTime;
@@ -385,9 +388,8 @@ public class PlayerController : MonoBehaviour {
 
 
     private void OnTriggerStay(Collider other) {
-        Debug.Log("off");
-        if(this.goingAttack && this.canAttack && this.isAlive && other.CompareTag(Names.BaseEnemy)) {
-        Debug.Log("on");
+        if(this.goingAttack && this.canAttack && this.isAlive && this.enableAutomaticAttack && other.CompareTag(Names.BaseEnemy)) {
+            this._animator.SetTrigger("Attack");
             EnemyAiController enemy = other.GetComponent<EnemyAiController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);

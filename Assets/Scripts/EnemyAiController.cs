@@ -125,6 +125,16 @@ public class EnemyAiController : MonoBehaviour {
     // OnDeath : canMove = false, canAttack = false
     void Death(){
         this._animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        canMove = false;
+        canAttack = false;
+        isAlive = false;
+
+        StartCoroutine(DestroyEnemy(2f));
+    }
+
+    private IEnumerator DestroyEnemy(float delay) {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 
     void ActivateCollectParticle(){
