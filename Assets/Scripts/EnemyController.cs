@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class EnemyAiController : MonoBehaviour {
+public class EnemyController : MonoBehaviour {
     
     private ParticleSystem collectParticle;
     private Transform player;
@@ -75,7 +75,13 @@ public class EnemyAiController : MonoBehaviour {
         float knockbackDistance = 1f * multiply; 
         float knockbackDuration = 0.2f; 
 
+        // StartCoroutine(DelayedKnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
         StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
+    }
+
+    IEnumerator DelayedKnockbackEffect(Vector3 direction, float distance, float duration) {
+        yield return new WaitForSeconds(0f);
+        StartCoroutine(KnockbackEffect(direction, distance, duration));
     }
 
     IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {

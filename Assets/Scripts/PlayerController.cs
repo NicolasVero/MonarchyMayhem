@@ -150,7 +150,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         if(Input.GetMouseButtonDown(0))
-            this.enableAutomaticAttack = !this.enableAutomaticAttack;
+            if(this.canResume)
+                this.enableAutomaticAttack = !this.enableAutomaticAttack;
         
         DrawCircleAroundPlayer();
     }
@@ -380,10 +381,10 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerStay(Collider other) {
         if(this.goingAttack && this.canAttack && this.isAlive && this.enableAutomaticAttack && other.CompareTag(Names.BaseEnemy)) {
-            this._animator.SetTrigger("Attack");
-            EnemyAiController enemy = other.GetComponent<EnemyAiController>();
+            EnemyController enemy = other.GetComponent<EnemyController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);
+            this._animator.SetTrigger("Attack");
         }
     }
 }
