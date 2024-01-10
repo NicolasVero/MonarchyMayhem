@@ -28,8 +28,6 @@ public class HUDStats : MonoBehaviour {
 
     void Start() {
         this.updateStats();
-
-        maxAttack();
     }
 
     public void updateStats() {
@@ -40,7 +38,7 @@ public class HUDStats : MonoBehaviour {
         resistanceStat.text  = "" + player.getResistance();
         speedStat.text       = "" + player.getSpeed();
     }
-
+    
     public void maxAttack() {
         Texture2D attackTexture = Resources.Load<Texture2D>("Interface/icons/max_attack");
         if (attackTexture != null) {

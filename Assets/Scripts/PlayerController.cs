@@ -242,18 +242,21 @@ public class PlayerController : MonoBehaviour {
         this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
+        if(this.resistance > 5) this.hudStats.maxResistance();
     }
 
     public void updateAttackSpeed() {
         this.attackSpeed += this.increaseAttackSpeed[this.attackSpeedLevel - 1];
         this.attackSpeedLevel++;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
+        if(this.attackSpeed > 5) this.hudStats.maxAttackSpeed();
     }
 
     public void updateRange() {
         this.range += this.increaseRange[this.rangeLevel - 1];
         this.rangeLevel++;
         if(this.range > this.maxRange) this.range = this.maxRange;
+        if(this.rangeLevel > 5) this.hudStats.maxRange();
 
         this.rangeCollider.radius = this.range;
     }
@@ -272,6 +275,7 @@ public class PlayerController : MonoBehaviour {
         this.attackLevel++;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
         if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
+        if(this.attackLevel > 5) this.hudStats.maxAttack();
 
     }
 
@@ -279,6 +283,7 @@ public class PlayerController : MonoBehaviour {
         this.speed += this.increaseSpeed[this.speedLevel - 1];
         this.speedLevel++;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
+        if(this.speedLevel > 5) this.hudStats.maxSpeed();
     }
 
     public void incrementKillCounter() {
@@ -324,30 +329,26 @@ public class PlayerController : MonoBehaviour {
 
 
 
-    void Move(){
-        // Marche là où le perso regarde
+    void Move() {
         transform.Translate(Vector3.forward * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         float moveZ = Input.GetAxis("Vertical");
         this.moveDirection = new Vector3(0, 0, moveZ);
         this.moveDirection = this.transform.TransformDirection(this.moveDirection);
 
-        // Debug.Log(Input.GetAxis("Vertical"));
-        // Debug.Log(Input.GetAxis("Horizontal"));
         moveAnims();
     }
 
 
     void resetAnims(){
-        // Resets
         this._animator.SetBool("Idle", false);
         this._animator.SetInteger("Walk", 0);
         this._animator.SetInteger("Strafe", 0);
         this._animator.SetInteger("Strafe_Forward", 0);
         this._animator.SetInteger("Strafe_Backward", 0);
     }
+
     void moveAnims(){
-        // Start Anims Forward
         resetAnims();
         
         if (Input.GetAxis("Vertical") > 0) {
