@@ -81,11 +81,11 @@ public class PlayerController : MonoBehaviour {
 
 
     void Awake() {
-        this.health = this.maxHealth;
+        this.setHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this._animator = GetComponentInChildren<Animator>();
-        loadAttributes();
         GameController.setPanelVisibility(levelUpPanel, false);
+        loadAttributes();
 
         this.xpBar.maxValue = 1;
         this.xpBar.value = 0;
@@ -144,8 +144,10 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.L))
             this.XPGain(1);
 
-        if(Input.GetKeyDown(KeyCode.T)) 
+        if(Input.GetKeyDown(KeyCode.T)) {
             this.TakeDamage(5);
+            Debug.Log(this.health);
+        }
 
         if(Input.GetMouseButtonDown(0))
             this.enableAutomaticAttack = !this.enableAutomaticAttack;
@@ -234,15 +236,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        // return (int)(5 * Math.Pow(1.5, this.level - 1));
-        return 5;
+        return (int)(5 * Math.Pow(1.2, this.level - 1));
     }
 
     public void updateResistance() {
         this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
-        if(this.resistance > 5) this.hudStats.maxResistance();
+        if(this.resistanceLevel > 5) this.hudStats.maxResistance();
     }
 
     public void updateAttackSpeed() {
@@ -329,7 +330,7 @@ public class PlayerController : MonoBehaviour {
 
 
 
-    void Move() {
+    private void Move() {
         transform.Translate(Vector3.forward * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         float moveZ = Input.GetAxis("Vertical");
@@ -340,7 +341,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void resetAnims(){
+    private void resetAnims() {
         this._animator.SetBool("Idle", false);
         this._animator.SetInteger("Walk", 0);
         this._animator.SetInteger("Strafe", 0);
@@ -348,7 +349,7 @@ public class PlayerController : MonoBehaviour {
         this._animator.SetInteger("Strafe_Backward", 0);
     }
 
-    void moveAnims(){
+    private void moveAnims() {
         resetAnims();
         
         if (Input.GetAxis("Vertical") > 0) {

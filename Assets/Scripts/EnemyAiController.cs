@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyAiController : MonoBehaviour {
     
+    private ParticleSystem collectParticle;
     private Transform player;
     private PlayerController playerController;
     private NavMeshAgent agent;
@@ -13,10 +14,6 @@ public class EnemyAiController : MonoBehaviour {
     private Animator _animator;
     private int health = 20;
     
-    private ParticleSystem collectParticle;
-    private float delayActivation = 0.3f;
-    private float cooldownTime = 1.0f;
-    private float lastActivationTime = 0f;
 
     private float attackSpeed = 2f;
     private float speed = 1;
@@ -102,6 +99,7 @@ public class EnemyAiController : MonoBehaviour {
     void Attack(){
         this.ActivateCollectParticle();
         this._animator.SetTrigger("Attack");
+        this.playerController.TakeDamage(2);
     }
 
     void resetAnims(){
@@ -121,6 +119,7 @@ public class EnemyAiController : MonoBehaviour {
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
         Destroy(gameObject);
+        this.playerController.XPGain(1);
     }
 
     void ActivateCollectParticle(){
