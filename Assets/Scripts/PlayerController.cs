@@ -75,14 +75,14 @@ public class PlayerController : MonoBehaviour {
     private int speedLevel = 1;
 
     private SphereCollider rangeCollider;
-    private Animator _animator;
+    private Animator animator;
     private Vector3 moveDirection;
 
 
     void Awake() {
         this.setHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
-        this._animator = GetComponentInChildren<Animator>();
+        this.animator = GetComponentInChildren<Animator>();
         GameController.setPanelVisibility(this.levelUpPanel, false);
         loadAttributes();
 
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour {
 
         if(this.health <= 0) {
             this.isAlive = false;
-            this._animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+            this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         }
     }
 
@@ -343,11 +343,11 @@ public class PlayerController : MonoBehaviour {
 
 
     private void resetAnims() {
-        this._animator.SetBool("Idle", false);
-        this._animator.SetInteger("Walk", 0);
-        this._animator.SetInteger("Strafe", 0);
-        this._animator.SetInteger("Strafe_Forward", 0);
-        this._animator.SetInteger("Strafe_Backward", 0);
+        this.animator.SetBool("Idle", false);
+        this.animator.SetInteger("Walk", 0);
+        this.animator.SetInteger("Strafe", 0);
+        this.animator.SetInteger("Strafe_Forward", 0);
+        this.animator.SetInteger("Strafe_Backward", 0);
     }
 
     private void moveAnims() {
@@ -355,26 +355,26 @@ public class PlayerController : MonoBehaviour {
         
         if (Input.GetAxis("Vertical") > 0) {
             if(Input.GetAxis("Horizontal") > 0) 
-                this._animator.SetInteger("Strafe_Forward", 1);
+                this.animator.SetInteger("Strafe_Forward", 1);
             else if(Input.GetAxis("Horizontal") < 0) 
-                this._animator.SetInteger("Strafe_Forward", -1);
+                this.animator.SetInteger("Strafe_Forward", -1);
             else 
-                this._animator.SetInteger("Walk", 1);
+                this.animator.SetInteger("Walk", 1);
             
         } else if(Input.GetAxis("Vertical") < 0) {
             if(Input.GetAxis("Horizontal") > 0)
-                this._animator.SetInteger("Strafe_Backward", 1);
+                this.animator.SetInteger("Strafe_Backward", 1);
             else if (Input.GetAxis("Horizontal") < 0)
-                this._animator.SetInteger("Strafe_Backward", -1);
+                this.animator.SetInteger("Strafe_Backward", -1);
             else
-                this._animator.SetInteger("Walk", -1);
+                this.animator.SetInteger("Walk", -1);
         } else {
             if(Input.GetAxis("Horizontal") > 0)
-                this._animator.SetInteger("Strafe", 1);
+                this.animator.SetInteger("Strafe", 1);
             else if (Input.GetAxis("Horizontal") < 0)
-                this._animator.SetInteger("Strafe", -1);
+                this.animator.SetInteger("Strafe", -1);
             else
-                this._animator.SetBool("Idle", true);
+                this.animator.SetBool("Idle", true);
         }
     }
 
@@ -384,7 +384,7 @@ public class PlayerController : MonoBehaviour {
             EnemyController enemy = other.GetComponent<EnemyController>();
             enemy.TakeDamage(this.attack);
             enemy.ApplyKnockback(this.knockback);
-            this._animator.SetTrigger("Attack");
+            this.animator.SetTrigger("Attack");
         }
     }
 }

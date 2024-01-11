@@ -119,10 +119,10 @@ public class LevelUpChoice : MonoBehaviour {
     public int[] generateUniquesRandom(int min, int max, int[] excludes) {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
 
-        while (uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
+        while(uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
             int randomNumber = random.Next(min, max + 1);
 
-            if (!uniqueNumbers.Contains(randomNumber)) 
+            if(!uniqueNumbers.Contains(randomNumber)) 
                 uniqueNumbers.Add(randomNumber);     
         }
 
@@ -137,13 +137,13 @@ public class LevelUpChoice : MonoBehaviour {
             new int[] {1000, 225}
         };
 
-        for (int i = 0; i < this.bannersLength; i++) 
+        for(int i = 0; i < this.bannersLength; i++) 
             GameController.setPanelVisibility(this.banners[i], false);
         
         int cpt = 0;
 
         for (int i = 0; i < this.bannersLength; i++) {
-            if (Array.IndexOf(excludes, i) == -1) {
+            if(Array.IndexOf(excludes, i) == -1) {
                 this.banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
                 RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
                 rectTransform.sizeDelta = new Vector2(175, 350);
@@ -153,7 +153,7 @@ public class LevelUpChoice : MonoBehaviour {
 
                 cpt++;
 
-                if (cpt >= excludes.Length) 
+                if(cpt >= excludes.Length) 
                     break;    
             }
         }

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour {
     private PlayerController playerController;
     private NavMeshAgent agent;
     private Transform agentPos;
-    private Animator _animator;
+    private Animator animator;
     private int health = 20;
     
 
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
         this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.agentPos = this.agent.transform;
-        this._animator = GetComponentInChildren<Animator>();
+        this.animator = GetComponentInChildren<Animator>();
         this.agent.speed = speed;
     }
 
@@ -44,16 +44,15 @@ public class EnemyController : MonoBehaviour {
                 this.agent.SetDestination(this.player.position);
             }
 
-            if (this.player && this.canMove){
-                if (Vector3.Distance(this.player.position, this.agentPos.position) <= this.agent.stoppingDistance){
-                    this._animator.SetBool("Idle", true);
+            if(this.player && this.canMove){
+                if(Vector3.Distance(this.player.position, this.agentPos.position) <= this.agent.stoppingDistance){
+                    this.animator.SetBool("Idle", true);
 
-                    if (this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
+                    if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
                         this.Attack();
                         this.timeSinceLastAttack = 0f;
                     }
-                }
-                else{
+                } else {
                     this.Move();
                 }
             }
@@ -100,21 +99,21 @@ public class EnemyController : MonoBehaviour {
     public int getHealth() { return this.health; }
 
     void Move(){
-        this._animator.SetBool("Walk", true);
+        this.animator.SetBool("Walk", true);
     }
     void Attack(){
         this.ActivateCollectParticle();
-        this._animator.SetTrigger("Attack");
+        this.animator.SetTrigger("Attack");
         this.playerController.TakeDamage(2);
     }
 
     void resetAnims(){
-        this._animator.SetBool("Idle", false);
-        this._animator.SetBool("Walk", false);
+        this.animator.SetBool("Idle", false);
+        this.animator.SetBool("Walk", false);
     }
 
     void Death(){
-        this._animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         canMove = false;
         canAttack = false;
         isAlive = false;
