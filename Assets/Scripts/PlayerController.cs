@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour {
     private int rangeLevel = 1;
     private int speedLevel = 1;
 
-    private GameController gameController;
     private SphereCollider rangeCollider;
     private Animator _animator;
     private Vector3 moveDirection;
@@ -84,7 +83,7 @@ public class PlayerController : MonoBehaviour {
         this.setHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this._animator = GetComponentInChildren<Animator>();
-        GameController.setPanelVisibility(levelUpPanel, false);
+        GameController.setPanelVisibility(this.levelUpPanel, false);
         loadAttributes();
 
         this.xpBar.maxValue = 1;
@@ -149,9 +148,10 @@ public class PlayerController : MonoBehaviour {
             Debug.Log(this.health);
         }
 
-        if(Input.GetMouseButtonDown(0))
-            if(this.canResume)
-                this.enableAutomaticAttack = !this.enableAutomaticAttack;
+        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.gameIsFreeze()) {
+            this.enableAutomaticAttack = !this.enableAutomaticAttack;
+            this.hudStats.changeAutoAttackStatus(this.enableAutomaticAttack);
+        }
         
         DrawCircleAroundPlayer();
     }

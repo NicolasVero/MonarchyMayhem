@@ -22,6 +22,9 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage speedIcon;
 
 
+    [Header("Auto attack")]
+    [SerializeField] private RawImage autoAttackIcon;
+
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
 
@@ -41,36 +44,44 @@ public class HUDStats : MonoBehaviour {
     
     public void maxAttack() {
         Texture2D attackTexture = Resources.Load<Texture2D>("Interface/icons/max_attack");
-        if (attackTexture != null) {
+        if(attackTexture != null) {
             this.attackIcon.texture = attackTexture;
         }
     }
 
     public void maxAttackSpeed() {
         Texture2D attackSpeedTexture = Resources.Load<Texture2D>("Interface/icons/max_attack_speed");
-        if (attackSpeedTexture != null) {
+        if(attackSpeedTexture != null) {
             this.attackSpeedIcon.texture = attackSpeedTexture;
         }
     }
 
     public void maxRange() {
         Texture2D rangeTexture = Resources.Load<Texture2D>("Interface/icons/max_range");
-        if (rangeTexture != null) {
+        if(rangeTexture != null) {
             this.rangeIcon.texture = rangeTexture;
         }
     }
 
     public void maxResistance() {
         Texture2D resistanceTexture = Resources.Load<Texture2D>("Interface/icons/max_resistance");
-        if (resistanceTexture != null) {
+        if(resistanceTexture != null) {
             this.resistanceIcon.texture = resistanceTexture;
         }
     }
 
     public void maxSpeed() {
         Texture2D speedTexture = Resources.Load<Texture2D>("Interface/icons/max_speed");
-        if (speedTexture != null) {
+        if(speedTexture != null) {
             this.speedIcon.texture = speedTexture;
+        }
+    }
+
+    public void changeAutoAttackStatus(bool status) {
+        string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";
+        Texture2D attackAutoTexture = Resources.Load<Texture2D>(textureLink);
+        if(attackAutoTexture != null) {
+            this.autoAttackIcon.texture = attackAutoTexture;
         }
     }
 }

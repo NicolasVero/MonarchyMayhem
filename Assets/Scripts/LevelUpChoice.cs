@@ -132,24 +132,24 @@ public class LevelUpChoice : MonoBehaviour {
 
     private void hideBanners(int[] excludes) {
         int[][] positions = {
-            new int[] { 400, 350},
-            new int[] { 700, 350},
-            new int[] {1000, 350}
+            new int[] { 400, 225},
+            new int[] { 700, 225},
+            new int[] {1000, 225}
         };
 
         for (int i = 0; i < this.bannersLength; i++) 
-            GameController.setPanelVisibility(banners[i], false);
+            GameController.setPanelVisibility(this.banners[i], false);
         
         int cpt = 0;
 
         for (int i = 0; i < this.bannersLength; i++) {
             if (Array.IndexOf(excludes, i) == -1) {
-                banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
+                this.banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
                 RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
                 rectTransform.sizeDelta = new Vector2(175, 350);
 
-                banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
-                GameController.setPanelVisibility(banners[i], true);
+                this.banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
+                GameController.setPanelVisibility(this.banners[i], true);
 
                 cpt++;
 
