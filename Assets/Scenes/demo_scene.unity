@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45044297, g: 0.50044596, b: 0.57520026, a: 1}
+  m_IndirectSpecularColor: {r: 0.4504428, g: 0.50044554, b: 0.5751995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -528,6 +528,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
   m_PrefabInstance: {fileID: 2076990915}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &315513908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1248924411361883658, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
+  m_PrefabInstance: {fileID: 1750957911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &393699487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1019,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6369521832588607118, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
   m_PrefabInstance: {fileID: 1750957911}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 315513908}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78701ebbcc1b43b4199d25059144c5e6, type: 3}
@@ -1025,6 +1030,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
   m_PrefabInstance: {fileID: 1750957911}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &708294682
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315513908}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &726022326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2997,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 726022327}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1248924411361883658, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 708294682}
   m_SourcePrefab: {fileID: 100100000, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
 --- !u!1 &1767525416
 GameObject:
