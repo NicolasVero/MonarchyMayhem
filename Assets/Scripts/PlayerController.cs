@@ -140,14 +140,6 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
             GameController.setGameState();
 
-        if(Input.GetKeyDown(KeyCode.L))
-            this.XPGain(1);
-
-        if(Input.GetKeyDown(KeyCode.T)) {
-            this.TakeDamage(5);
-            Debug.Log(this.health);
-        }
-
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.gameIsFreeze()) {
             this.enableAutomaticAttack = !this.enableAutomaticAttack;
             this.hudStats.changeAutoAttackStatus(this.enableAutomaticAttack);
@@ -192,7 +184,7 @@ public class PlayerController : MonoBehaviour {
 
     public void TakeDamage(int damage) {
 
-        this.health -= damage;
+        this.health -= Mathf.RoundToInt(damage * 1.0f - (float) this.resistance / 100.0f);
         this.setHealthBar(this.health);
 
         if(this.health <= 0) {
