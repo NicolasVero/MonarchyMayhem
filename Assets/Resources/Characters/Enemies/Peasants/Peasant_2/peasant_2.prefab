@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3945087459404294142, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}
       propertyPath: m_RootBone
@@ -533,8 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8406461633240179366}
-  player: {fileID: 0}
 --- !u!54 &3961606576914789019
 Rigidbody:
   m_ObjectHideFlags: 0

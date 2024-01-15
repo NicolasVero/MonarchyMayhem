@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawn : MonoBehaviour {
+public class Spawner : MonoBehaviour {
 
     [Header("Spawnable")]
     [SerializeField] bool allowPeasants;
@@ -29,10 +29,7 @@ public class Spawn : MonoBehaviour {
     private float timer = 0f;
 
     void Start() {
-
-        prefab = Resources.Load<GameObject>("Characters/Enemies/Peasants/Peasant_3/peasant_3");
-        Debug.Log(prefab);
-        Instantiate(prefab, position, Quaternion.identity);
+        // prefab = Resources.Load<GameObject>("Characters/Enemies/Peasants/Peasant_3/peasant_3");
     }
 
     void Update() {
