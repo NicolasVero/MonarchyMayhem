@@ -9,13 +9,10 @@ public class Spawner : MonoBehaviour {
     [SerializeField] bool allowBourgeois;
     [SerializeField] bool allowKnights;
 
-    [Header("Chance of occurrence")]
+    [Header("Chance of spawn")]
     [SerializeField] float chancePeasants;
     [SerializeField] float chanceBourgeois;
     [SerializeField] float chanceKnights;
-
-    [Header("Location")]
-    [SerializeField] Vector3 position;
 
     [Header("Spawn parameters")]
     [SerializeField] private float spawnDelay;
@@ -43,7 +40,7 @@ public class Spawner : MonoBehaviour {
 
     private void SpawnEnemies() {
         if(allowPeasants) {
-            Instantiate(prefab, position, Quaternion.identity);
+            Instantiate(prefab, transform.position, Quaternion.identity);
         }
     }
 }
