@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour {
 
     [Header("Spawn parameters")]
     [SerializeField] private float spawnDelay;
+    [SerializeField] private GameObject enemiesContainer;
 
 
     [Header("Instances")]
@@ -28,39 +29,62 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject b2;
     [SerializeField] GameObject b3;
     [SerializeField] GameObject b4;
-    // [SerializeField] GameObject k1;
-    // [SerializeField] GameObject k2;
+    [SerializeField] GameObject k1;
+    [SerializeField] GameObject k2;
     private GameObject[] peasants;
     private GameObject[] bourgeois;
+    private GameObject[] knights;
 
     private System.Random random = new System.Random();
 
     private float timer = 0f;
 
     void Start() {
-        peasants = new GameObject[] {p1,p2,p3,p4,p5};
-        bourgeois = new GameObject[]{b1,b2,b3,b4};
+        this.peasants = new GameObject[] {
+            p1, p2, p3, p4, p5
+        };
+
+        this.bourgeois = new GameObject[] {
+            b1, b2, b3, b4
+        };
+        
+        this.knights = new GameObject[] {
+            k1, k2
+        };
 
         // prefab = Resources.Load<GameObject>("Characters/Enemies/Peasants/Peasant_1/peasant_1");
         // GameObject instantiatedObject = Instantiate(prefab);
     }
 
     void Update() {
-        timer += Time.deltaTime;
+        this.timer += Time.deltaTime;
 
-        if(timer >= spawnDelay) {
-            timer = 0f;
+        if(this.timer >= this.spawnDelay) {
+            this.timer = 0f;
             SpawnEnemies();
         }
     }
 
     private void SpawnEnemies() {
-        if(allowPeasants) {
-            Instantiate(peasants[random.Next(0, peasants.Length - 1)], transform.position, Quaternion.identity);
+    
+        int randNumber = this.random.Next(0, 100);
+
+        if(this.allowPeasants) {
+            if(randNumber < this.chancePeasants) {
+                Instantiate(this.peasants[this.random.Next(0, this.peasants.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+            }
         }
 
-        if(allowBourgeois) {
-            Instantiate(bourgeois[random.Next(0, bourgeois.Length - 1)], transform.position, Quaternion.identity);
+        if(this.allowBourgeois) {
+            if(randNumber < this.chanceBourgeois) {
+                Instantiate(this.bourgeois[this.random.Next(0, this.bourgeois.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+            }
+        }
+
+        if(this.allowKnights) {
+            if(randNumber < this.chanceKnights) {
+                Instantiate(this.knights[this.random.Next(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+            }
         }
     }
 }
