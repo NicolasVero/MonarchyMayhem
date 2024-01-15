@@ -491,11 +491,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &293523211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  m_PrefabInstance: {fileID: 2076990915}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307384236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,9 +1787,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasant: 0
-  newObject: {fileID: 293523211}
+  allowPeasants: 1
+  allowBourgeois: 0
+  allowKnights: 0
+  chancePeasants: 0
+  chanceBourgeois: 0
+  chanceKnights: 0
   position: {x: 5, y: 0, z: 5}
+  spawnDelay: 2
+  prefab: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
 --- !u!4 &1165633722
 Transform:
   m_ObjectHideFlags: 0
@@ -1804,7 +1805,7 @@ Transform:
   m_GameObject: {fileID: 1165633720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

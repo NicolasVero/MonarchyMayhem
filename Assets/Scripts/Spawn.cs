@@ -14,16 +14,39 @@ public class Spawn : MonoBehaviour {
     [SerializeField] float chanceBourgeois;
     [SerializeField] float chanceKnights;
 
-
-    [SerializeField] GameObject newObject;
+    [Header("Location")]
     [SerializeField] Vector3 position;
+
+    [Header("Spawn parameters")]
+    [SerializeField] private float spawnDelay;
+
+
+    [Header("")]
+    [SerializeField] GameObject prefab;
+
+
+
+    private float timer = 0f;
 
     void Start() {
 
-        
-        Instantiate(newObject, position, Quaternion.identity);
+        prefab = Resources.Load<GameObject>("Characters/Enemies/Peasants/Peasant_3/peasant_3");
+        Debug.Log(prefab);
+        Instantiate(prefab, position, Quaternion.identity);
     }
 
     void Update() {
+        timer += Time.deltaTime;
+
+        if(timer >= spawnDelay) {
+            timer = 0f;
+            SpawnEnemies();
+        }
+    }
+
+    private void SpawnEnemies() {
+        if(allowPeasants) {
+            Instantiate(prefab, position, Quaternion.identity);
+        }
     }
 }
