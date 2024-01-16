@@ -12,7 +12,8 @@ public class EnemyController : MonoBehaviour {
     private NavMeshAgent agent;
     private Transform agentPos;
     private Animator animator;
-    private int health = 20;    
+    private int health = 20;
+    private string enemyType;
 
     private float attackSpeed = 2f;
     private float speed = 1;
@@ -21,14 +22,31 @@ public class EnemyController : MonoBehaviour {
     private float timeSinceLastAttack;
 
     private void Awake() {
+
+        this.enemyType = EnemyController.getEnemyType(gameObject.name);
+
+        
+
+
+        // TextAsset jsonFile = Resources.Load<TextAsset>("enemyStats");
+        // EnemyStats enemyStatsContainer = JsonUtility.FromJson<EnemyStats>(jsonFile.text);
+
+        // Debug.Log(enemyStatsContainer.enemyStats[enemyType]);
+
+
+
         this.agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         this.collectParticle = this.GetComponentInChildren<ParticleSystem>();
         this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
-        this.agentPos = this.agent.transform;
         this.animator = GetComponentInChildren<Animator>();
-        this.agent.speed = speed;
 
+        this.agentPos = this.agent.transform;
+        this.agent.speed = speed;
+    }
+
+    private static string getEnemyType(string name) {
+       return name.Split('_')[0];
     }
 
     private void FixedUpdate() {
@@ -135,4 +153,14 @@ public class EnemyController : MonoBehaviour {
     void ActivateCollectParticle(){
         this.collectParticle.Play();
     }
+}
+
+[System.Serializable]
+public class EnemyStats
+{
+    public int health;
+    public int attack;
+    public float attackSpeed;
+    public float range;
+    public float speed;
 }

@@ -150,6 +150,9 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
             GameController.setGameState();
 
+        if(Input.GetKeyDown(KeyCode.U)) 
+            this.XPGain(1);
+
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.gameIsFreeze()) {
             this.enableAutomaticAttack = !this.enableAutomaticAttack;
             this.hudStats.changeAutoAttackStatus(this.enableAutomaticAttack);
@@ -249,7 +252,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        return (int)(5 * Math.Pow(1.2, this.level - 1));
+        // return (int)(5 * Math.Pow(1.2, this.level - 1));
+        return 1;
     }
 
     public void updateResistance() {
@@ -335,7 +339,7 @@ public class PlayerController : MonoBehaviour {
     public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
     public int getRangeLevel()       { return this.rangeLevel;       }
     public int getSpeedLevel()       { return this.speedLevel;       }
-    public int getRegenerationLevel()       { return this.regeneration;       }
+    public int getRegenerationLevel()       { return this.regenerationLevel;       }
 
 
     private void setXPBar(int xp) {

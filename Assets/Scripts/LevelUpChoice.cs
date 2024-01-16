@@ -69,7 +69,7 @@ public class LevelUpChoice : MonoBehaviour {
             if(this.bannersLevel[i] > 5) 
                 isMaxLevel.Add(i);
             
-        int[] excludes = this.generateUniquesRandom(0, 6, isMaxLevel.ToArray());
+        int[] excludes = this.generateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
 
 
         GameController.setGameState(false);
