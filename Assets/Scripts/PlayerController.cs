@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour {
     private int regeneration;
 
     private float timeSinceLastAttack = 0f;
+    private float timeSinceLastRegeneration = 0f;
+    private float regenerationDelay = 10.0f;
 
     // controlleur attributs
     private int xpRequired = 0;
@@ -165,6 +167,7 @@ public class PlayerController : MonoBehaviour {
 
         this.goingAttack = false;
         this.timerAttack();
+        this.timerRegeneration();
     }
 
     public void timerAttack() {
@@ -174,6 +177,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         this.timeSinceLastAttack += Time.fixedDeltaTime;
+    }
+
+    public void timerRegeneration() {
+        if(this.timeSinceLastRegeneration >= this.regenerationDelay) {  
+            this.timeSinceLastRegeneration = 0f;
+            this.Heal(this.regeneration);
+        }
+
+        this.timeSinceLastRegeneration += Time.fixedDeltaTime;
     }
 
     void DrawCircleAroundPlayer() {
@@ -201,7 +213,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void HealHB(int healAmount) {
+    public void Heal(int healAmount) {
         this.health += healAmount;
         if(this.health >= this.maxHealth) 
             this.health = this.maxHealth;
