@@ -1819,13 +1819,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 0
-  allowBourgeois: 1
+  allowPeasants: 1
+  allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 100
-  chanceBourgeois: 50
+  chanceBourgeois: 0
   chanceKnights: 0
-  spawnDelay: 2
+  spawnDelay: 3
   enemiesContainer: {fileID: 488669865}
   p1: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
   p2: {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
