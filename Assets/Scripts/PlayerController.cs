@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     private float range;
     private float speed;
     private float knockback;
+    private int regeneration;
 
     private float timeSinceLastAttack = 0f;
 
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour {
     private float minAttackSpeed;
     private float maxSpeed;
     private float maxKnockback;
+    private int maxRegeneration;
 
     private int[] increaseHealth;
     private int[] increaseResistance;
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour {
     private float[] increaseRange;
     private float[] increaseSpeed;
     private float[] increaseKnockback;
+    private int[] increaseRegeneration;
 
 
     private int healthLevel = 1;
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour {
     private int attackSpeedLevel = 1;
     private int rangeLevel = 1;
     private int speedLevel = 1;
+    private int regenerationLevel = 1;
 
     private SphereCollider rangeCollider;
     private Animator animator;
@@ -116,6 +120,7 @@ public class PlayerController : MonoBehaviour {
             this.rangeCollider.radius = playerBaseStats.range;
             this.speed                = playerBaseStats.speed;
             this.knockback            = playerBaseStats.knockback;
+            this.regeneration         = playerBaseStats.regeneration;
      
             this.maxHealth            = playerMaxStats.maxHealth;
             this.maxLevel             = playerMaxStats.maxLevel;
@@ -125,6 +130,8 @@ public class PlayerController : MonoBehaviour {
             this.minAttackSpeed       = playerMaxStats.minAttackSpeed;
             this.maxSpeed             = playerMaxStats.maxSpeed;
             this.maxKnockback         = playerMaxStats.maxKnockback;
+            this.maxRegeneration      = playerMaxStats.maxRegeneration;
+
 
             this.increaseHealth       = playerIncreaseStats.increaseHealth;
             this.increaseResistance   = playerIncreaseStats.increaseResistance;
@@ -133,6 +140,7 @@ public class PlayerController : MonoBehaviour {
             this.increaseRange        = playerIncreaseStats.increaseRange;
             this.increaseSpeed        = playerIncreaseStats.increaseSpeed;
             this.increaseKnockback    = playerIncreaseStats.increaseKnockback;
+            this.increaseRegeneration = playerIncreaseStats.increaseRegeneration;
         }
     }
 
@@ -280,6 +288,13 @@ public class PlayerController : MonoBehaviour {
         if(this.speedLevel > 5) this.hudStats.maxSpeed();
     }
 
+    public void updateRegeneration() {
+        this.regeneration += this.increaseRegeneration[this.regenerationLevel - 1];
+        this.regenerationLevel++;
+        if(this.regeneration > this.maxRegeneration) this.regeneration = this.maxRegeneration;
+        if(this.regenerationLevel > 5) this.hudStats.maxRegeneration();
+    }
+
     public void incrementKillCounter() {
         this.enemyKillCounter++;
     }
@@ -292,6 +307,7 @@ public class PlayerController : MonoBehaviour {
     public float getAttackSpeed() { return this.attackSpeed; }
     public float getRange()       { return this.range;       }
     public float getSpeed()       { return this.speed;       }
+    public float getRegeneration() { return this.regeneration; }
 
     public int getHealthLevel()      { return this.healthLevel;      }
     public int getResistanceLevel()  { return this.resistanceLevel;  }
@@ -299,6 +315,7 @@ public class PlayerController : MonoBehaviour {
     public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
     public int getRangeLevel()       { return this.rangeLevel;       }
     public int getSpeedLevel()       { return this.speedLevel;       }
+    public int getRegenerationLevel()       { return this.regeneration;       }
 
 
     private void setXPBar(int xp) {

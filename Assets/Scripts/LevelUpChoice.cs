@@ -14,6 +14,7 @@ public class LevelUpChoice : MonoBehaviour {
     [SerializeField] private GameObject range;
     [SerializeField] private GameObject attackSpeed;
     [SerializeField] private GameObject speed;
+    [SerializeField] private GameObject regeneration;
     [SerializeField] private GameObject levelUpPanel;
 
     [Header("Classes utilitaires")]
@@ -23,7 +24,7 @@ public class LevelUpChoice : MonoBehaviour {
     private GameObject[] banners;
     private string[] bannersNames;
     private int[] bannersLevel;
-    private int bannersLength = 6;
+    private int bannersLength = 7;
     private System.Random random = new System.Random();
 
     private int choiceMade;
@@ -35,7 +36,8 @@ public class LevelUpChoice : MonoBehaviour {
             this.resistance, 
             this.range, 
             this.attackSpeed, 
-            this.speed
+            this.speed,
+            this.regeneration
         };
 
         this.bannersNames = new string[] {
@@ -44,7 +46,8 @@ public class LevelUpChoice : MonoBehaviour {
             "resistance_",
             "range_",
             "attack_speed_",
-            "speed_"
+            "speed_",
+            "regeneration_"
         };
     }
 
@@ -56,7 +59,8 @@ public class LevelUpChoice : MonoBehaviour {
             this.playerController.getResistanceLevel(),
             this.playerController.getRangeLevel(),
             this.playerController.getAttackSpeedLevel(),
-            this.playerController.getSpeedLevel()
+            this.playerController.getSpeedLevel(),
+            this.playerController.getRegenerationLevel()
         };
 
         List<int> isMaxLevel = new List<int>();
@@ -101,6 +105,11 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void choiceSpeed() {
         this.playerController.updateSpeed();
+        this.resumeGame();
+    }
+
+    public void choiceRegeneration() {
+        this.playerController.updateRegeneration();
         this.resumeGame();
     }
 

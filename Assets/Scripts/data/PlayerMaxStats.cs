@@ -7,4 +7,5 @@ public class PlayerMaxStats {
     public float minAttackSpeed;
     public float maxSpeed;
     public float maxKnockback;
+    public int maxRegeneration;
 }

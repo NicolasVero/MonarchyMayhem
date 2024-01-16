@@ -13,6 +13,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI rangeStat;
     [SerializeField] private TextMeshProUGUI resistanceStat;
     [SerializeField] private TextMeshProUGUI speedStat;
+    [SerializeField] private TextMeshProUGUI regenerationStat;
 
     [Header("Images")]
     [SerializeField] private RawImage attackIcon;
@@ -20,6 +21,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage rangeIcon;
     [SerializeField] private RawImage resistanceIcon;
     [SerializeField] private RawImage speedIcon;
+    [SerializeField] private RawImage regenerationIcon;
 
 
     [Header("Auto attack")]
@@ -34,12 +36,13 @@ public class HUDStats : MonoBehaviour {
     }
 
     public void updateStats() {
-        levelStat.text       = "" + player.getLevel();
-        attackStat.text      = "" + player.getAttack();
-        attackSpeedStat.text = "" + player.getAttackSpeed();
-        rangeStat.text       = "" + player.getRange();
-        resistanceStat.text  = "" + player.getResistance();
-        speedStat.text       = "" + player.getSpeed();
+        levelStat.text        = "" + player.getLevel();
+        attackStat.text       = "" + player.getAttack();
+        attackSpeedStat.text  = "" + player.getAttackSpeed();
+        rangeStat.text        = "" + player.getRange();
+        resistanceStat.text   = "" + player.getResistance();
+        speedStat.text        = "" + player.getSpeed();
+        regenerationStat.text = "" + player.getRegeneration();
     }
     
     public void maxAttack() {
@@ -74,6 +77,13 @@ public class HUDStats : MonoBehaviour {
         Texture2D speedTexture = Resources.Load<Texture2D>("Interface/icons/max_speed");
         if(speedTexture != null) {
             this.speedIcon.texture = speedTexture;
+        }
+    }
+
+    public void maxRegeneration() {
+        Texture2D regenerationTexture = Resources.Load<Texture2D>("Interface/icons/max_regeneration");
+        if(regenerationTexture != null) {
+            this.regenerationIcon.texture = regenerationTexture;
         }
     }
 

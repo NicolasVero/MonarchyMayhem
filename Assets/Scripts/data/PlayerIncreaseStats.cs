@@ -6,4 +6,5 @@ public class PlayerIncreaseStats {
     public float[] increaseRange;
     public float[] increaseSpeed;
     public float[] increaseKnockback;
+    public int[] increaseRegeneration;
 }

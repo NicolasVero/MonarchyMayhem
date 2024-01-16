@@ -10,4 +10,5 @@ public class PlayerBaseStats {
     public float range;
     public float speed;
     public float knockback;
+    public int regeneration;
 }
