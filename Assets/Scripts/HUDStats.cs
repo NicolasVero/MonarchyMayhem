@@ -8,6 +8,7 @@ public class HUDStats : MonoBehaviour {
 
     [Header("Text Mesh")]
     [SerializeField] private TextMeshProUGUI levelStat;
+    [SerializeField] private TextMeshProUGUI killStat;
     [SerializeField] private TextMeshProUGUI attackStat;
     [SerializeField] private TextMeshProUGUI attackSpeedStat;
     [SerializeField] private TextMeshProUGUI rangeStat;
@@ -39,6 +40,7 @@ public class HUDStats : MonoBehaviour {
 
     public void updateStats() {
         levelStat.text        = "" + player.getLevel();
+        killStat.text         = "" + player.getKillCounter();
         attackStat.text       = "" + player.getAttack();
         attackSpeedStat.text  = "" + player.getAttackSpeed();
         rangeStat.text        = "" + player.getRange();

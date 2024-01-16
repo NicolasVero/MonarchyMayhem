@@ -12,13 +12,12 @@ public class EnemyController : MonoBehaviour {
     private NavMeshAgent agent;
     private Transform agentPos;
     private Animator animator;
-    private int health = 20;
-    
+    private int health = 20;    
 
     private float attackSpeed = 2f;
     private float speed = 1;
 
-    private bool canMove = true, canAttack = true, isAlive = true;
+    private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
     private float timeSinceLastAttack;
 
     private void Awake() {
@@ -29,6 +28,7 @@ public class EnemyController : MonoBehaviour {
         this.agentPos = this.agent.transform;
         this.animator = GetComponentInChildren<Animator>();
         this.agent.speed = speed;
+
     }
 
     private void FixedUpdate() {
@@ -65,7 +65,12 @@ public class EnemyController : MonoBehaviour {
 
         if(this.health <= 0) {
             this.Death();
-            this.playerController.incrementKillCounter();
+
+            if(!this.deathCount) {
+                this.playerController.incrementKillCounter();
+                this.playerController.incrementStatCounter();
+                this.deathCount = true;
+            }
         }
     }
 

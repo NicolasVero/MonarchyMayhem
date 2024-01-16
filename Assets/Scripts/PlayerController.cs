@@ -299,6 +299,14 @@ public class PlayerController : MonoBehaviour {
         this.enemyKillCounter++;
     }
 
+    public void incrementStatCounter() {
+        this.hudStats.updateStats();
+    }
+
+    public int getKillCounter() {
+        return this.enemyKillCounter;
+    }
+
     public int   getResistance()  { return this.resistance;  }
     public int   getAttack()      { return this.attack;      }
     public int   getHealth()      { return this.health;      }
