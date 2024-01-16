@@ -30,6 +30,8 @@ public class HUDStats : MonoBehaviour {
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
 
+    private readonly string bannersPath = "Interface/Icons/"; 
+
 
     void Start() {
         this.updateStats();
@@ -46,42 +48,42 @@ public class HUDStats : MonoBehaviour {
     }
     
     public void maxAttack() {
-        Texture2D attackTexture = Resources.Load<Texture2D>("Interface/icons/max_attack");
+        Texture2D attackTexture = Resources.Load<Texture2D>(this.bannersPath + "max_attack");
         if(attackTexture != null) {
             this.attackIcon.texture = attackTexture;
         }
     }
 
     public void maxAttackSpeed() {
-        Texture2D attackSpeedTexture = Resources.Load<Texture2D>("Interface/icons/max_attack_speed");
+        Texture2D attackSpeedTexture = Resources.Load<Texture2D>(this.bannersPath + "max_attack_speed");
         if(attackSpeedTexture != null) {
             this.attackSpeedIcon.texture = attackSpeedTexture;
         }
     }
 
     public void maxRange() {
-        Texture2D rangeTexture = Resources.Load<Texture2D>("Interface/icons/max_range");
+        Texture2D rangeTexture = Resources.Load<Texture2D>(this.bannersPath + "max_range");
         if(rangeTexture != null) {
             this.rangeIcon.texture = rangeTexture;
         }
     }
 
     public void maxResistance() {
-        Texture2D resistanceTexture = Resources.Load<Texture2D>("Interface/icons/max_resistance");
+        Texture2D resistanceTexture = Resources.Load<Texture2D>(this.bannersPath + "max_resistance");
         if(resistanceTexture != null) {
             this.resistanceIcon.texture = resistanceTexture;
         }
     }
 
     public void maxSpeed() {
-        Texture2D speedTexture = Resources.Load<Texture2D>("Interface/icons/max_speed");
+        Texture2D speedTexture = Resources.Load<Texture2D>(this.bannersPath + "max_speed");
         if(speedTexture != null) {
             this.speedIcon.texture = speedTexture;
         }
     }
 
     public void maxRegeneration() {
-        Texture2D regenerationTexture = Resources.Load<Texture2D>("Interface/icons/max_regeneration");
+        Texture2D regenerationTexture = Resources.Load<Texture2D>(this.bannersPath + "max_regeneration");
         if(regenerationTexture != null) {
             this.regenerationIcon.texture = regenerationTexture;
         }

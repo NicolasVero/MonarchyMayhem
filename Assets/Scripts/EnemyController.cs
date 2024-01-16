@@ -124,7 +124,7 @@ public class EnemyController : MonoBehaviour {
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
         Destroy(gameObject);
-        // this.playerController.XPGain(1);
+        this.playerController.XPGain(1);
     }
 
     void ActivateCollectParticle(){
