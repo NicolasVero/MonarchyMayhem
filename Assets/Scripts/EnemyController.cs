@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,12 +33,13 @@ public class EnemyController : MonoBehaviour {
         TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
 
         if(enemiesStats != null) {
-            // EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
-            // Debug.Log(enemiesStats);
+            EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+            Debug.Log(enemiesStats);
 
             // EnemyStats enemy = enemiesStatsData.enemiesStat.Find(e => e.type == enemyType);
+            EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == enemyType);
 
-            // Debug.Log(enemy);
+            Debug.Log(enemy);
 
             // if(this.enemyType == "peasant") {
             //     this.health      = enemyStats.peasant_health;
