@@ -30,7 +30,7 @@ public class LevelUpChoice : MonoBehaviour {
     private int choiceMade;
 
     public void Awake() {
-            this.banners = new GameObject[] {
+        this.banners = new GameObject[] {
             this.attack, 
             this.health, 
             this.resistance, 

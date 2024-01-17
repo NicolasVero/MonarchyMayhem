@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour {
 
     private int XPRequired() {
         // return (int)(5 * Math.Pow(1.2, this.level - 1));
-        return 1;
+        return 5;
     }
 
     public void updateResistance() {

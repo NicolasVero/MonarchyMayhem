@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     
+    private EnemiesStats enemiesStats;
+
     private ParticleSystem collectParticle;
     private Transform player;
     private PlayerController playerController;
@@ -14,9 +16,12 @@ public class EnemyController : MonoBehaviour {
     private Animator animator;
     private int health = 20;
     private string enemyType;
+    private float range;
+    private int attack;
+    private int xp;
 
-    private float attackSpeed = 2f;
-    private float speed = 1;
+    private float attackSpeed;
+    private float speed;
 
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
     private float timeSinceLastAttack;
@@ -24,14 +29,42 @@ public class EnemyController : MonoBehaviour {
     private void Awake() {
 
         this.enemyType = EnemyController.getEnemyType(gameObject.name);
+        TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
+
+        if(enemiesStats != null) {
+            // EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+            // Debug.Log(enemiesStats);
+
+            // EnemyStats enemy = enemiesStatsData.enemiesStat.Find(e => e.type == enemyType);
+
+            // Debug.Log(enemy);
+
+            // if(this.enemyType == "peasant") {
+            //     this.health      = enemyStats.peasant_health;
+            //     this.attack      = enemyStats.peasant_attack;
+            //     this.attackSpeed = enemyStats.peasant_attackSpeed;
+            //     this.range       = enemyStats.peasant_range;
+            //     this.speed       = enemyStats.peasant_speed;
+            //     this.xp          = enemyStats.peasant_xp;
+            // }
+
+            // if(this.enemyType == "bourgeois") {
+            //     this.health      = enemyStats.bourgeois_health;
+            //     this.attack      = enemyStats.bourgeois_attack;
+            //     this.attackSpeed = enemyStats.bourgeois_attackSpeed;
+            //     this.range       = enemyStats.bourgeois_range;
+            //     this.speed       = enemyStats.bourgeois_speed;
+            //     this.xp          = enemyStats.bourgeois_xp;
+            // }
+        }
+
 
         
 
+        // Debug.Log(enemyStats);
+        
 
-        // TextAsset jsonFile = Resources.Load<TextAsset>("enemyStats");
-        // EnemyStats enemyStatsContainer = JsonUtility.FromJson<EnemyStats>(jsonFile.text);
 
-        // Debug.Log(enemyStatsContainer.enemyStats[enemyType]);
 
 
 
@@ -124,10 +157,11 @@ public class EnemyController : MonoBehaviour {
     void Move(){
         this.animator.SetBool("Walk", true);
     }
+    
     void Attack(){
         this.ActivateCollectParticle();
         this.animator.SetTrigger("Attack");
-        this.playerController.TakeDamage(2);
+        this.playerController.TakeDamage(this.attack);
     }
 
     void resetAnims(){
@@ -147,20 +181,10 @@ public class EnemyController : MonoBehaviour {
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
         Destroy(gameObject);
-        this.playerController.XPGain(1);
+        this.playerController.XPGain(this.xp);
     }
 
     void ActivateCollectParticle(){
         this.collectParticle.Play();
     }
-}
-
-[System.Serializable]
-public class EnemyStats
-{
-    public int health;
-    public int attack;
-    public float attackSpeed;
-    public float range;
-    public float speed;
 }
