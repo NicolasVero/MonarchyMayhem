@@ -7,25 +7,24 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     
-    private EnemiesStats enemiesStats;
-
     private ParticleSystem collectParticle;
     private Transform player;
     private PlayerController playerController;
     private NavMeshAgent agent;
     private Transform agentPos;
     private Animator animator;
-    private int health = 20;
-    private string enemyType;
-    private float range;
-    private int attack;
-    private int xp;
 
+    private string enemyType;
+    private int health;
+    private int attack;
     private float attackSpeed;
+    private float range;
     private float speed;
+    private int xp;
 
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
     private float timeSinceLastAttack;
+
 
     private void Awake() {
 
@@ -34,47 +33,15 @@ public class EnemyController : MonoBehaviour {
 
         if(enemiesStats != null) {
             EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
-            Debug.Log(enemiesStats);
-
-            // EnemyStats enemy = enemiesStatsData.enemiesStat.Find(e => e.type == enemyType);
-            EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == enemyType);
-
-            Debug.Log("enemy");
+            EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == this.enemyType);
 
             this.health      = enemy.health;
             this.attack      = enemy.attack;
             this.attackSpeed = enemy.attackSpeed;
-            this.range       = range;
-            this.speed       = speed;
-            this.xp          = xp;
-
-            // if(this.enemyType == "peasant") {
-            //     this.health      = enemyStats.peasant_health;
-            //     this.attack      = enemyStats.peasant_attack;
-            //     this.attackSpeed = enemyStats.peasant_attackSpeed;
-            //     this.range       = enemyStats.peasant_range;
-            //     this.speed       = enemyStats.peasant_speed;
-            //     this.xp          = enemyStats.peasant_xp;
-            // }
-
-            // if(this.enemyType == "bourgeois") {
-            //     this.health      = enemyStats.bourgeois_health;
-            //     this.attack      = enemyStats.bourgeois_attack;
-            //     this.attackSpeed = enemyStats.bourgeois_attackSpeed;
-            //     this.range       = enemyStats.bourgeois_range;
-            //     this.speed       = enemyStats.bourgeois_speed;
-            //     this.xp          = enemyStats.bourgeois_xp;
-            // }
+            this.range       = enemy.range;
+            this.speed       = enemy.speed;
+            this.xp          = enemy.xp;
         }
-
-
-        
-
-        // Debug.Log(enemyStats);
-        
-
-
-
 
 
         this.agent = GetComponent<UnityEngine.AI.NavMeshAgent>();

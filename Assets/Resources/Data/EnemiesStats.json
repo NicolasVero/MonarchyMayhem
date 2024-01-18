@@ -1,5 +1,6 @@
 {
-    "enemiesStat": [
+    "enemiesStat": 
+    [
         {
             "type" : "peasant",
             "health" : 20,
@@ -11,11 +12,20 @@
         },
         {
             "type" : "bourgeois",
-            "health" : 20,
-            "attack" : 200, 
-            "attackSpeed" : 2.0,
-            "speed" : 1.0, 
+            "health" : 50,
+            "attack" : 6, 
+            "attackSpeed" : 1.5,
+            "speed" : 2.5, 
             "range" : 3.0, 
+            "xp" : 5
+        },
+        {
+            "type" : "knight",
+            "health" : 1,
+            "attack" : 1, 
+            "attackSpeed" : 1,
+            "speed" : 1.0, 
+            "range" : 1.0, 
             "xp" : 1
         }
     ]
