@@ -2993,13 +2993,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77571f335499846428c5aae8b2cb3302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 732635236}
-  health: {fileID: 1454576339}
-  resistance: {fileID: 15320216}
-  range: {fileID: 1784292582}
-  attackSpeed: {fileID: 1652347137}
-  speed: {fileID: 1993737930}
-  regeneration: {fileID: 1463886099}
+  banners:
+  - {fileID: 732635236}
+  - {fileID: 1454576339}
+  - {fileID: 15320216}
+  - {fileID: 1652347137}
+  - {fileID: 1784292582}
+  - {fileID: 1993737930}
+  - {fileID: 1463886099}
   levelUpPanel: {fileID: 2018713877}
   hudStats: {fileID: 434141872}
   playerController: {fileID: 708294678}

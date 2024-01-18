@@ -8,37 +8,20 @@ using UnityEngine.UI;
 public class LevelUpChoice : MonoBehaviour {
 
     [Header("Attributs")]
-    [SerializeField] private GameObject attack;
-    [SerializeField] private GameObject health;
-    [SerializeField] private GameObject resistance;
-    [SerializeField] private GameObject range;
-    [SerializeField] private GameObject attackSpeed;
-    [SerializeField] private GameObject speed;
-    [SerializeField] private GameObject regeneration;
+    [SerializeField] private GameObject[] banners;
     [SerializeField] private GameObject levelUpPanel;
 
     [Header("Classes utilitaires")]
     [SerializeField] private HUDStats hudStats;
     [SerializeField] private PlayerController playerController;
 
-    private GameObject[] banners;
     private string[] bannersNames;
     private int[] bannersLevel;
     private int bannersLength = 7;
     private System.Random random = new System.Random();
 
-    private int choiceMade;
-
     public void Awake() {
-        this.banners = new GameObject[] {
-            this.attack, 
-            this.health, 
-            this.resistance, 
-            this.range, 
-            this.attackSpeed, 
-            this.speed,
-            this.regeneration
-        };
+
 
         this.bannersNames = new string[] {
             "attack_",
