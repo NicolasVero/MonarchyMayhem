@@ -39,7 +39,14 @@ public class EnemyController : MonoBehaviour {
             // EnemyStats enemy = enemiesStatsData.enemiesStat.Find(e => e.type == enemyType);
             EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == enemyType);
 
-            Debug.Log(enemy);
+            Debug.Log("enemy");
+
+            this.health      = enemy.health;
+            this.attack      = enemy.attack;
+            this.attackSpeed = enemy.attackSpeed;
+            this.range       = range;
+            this.speed       = speed;
+            this.xp          = xp;
 
             // if(this.enemyType == "peasant") {
             //     this.health      = enemyStats.peasant_health;
@@ -77,7 +84,7 @@ public class EnemyController : MonoBehaviour {
         this.animator = GetComponentInChildren<Animator>();
 
         this.agentPos = this.agent.transform;
-        this.agent.speed = speed;
+        this.agent.speed = this.speed;
     }
 
     private static string getEnemyType(string name) {
