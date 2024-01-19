@@ -5,23 +5,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WeaponsDropper : MonoBehaviour {
+public class WeaponsDropper : ScriptableObject {
 
     private int weaponID;
 
-    public WeaponsDropper(int weaponID) {
+
+    public void Initialize(int weaponID) {
+
         this.weaponID = weaponID;
-    }
 
-    void Awake() {
+        TextAsset weapons = Resources.Load<TextAsset>("Data/WeaponsStats");
 
-        TextAsset weapons = Resources.Load<TextAsset>("Data/Weapons");
 
         if(weapons != null) {
-            Weapons weaponsData = JsonUtility.FromJson<Weapons>(weapons.text);
-            Weapon weapon = Array.Find(weaponsData.weaponStats, e => e.id == this.weaponID);
+            Debug.Log(weapons);
+            WeaponsStats weaponsData = JsonUtility.FromJson<WeaponsStats>(weapons.text);
+            WeaponStat weapon = Array.Find(weaponsData.weaponStats, e => e.id == this.weaponID);
 
             Debug.Log(weaponsData);
         }
+    }
+
+    public void aff() {
+        Debug.Log("works");
     }
 }

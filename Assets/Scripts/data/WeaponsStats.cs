@@ -1,12 +1,12 @@
 using System;
 
 [Serializable]
-public class Weapons {
-    public Weapon[] weaponStats;
+public class WeaponsStats {
+    public WeaponStat[] weaponStats;
 }
 
 [Serializable]
-public class Weapon {
+public class WeaponStat {
     public int id;
     public string name;
     public string tier;

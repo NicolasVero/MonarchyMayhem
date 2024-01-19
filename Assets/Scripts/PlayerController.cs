@@ -97,6 +97,18 @@ public class PlayerController : MonoBehaviour {
 
         this.healthBar.maxValue = this.getMaxHealth();
         this.healthBar.value = this.getHealth();
+    
+
+
+
+        
+        WeaponsDropper weaponDropperInstance = ScriptableObject.CreateInstance<WeaponsDropper>();
+        weaponDropperInstance.Initialize(1);
+        Instantiate(weaponDropperInstance);
+    
+    
+    
+    
     }
 
     public void loadAttributes() {
