@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 33555436667378274}
   - component: {fileID: 23715537458762896}
   - component: {fileID: 6993561636901947383}
+  - component: {fileID: 2090306486527669984}
   m_Layer: 0
-  m_Name: Metal Sword
+  m_Name: Hache Solaire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.85, y: 7.088237, z: 0.73}
   m_Center: {x: -0.00078618526, y: 4.4643226, z: -0.00055497885}
+--- !u!114 &2090306486527669984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220633678843950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7609a04b6b7c734697cd7497f72d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -85,6 +85,10 @@ public class PlayerController : MonoBehaviour {
     private Vector3 moveDirection;
 
 
+
+    [SerializeField] GameObject weapon;
+
+
     void Awake() {
         this.setHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
@@ -97,18 +101,9 @@ public class PlayerController : MonoBehaviour {
 
         this.healthBar.maxValue = this.getMaxHealth();
         this.healthBar.value = this.getHealth();
-    
 
-
-
-        
-        WeaponsDropper weaponDropperInstance = ScriptableObject.CreateInstance<WeaponsDropper>();
-        weaponDropperInstance.Initialize(1);
-        Instantiate(weaponDropperInstance);
-    
-    
-    
-    
+        var aff = Instantiate(weapon, transform.position, Quaternion.identity);
+        Debug.Log(aff);
     }
 
     public void loadAttributes() {

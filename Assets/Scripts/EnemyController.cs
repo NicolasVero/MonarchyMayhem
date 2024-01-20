@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour {
     private Transform agentPos;
     private Animator animator;
 
+    [SerializeField] private WeaponsDropper weaponsDropper;
+
     private string enemyType;
     private int health;
     private int attack;
@@ -52,6 +54,11 @@ public class EnemyController : MonoBehaviour {
 
         this.agentPos = this.agent.transform;
         this.agent.speed = this.speed;
+
+
+
+        this.weaponsDropper.CreateWeapon(0, transform.position);
+
     }
 
     private static string getEnemyType(string name) {
