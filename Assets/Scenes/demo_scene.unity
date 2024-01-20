@@ -3005,6 +3005,50 @@ MonoBehaviour:
   levelUpPanel: {fileID: 2018713877}
   hudStats: {fileID: 434141872}
   playerController: {fileID: 708294678}
+--- !u!1 &1142943732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142943734}
+  - component: {fileID: 1142943733}
+  m_Layer: 0
+  m_Name: drpper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1142943733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142943732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7609a04b6b7c734697cd7497f72d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1142943734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142943732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.838852, y: -0.26, z: 0.02620697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151831721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,6 +3263,67 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e7f3ec1e4f39aa5459e0c91ddeb4a4e0, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1001 &1165404327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.90062
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.650599
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541669184710309960, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: m_Name
+      value: peasant_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635549333579137465, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+      propertyPath: weaponsDropper
+      value: 
+      objectReference: {fileID: 1142943733}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
 --- !u!1 &1165633720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,7 +3353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 1
+  allowPeasants: 0
   allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 100
@@ -5880,6 +5985,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 272265702}
     - target: {fileID: 6369521832588607118, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1220633678843950, guid: 944fc80616e7ee844bc7a8f312cd5b6a, type: 3}
+    - target: {fileID: 6369521832588607118, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       propertyPath: hudStats
       value: 
       objectReference: {fileID: 434141872}
@@ -7391,3 +7500,5 @@ SceneRoots:
   - {fileID: 488669866}
   - {fileID: 1750957911}
   - {fileID: 818991049}
+  - {fileID: 1165404327}
+  - {fileID: 1142943734}
