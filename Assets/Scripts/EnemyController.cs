@@ -54,11 +54,6 @@ public class EnemyController : MonoBehaviour {
 
         this.agentPos = this.agent.transform;
         this.agent.speed = this.speed;
-
-
-
-        this.weaponsDropper.CreateWeapon(0, transform.position);
-
     }
 
     private static string getEnemyType(string name) {
@@ -152,7 +147,7 @@ public class EnemyController : MonoBehaviour {
         this.animator.SetBool("Walk", false);
     }
 
-    void Death(){
+    void Death() {
         this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         canMove = false;
         canAttack = false;
@@ -163,6 +158,7 @@ public class EnemyController : MonoBehaviour {
 
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
+        this.weaponsDropper.CreateWeapon(0, transform.position);
         Destroy(gameObject);
         this.playerController.XPGain(this.xp);
     }

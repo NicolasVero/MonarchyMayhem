@@ -28,8 +28,14 @@ public class WeaponsDropper : MonoBehaviour {
     public void CreateWeapon(int weaponID, Vector3 position) {
         Debug.Log("we id : " + weaponID);
         Debug.Log("ve pos : " + position);
-        var a = Instantiate(models[0], position, Quaternion.identity);
+
+        position.y += (position.y > 1.5) ? 0 : 1;
+
+        var a = Instantiate(models[weaponID], position, Quaternion.Euler(0f, 0f, 90f));
         Debug.Log(a);
-        // a.aff();
+    }
+
+    public int GetWeaponsListLength() {
+        return models.Length;
     }
 }
