@@ -3016,7 +3016,7 @@ GameObject:
   - component: {fileID: 1142943734}
   - component: {fileID: 1142943733}
   m_Layer: 0
-  m_Name: drpper
+  m_Name: dropper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3034,6 +3034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7609a04b6b7c734697cd7497f72d66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  models:
+  - {fileID: 1220633678843950, guid: a23c85ed03c8d024bba34f095ca5fde1, type: 3}
 --- !u!4 &1142943734
 Transform:
   m_ObjectHideFlags: 0
