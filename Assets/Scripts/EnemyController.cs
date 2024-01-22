@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour {
 
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
     private float timeSinceLastAttack;
+    private System.Random random = new System.Random();
 
 
     private void Awake() {
@@ -61,6 +62,9 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+
+        this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
+
 
         if(isAlive) {
 
@@ -158,9 +162,21 @@ public class EnemyController : MonoBehaviour {
 
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
-        this.weaponsDropper.CreateWeapon(0, transform.position);
+        this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
         Destroy(gameObject);
         this.playerController.XPGain(this.xp);
+    }
+
+    private int GiveRandomWeaponID() {
+
+        double probabiliteInitiale = 1.0;
+        double probabiliteMinimale = 0.1;
+
+        double probabilite = probabiliteInitiale * Mathf.Pow((float)random.NextDouble(), 2);
+
+        int resultat = random.Next(1, this.weaponsDropper.GetWeaponsListLength() + 1);
+
+        return (random.NextDouble() < probabilite) ? resultat : GiveRandomWeaponID();
     }
 
     void ActivateCollectParticle(){
