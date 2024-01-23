@@ -12,12 +12,12 @@ public class WeaponsDropper : MonoBehaviour {
 
     void Start() {
 
+
+
         weaponsList = Resources.Load<TextAsset>("Data/WeaponsStats");
 
         if(weaponsList != null) {
             Debug.Log(weaponsList);
-
-
             // WeaponsStats weaponsData = JsonUtility.FromJson<WeaponsStats>(weapons.text);
             // WeaponStat weapon = Array.Find(weaponsData.weaponStats, e => e.id == this.weaponID);
 

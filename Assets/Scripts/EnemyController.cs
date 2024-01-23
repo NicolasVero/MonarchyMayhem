@@ -7,11 +7,15 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     
-    private ParticleSystem collectParticle;
     private Transform player;
-    private PlayerController playerController;
     private NavMeshAgent agent;
+
+
+
+    private ParticleSystem collectParticle;
     private Transform agentPos;
+
+    private PlayerController playerController;
     private Animator animator;
 
     [SerializeField] private WeaponsDropper weaponsDropper;
@@ -47,9 +51,9 @@ public class EnemyController : MonoBehaviour {
         }
 
 
-        this.agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        this.collectParticle = this.GetComponentInChildren<ParticleSystem>();
+        this.agent = GetComponent<NavMeshAgent>();
         this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
+        this.collectParticle = this.GetComponentInChildren<ParticleSystem>();
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.animator = GetComponentInChildren<Animator>();
 
@@ -63,18 +67,18 @@ public class EnemyController : MonoBehaviour {
 
     private void FixedUpdate() {
 
-        this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
+        // this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
 
 
         if(isAlive) {
 
             resetAnims();
 
-            this.agentPos.transform.LookAt(this.player);
+            // this.agentPos.transform.LookAt(this.player);
             this.timeSinceLastAttack += Time.fixedDeltaTime;
 
             if(this.player){
-                this.agent.SetDestination(this.player.position);
+                this.agent.destination = player.position;
             }
 
             if(this.player && this.canMove){
