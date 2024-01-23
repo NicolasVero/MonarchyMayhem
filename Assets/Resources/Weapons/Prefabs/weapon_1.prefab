@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8408109709729633621}
   - component: {fileID: 417134569252294082}
   - component: {fileID: 2498100040833154449}
+  - component: {fileID: 5362830195673420470}
   m_Layer: 0
-  m_Name: PP_Theme_01_Axe_Two_Handed_002
+  m_Name: weapon_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,3 +135,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5362830195673420470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047764633477264512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049672b27b524394a8762d3c2f17a4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

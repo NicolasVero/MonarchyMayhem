@@ -67,9 +67,6 @@ public class EnemyController : MonoBehaviour {
 
     private void FixedUpdate() {
 
-        // this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
-
-
         if(isAlive) {
 
             resetAnims();
