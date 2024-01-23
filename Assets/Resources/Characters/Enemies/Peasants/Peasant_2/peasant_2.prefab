@@ -279,10 +279,10 @@ PrefabInstance:
       addedObject: {fileID: 7949515469733799992}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2667805369415273404}
+      addedObject: {fileID: 3961606576914789019}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3961606576914789019}
+      addedObject: {fileID: -5825927434458590427}
     - targetCorrespondingSourceObject: {fileID: -6537840387168324062, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5541805319082878982}
@@ -521,18 +521,6 @@ CapsuleCollider:
   m_Height: 2.08
   m_Direction: 1
   m_Center: {x: 0, y: 1.03, z: 0}
---- !u!114 &2667805369415273404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5433868032060976591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &3961606576914789019
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -560,6 +548,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5825927434458590427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433868032060976591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsDropper: {fileID: 0}
 --- !u!4 &5661240497419542693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8558713124228026309, guid: 81d26f3050fa7474fb97a01f09fc5d88, type: 3}

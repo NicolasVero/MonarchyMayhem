@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour {
             this.xp          = enemy.xp;
         }
 
-
+        this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
         this.agent = GetComponent<NavMeshAgent>();
         this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
         this.collectParticle = this.GetComponentInChildren<ParticleSystem>();
@@ -175,7 +175,7 @@ public class EnemyController : MonoBehaviour {
 
         double probabilite = probabiliteInitiale * Mathf.Pow((float)random.NextDouble(), 2);
 
-        int resultat = random.Next(1, this.weaponsDropper.GetWeaponsListLength() + 1);
+        int resultat = random.Next(0, this.weaponsDropper.GetWeaponsListLength());
 
         return (random.NextDouble() < probabilite) ? resultat : GiveRandomWeaponID();
     }

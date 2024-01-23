@@ -2,7 +2,7 @@ using System;
 
 [Serializable]
 public class WeaponsStats {
-    public WeaponStat[] weaponStats;
+    public WeaponStat[] weapons;
 }
 
 [Serializable]

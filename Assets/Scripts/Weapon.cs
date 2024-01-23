@@ -1,41 +1,53 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
-    private int id;
-    private int attack;
-    private int knockback;
-    private float range;
-    private float attackSpeed;
-    private float speed;
-    private int weaponType;
+    public string name;
+    public string tier;
+    public int id;
+    public int attack;
+    public float knockback;
+    public float range;
+    public float attackSpeed;
+    public int weaponID;
 
     void Start()
     {
-        this.weaponType = Weapon.getWeaponType(gameObject.name);
-        Debug.Log("sauvé ?");
-        Debug.Log(weaponType);
+        this.weaponID = Weapon.getWeaponID(gameObject.name);
+
+        // Debug.Log(this.weaponID);
 
         TextAsset weaponsList = Resources.Load<TextAsset>("Data/WeaponsStats");
-        
+
+
+
+
+
+
         if(weaponsList != null) {
-            Debug.Log(weaponsList);
             WeaponsStats weaponsStats = JsonUtility.FromJson<WeaponsStats>(weaponsList.text);
-            // WeaponStat weaponStat = Array.Find(weaponsStats.weapons, e => e.id)
+            WeaponStat weapon = Array.Find(weaponsStats.weapons, e => e.id == this.weaponID);
+
+            Debug.Log(weapon.name);
+            this.name = weapon.name;
+            this.tier = weapon.tier;
+            this.attack = weapon.attack;
+            this.range = weapon.range;
+            this.attackSpeed = weapon.attackSpeed;
+            this.knockback = weapon.knockback;
+
+
         }       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private static int getWeaponID(string name) {
+        name = name.Replace("(Clone)", "");
         
-    }
+        return Convert.ToInt32(name.Split('_')[1]);
 
-    private static int getWeaponType(string name) {
-        return System.Int32.Parse(name.Split('_')[1]);
     }
 }
