@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     public float knockback;
     public float range;
     public float attackSpeed;
+    public float speed;
     public int weaponID;
 
     void Start()
@@ -38,6 +39,7 @@ public class Weapon : MonoBehaviour
             this.range = weapon.range;
             this.attackSpeed = weapon.attackSpeed;
             this.knockback = weapon.knockback;
+            this.speed = weapon.speed;
 
 
         }       

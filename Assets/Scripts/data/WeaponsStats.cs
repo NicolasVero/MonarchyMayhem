@@ -14,4 +14,5 @@ public class WeaponStat {
     public float range;
     public float attackSpeed;
     public float knockback;
+    public float speed;
 }

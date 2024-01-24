@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour {
     private float weaponRange;
     private float weaponAttackSpeed;
     private float weaponKnockback;
+    private float weaponSpeed;
 
     private SphereCollider rangeCollider;
     private Animator animator;
@@ -178,6 +179,7 @@ public class PlayerController : MonoBehaviour {
             this.weaponRange = weapon.range;
             this.weaponAttackSpeed = weapon.attackSpeed;
             this.weaponKnockback = weapon.knockback;
+            this.weaponSpeed = weapon.speed;
         }
 
 
@@ -186,11 +188,11 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-
-        Debug.Log(this.weaponAttack);
-        Debug.Log(this.weaponRange);
-        Debug.Log(this.weaponAttackSpeed);
-        Debug.Log(this.weaponKnockback);
+        Debug.Log("weaponAttack : " + this.weaponAttack);
+        Debug.Log("weaponRange : " + this.weaponRange);
+        Debug.Log("weaponAttackSpeed : " + this.weaponAttackSpeed);
+        Debug.Log("weaponKnockback : " + this.weaponKnockback);
+        Debug.Log("weaponSpeed : " + this.weaponSpeed);
 
         this.Move();
 
