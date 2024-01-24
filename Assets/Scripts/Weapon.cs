@@ -27,7 +27,6 @@ public class Weapon : MonoBehaviour
 
 
 
-
         if(weaponsList != null) {
             WeaponsStats weaponsStats = JsonUtility.FromJson<WeaponsStats>(weaponsList.text);
             WeaponStat weapon = Array.Find(weaponsStats.weapons, e => e.id == this.weaponID);

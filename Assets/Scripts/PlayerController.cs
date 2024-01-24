@@ -80,6 +80,12 @@ public class PlayerController : MonoBehaviour {
     private int speedLevel = 1;
     private int regenerationLevel = 1;
 
+
+    private int weaponAttack;
+    private float weaponRange;
+    private float weaponAttackSpeed;
+    private float weaponKnockback;
+
     private SphereCollider rangeCollider;
     private Animator animator;
     private Vector3 moveDirection;
@@ -165,10 +171,26 @@ public class PlayerController : MonoBehaviour {
             this.hudStats.changeAutoAttackStatus(this.enableAutomaticAttack);
         }
         
+        if (Input.GetKeyDown(KeyCode.E)) {
+            var weapon = GetTheNearestWeapon();
+
+            this.weaponAttack = weapon.attack;
+            this.weaponRange = weapon.range;
+            this.weaponAttackSpeed = weapon.attackSpeed;
+            this.weaponKnockback = weapon.knockback;
+        }
+
+
         DrawCircleAroundPlayer();
     }
 
     void FixedUpdate() {
+
+
+        Debug.Log(this.weaponAttack);
+        Debug.Log(this.weaponRange);
+        Debug.Log(this.weaponAttackSpeed);
+        Debug.Log(this.weaponKnockback);
 
         this.Move();
 
@@ -427,4 +449,51 @@ public class PlayerController : MonoBehaviour {
             this.animator.SetTrigger("Attack");
         }
     }
+
+
+
+
+
+
+
+
+
+    private Weapon GetTheNearestWeapon() {
+
+        GameObject weaponsObject = GameObject.Find("Weapons");
+
+        if(weaponsObject != null) {
+
+            Weapon[] weapons = weaponsObject.GetComponentsInChildren<Weapon>();
+            
+            float minimalDistance = float.MaxValue;
+            Weapon nearestWeapon = null;
+
+            foreach(var weapon in weapons) {
+                float distance = Vector3.Distance(transform.position, weapon.transform.position);
+
+                if(distance < minimalDistance) {
+                    minimalDistance = distance;
+                    nearestWeapon = weapon;
+                }
+            }
+
+            if(nearestWeapon != null) {
+                // Debug.Log("Arme la plus proche : " + nearestWeapon.name);
+                return nearestWeapon;
+
+
+
+
+            }
+
+
+        }
+        
+        return null;
+    }
+
+
+
+
 }
