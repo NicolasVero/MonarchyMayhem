@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour {
     private int regenerationLevel = 1;
 
 
-    private int weaponAttack;
+    private int   weaponAttack;
     private float weaponRange;
     private float weaponAttackSpeed;
     private float weaponKnockback;
@@ -108,9 +108,6 @@ public class PlayerController : MonoBehaviour {
 
         this.healthBar.maxValue = this.getMaxHealth();
         this.healthBar.value = this.getHealth();
-
-        var aff = Instantiate(weapon, transform.position, Quaternion.identity);
-        Debug.Log(aff);
     }
 
     public void loadAttributes() {
@@ -175,11 +172,17 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             var weapon = GetTheNearestWeapon();
 
-            this.weaponAttack = weapon.attack;
-            this.weaponRange = weapon.range;
-            this.weaponAttackSpeed = weapon.attackSpeed;
-            this.weaponKnockback = weapon.knockback;
-            this.weaponSpeed = weapon.speed;
+            if(weapon != null) {
+                this.weaponAttack = weapon.attack;
+                this.weaponRange = weapon.range;
+                this.weaponAttackSpeed = weapon.attackSpeed;
+                this.weaponKnockback = weapon.knockback;
+                this.weaponSpeed = weapon.speed;
+
+                this.DestroyWeapon(weapon);
+
+                this.hudStats.updateStats();
+            }
         }
 
 
@@ -202,6 +205,16 @@ public class PlayerController : MonoBehaviour {
         this.goingAttack = false;
         this.timerAttack();
         this.timerRegeneration();
+    }
+
+    private void DestroyWeapon(Weapon weapon) {
+        var renderer = weapon.GetComponent<Renderer>();
+        var collider = weapon.GetComponent<Collider>();
+
+        if (renderer != null) Destroy(renderer);
+        if (collider != null) Destroy(collider);
+
+        Destroy(weapon);
     }
 
     public void timerAttack() {
@@ -370,7 +383,13 @@ public class PlayerController : MonoBehaviour {
     public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
     public int getRangeLevel()       { return this.rangeLevel;       }
     public int getSpeedLevel()       { return this.speedLevel;       }
-    public int getRegenerationLevel()       { return this.regenerationLevel;       }
+    public int getRegenerationLevel() { return this.regenerationLevel;       }
+
+    public int   getWeaponAttack() { return this.weaponAttack; }
+    public float getWeaponRange() { return this.weaponRange; }
+    public float getWeaponAttackSpeed() { return this.weaponAttackSpeed; }
+    public float getWeaponKnockback() { return this.weaponKnockback; }
+    public float getWeaponSpeed() { return this.weaponSpeed; }
 
 
     private void setXPBar(int xp) {
@@ -480,16 +499,9 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if(nearestWeapon != null) {
-                // Debug.Log("Arme la plus proche : " + nearestWeapon.name);
+            if(nearestWeapon != null) 
                 return nearestWeapon;
-
-
-
-
-            }
-
-
+            
         }
         
         return null;

@@ -47,8 +47,6 @@ public class Weapon : MonoBehaviour
 
     private static int getWeaponID(string name) {
         name = name.Replace("(Clone)", "");
-        
         return Convert.ToInt32(name.Split('_')[1]);
-
     }
 }

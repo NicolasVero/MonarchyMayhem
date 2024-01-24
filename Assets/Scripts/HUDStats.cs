@@ -16,6 +16,14 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI speedStat;
     [SerializeField] private TextMeshProUGUI regenerationStat;
 
+    [Header("Secondary Text Mesh")]
+    [SerializeField] private TextMeshProUGUI weaponAttack;
+    [SerializeField] private TextMeshProUGUI weaponAttackSpeed;
+    [SerializeField] private TextMeshProUGUI weaponRange;
+    [SerializeField] private TextMeshProUGUI weaponSpeed;
+    [SerializeField] private TextMeshProUGUI weaponKnockback;
+
+
     [Header("Images")]
     [SerializeField] private RawImage attackIcon;
     [SerializeField] private RawImage attackSpeedIcon;
@@ -47,6 +55,36 @@ public class HUDStats : MonoBehaviour {
         resistanceStat.text   = "" + player.getResistance();
         speedStat.text        = "" + player.getSpeed();
         regenerationStat.text = "" + player.getRegeneration();
+
+        weaponAttack.text = "";
+        weaponRange.text = "";
+        weaponAttackSpeed.text = "";
+        weaponSpeed.text = "";
+
+        if(player.getWeaponAttack() != 0) {
+            weaponAttack.text = "" + player.getWeaponAttack();
+            weaponAttack.color = (player.getWeaponAttack() > 0) ? Color.green : Color.red;
+        }
+
+        if(player.getWeaponRange() != 0) {
+            weaponRange.text = "" + player.getWeaponRange();
+            weaponRange.color = (player.getWeaponRange() > 0) ? Color.green : Color.red;
+        }
+    
+        if(player.getWeaponAttackSpeed() != 0) {
+            weaponAttackSpeed.text = "" + player.getWeaponAttackSpeed();
+            weaponAttackSpeed.color = (player.getWeaponAttackSpeed() > 0) ? Color.green : Color.red;
+        }
+
+        if(player.getWeaponSpeed() != 0) {
+            weaponSpeed.text = "" + player.getWeaponSpeed();
+            weaponSpeed.color = (player.getWeaponSpeed() > 0) ? Color.green : Color.red;
+        }
+
+        // weaponAttack.text = player.getWeaponAttack() != 0 ? "" + player.getWeaponAttack() : "";
+        // weaponRange.text = player.getWeaponRange() != 0 ? "" + player.getWeaponRange() : "";
+        // weaponAttackSpeed.text = player.getWeaponAttackSpeed() != 0 ? "" + player.getWeaponAttackSpeed() : "";
+        // weaponSpeed.text = player.getWeaponSpeed() != 0 ? "" + player.getWeaponSpeed() : "";
     }
     
     public void maxAttack() {
