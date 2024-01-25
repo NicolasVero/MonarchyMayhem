@@ -32,6 +32,8 @@ public class Weapon : MonoBehaviour
             this.attackSpeed = weapon.attackSpeed;
             this.knockback = weapon.knockback;
             this.speed = weapon.speed;
+
+            Debug.Log(weapon.id);
         }       
     }
 
