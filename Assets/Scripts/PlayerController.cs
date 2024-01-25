@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void TimerAttack() {
-        if(this.timeSinceLastAttack >= this.attackSpeed) {  
+        if(this.timeSinceLastAttack >= this.attackSpeed + this.weaponAttackSpeed) {  
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
         }
