@@ -11,6 +11,7 @@ public class WeaponsDropper : MonoBehaviour {
         position.y += (position.y > 1.5) ? 0 : 1;
         var instance = Instantiate(models[weaponID], position, Quaternion.Euler(0f, 0f, 90f));
         instance.transform.parent = this.weaponsContainer.transform;
+        Debug.Log("create");
     }
 
     public int GetWeaponsListLength() {

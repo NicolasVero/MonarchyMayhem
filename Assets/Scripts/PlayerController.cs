@@ -71,7 +71,8 @@ public class PlayerController : MonoBehaviour {
     private int speedLevel = 1;
     private int regenerationLevel = 1;
 
-
+    private int weaponID;
+    private string weaponName;
     private int   weaponAttack;
     private float weaponAttackSpeed;
     private float weaponKnockback;
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 moveDirection;
 
     [SerializeField] GameObject weapon;
+    [SerializeField] private WeaponsDropper weaponsDropper;
 
 
     void Awake() {
@@ -116,6 +118,13 @@ public class PlayerController : MonoBehaviour {
             var weapon = GetTheNearestWeapon();
 
             if(weapon != null) {
+
+                if(this.weaponName != null) {
+                    this.weaponsDropper.CreateWeapon(this.weaponID - 1, transform.position);
+                }
+
+                this.weaponID = weapon.id;
+                this.weaponName = weapon.name;
                 this.weaponAttack = weapon.attack;
                 this.weaponAttackSpeed = weapon.attackSpeed;
                 this.weaponKnockback = weapon.knockback;
@@ -380,32 +389,33 @@ public class PlayerController : MonoBehaviour {
 
 
     // Getters
-    public bool GetCanResume()          {return this.canResume && this.isAlive; }
-    public int GetKillCounter()         {return this.enemyKillCounter;   }
-
-    public int GetResistance()          { return this.resistance;        }
-    public int GetAttack()              { return this.attack;            }
-    public int GetHealth()              { return this.health;            }
-    public int GetMaxHealth()           { return this.maxHealth;         }
-    public int GetLevel()               { return this.level;             }
-    public float GetAttackSpeed()       { return this.attackSpeed;       }
-    public float GetRange()             { return this.range;             }
-    public float GetSpeed()             { return this.speed;             }
-    public float GetRegeneration()      { return this.regeneration;      }
-  
-    public int GetHealthLevel()         { return this.healthLevel;       }
-    public int GetResistanceLevel()     { return this.resistanceLevel;   }
-    public int GetAttackLevel()         { return this.attackLevel;       }
-    public int GetAttackSpeedLevel()    { return this.attackSpeedLevel;  }
-    public int GetRangeLevel()          { return this.rangeLevel;        }
-    public int GetSpeedLevel()          { return this.speedLevel;        }
-    public int GetRegenerationLevel()   { return this.regenerationLevel; }
-  
-    public int GetWeaponAttack()        { return this.weaponAttack;      }
-    public float GetWeaponRange()       { return this.weaponRange;       }
-    public float GetWeaponAttackSpeed() { return this.weaponAttackSpeed; }
-    public float GetWeaponKnockback()   { return this.weaponKnockback;   }
-    public float GetWeaponSpeed()       { return this.weaponSpeed;       }
+    public bool GetCanResume()           { return this.canResume && this.isAlive; }
+    public int GetKillCounter()          { return this.enemyKillCounter;   }
+ 
+    public int GetResistance()           { return this.resistance;         }
+    public int GetAttack()               { return this.attack;             }
+    public int GetHealth()               { return this.health;             }
+    public int GetMaxHealth()            { return this.maxHealth;          }
+    public int GetLevel()                { return this.level;              }
+    public float GetAttackSpeed()        { return this.attackSpeed;        }
+    public float GetRange()              { return this.range;              }
+    public float GetSpeed()              { return this.speed;              }
+    public float GetRegeneration()       { return this.regeneration;       }
+    
+    public int GetHealthLevel()          { return this.healthLevel;        }
+    public int GetResistanceLevel()      { return this.resistanceLevel;    }
+    public int GetAttackLevel()          { return this.attackLevel;        }
+    public int GetAttackSpeedLevel()     { return this.attackSpeedLevel;   }
+    public int GetRangeLevel()           { return this.rangeLevel;         }
+    public int GetSpeedLevel()           { return this.speedLevel;         }
+    public int GetRegenerationLevel()    { return this.regenerationLevel;  }
+    
+    public int GetWeaponAttack()         { return this.weaponAttack;       }
+    public float GetWeaponRange()        { return this.weaponRange;        }
+    public float GetWeaponAttackSpeed()  { return this.weaponAttackSpeed;  }
+    public float GetWeaponKnockback()    { return this.weaponKnockback;    }
+    public float GetWeaponSpeed()        { return this.weaponSpeed;        }
+    public float GetWeaponRegeneration() { return this.weaponRegeneration; }
 
 
     // Setters

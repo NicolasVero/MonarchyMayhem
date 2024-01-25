@@ -372,11 +372,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78701ebbcc1b43b4199d25059144c5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUpChoice: {fileID: 0}
-  healthBar: {fileID: 0}
   xpBar: {fileID: 0}
-  hudStats: {fileID: 0}
+  healthBar: {fileID: 0}
   levelUpPanel: {fileID: 0}
+  levelUpChoice: {fileID: 0}
+  hudStats: {fileID: 0}
+  weapon: {fileID: 0}
+  weaponsDropper: {fileID: 0}
 --- !u!135 &4507765220128949099
 SphereCollider:
   m_ObjectHideFlags: 0

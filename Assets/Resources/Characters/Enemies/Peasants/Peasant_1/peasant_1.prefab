@@ -5279,6 +5279,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPosition: {fileID: 0}
+  enemyPosition: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  animator: {fileID: 0}
+  attackParticle: {fileID: 0}
+  playerController: {fileID: 0}
+  weaponsDropper: {fileID: 0}
 --- !u!54 &7283812307746788697
 Rigidbody:
   m_ObjectHideFlags: 0

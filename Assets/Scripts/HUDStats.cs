@@ -12,14 +12,15 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI attackStat;
     [SerializeField] private TextMeshProUGUI attackSpeedStat;
     [SerializeField] private TextMeshProUGUI rangeStat;
+    [SerializeField] private TextMeshProUGUI regenerationStat;
     [SerializeField] private TextMeshProUGUI resistanceStat;
     [SerializeField] private TextMeshProUGUI speedStat;
-    [SerializeField] private TextMeshProUGUI regenerationStat;
 
     [Header("Secondary Text Mesh")]
     [SerializeField] private TextMeshProUGUI weaponAttack;
     [SerializeField] private TextMeshProUGUI weaponAttackSpeed;
     [SerializeField] private TextMeshProUGUI weaponRange;
+    [SerializeField] private TextMeshProUGUI weaponRegeneration;
     [SerializeField] private TextMeshProUGUI weaponSpeed;
 
 
@@ -27,9 +28,9 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage attackIcon;
     [SerializeField] private RawImage attackSpeedIcon;
     [SerializeField] private RawImage rangeIcon;
+    [SerializeField] private RawImage regenerationIcon;
     [SerializeField] private RawImage resistanceIcon;
     [SerializeField] private RawImage speedIcon;
-    [SerializeField] private RawImage regenerationIcon;
 
 
     [Header("Auto attack")]
@@ -58,6 +59,7 @@ public class HUDStats : MonoBehaviour {
         weaponRange.text = "";
         weaponAttackSpeed.text = "";
         weaponSpeed.text = "";
+        weaponRegeneration.text = "";
 
         if(player.GetWeaponAttack() != 0) {
             weaponAttack.text = "" + player.GetWeaponAttack();
@@ -77,6 +79,11 @@ public class HUDStats : MonoBehaviour {
         if(player.GetWeaponSpeed() != 0) {
             weaponSpeed.text = "" + player.GetWeaponSpeed();
             weaponSpeed.color = (player.GetWeaponSpeed() > 0) ? Color.green : Color.red;
+        }
+
+        if(player.GetWeaponRegeneration() != 0) {
+            weaponRegeneration.text = "" + player.GetWeaponRegeneration();
+            weaponRegeneration.color = (player.GetWeaponRegeneration() > 0) ? Color.green : Color.red;
         }
     }
     
