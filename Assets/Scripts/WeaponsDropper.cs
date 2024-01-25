@@ -14,6 +14,6 @@ public class WeaponsDropper : MonoBehaviour {
     }
 
     public int GetWeaponsListLength() {
-        return models.Length;
+        return this.models.Length;
     }
 }

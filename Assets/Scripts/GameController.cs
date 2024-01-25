@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    public static void setGameState() {
+    public static void SetGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }
     
-    public static void setGameState(bool state) {
+    public static void SetGameState(bool state) {
         Time.timeScale = (state) ? 1 : 0;
     }
 
-    public static bool gameIsFreeze() {
+    public static bool GameIsFreeze() {
         return Time.timeScale == 0;
     }
 
-    public static void setCursorVisibility(bool state) {
+    public static void SetCursorVisibility(bool state) {
         Cursor.visible = state;
         Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
-    public static void setPanelVisibility(GameObject panel, bool state) {
+    public static void SetPanelVisibility(GameObject panel, bool state) {
         panel.SetActive(state);
     }
 }

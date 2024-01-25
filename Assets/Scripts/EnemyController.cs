@@ -97,8 +97,8 @@ public class EnemyController : MonoBehaviour {
             this.Death();
 
             if(!this.deathCount) {
-                this.playerController.incrementKillCounter();
-                this.playerController.incrementStatCounter();
+                this.playerController.IncrementKillCounter();
+                this.playerController.IncrementStatCounter();
                 this.deathCount = true;
             }
         }

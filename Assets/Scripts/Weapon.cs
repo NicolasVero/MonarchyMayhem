@@ -16,23 +16,15 @@ public class Weapon : MonoBehaviour
     public float speed;
     public int weaponID;
 
-    void Start()
-    {
-        this.weaponID = Weapon.getWeaponID(gameObject.name);
+    void Start() {
 
-        // Debug.Log(this.weaponID);
-
+        this.weaponID = Weapon.GetWeaponID(gameObject.name);
         TextAsset weaponsList = Resources.Load<TextAsset>("Data/WeaponsStats");
-
-
-
-
 
         if(weaponsList != null) {
             WeaponsStats weaponsStats = JsonUtility.FromJson<WeaponsStats>(weaponsList.text);
             WeaponStat weapon = Array.Find(weaponsStats.weapons, e => e.id == this.weaponID);
 
-            Debug.Log(weapon.name);
             this.name = weapon.name;
             this.tier = weapon.tier;
             this.attack = weapon.attack;
@@ -40,12 +32,10 @@ public class Weapon : MonoBehaviour
             this.attackSpeed = weapon.attackSpeed;
             this.knockback = weapon.knockback;
             this.speed = weapon.speed;
-
-
         }       
     }
 
-    private static int getWeaponID(string name) {
+    private static int GetWeaponID(string name) {
         name = name.Replace("(Clone)", "");
         return Convert.ToInt32(name.Split('_')[1]);
     }

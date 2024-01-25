@@ -33,7 +33,7 @@ public class LevelUpChoice : MonoBehaviour {
         };
     }
 
-    public void updateStatsDisplay() {
+    public void UpdateStatsDisplay() {
 
         this.bannersLevel = new int[] {
             this.playerController.GetAttackLevel(),
@@ -51,63 +51,63 @@ public class LevelUpChoice : MonoBehaviour {
             if(this.bannersLevel[i] > 5) 
                 isMaxLevel.Add(i);
             
-        int[] excludes = this.generateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
+        int[] excludes = this.GenerateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
 
 
-        GameController.setGameState(false);
-        GameController.setPanelVisibility(levelUpPanel, true);
-        this.hideBanners(excludes);
-        GameController.setCursorVisibility(true);
+        GameController.SetGameState(false);
+        GameController.SetPanelVisibility(levelUpPanel, true);
+        this.HideBanners(excludes);
+        GameController.SetCursorVisibility(true);
     }
 
-    public void choiceAttack() {
-        this.playerController.updateAttack();
-        this.resumeGame();
+    public void ChoiceAttack() {
+        this.playerController.UpdateAttack();
+        this.ResumeGame();
     }
 
-    public void choiceHealth() {
-        this.playerController.updateHealth();
-        this.resumeGame();
+    public void ChoiceHealth() {
+        this.playerController.UpdateHealth();
+        this.ResumeGame();
     }
 
-    public void choiceResistance() {
-        this.playerController.updateResistance();
-        this.resumeGame();
+    public void ChoiceResistance() {
+        this.playerController.UpdateResistance();
+        this.ResumeGame();
     }
 
-    public void choiceAttackSpeed() {
-        this.playerController.updateAttackSpeed();
-        this.resumeGame();
+    public void ChoiceAttackSpeed() {
+        this.playerController.UpdateAttackSpeed();
+        this.ResumeGame();
     }
 
-    public void choiceRange() {
-        this.playerController.updateRange();
-        this.resumeGame();
+    public void ChoiceRange() {
+        this.playerController.UpdateRange();
+        this.ResumeGame();
     }
 
-    public void choiceSpeed() {
-        this.playerController.updateSpeed();
-        this.resumeGame();
+    public void ChoiceSpeed() {
+        this.playerController.UpdateSpeed();
+        this.ResumeGame();
     }
 
-    public void choiceRegeneration() {
-        this.playerController.updateRegeneration();
-        this.resumeGame();
+    public void ChoiceRegeneration() {
+        this.playerController.UpdateRegeneration();
+        this.ResumeGame();
     }
 
-    void resumeGame() {
-        this.playerController.setCanResume(true);
+    void ResumeGame() {
+        this.playerController.SetCanResume(true);
         this.hudStats.UpdateStats();
         
         for(int i = 0; i < this.bannersLength; i++)
-            GameController.setPanelVisibility(banners[i], true);
+            GameController.SetPanelVisibility(banners[i], true);
 
-        GameController.setGameState(true);
-        GameController.setCursorVisibility(false);
-        GameController.setPanelVisibility(levelUpPanel, false);   
+        GameController.SetGameState(true);
+        GameController.SetCursorVisibility(false);
+        GameController.SetPanelVisibility(levelUpPanel, false);   
     }
 
-    public int[] generateUniquesRandom(int min, int max, int[] excludes) {
+    public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
 
         while(uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
@@ -121,7 +121,7 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
 
-    private void hideBanners(int[] excludes) {
+    private void HideBanners(int[] excludes) {
         int[][] positions = {
             new int[] { 400, 225},
             new int[] { 700, 225},
@@ -129,7 +129,7 @@ public class LevelUpChoice : MonoBehaviour {
         };
 
         for(int i = 0; i < this.bannersLength; i++) 
-            GameController.setPanelVisibility(this.banners[i], false);
+            GameController.SetPanelVisibility(this.banners[i], false);
         
         int cpt = 0;
 
@@ -140,7 +140,7 @@ public class LevelUpChoice : MonoBehaviour {
                 rectTransform.sizeDelta = new Vector2(175, 350);
 
                 this.banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
-                GameController.setPanelVisibility(this.banners[i], true);
+                GameController.SetPanelVisibility(this.banners[i], true);
 
                 cpt++;
 

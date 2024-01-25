@@ -21,7 +21,6 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI weaponAttackSpeed;
     [SerializeField] private TextMeshProUGUI weaponRange;
     [SerializeField] private TextMeshProUGUI weaponSpeed;
-    [SerializeField] private TextMeshProUGUI weaponKnockback;
 
 
     [Header("Images")]
@@ -87,49 +86,49 @@ public class HUDStats : MonoBehaviour {
         // weaponSpeed.text = player.getWeaponSpeed() != 0 ? "" + player.getWeaponSpeed() : "";
     }
     
-    public void maxAttack() {
+    public void MaxAttack() {
         Texture2D attackTexture = Resources.Load<Texture2D>(this.bannersPath + "max_attack");
         if(attackTexture != null) {
             this.attackIcon.texture = attackTexture;
         }
     }
 
-    public void maxAttackSpeed() {
+    public void MaxAttackSpeed() {
         Texture2D attackSpeedTexture = Resources.Load<Texture2D>(this.bannersPath + "max_attack_speed");
         if(attackSpeedTexture != null) {
             this.attackSpeedIcon.texture = attackSpeedTexture;
         }
     }
 
-    public void maxRange() {
+    public void MaxRange() {
         Texture2D rangeTexture = Resources.Load<Texture2D>(this.bannersPath + "max_range");
         if(rangeTexture != null) {
             this.rangeIcon.texture = rangeTexture;
         }
     }
 
-    public void maxResistance() {
+    public void MaxResistance() {
         Texture2D resistanceTexture = Resources.Load<Texture2D>(this.bannersPath + "max_resistance");
         if(resistanceTexture != null) {
             this.resistanceIcon.texture = resistanceTexture;
         }
     }
 
-    public void maxSpeed() {
+    public void MaxSpeed() {
         Texture2D speedTexture = Resources.Load<Texture2D>(this.bannersPath + "max_speed");
         if(speedTexture != null) {
             this.speedIcon.texture = speedTexture;
         }
     }
 
-    public void maxRegeneration() {
+    public void MaxRegeneration() {
         Texture2D regenerationTexture = Resources.Load<Texture2D>(this.bannersPath + "max_regeneration");
         if(regenerationTexture != null) {
             this.regenerationIcon.texture = regenerationTexture;
         }
     }
 
-    public void changeAutoAttackStatus(bool status) {
+    public void ChangeAutoAttackStatus(bool status) {
         string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";
         Texture2D attackAutoTexture = Resources.Load<Texture2D>(textureLink);
         if(attackAutoTexture != null) {

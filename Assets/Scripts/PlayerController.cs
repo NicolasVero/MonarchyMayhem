@@ -97,10 +97,10 @@ public class PlayerController : MonoBehaviour {
 
 
     void Awake() {
-        this.setHealthBarMax(this.maxHealth);
+        this.SetHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
-        GameController.setPanelVisibility(this.levelUpPanel, false);
+        GameController.SetPanelVisibility(this.levelUpPanel, false);
         this.LoadAttributes();
 
         this.xpBar.maxValue = 1;
@@ -159,14 +159,14 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
-            GameController.setGameState();
+            GameController.SetGameState();
 
         if(Input.GetKeyDown(KeyCode.U)) 
             this.XPGain(1);
 
-        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.gameIsFreeze()) {
+        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze()) {
             this.enableAutomaticAttack = !this.enableAutomaticAttack;
-            this.hudStats.changeAutoAttackStatus(this.enableAutomaticAttack);
+            this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
         }
         
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamage(int damage) {
 
         this.health -= Mathf.RoundToInt(damage * 1.0f - (float) this.resistance / 100.0f);
-        this.setHealthBar(this.health);
+        this.SetHealthBar(this.health);
 
         if(this.health <= 0) {
             this.isAlive = false;
@@ -259,12 +259,12 @@ public class PlayerController : MonoBehaviour {
         if(this.health >= this.maxHealth) 
             this.health = this.maxHealth;
         
-        this.setHealthBar(this.health);
+        this.SetHealthBar(this.health);
     }
 
     public void XPGain(int xpAmount) {
         this.totalXP += xpAmount;
-        this.addXPBar(xpAmount);
+        this.AddXPBar(xpAmount);
         
         if(this.totalXP >= this.xpRequired && this.level < this.maxLevel) {
             this.level++;
@@ -272,20 +272,21 @@ public class PlayerController : MonoBehaviour {
             this.xpRequired += this.xpToNext;
             this.xp = 0;
 
-            this.setXPBarMax(this.xpToNext);
-            this.setXPBar(0);
+            this.SetXPBarMax(this.xpToNext);
+            this.SetXPBar(0);
 
-            this.setCanResume(false);
+            this.SetCanResume(false);
 
-            this.levelUpChoice.updateStatsDisplay();
+            this.levelUpChoice.UpdateStatsDisplay();
         }
     }
 
-    public bool getCanResume() {
+    public bool GetCanResume() {
         return this.canResume && this.isAlive;
     }
 
-    public void setCanResume(bool statut) {
+    //TODO voir pour mettre dans GameController
+    public void SetCanResume(bool statut) {
         this.canResume = statut;
     }
 
@@ -294,65 +295,65 @@ public class PlayerController : MonoBehaviour {
         return 5;
     }
 
-    public void updateResistance() {
+    public void UpdateResistance() {
         this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
         if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
-        if(this.resistanceLevel > 5) this.hudStats.maxResistance();
+        if(this.resistanceLevel > 5) this.hudStats.MaxResistance();
     }
 
-    public void updateAttackSpeed() {
+    public void UpdateAttackSpeed() {
         this.attackSpeed += this.increaseAttackSpeed[this.attackSpeedLevel - 1];
         this.attackSpeedLevel++;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
-        if(this.attackSpeed > 5) this.hudStats.maxAttackSpeed();
+        if(this.attackSpeed > 5) this.hudStats.MaxAttackSpeed();
     }
 
-    public void updateRange() {
+    public void UpdateRange() {
         this.range += this.increaseRange[this.rangeLevel - 1];
         this.rangeLevel++;
         if(this.range > this.maxRange) this.range = this.maxRange;
-        if(this.rangeLevel > 5) this.hudStats.maxRange();
+        if(this.rangeLevel > 5) this.hudStats.MaxRange();
 
         this.rangeCollider.radius = this.range + this.weaponRange;
     }
 
-    public void updateHealth() {
+    public void UpdateHealth() {
         this.health += this.increaseHealth[this.healthLevel - 1];
         this.healthLevel++;
         if(this.health > this.maxHealth) this.health = this.maxHealth;
             
-        this.setHealthBar(this.health);
+        this.SetHealthBar(this.health);
     }
 
-    public void updateAttack() {
+    public void UpdateAttack() {
         this.attack += this.increaseAttack[this.attackLevel - 1];
         this.knockback += this.increaseKnockback[this.attackLevel - 1];
         this.attackLevel++;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
         if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
-        if(this.attackLevel > 5) this.hudStats.maxAttack();
+        if(this.attackLevel > 5) this.hudStats.MaxAttack();
     }
 
-    public void updateSpeed() {
+    public void UpdateSpeed() {
         this.speed += this.increaseSpeed[this.speedLevel - 1];
         this.speedLevel++;
         if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
-        if(this.speedLevel > 5) this.hudStats.maxSpeed();
+        if(this.speedLevel > 5) this.hudStats.MaxSpeed();
     }
 
-    public void updateRegeneration() {
+    public void UpdateRegeneration() {
         this.regeneration += this.increaseRegeneration[this.regenerationLevel - 1];
         this.regenerationLevel++;
         if(this.regeneration > this.maxRegeneration) this.regeneration = this.maxRegeneration;
-        if(this.regenerationLevel > 5) this.hudStats.maxRegeneration();
+        if(this.regenerationLevel > 5) this.hudStats.MaxRegeneration();
     }
 
-    public void incrementKillCounter() {
+    public void IncrementKillCounter() {
         this.enemyKillCounter++;
     }
 
-    public void incrementStatCounter() {
+    public void IncrementStatCounter() {
         this.hudStats.UpdateStats();
     }
 
@@ -385,23 +386,23 @@ public class PlayerController : MonoBehaviour {
     public float GetWeaponSpeed() { return this.weaponSpeed; }
 
 
-    private void setXPBar(int xp) {
+    private void SetXPBar(int xp) {
         this.xpBar.value = xp;
     }
 
-    private void addXPBar(int xp) {
+    private void AddXPBar(int xp) {
         this.xpBar.value += xp;
     } 
 
-    private void setXPBarMax(int max) {
+    private void SetXPBarMax(int max) {
         this.xpBar.maxValue = max;
     }
 
-    private void setHealthBar(int hp) {
+    private void SetHealthBar(int hp) {
         this.healthBar.value = hp;
     }
 
-    private void setHealthBarMax(int max) {
+    private void SetHealthBarMax(int max) {
         this.healthBar.maxValue = max;
     }
 
@@ -414,11 +415,11 @@ public class PlayerController : MonoBehaviour {
         this.moveDirection = new Vector3(0, 0, moveZ);
         this.moveDirection = this.transform.TransformDirection(this.moveDirection);
 
-        moveAnims();
+        MoveAnims();
     }
 
 
-    private void resetAnims() {
+    private void ResetAnims() {
         this.animator.SetBool("Idle", false);
         this.animator.SetInteger("Walk", 0);
         this.animator.SetInteger("Strafe", 0);
@@ -426,8 +427,8 @@ public class PlayerController : MonoBehaviour {
         this.animator.SetInteger("Strafe_Backward", 0);
     }
 
-    private void moveAnims() {
-        resetAnims();
+    private void MoveAnims() {
+        ResetAnims();
         
         if (Input.GetAxis("Vertical") > 0) {
             if(Input.GetAxis("Horizontal") > 0) 
