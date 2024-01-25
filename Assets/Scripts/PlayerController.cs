@@ -18,18 +18,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private HUDStats hudStats;
 
 
-    private PlayerBaseStats playerBaseStats;
-    private PlayerMaxStats playerMaxStats;
-    private PlayerIncreaseStats playerIncreaseStats;
-
     private const float sensitivity = 10;
     private int enemyKillCounter;
-    private bool goingAttack = false;
-	private bool canAttack = true;
-    private bool canResume = true;
-    private bool isAlive = true;
-    private bool enableAutomaticAttack = true;
+    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, enableAutomaticAttack = true;
 
+    private float timeSinceLastAttack = 0f;
+    private float timeSinceLastRegeneration = 0f;
+    private float regenerationDelay = 10.0f;
 
     // attributs
     private int totalXP;
@@ -44,10 +39,6 @@ public class PlayerController : MonoBehaviour {
     private float speed;
     private float knockback;
     private int regeneration;
-
-    private float timeSinceLastAttack = 0f;
-    private float timeSinceLastRegeneration = 0f;
-    private float regenerationDelay = 10.0f;
 
     // controlleur attributs
     private int xpRequired = 0;
@@ -91,8 +82,6 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     private Vector3 moveDirection;
 
-
-
     [SerializeField] GameObject weapon;
 
 
@@ -110,7 +99,50 @@ public class PlayerController : MonoBehaviour {
         this.healthBar.value = this.GetHealth();
     }
 
-    public void LoadAttributes() {
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
+            GameController.SetGameState();
+
+        if(Input.GetKeyDown(KeyCode.U)) 
+            this.XPGain(1);
+
+        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze()) {
+            this.enableAutomaticAttack = !this.enableAutomaticAttack;
+            this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.E)) {
+            var weapon = GetTheNearestWeapon();
+
+            if(weapon != null) {
+                this.weaponAttack = weapon.attack;
+                this.weaponRange = weapon.range;
+                this.weaponAttackSpeed = weapon.attackSpeed;
+                this.weaponKnockback = weapon.knockback;
+                this.weaponSpeed = weapon.speed;
+                this.rangeCollider.radius = this.range + this.weaponRange;
+
+                GameController.DestroyWeapon(weapon);
+                this.hudStats.UpdateStats();
+            }
+        }
+
+        GameController.DrawCircleAroundObject(transform.position, this.range);
+    }
+
+    void FixedUpdate() {
+
+        this.Move();
+
+        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+
+        this.goingAttack = false;
+        this.TimerAttack();
+        this.TimerRegeneration();
+    }
+
+    private void LoadAttributes() {
         TextAsset baseStats     = Resources.Load<TextAsset>("Data/PlayerBaseStats");
         TextAsset maxStats      = Resources.Load<TextAsset>("Data/PlayerMaxStats");
         TextAsset increaseStats = Resources.Load<TextAsset>("Data/PlayerIncreaseStats");
@@ -145,7 +177,6 @@ public class PlayerController : MonoBehaviour {
             this.maxKnockback         = playerMaxStats.maxKnockback;
             this.maxRegeneration      = playerMaxStats.maxRegeneration;
 
-
             this.increaseHealth       = playerIncreaseStats.increaseHealth;
             this.increaseResistance   = playerIncreaseStats.increaseResistance;
             this.increaseAttack       = playerIncreaseStats.increaseAttack;
@@ -157,61 +188,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
-            GameController.SetGameState();
-
-        if(Input.GetKeyDown(KeyCode.U)) 
-            this.XPGain(1);
-
-        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze()) {
-            this.enableAutomaticAttack = !this.enableAutomaticAttack;
-            this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.E)) {
-            var weapon = GetTheNearestWeapon();
-
-            if(weapon != null) {
-                this.weaponAttack = weapon.attack;
-                this.weaponRange = weapon.range;
-                this.weaponAttackSpeed = weapon.attackSpeed;
-                this.weaponKnockback = weapon.knockback;
-                this.weaponSpeed = weapon.speed;
-                this.rangeCollider.radius = this.range + this.weaponRange;
-
-                this.DestroyWeapon(weapon);
-                this.hudStats.UpdateStats();
-            }
-        }
-
-
-        DrawCircleAroundPlayer();
-    }
-
-    void FixedUpdate() {
-
-        this.Move();
-
-        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
-
-        this.goingAttack = false;
-        this.timerAttack();
-        this.timerRegeneration();
-    }
-
-    private void DestroyWeapon(Weapon weapon) {
-        var renderer = weapon.GetComponent<Renderer>();
-        var collider = weapon.GetComponent<Collider>();
-
-        if (renderer != null) Destroy(renderer);
-        if (collider != null) Destroy(collider);
-
-        Destroy(weapon);
-    }
-
-    public void timerAttack() {
+    public void TimerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed) {  
             this.goingAttack = true;
             this.timeSinceLastAttack = 0f;
@@ -220,27 +197,13 @@ public class PlayerController : MonoBehaviour {
         this.timeSinceLastAttack += Time.fixedDeltaTime;
     }
 
-    public void timerRegeneration() {
+    public void TimerRegeneration() {
         if(this.timeSinceLastRegeneration >= this.regenerationDelay) {  
             this.timeSinceLastRegeneration = 0f;
             this.Heal(this.regeneration);
         }
 
         this.timeSinceLastRegeneration += Time.fixedDeltaTime;
-    }
-
-    void DrawCircleAroundPlayer() {
-        const int numRays = 36;
-        const float angleIncrement = 360.0f / numRays;
-
-        for (int i = 0; i < numRays; i++) {
-            float angle = i * angleIncrement;
-            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * this.range;
-            float z = Mathf.Sin(Mathf.Deg2Rad * angle) * this.range;
-
-            Vector3 rayDirection = new Vector3(x, 0.0f, z);
-            Debug.DrawRay(transform.position, rayDirection, Color.red);
-        }
     }
 
     public void TakeDamage(int damage) {
@@ -254,37 +217,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void Heal(int healAmount) {
-        this.health += healAmount;
-        if(this.health >= this.maxHealth) 
-            this.health = this.maxHealth;
-        
-        this.SetHealthBar(this.health);
-    }
-
-    public void XPGain(int xpAmount) {
-        this.totalXP += xpAmount;
-        this.AddXPBar(xpAmount);
-        
-        if(this.totalXP >= this.xpRequired && this.level < this.maxLevel) {
-            this.level++;
-            this.xpToNext = XPRequired();
-            this.xpRequired += this.xpToNext;
-            this.xp = 0;
-
-            this.SetXPBarMax(this.xpToNext);
-            this.SetXPBar(0);
-
-            this.SetCanResume(false);
-
-            this.levelUpChoice.UpdateStatsDisplay();
-        }
-    }
-
-    public bool GetCanResume() {
-        return this.canResume && this.isAlive;
-    }
-
     //TODO voir pour mettre dans GameController
     public void SetCanResume(bool statut) {
         this.canResume = statut;
@@ -295,6 +227,7 @@ public class PlayerController : MonoBehaviour {
         return 5;
     }
 
+    // Updates / Increments
     public void UpdateResistance() {
         this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
@@ -357,57 +290,8 @@ public class PlayerController : MonoBehaviour {
         this.hudStats.UpdateStats();
     }
 
-    public int GetKillCounter() {
-        return this.enemyKillCounter;
-    }
 
-    public int   GetResistance()  { return this.resistance;  }
-    public int   GetAttack()      { return this.attack;      }
-    public int   GetHealth()      { return this.health;      }
-    public int   GetMaxHealth()   { return this.maxHealth;   }
-    public int   GetLevel()       { return this.level;       }
-    public float GetAttackSpeed() { return this.attackSpeed; }
-    public float GetRange()       { return this.range;       }
-    public float GetSpeed()       { return this.speed;       }
-    public float GetRegeneration() { return this.regeneration; }
-
-    public int GetHealthLevel()      { return this.healthLevel;      }
-    public int GetResistanceLevel()  { return this.resistanceLevel;  }
-    public int GetAttackLevel()      { return this.attackLevel;      }
-    public int GetAttackSpeedLevel() { return this.attackSpeedLevel; }
-    public int GetRangeLevel()       { return this.rangeLevel;       }
-    public int GetSpeedLevel()       { return this.speedLevel;       }
-    public int GetRegenerationLevel() { return this.regenerationLevel;       }
-
-    public int   GetWeaponAttack() { return this.weaponAttack; }
-    public float GetWeaponRange() { return this.weaponRange; }
-    public float GetWeaponAttackSpeed() { return this.weaponAttackSpeed; }
-    public float GetWeaponKnockback() { return this.weaponKnockback; }
-    public float GetWeaponSpeed() { return this.weaponSpeed; }
-
-
-    private void SetXPBar(int xp) {
-        this.xpBar.value = xp;
-    }
-
-    private void AddXPBar(int xp) {
-        this.xpBar.value += xp;
-    } 
-
-    private void SetXPBarMax(int max) {
-        this.xpBar.maxValue = max;
-    }
-
-    private void SetHealthBar(int hp) {
-        this.healthBar.value = hp;
-    }
-
-    private void SetHealthBarMax(int max) {
-        this.healthBar.maxValue = max;
-    }
-
-
-
+    // Animations
     private void Move() {
         transform.Translate(Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
@@ -417,7 +301,6 @@ public class PlayerController : MonoBehaviour {
 
         MoveAnims();
     }
-
 
     private void ResetAnims() {
         this.animator.SetBool("Idle", false);
@@ -465,14 +348,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-
-
-
-
-
-
-
-
     private Weapon GetTheNearestWeapon() {
 
         GameObject weaponsObject = GameObject.Find("Weapons");
@@ -502,6 +377,80 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+    // Getters
+    public bool GetCanResume()          {return this.canResume && this.isAlive; }
+    public int GetKillCounter()         {return this.enemyKillCounter;   }
+
+    public int GetResistance()          { return this.resistance;        }
+    public int GetAttack()              { return this.attack;            }
+    public int GetHealth()              { return this.health;            }
+    public int GetMaxHealth()           { return this.maxHealth;         }
+    public int GetLevel()               { return this.level;             }
+    public float GetAttackSpeed()       { return this.attackSpeed;       }
+    public float GetRange()             { return this.range;             }
+    public float GetSpeed()             { return this.speed;             }
+    public float GetRegeneration()      { return this.regeneration;      }
+  
+    public int GetHealthLevel()         { return this.healthLevel;       }
+    public int GetResistanceLevel()     { return this.resistanceLevel;   }
+    public int GetAttackLevel()         { return this.attackLevel;       }
+    public int GetAttackSpeedLevel()    { return this.attackSpeedLevel;  }
+    public int GetRangeLevel()          { return this.rangeLevel;        }
+    public int GetSpeedLevel()          { return this.speedLevel;        }
+    public int GetRegenerationLevel()   { return this.regenerationLevel; }
+  
+    public int GetWeaponAttack()        { return this.weaponAttack;      }
+    public float GetWeaponRange()       { return this.weaponRange;       }
+    public float GetWeaponAttackSpeed() { return this.weaponAttackSpeed; }
+    public float GetWeaponKnockback()   { return this.weaponKnockback;   }
+    public float GetWeaponSpeed()       { return this.weaponSpeed;       }
 
 
+    // Setters
+    private void SetXPBar(int xp) {
+        this.xpBar.value = xp;
+    }
+
+    private void AddXPBar(int xp) {
+        this.xpBar.value += xp;
+    } 
+
+    private void SetXPBarMax(int max) {
+        this.xpBar.maxValue = max;
+    }
+
+    private void SetHealthBar(int hp) {
+        this.healthBar.value = hp;
+    }
+
+    private void SetHealthBarMax(int max) {
+        this.healthBar.maxValue = max;
+    }
+
+    public void Heal(int healAmount) {
+        this.health += healAmount;
+        if(this.health >= this.maxHealth) 
+            this.health = this.maxHealth;
+        
+        this.SetHealthBar(this.health);
+    }
+
+    public void XPGain(int xpAmount) {
+        this.totalXP += xpAmount;
+        this.AddXPBar(xpAmount);
+        
+        if(this.totalXP >= this.xpRequired && this.level < this.maxLevel) {
+            this.level++;
+            this.xpToNext = XPRequired();
+            this.xpRequired += this.xpToNext;
+            this.xp = 0;
+
+            this.SetXPBarMax(this.xpToNext);
+            this.SetXPBar(0);
+
+            this.SetCanResume(false);
+
+            this.levelUpChoice.UpdateStatsDisplay();
+        }
+    }
 }

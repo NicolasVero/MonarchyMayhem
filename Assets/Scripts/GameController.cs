@@ -25,4 +25,28 @@ public class GameController : MonoBehaviour {
     public static void SetPanelVisibility(GameObject panel, bool state) {
         panel.SetActive(state);
     }
+
+    public static void DrawCircleAroundObject(Vector3 position, float range, int numRays = 36) {
+        float angleIncrement = 360.0f / numRays;
+        Color rayColor = Color.red;
+
+        for (int i = 0; i < numRays; i++) {
+            float angle = i * angleIncrement;
+            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
+            float z = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+
+            Vector3 rayDirection = new Vector3(x, 0.0f, z);
+            Debug.DrawRay(position, rayDirection, rayColor);
+        }
+    }
+
+    public static void DestroyWeapon(Weapon weapon) {
+        var renderer = weapon.GetComponent<Renderer>();
+        var collider = weapon.GetComponent<Collider>();
+
+        if(renderer != null) Destroy(renderer);
+        if(collider != null) Destroy(collider);
+
+        Destroy(weapon);
+    }
 }

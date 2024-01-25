@@ -40,7 +40,6 @@ public class HUDStats : MonoBehaviour {
 
     private readonly string bannersPath = "Interface/Icons/"; 
 
-
     void Start() {
         this.UpdateStats();
     }
@@ -79,11 +78,6 @@ public class HUDStats : MonoBehaviour {
             weaponSpeed.text = "" + player.GetWeaponSpeed();
             weaponSpeed.color = (player.GetWeaponSpeed() > 0) ? Color.green : Color.red;
         }
-
-        // weaponAttack.text = player.getWeaponAttack() != 0 ? "" + player.getWeaponAttack() : "";
-        // weaponRange.text = player.getWeaponRange() != 0 ? "" + player.getWeaponRange() : "";
-        // weaponAttackSpeed.text = player.getWeaponAttackSpeed() != 0 ? "" + player.getWeaponAttackSpeed() : "";
-        // weaponSpeed.text = player.getWeaponSpeed() != 0 ? "" + player.getWeaponSpeed() : "";
     }
     
     public void MaxAttack() {

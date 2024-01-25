@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4504428, g: 0.50044554, b: 0.5751995, a: 1}
+  m_IndirectSpecularColor: {r: 0.45044297, g: 0.50044596, b: 0.57520026, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceResistance
+        m_MethodName: ChoiceResistance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -972,7 +972,6 @@ MonoBehaviour:
   weaponAttackSpeed: {fileID: 1137582860}
   weaponRange: {fileID: 1034779446}
   weaponSpeed: {fileID: 2057392364}
-  weaponKnockback: {fileID: 0}
   attackIcon: {fileID: 1531277080}
   attackSpeedIcon: {fileID: 1767525418}
   rangeIcon: {fileID: 703338778}
@@ -1443,7 +1442,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceAttack
+        m_MethodName: ChoiceAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4027,7 +4026,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceHealth
+        m_MethodName: ChoiceHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4159,7 +4158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceRegeneration
+        m_MethodName: ChoiceRegeneration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4600,7 +4599,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceAttackSpeed
+        m_MethodName: ChoiceAttackSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5227,7 +5226,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceRange
+        m_MethodName: ChoiceRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5867,7 +5866,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: choiceSpeed
+        m_MethodName: ChoiceSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

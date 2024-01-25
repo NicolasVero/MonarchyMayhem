@@ -54,6 +54,8 @@ public class EnemyController : MonoBehaviour {
 
     private void FixedUpdate() {
 
+        GameController.DrawCircleAroundObject(transform.position, this.range, 10);
+
         if(isAlive) {
 
             ResetAnims();

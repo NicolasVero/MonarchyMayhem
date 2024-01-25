@@ -1,16 +1,6 @@
 { 
     "weapons" : 
-    [
-        {
-            "id" : 0,
-            "name" : "Hache Solaire",
-            "tier" : "B",
-            "attack" : 90,
-            "range" : 1.5,
-            "attackSpeed" : 0.5,
-            "knockback" : 50,
-            "speed" : 30
-        }, 
+    [ 
         {
             "id" : 1,
             "name" : "Épée royale ",
@@ -140,6 +130,16 @@
             "attackSpeed" : 0.7,
             "knockback" : 50,
             "speed" : 30
+        },
+        {
+            "id" : 14,
+            "name" : "Hache Solaire",
+            "tier" : "B",
+            "attack" : 90,
+            "range" : 1.5,
+            "attackSpeed" : 0.5,
+            "knockback" : 50,
+            "speed" : 0.5
         }
     ]
 }
