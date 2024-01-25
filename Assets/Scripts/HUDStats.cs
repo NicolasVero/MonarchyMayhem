@@ -43,42 +43,42 @@ public class HUDStats : MonoBehaviour {
 
 
     void Start() {
-        this.updateStats();
+        this.UpdateStats();
     }
 
-    public void updateStats() {
-        levelStat.text        = "" + player.getLevel();
-        killStat.text         = "" + player.getKillCounter();
-        attackStat.text       = "" + player.getAttack();
-        attackSpeedStat.text  = "" + player.getAttackSpeed();
-        rangeStat.text        = "" + player.getRange();
-        resistanceStat.text   = "" + player.getResistance();
-        speedStat.text        = "" + player.getSpeed();
-        regenerationStat.text = "" + player.getRegeneration();
+    public void UpdateStats() {
+        levelStat.text        = "" + player.GetLevel();
+        killStat.text         = "" + player.GetKillCounter();
+        attackStat.text       = "" + player.GetAttack();
+        attackSpeedStat.text  = "" + player.GetAttackSpeed();
+        rangeStat.text        = "" + player.GetRange();
+        resistanceStat.text   = "" + player.GetResistance();
+        speedStat.text        = "" + player.GetSpeed();
+        regenerationStat.text = "" + player.GetRegeneration();
 
         weaponAttack.text = "";
         weaponRange.text = "";
         weaponAttackSpeed.text = "";
         weaponSpeed.text = "";
 
-        if(player.getWeaponAttack() != 0) {
-            weaponAttack.text = "" + player.getWeaponAttack();
-            weaponAttack.color = (player.getWeaponAttack() > 0) ? Color.green : Color.red;
+        if(player.GetWeaponAttack() != 0) {
+            weaponAttack.text = "" + player.GetWeaponAttack();
+            weaponAttack.color = (player.GetWeaponAttack() > 0) ? Color.green : Color.red;
         }
 
-        if(player.getWeaponRange() != 0) {
-            weaponRange.text = "" + player.getWeaponRange();
-            weaponRange.color = (player.getWeaponRange() > 0) ? Color.green : Color.red;
+        if(player.GetWeaponRange() != 0) {
+            weaponRange.text = "" + player.GetWeaponRange();
+            weaponRange.color = (player.GetWeaponRange() > 0) ? Color.green : Color.red;
         }
     
-        if(player.getWeaponAttackSpeed() != 0) {
-            weaponAttackSpeed.text = "" + player.getWeaponAttackSpeed();
-            weaponAttackSpeed.color = (player.getWeaponAttackSpeed() > 0) ? Color.green : Color.red;
+        if(player.GetWeaponAttackSpeed() != 0) {
+            weaponAttackSpeed.text = "" + player.GetWeaponAttackSpeed();
+            weaponAttackSpeed.color = (player.GetWeaponAttackSpeed() > 0) ? Color.green : Color.red;
         }
 
-        if(player.getWeaponSpeed() != 0) {
-            weaponSpeed.text = "" + player.getWeaponSpeed();
-            weaponSpeed.color = (player.getWeaponSpeed() > 0) ? Color.green : Color.red;
+        if(player.GetWeaponSpeed() != 0) {
+            weaponSpeed.text = "" + player.GetWeaponSpeed();
+            weaponSpeed.color = (player.GetWeaponSpeed() > 0) ? Color.green : Color.red;
         }
 
         // weaponAttack.text = player.getWeaponAttack() != 0 ? "" + player.getWeaponAttack() : "";

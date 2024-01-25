@@ -101,16 +101,16 @@ public class PlayerController : MonoBehaviour {
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
         GameController.setPanelVisibility(this.levelUpPanel, false);
-        loadAttributes();
+        this.LoadAttributes();
 
         this.xpBar.maxValue = 1;
         this.xpBar.value = 0;
 
-        this.healthBar.maxValue = this.getMaxHealth();
-        this.healthBar.value = this.getHealth();
+        this.healthBar.maxValue = this.GetMaxHealth();
+        this.healthBar.value = this.GetHealth();
     }
 
-    public void loadAttributes() {
+    public void LoadAttributes() {
         TextAsset baseStats     = Resources.Load<TextAsset>("Data/PlayerBaseStats");
         TextAsset maxStats      = Resources.Load<TextAsset>("Data/PlayerMaxStats");
         TextAsset increaseStats = Resources.Load<TextAsset>("Data/PlayerIncreaseStats");
@@ -178,10 +178,10 @@ public class PlayerController : MonoBehaviour {
                 this.weaponAttackSpeed = weapon.attackSpeed;
                 this.weaponKnockback = weapon.knockback;
                 this.weaponSpeed = weapon.speed;
+                this.rangeCollider.radius = this.range + this.weaponRange;
 
                 this.DestroyWeapon(weapon);
-
-                this.hudStats.updateStats();
+                this.hudStats.UpdateStats();
             }
         }
 
@@ -190,12 +190,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-
-        Debug.Log("weaponAttack : " + this.weaponAttack);
-        Debug.Log("weaponRange : " + this.weaponRange);
-        Debug.Log("weaponAttackSpeed : " + this.weaponAttackSpeed);
-        Debug.Log("weaponKnockback : " + this.weaponKnockback);
-        Debug.Log("weaponSpeed : " + this.weaponSpeed);
 
         this.Move();
 
@@ -320,7 +314,7 @@ public class PlayerController : MonoBehaviour {
         if(this.range > this.maxRange) this.range = this.maxRange;
         if(this.rangeLevel > 5) this.hudStats.maxRange();
 
-        this.rangeCollider.radius = this.range;
+        this.rangeCollider.radius = this.range + this.weaponRange;
     }
 
     public void updateHealth() {
@@ -338,7 +332,6 @@ public class PlayerController : MonoBehaviour {
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
         if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
         if(this.attackLevel > 5) this.hudStats.maxAttack();
-
     }
 
     public void updateSpeed() {
@@ -360,36 +353,36 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void incrementStatCounter() {
-        this.hudStats.updateStats();
+        this.hudStats.UpdateStats();
     }
 
-    public int getKillCounter() {
+    public int GetKillCounter() {
         return this.enemyKillCounter;
     }
 
-    public int   getResistance()  { return this.resistance;  }
-    public int   getAttack()      { return this.attack;      }
-    public int   getHealth()      { return this.health;      }
-    public int   getMaxHealth()   { return this.maxHealth;   }
-    public int   getLevel()       { return this.level;       }
-    public float getAttackSpeed() { return this.attackSpeed; }
-    public float getRange()       { return this.range;       }
-    public float getSpeed()       { return this.speed;       }
-    public float getRegeneration() { return this.regeneration; }
+    public int   GetResistance()  { return this.resistance;  }
+    public int   GetAttack()      { return this.attack;      }
+    public int   GetHealth()      { return this.health;      }
+    public int   GetMaxHealth()   { return this.maxHealth;   }
+    public int   GetLevel()       { return this.level;       }
+    public float GetAttackSpeed() { return this.attackSpeed; }
+    public float GetRange()       { return this.range;       }
+    public float GetSpeed()       { return this.speed;       }
+    public float GetRegeneration() { return this.regeneration; }
 
-    public int getHealthLevel()      { return this.healthLevel;      }
-    public int getResistanceLevel()  { return this.resistanceLevel;  }
-    public int getAttackLevel()      { return this.attackLevel;      }
-    public int getAttackSpeedLevel() { return this.attackSpeedLevel; }
-    public int getRangeLevel()       { return this.rangeLevel;       }
-    public int getSpeedLevel()       { return this.speedLevel;       }
-    public int getRegenerationLevel() { return this.regenerationLevel;       }
+    public int GetHealthLevel()      { return this.healthLevel;      }
+    public int GetResistanceLevel()  { return this.resistanceLevel;  }
+    public int GetAttackLevel()      { return this.attackLevel;      }
+    public int GetAttackSpeedLevel() { return this.attackSpeedLevel; }
+    public int GetRangeLevel()       { return this.rangeLevel;       }
+    public int GetSpeedLevel()       { return this.speedLevel;       }
+    public int GetRegenerationLevel() { return this.regenerationLevel;       }
 
-    public int   getWeaponAttack() { return this.weaponAttack; }
-    public float getWeaponRange() { return this.weaponRange; }
-    public float getWeaponAttackSpeed() { return this.weaponAttackSpeed; }
-    public float getWeaponKnockback() { return this.weaponKnockback; }
-    public float getWeaponSpeed() { return this.weaponSpeed; }
+    public int   GetWeaponAttack() { return this.weaponAttack; }
+    public float GetWeaponRange() { return this.weaponRange; }
+    public float GetWeaponAttackSpeed() { return this.weaponAttackSpeed; }
+    public float GetWeaponKnockback() { return this.weaponKnockback; }
+    public float GetWeaponSpeed() { return this.weaponSpeed; }
 
 
     private void setXPBar(int xp) {
@@ -415,8 +408,8 @@ public class PlayerController : MonoBehaviour {
 
 
     private void Move() {
-        transform.Translate(Vector3.forward * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right * this.getSpeed() * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        transform.Translate(Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         float moveZ = Input.GetAxis("Vertical");
         this.moveDirection = new Vector3(0, 0, moveZ);
         this.moveDirection = this.transform.TransformDirection(this.moveDirection);
@@ -465,8 +458,8 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if(this.goingAttack && this.canAttack && this.isAlive && this.enableAutomaticAttack && other.CompareTag(Names.BaseEnemy)) {
             EnemyController enemy = other.GetComponent<EnemyController>();
-            enemy.TakeDamage(this.attack);
-            enemy.ApplyKnockback(this.knockback);
+            enemy.TakeDamage(this.attack + this.weaponAttack);
+            enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
             this.animator.SetTrigger("Attack");
         }
     }

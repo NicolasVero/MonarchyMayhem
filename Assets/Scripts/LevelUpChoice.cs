@@ -22,7 +22,6 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void Awake() {
 
-
         this.bannersNames = new string[] {
             "attack_",
             "health_",
@@ -37,13 +36,13 @@ public class LevelUpChoice : MonoBehaviour {
     public void updateStatsDisplay() {
 
         this.bannersLevel = new int[] {
-            this.playerController.getAttackLevel(),
-            this.playerController.getHealthLevel(),
-            this.playerController.getResistanceLevel(),
-            this.playerController.getRangeLevel(),
-            this.playerController.getAttackSpeedLevel(),
-            this.playerController.getSpeedLevel(),
-            this.playerController.getRegenerationLevel()
+            this.playerController.GetAttackLevel(),
+            this.playerController.GetHealthLevel(),
+            this.playerController.GetResistanceLevel(),
+            this.playerController.GetRangeLevel(),
+            this.playerController.GetAttackSpeedLevel(),
+            this.playerController.GetSpeedLevel(),
+            this.playerController.GetRegenerationLevel()
         };
 
         List<int> isMaxLevel = new List<int>();
@@ -98,7 +97,7 @@ public class LevelUpChoice : MonoBehaviour {
 
     void resumeGame() {
         this.playerController.setCanResume(true);
-        this.hudStats.updateStats();
+        this.hudStats.UpdateStats();
         
         for(int i = 0; i < this.bannersLength; i++)
             GameController.setPanelVisibility(banners[i], true);

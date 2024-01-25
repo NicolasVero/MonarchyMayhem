@@ -7,79 +7,65 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     
-    private Transform player;
-    private NavMeshAgent agent;
-
-
-
-    private ParticleSystem collectParticle;
-    private Transform agentPos;
-
-    private PlayerController playerController;
-    private Animator animator;
+    public Transform playerPosition;
+    public Transform enemyPosition;
+    public NavMeshAgent navMeshAgent;
+    public Animator animator;
+    public ParticleSystem attackParticle;
+    public PlayerController playerController;
 
     [SerializeField] private WeaponsDropper weaponsDropper;
 
     private string enemyType;
-    private int health;
-    private int attack;
-    private float attackSpeed;
-    private float range;
-    private float speed;
-    private int xp;
-
+    private int attack, health, xp;
+    private float attackSpeed, range, speed, timeSinceLastAttack;
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
-    private float timeSinceLastAttack;
-    private System.Random random = new System.Random();
 
+    private System.Random random = new System.Random();
 
     private void Awake() {
 
-        this.enemyType = EnemyController.getEnemyType(gameObject.name);
+        this.enemyType = EnemyController.GetEnemyType(gameObject.name);
         TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
 
         if(enemiesStats != null) {
             EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
             EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == this.enemyType);
 
-            this.health      = enemy.health;
             this.attack      = enemy.attack;
             this.attackSpeed = enemy.attackSpeed;
+            this.health      = enemy.health;
             this.range       = enemy.range;
             this.speed       = enemy.speed;
             this.xp          = enemy.xp;
         }
 
-        this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
-        this.agent = GetComponent<NavMeshAgent>();
-        this.player = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
-        this.collectParticle = this.GetComponentInChildren<ParticleSystem>();
-        this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+        this.playerPosition = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
+        this.navMeshAgent = GetComponent<NavMeshAgent>();
+        this.enemyPosition = this.navMeshAgent.transform;
+        
+        this.attackParticle = this.GetComponentInChildren<ParticleSystem>();
         this.animator = GetComponentInChildren<Animator>();
-
-        this.agentPos = this.agent.transform;
-        this.agent.speed = this.speed;
-    }
-
-    private static string getEnemyType(string name) {
-       return name.Split('_')[0];
+        
+        this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+        this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
+        this.navMeshAgent.speed = this.speed;
     }
 
     private void FixedUpdate() {
 
         if(isAlive) {
 
-            resetAnims();
+            ResetAnims();
 
-            // this.agentPos.transform.LookAt(this.player);
             this.timeSinceLastAttack += Time.fixedDeltaTime;
 
-            if(this.player){
-                this.agent.destination = player.position;
+            if(this.playerPosition) {
+                this.navMeshAgent.destination = playerPosition.position;
             }
 
-            if(this.player && this.canMove){
-                if(Vector3.Distance(this.player.position, this.agentPos.position) <= this.agent.stoppingDistance){
+            if(this.playerPosition && this.canMove){
+                if(Vector3.Distance(this.playerPosition.position, this.enemyPosition.position) <= this.navMeshAgent.stoppingDistance){
                     this.animator.SetBool("Idle", true);
 
                     if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
@@ -93,7 +79,17 @@ public class EnemyController : MonoBehaviour {
         }
     }
     
-    public void TakeDamage(int damage){
+    private void Move() {
+        this.animator.SetBool("Walk", true);
+    }
+    
+    private void Attack() {
+        this.ActivateCollectParticle();
+        this.animator.SetTrigger("Attack");
+        this.playerController.TakeDamage(this.attack);
+    }
+
+    public void TakeDamage(int damage) {
 
         this.health -= damage;
 
@@ -108,21 +104,34 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    private void ResetAnims(){
+        this.animator.SetBool("Idle", false);
+        this.animator.SetBool("Walk", false);
+    }
+
+    private void Death() {
+        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        canMove = false;
+        canAttack = false;
+        isAlive = false;
+
+        StartCoroutine(DestroyEnemy(2f));
+    }
+
     public void ApplyKnockback(float multiply) {
         Vector3 knockbackDirection = -transform.forward;
         float knockbackDistance = 1f * multiply; 
         float knockbackDuration = 0.2f; 
 
-        // StartCoroutine(DelayedKnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
         StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
     }
 
-    IEnumerator DelayedKnockbackEffect(Vector3 direction, float distance, float duration) {
+    private IEnumerator DelayedKnockbackEffect(Vector3 direction, float distance, float duration) {
         yield return new WaitForSeconds(0f);
         StartCoroutine(KnockbackEffect(direction, distance, duration));
     }
 
-    IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
+    private IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
         float elapsed = 0f;
 
         while(elapsed < duration) {
@@ -133,32 +142,6 @@ public class EnemyController : MonoBehaviour {
 
             yield return null;
         }
-    }
-
-    public int getHealth() { return this.health; }
-
-    void Move(){
-        this.animator.SetBool("Walk", true);
-    }
-    
-    void Attack(){
-        this.ActivateCollectParticle();
-        this.animator.SetTrigger("Attack");
-        this.playerController.TakeDamage(this.attack);
-    }
-
-    void resetAnims(){
-        this.animator.SetBool("Idle", false);
-        this.animator.SetBool("Walk", false);
-    }
-
-    void Death() {
-        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
-        canMove = false;
-        canAttack = false;
-        isAlive = false;
-
-        StartCoroutine(DestroyEnemy(2f));
     }
 
     private IEnumerator DestroyEnemy(float delay) {
@@ -180,7 +163,12 @@ public class EnemyController : MonoBehaviour {
         return (random.NextDouble() < probabilite) ? resultat : GiveRandomWeaponID();
     }
 
-    void ActivateCollectParticle(){
-        this.collectParticle.Play();
+    private void ActivateCollectParticle(){
+        this.attackParticle.Play();
+    }
+
+
+    private static string GetEnemyType(string name) {
+        return name.Split('_')[0];
     }
 }
