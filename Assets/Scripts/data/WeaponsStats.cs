@@ -11,8 +11,9 @@ public class WeaponStat {
     public string name;
     public string tier;
     public int attack;
-    public float range;
     public float attackSpeed;
     public float knockback;
+    public float range;
+    public int regeneration;
     public float speed;
 }

@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public int weaponID;
     public string name;
     public string tier;
     public int id;
     public int attack;
+    public float attackSpeed;
     public float knockback;
     public float range;
-    public float attackSpeed;
+    public int regeneration;
     public float speed;
-    public int weaponID;
 
     void Start() {
 
@@ -28,9 +29,10 @@ public class Weapon : MonoBehaviour
             this.name = weapon.name;
             this.tier = weapon.tier;
             this.attack = weapon.attack;
-            this.range = weapon.range;
             this.attackSpeed = weapon.attackSpeed;
             this.knockback = weapon.knockback;
+            this.range = weapon.range;
+            this.regeneration = weapon.regeneration;
             this.speed = weapon.speed;
 
             Debug.Log(weapon.id);

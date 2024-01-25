@@ -73,9 +73,10 @@ public class PlayerController : MonoBehaviour {
 
 
     private int   weaponAttack;
-    private float weaponRange;
     private float weaponAttackSpeed;
     private float weaponKnockback;
+    private float weaponRange;
+    private int weaponRegeneration;
     private float weaponSpeed;
 
     private SphereCollider rangeCollider;
@@ -116,9 +117,10 @@ public class PlayerController : MonoBehaviour {
 
             if(weapon != null) {
                 this.weaponAttack = weapon.attack;
-                this.weaponRange = weapon.range;
                 this.weaponAttackSpeed = weapon.attackSpeed;
                 this.weaponKnockback = weapon.knockback;
+                this.weaponRange = weapon.range;
+                this.weaponRegeneration = weapon.regeneration;
                 this.weaponSpeed = weapon.speed;
                 this.rangeCollider.radius = this.range + this.weaponRange;
 
@@ -200,7 +202,7 @@ public class PlayerController : MonoBehaviour {
     public void TimerRegeneration() {
         if(this.timeSinceLastRegeneration >= this.regenerationDelay) {  
             this.timeSinceLastRegeneration = 0f;
-            this.Heal(this.regeneration);
+            this.Heal(this.regeneration + this.weaponRegeneration);
         }
 
         this.timeSinceLastRegeneration += Time.fixedDeltaTime;
