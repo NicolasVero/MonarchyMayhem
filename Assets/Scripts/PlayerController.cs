@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void GetTheWeaponDatas(Weapon weapon) {
-        
+
         if(weapon != null) {
 
             if(this.weaponName != "Epée de fer") {
@@ -389,7 +389,6 @@ public class PlayerController : MonoBehaviour {
 
             if(nearestWeapon != null) 
                 return nearestWeapon;
-            
         }
         
         return null;

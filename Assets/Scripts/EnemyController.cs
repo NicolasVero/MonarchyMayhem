@@ -166,12 +166,40 @@ public class EnemyController : MonoBehaviour {
         double probabiliteInitiale = 1.0;
         double probabiliteMinimale = 0.1;
 
+
         double probabilite = probabiliteInitiale * Mathf.Pow((float)random.NextDouble(), 2);
 
         int resultat = random.Next(0, this.weaponsDropper.GetWeaponsListLength());
 
         return (random.NextDouble() < probabilite) ? resultat : GiveRandomWeaponID();
     }
+
+    //! a tester 
+    // private int GiveRandomWeaponID() {
+    //     float[] probabilities = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    //     double probabiliteInitiale = 1.0;
+    //     double probabiliteMinimale = 0.1;
+
+    //     double probabilite = probabiliteInitiale * Mathf.Pow((float)random.NextDouble(), 2);
+
+    //     float totalProbabilities = probabilities.Sum();
+    //     float normalizedRandomValue = (float)random.NextDouble() * totalProbabilities;
+
+    //     for (int i = 0; i < probabilities.Length; i++)
+    //     {
+    //         if (normalizedRandomValue < probabilities[i])
+    //         {
+    //             return (random.NextDouble() < probabilite) ? i : GiveRandomWeaponID();
+    //         }
+
+    //         normalizedRandomValue -= probabilities[i];
+    //     }
+
+    //     return probabilities.Length - 1;
+    // }
+
+
+
 
     private void ActivateCollectParticle(){
         this.attackParticle.Play();
