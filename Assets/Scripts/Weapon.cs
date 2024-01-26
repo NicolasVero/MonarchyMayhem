@@ -49,34 +49,12 @@ public class Weapon : MonoBehaviour {
 				{ "D", "#FFFFFF" }
 			};
 
-        string hexColor;
-        tierColors.TryGetValue(tier, out hexColor);
-        lightComponent.color = GetColorFromHexadecimal(hexColor);
+            string hexColor;
+            tierColors.TryGetValue(tier, out hexColor);
+            lightComponent.color = GetColorFromHexadecimal(hexColor);
 
-
-
-			// if(this.tier != "S") {
-			// 	lightComponent.color = GetColorFromHexadecimal("#FF7C00");
-            // }
-
-            // if(this.tier == "A") {
-			// 	lightComponent.color = GetColorFromHexadecimal("#0046FF");
-            // }
-
-			// if(this.tier == "B") {
-			// 	lightComponent.color = GetColorFromHexadecimal("#8E00FF");
-            // }
-
-			// if(this.tier == "C") {
-			// 	lightComponent.color = GetColorFromHexadecimal("#77FF00");
-            // }
-
-			// if(this.tier == "D") {
-			// 	lightComponent.color = GetColorFromHexadecimal("#A5C4C6");
-            // }
-
-            Debug.Log(lightTransform);
-            Debug.Log(weapon.id);
+                Debug.Log(lightTransform);
+                Debug.Log(weapon.id);
         }       
     }
 

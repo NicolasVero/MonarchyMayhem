@@ -8,6 +8,7 @@ public class EnemiesStats {
 [Serializable]
 public class EnemyStats {
     public string type; 
+    public float chanceToDrop; 
     public int health;
     public int attack; 
     public float attackSpeed;

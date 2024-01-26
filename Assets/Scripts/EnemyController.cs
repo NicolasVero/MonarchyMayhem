@@ -7,18 +7,18 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
     
-    public Transform playerPosition;
-    public Transform enemyPosition;
-    public NavMeshAgent navMeshAgent;
-    public Animator animator;
-    public ParticleSystem attackParticle;
-    public PlayerController playerController;
+    private Transform playerPosition;
+    private Transform enemyPosition;
+    private NavMeshAgent navMeshAgent;
+    private Animator animator;
+    private ParticleSystem attackParticle;
+    private PlayerController playerController;
 
     [SerializeField] private WeaponsDropper weaponsDropper;
 
     private string enemyType;
     private int attack, health, xp;
-    private float attackSpeed, range, speed, timeSinceLastAttack;
+    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack;
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
 
     private System.Random random = new System.Random();
@@ -32,12 +32,13 @@ public class EnemyController : MonoBehaviour {
             EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
             EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == this.enemyType);
 
-            this.attack      = enemy.attack;
-            this.attackSpeed = enemy.attackSpeed;
-            this.health      = enemy.health;
-            this.range       = enemy.range;
-            this.speed       = enemy.speed;
-            this.xp          = enemy.xp;
+            this.chanceToDrop = enemy.chanceToDrop;
+            this.attack       = enemy.attack;
+            this.attackSpeed  = enemy.attackSpeed;
+            this.health       = enemy.health;
+            this.range        = enemy.range;
+            this.speed        = enemy.speed;
+            this.xp           = enemy.xp;
         }
 
         this.playerPosition = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
@@ -148,9 +149,16 @@ public class EnemyController : MonoBehaviour {
 
     private IEnumerator DestroyEnemy(float delay) {
         yield return new WaitForSeconds(delay);
-        this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
+
+        if(WillDropWeapon())
+            this.weaponsDropper.CreateWeapon(this.GiveRandomWeaponID(), transform.position);
+        
         Destroy(gameObject);
         this.playerController.XPGain(this.xp);
+    }
+
+    private bool WillDropWeapon() {
+        return random.NextDouble() < this.chanceToDrop;
     }
 
     private int GiveRandomWeaponID() {

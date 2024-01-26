@@ -3,6 +3,7 @@
     [
         {
             "type" : "peasant",
+            "chanceToDrop" : 0.1,
             "health" : 20,
             "attack" : 5, 
             "attackSpeed" : 2.0,
@@ -12,6 +13,7 @@
         },
         {
             "type" : "bourgeois",
+            "chanceToDrop" : 0.3,
             "health" : 50,
             "attack" : 6, 
             "attackSpeed" : 1.5,
@@ -21,6 +23,7 @@
         },
         {
             "type" : "knight",
+            "chanceToDrop" : 0.0,
             "health" : 1,
             "attack" : 1, 
             "attackSpeed" : 1,
