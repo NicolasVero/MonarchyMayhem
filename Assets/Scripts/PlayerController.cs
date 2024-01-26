@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
         this.xpBar.maxValue = 1;
         this.xpBar.value = 0;
 
-        this.healthBar.maxValue = this.GetMaxHealth();
+        this.healthBar.maxValue = this.GetHealth();
         this.healthBar.value = this.GetHealth();
     }
 
