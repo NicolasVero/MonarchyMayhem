@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
     private int regenerationLevel = 1;
 
     private int weaponID;
-    private string weaponName;
+    private string weaponName = "Epée de fer";
     private int   weaponAttack;
     private float weaponAttackSpeed;
     private float weaponKnockback;
@@ -115,27 +115,7 @@ public class PlayerController : MonoBehaviour {
         }
         
         if (Input.GetKeyDown(KeyCode.E)) {
-            var weapon = GetTheNearestWeapon();
-
-            if(weapon != null) {
-
-                if(this.weaponName != null) {
-                    this.weaponsDropper.CreateWeapon(this.weaponID - 1, transform.position);
-                }
-
-                this.weaponID = weapon.id;
-                this.weaponName = weapon.name;
-                this.weaponAttack = weapon.attack;
-                this.weaponAttackSpeed = weapon.attackSpeed;
-                this.weaponKnockback = weapon.knockback;
-                this.weaponRange = weapon.range;
-                this.weaponRegeneration = weapon.regeneration;
-                this.weaponSpeed = weapon.speed;
-                this.rangeCollider.radius = this.range + this.weaponRange;
-
-                GameController.DestroyWeapon(weapon);
-                this.hudStats.UpdateStats();
-            }
+            TakeWeapon();
         }
 
         GameController.DrawCircleAroundObject(transform.position, this.range);
@@ -359,6 +339,34 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void TakeWeapon() {
+        var weapon = GetTheNearestWeapon();
+        GetTheWeaponDatas(weapon);
+    }
+
+    private void GetTheWeaponDatas(Weapon weapon) {
+        
+        if(weapon != null) {
+
+            if(this.weaponName != "Epée de fer") {
+                this.weaponsDropper.CreateWeapon(this.weaponID - 1, transform.position);
+            }
+
+            this.weaponID = weapon.id;
+            this.weaponName = weapon.name;
+            this.weaponAttack = weapon.attack;
+            this.weaponAttackSpeed = weapon.attackSpeed;
+            this.weaponKnockback = weapon.knockback;
+            this.weaponRange = weapon.range;
+            this.weaponRegeneration = weapon.regeneration;
+            this.weaponSpeed = weapon.speed;
+            this.rangeCollider.radius = this.range + this.weaponRange;
+
+            GameController.DestroyWeapon(weapon);
+            this.hudStats.UpdateStats();
+        }
+    }
+
     private Weapon GetTheNearestWeapon() {
 
         GameObject weaponsObject = GameObject.Find("Weapons");
@@ -411,6 +419,7 @@ public class PlayerController : MonoBehaviour {
     public int GetRegenerationLevel()    { return this.regenerationLevel;  }
     
     public int GetWeaponAttack()         { return this.weaponAttack;       }
+    public string GetWeaponName()        { return this.weaponName;         }
     public float GetWeaponRange()        { return this.weaponRange;        }
     public float GetWeaponAttackSpeed()  { return this.weaponAttackSpeed;  }
     public float GetWeaponKnockback()    { return this.weaponKnockback;    }

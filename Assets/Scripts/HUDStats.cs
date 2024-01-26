@@ -15,6 +15,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI regenerationStat;
     [SerializeField] private TextMeshProUGUI resistanceStat;
     [SerializeField] private TextMeshProUGUI speedStat;
+    [SerializeField] private TextMeshProUGUI weaponName;
 
     [Header("Secondary Text Mesh")]
     [SerializeField] private TextMeshProUGUI weaponAttack;
@@ -54,6 +55,7 @@ public class HUDStats : MonoBehaviour {
         resistanceStat.text   = "" + player.GetResistance();
         speedStat.text        = "" + player.GetSpeed();
         regenerationStat.text = "" + player.GetRegeneration();
+        weaponName.text       = "" + player.GetWeaponName();
 
         weaponAttack.text = "";
         weaponRange.text = "";

@@ -53,8 +53,7 @@ public class Weapon : MonoBehaviour {
             tierColors.TryGetValue(tier, out hexColor);
             lightComponent.color = GetColorFromHexadecimal(hexColor);
 
-                Debug.Log(lightTransform);
-                Debug.Log(weapon.id);
+            StartCoroutine(DestroyWeapon(120f));
         }       
     }
 
@@ -68,4 +67,9 @@ public class Weapon : MonoBehaviour {
 		name = name.Replace("(Clone)", "");
 		return Convert.ToInt32(name.Split('_')[1]);
 	}
+
+    private IEnumerator DestroyWeapon(float delay) {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject); 
+    }
 }
