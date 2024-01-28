@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Canvas deathScreen;
     [SerializeField] private Canvas hudScreen;
 
+    public ProgressiveDarkeningController pdc;
+
     void Awake() {
 
         this.camera.DisableBlackAndWhiteEffect();
@@ -241,6 +243,7 @@ public class PlayerController : MonoBehaviour {
 
     private void DeathScreen() {
         GameController.SetCanvasVisibility(deathScreen, true);
+        pdc.StartFading();
     }
 
     //TODO voir pour mettre dans GameController
@@ -431,6 +434,7 @@ public class PlayerController : MonoBehaviour {
 
 
     // Getters
+    public bool IsAlive()                { return this.isAlive;            }
     public bool GetCanResume()           { return this.canResume && this.isAlive; }
     public int GetKillCounter()          { return this.enemyKillCounter;   }
  

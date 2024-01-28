@@ -87,9 +87,12 @@ public class EnemyController : MonoBehaviour {
     }
     
     private void Attack() {
-        this.ActivateCollectParticle();
-        this.animator.SetTrigger("Attack");
-        this.playerController.TakeDamage(this.attack);
+        if(this.playerController.IsAlive()) {
+
+            this.ActivateCollectParticle();
+            this.animator.SetTrigger("Attack");
+            this.playerController.TakeDamage(this.attack);
+        }
     }
 
     public void TakeDamage(int damage) {
