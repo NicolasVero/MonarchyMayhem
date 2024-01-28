@@ -75,7 +75,7 @@ public class HUDStats : MonoBehaviour {
     
         if(player.GetWeaponAttackSpeed() != 0) {
             weaponAttackSpeed.text = "" + player.GetWeaponAttackSpeed();
-            weaponAttackSpeed.color = (player.GetWeaponAttackSpeed() > 0) ? Color.green : Color.red;
+            weaponAttackSpeed.color = (player.GetWeaponAttackSpeed() < 0) ? Color.green : Color.red;
         }
 
         if(player.GetWeaponSpeed() != 0) {
@@ -130,14 +130,6 @@ public class HUDStats : MonoBehaviour {
             this.regenerationIcon.texture = regenerationTexture;
         }
     }
-
-    // public void ChangeAutoAttackStatus(bool status) {
-    //     string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";
-    //     Texture2D attackAutoTexture = Resources.Load<Texture2D>(textureLink);
-    //     if(attackAutoTexture != null) {
-    //         this.autoAttackIcon.texture = attackAutoTexture;
-    //     }
-    // }
 
     public void ChangeEnableAttackIcon(bool status) {
         string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";

@@ -129,31 +129,19 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("in");
         }
         
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
-
-
-        if (Input.GetKeyDown(KeyCode.B)) {
-            camera.EnableBlackAndWhiteEffect();
-        }
-
-        if (Input.GetKeyDown(KeyCode.N)) {
-            camera.DisableBlackAndWhiteEffect();
-        }
-
-
-
-
-        GameController.DrawCircleAroundObject(transform.position, this.range);
     }
 
     void FixedUpdate() {
 
         this.Move();
 
-        float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+        if(this.isAlive) {
+            float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
+        }
 
         this.TimerAttack();
         this.TimerRegeneration();
