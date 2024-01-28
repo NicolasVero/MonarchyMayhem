@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Scripts")]
     [SerializeField] private LevelUpChoice levelUpChoice;
     [SerializeField] private HUDStats hudStats;
+    [SerializeField] private CameraController camera;
 
 
     private const float sensitivity = 10;
@@ -86,9 +87,15 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] GameObject weapon;
     [SerializeField] private WeaponsDropper weaponsDropper;
-
+    [SerializeField] private Canvas deathScreen;
+    [SerializeField] private Canvas hudScreen;
 
     void Awake() {
+
+        this.camera.DisableBlackAndWhiteEffect();
+        GameController.SetCanvasVisibility(deathScreen, false);
+
+
         this.SetHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
@@ -117,6 +124,18 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
+
+
+        if (Input.GetKeyDown(KeyCode.B)) {
+            camera.EnableBlackAndWhiteEffect();
+        }
+
+        if (Input.GetKeyDown(KeyCode.N)) {
+            camera.DisableBlackAndWhiteEffect();
+        }
+
+
+
 
         GameController.DrawCircleAroundObject(transform.position, this.range);
     }
@@ -200,12 +219,28 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamage(int damage) {
 
         this.health -= Mathf.RoundToInt(damage * 1.0f - (float) this.resistance / 100.0f);
-        this.SetHealthBar(this.health);
-
         if(this.health <= 0) {
-            this.isAlive = false;
-            this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+            this.Death();
+        } else {
+            this.SetHealthBar(this.health);
         }
+    }
+
+    private void Death() {
+        this.isAlive = false;
+        Invoke("CameraDeathAnimation", 0.5f);
+    }
+
+    private void CameraDeathAnimation() {
+        GameController.SetCanvasVisibility(hudScreen, false);
+        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        this.camera.EnableBlackAndWhiteEffect();
+        GameController.SetGameState(0.2f);
+        Invoke("DeathScreen", 1f);
+    }
+
+    private void DeathScreen() {
+        GameController.SetCanvasVisibility(deathScreen, true);
     }
 
     //TODO voir pour mettre dans GameController

@@ -6,12 +6,19 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    private Camera camera = FindObjectOfType<Camera>();
+
+
     public static void SetGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }
     
     public static void SetGameState(bool state) {
         Time.timeScale = (state) ? 1 : 0;
+    }
+
+    public static void SetGameState(float value) {
+        Time.timeScale = value;
     }
 
     public static bool GameIsFreeze() {
@@ -25,6 +32,10 @@ public class GameController : MonoBehaviour {
 
     public static void SetPanelVisibility(GameObject panel, bool state) {
         panel.SetActive(state);
+    }
+
+    public static void SetCanvasVisibility(Canvas canvas, bool state) {
+        canvas.enabled = state;
     }
 
     public static void DrawCircleAroundObject(Vector3 position, float range, int numRays = 36) {
