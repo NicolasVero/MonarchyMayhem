@@ -112,15 +112,21 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+
+
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
             GameController.SetGameState();
 
         if(Input.GetKeyDown(KeyCode.U)) 
             this.XPGain(1);
 
-        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze()) {
-            this.enableAutomaticAttack = !this.enableAutomaticAttack;
-            this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
+        if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze() && this.canAttack) {
+            // this.enableAutomaticAttack = !this.enableAutomaticAttack;
+            // this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
+            this.goingAttack = true;
+            this.hudStats.ChangeEnableAttackIcon(false);
+            
+            Debug.Log("in");
         }
         
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -149,7 +155,6 @@ public class PlayerController : MonoBehaviour {
         float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
-        this.goingAttack = false;
         this.TimerAttack();
         this.TimerRegeneration();
     }
@@ -202,7 +207,9 @@ public class PlayerController : MonoBehaviour {
 
     public void TimerAttack() {
         if(this.timeSinceLastAttack >= this.attackSpeed + this.weaponAttackSpeed) {  
-            this.goingAttack = true;
+ 
+            this.canAttack = true;
+            this.hudStats.ChangeEnableAttackIcon(true);
             this.timeSinceLastAttack = 0f;
         }
 
@@ -369,11 +376,17 @@ public class PlayerController : MonoBehaviour {
 
 
     private void OnTriggerStay(Collider other) {
-        if(this.goingAttack && this.canAttack && this.isAlive && this.enableAutomaticAttack && other.CompareTag(Names.BaseEnemy)) {
-            EnemyController enemy = other.GetComponent<EnemyController>();
-            enemy.TakeDamage(this.attack + this.weaponAttack);
-            enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
-            this.animator.SetTrigger("Attack");
+
+        if(this.canAttack) {
+            if(this.goingAttack && this.isAlive && other.CompareTag(Names.BaseEnemy)) {
+                EnemyController enemy = other.GetComponent<EnemyController>();
+                enemy.TakeDamage(this.attack + this.weaponAttack);
+                enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
+                this.animator.SetTrigger("Attack");
+
+                this.canAttack = false;
+                this.goingAttack = false;
+            }
         }
     }
 

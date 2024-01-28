@@ -34,8 +34,8 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage speedIcon;
 
 
-    [Header("Auto attack")]
-    [SerializeField] private RawImage autoAttackIcon;
+    [Header("Can attack")]
+    [SerializeField] private RawImage enableAttackIcon;
 
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
@@ -131,11 +131,18 @@ public class HUDStats : MonoBehaviour {
         }
     }
 
-    public void ChangeAutoAttackStatus(bool status) {
+    // public void ChangeAutoAttackStatus(bool status) {
+    //     string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";
+    //     Texture2D attackAutoTexture = Resources.Load<Texture2D>(textureLink);
+    //     if(attackAutoTexture != null) {
+    //         this.autoAttackIcon.texture = attackAutoTexture;
+    //     }
+    // }
+
+    public void ChangeEnableAttackIcon(bool status) {
         string textureLink = status ? "Interface/icons/canAttack" : "Interface/icons/cantAttack";
-        Texture2D attackAutoTexture = Resources.Load<Texture2D>(textureLink);
-        if(attackAutoTexture != null) {
-            this.autoAttackIcon.texture = attackAutoTexture;
-        }
+        Texture2D enableAttackTexture = Resources.Load<Texture2D>(textureLink);
+
+        this.enableAttackIcon.texture = enableAttackTexture;
     }
 }
