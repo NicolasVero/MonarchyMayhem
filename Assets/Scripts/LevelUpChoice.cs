@@ -34,7 +34,6 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     public void UpdateStatsDisplay() {
-
         this.bannersLevel = new int[] {
             this.playerController.GetAttackLevel(),
             this.playerController.GetHealthLevel(),
@@ -50,7 +49,8 @@ public class LevelUpChoice : MonoBehaviour {
         for(int i = 0; i < this.bannersLevel.Length; i++) 
             if(this.bannersLevel[i] > 5) 
                 isMaxLevel.Add(i);
-            
+
+
         int[] excludes = this.GenerateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
 
 
@@ -59,6 +59,24 @@ public class LevelUpChoice : MonoBehaviour {
         this.HideBanners(excludes);
         GameController.SetCursorVisibility(true);
     }
+
+
+    public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {
+        HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
+
+        while(uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
+            int randomNumber = random.Next(min, max + 1);
+
+            if(!uniqueNumbers.Contains(randomNumber)) 
+                uniqueNumbers.Add(randomNumber);     
+        }
+
+        return uniqueNumbers.ToArray();
+    }
+
+
+
+
 
     public void ChoiceAttack() {
         this.playerController.UpdateAttack();
@@ -105,19 +123,6 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetGameState(true);
         GameController.SetCursorVisibility(false);
         GameController.SetPanelVisibility(levelUpPanel, false);   
-    }
-
-    public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {
-        HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
-
-        while(uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
-            int randomNumber = random.Next(min, max + 1);
-
-            if(!uniqueNumbers.Contains(randomNumber)) 
-                uniqueNumbers.Add(randomNumber);     
-        }
-
-        return uniqueNumbers.ToArray();
     }
 
 

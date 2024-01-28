@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 250020469}
   - component: {fileID: 250020468}
   m_Layer: 5
-  m_Name: Attack Auto Icon
+  m_Name: Can Attack Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: df57e0156839ef348ad4eb7c13fd122c, type: 3}
+  m_Texture: {fileID: 2800000, guid: 94ef4fff968065c4497b6f90ed444e53, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -590,14 +590,14 @@ RectTransform:
   m_GameObject: {fileID: 250020467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.9447021}
-  m_LocalScale: {x: 0.75905, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.27011737, y: 0.26877, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 696904541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 417.2, y: -10}
+  m_AnchoredPosition: {x: 437.4, y: -38.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &272265700
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   regenerationIcon: {fileID: 1660967944}
   resistanceIcon: {fileID: 1903896733}
   speedIcon: {fileID: 1685697501}
-  autoAttackIcon: {fileID: 250020468}
+  enableAttackIcon: {fileID: 250020468}
   player: {fileID: 708294678}
 --- !u!1 &488669865
 GameObject:
@@ -1490,7 +1490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 696904541}
   m_Layer: 0
-  m_Name: Attack Auto
+  m_Name: Can Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2028,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
