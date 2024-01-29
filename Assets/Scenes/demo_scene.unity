@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 312685991}
   - component: {fileID: 312685993}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Progressive Darkening
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,11 +1655,11 @@ Transform:
   m_GameObject: {fileID: 726022326}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3392127, y: -0.22841793, z: 0.08561512, w: 0.90853184}
-  m_LocalPosition: {x: 2.634, y: 4.855, z: -3.378}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.7979643, y: 5.8064876, z: -4.8157887}
+  m_LocalScale: {x: 1.4419001, y: 1.4419003, z: 1.4419001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 708294681}
+  m_Father: {fileID: 1936087773}
   m_LocalEulerAnglesHint: {x: 40.956, y: -28.208, z: 0.046}
 --- !u!81 &726022328
 AudioListener:
@@ -4764,7 +4764,7 @@ GameObject:
   - component: {fileID: 1537164183}
   - component: {fileID: 1537164182}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Wasted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5333,19 +5333,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 708294681}
+    m_TransformParent: {fileID: 1936087773}
     m_Modifications:
     - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.41801077
+      value: -0.60272986
       objectReference: {fileID: 0}
     - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14398272
+      value: -0.9863291
       objectReference: {fileID: 0}
     - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.8234036
+      value: 4.126017
       objectReference: {fileID: 0}
     - target: {fileID: 4328125711066240140, guid: dcd1f8e4601b46f42bdfe5aceae9b60b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5525,7 +5537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26
+      value: -0.009
       objectReference: {fileID: 0}
     - target: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5615,15 +5627,16 @@ PrefabInstance:
       propertyPath: blackAndWhiteEffect
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6369521832588607118, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
+      propertyPath: progressiveDarkening
+      value: 
+      objectReference: {fileID: 312685993}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1680089670}
-    - targetCorrespondingSourceObject: {fileID: 1882155609566588080, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 726022327}
+      addedObject: {fileID: 1936087773}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1248924411361883658, guid: 0f1826f123718374b965957da2bd3e0a, type: 3}
       insertIndex: -1
@@ -6475,6 +6488,39 @@ Transform:
   - {fileID: 272265701}
   m_Father: {fileID: 307384240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!1 &1936087772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1936087773}
+  m_Layer: 0
+  m_Name: Player system
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1936087773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936087772}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.82803077, z: -0.038109932}
+  m_LocalScale: {x: 0.6935293, y: 0.6935293, z: 0.6935293}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1680089670}
+  - {fileID: 726022327}
+  m_Father: {fileID: 708294681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1993737930
 GameObject:
   m_ObjectHideFlags: 0

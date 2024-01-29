@@ -32,15 +32,13 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage regenerationIcon;
     [SerializeField] private RawImage resistanceIcon;
     [SerializeField] private RawImage speedIcon;
-
-
-    [Header("Can attack")]
     [SerializeField] private RawImage enableAttackIcon;
 
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
 
     private readonly string bannersPath = "Interface/Icons/"; 
+
 
     void Start() {
         this.UpdateStats();

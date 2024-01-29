@@ -19,6 +19,21 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private CameraController camera;
     [SerializeField] private AudioController _audio;
 
+    [Header("Canvas")]
+    [SerializeField] private Canvas deathScreen;
+    [SerializeField] private Canvas hudScreen;
+    [SerializeField] private ProgressiveDarkeningController progressiveDarkening;
+
+    [Header("Weapons")]
+    [SerializeField] GameObject weapon;
+    [SerializeField] private WeaponsDropper weaponsDropper;
+
+
+
+
+
+
+
 
     private const float sensitivity = 10;
     private int enemyKillCounter;
@@ -86,12 +101,7 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     private Vector3 moveDirection;
 
-    [SerializeField] GameObject weapon;
-    [SerializeField] private WeaponsDropper weaponsDropper;
-    [SerializeField] private Canvas deathScreen;
-    [SerializeField] private Canvas hudScreen;
 
-    public ProgressiveDarkeningController pdc;
 
     void Awake() {
 
@@ -241,7 +251,7 @@ public class PlayerController : MonoBehaviour {
 
     private void DeathScreen() {
         GameController.SetCanvasVisibility(deathScreen, true);
-        pdc.StartFading();
+        progressiveDarkening.StartFading();
     }
 
     //TODO voir pour mettre dans GameController
