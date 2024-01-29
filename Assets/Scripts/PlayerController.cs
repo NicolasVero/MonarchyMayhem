@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LevelUpChoice levelUpChoice;
     [SerializeField] private HUDStats hudStats;
     [SerializeField] private CameraController camera;
+    [SerializeField] private AudioController _audio;
 
 
     private const float sensitivity = 10;
@@ -226,14 +227,16 @@ public class PlayerController : MonoBehaviour {
     private void Death() {
         this.isAlive = false;
         Invoke("CameraDeathAnimation", 0.5f);
+        this._audio.PlayDeathSFX();
+        this._audio.StopThemeSFX();
     }
 
     private void CameraDeathAnimation() {
         GameController.SetCanvasVisibility(hudScreen, false);
         this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         this.camera.EnableBlackAndWhiteEffect();
-        GameController.SetGameState(0.2f);
-        Invoke("DeathScreen", 1f);
+        GameController.SetGameState(0.3f);
+        Invoke("DeathScreen", 0.55f);
     }
 
     private void DeathScreen() {
@@ -371,6 +374,7 @@ public class PlayerController : MonoBehaviour {
                 enemy.TakeDamage(this.attack + this.weaponAttack);
                 enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
                 this.animator.SetTrigger("Attack");
+                this._audio.PlaySlashSFX();
 
                 this.canAttack = false;
                 this.goingAttack = false;

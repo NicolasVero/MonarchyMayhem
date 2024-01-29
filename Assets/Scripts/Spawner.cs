@@ -10,9 +10,9 @@ public class Spawner : MonoBehaviour {
     [SerializeField] bool allowKnights;
 
     [Header("Chance of spawn")]
-    [SerializeField] float chancePeasants;
-    [SerializeField] float chanceBourgeois;
-    [SerializeField] float chanceKnights;
+    [Range(0, 100)][SerializeField] float chancePeasants;
+    [Range(0, 100)][SerializeField] float chanceBourgeois;
+    [Range(0, 100)][SerializeField] float chanceKnights;
 
     [Header("Spawn parameters")]
     [SerializeField] private float spawnDelay;

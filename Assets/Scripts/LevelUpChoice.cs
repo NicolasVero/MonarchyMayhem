@@ -14,6 +14,7 @@ public class LevelUpChoice : MonoBehaviour {
     [Header("Classes utilitaires")]
     [SerializeField] private HUDStats hudStats;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private AudioController _audio;
 
     private string[] bannersNames;
     private int[] bannersLevel;
@@ -53,11 +54,16 @@ public class LevelUpChoice : MonoBehaviour {
 
         int[] excludes = this.GenerateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
 
+        this._audio.PlayLevelUpSFX();
+        this._audio.StopThemeSFX();
+        this._audio.PlayLevelUpPanelSFX();
+
 
         GameController.SetGameState(false);
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
         GameController.SetCursorVisibility(true);
+    
     }
 
 
@@ -120,6 +126,9 @@ public class LevelUpChoice : MonoBehaviour {
         for(int i = 0; i < this.bannersLength; i++)
             GameController.SetPanelVisibility(banners[i], true);
 
+        this._audio.PlayThemeSFX();
+        this._audio.StopLevelUpPanelSFX();
+        
         GameController.SetGameState(true);
         GameController.SetCursorVisibility(false);
         GameController.SetPanelVisibility(levelUpPanel, false);   
