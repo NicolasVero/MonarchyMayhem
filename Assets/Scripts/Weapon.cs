@@ -7,7 +7,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public int weaponID;
-    public string name;
+    public string weaponName;
     public string tier;
     public int id;
     public int attack;
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour {
             WeaponStat weapon = Array.Find(weaponsStats.weapons, e => e.id == this.weaponID);
 
 			this.id = weapon.id;
-			this.name = weapon.name;
+			this.weaponName = weapon.name;
 			this.tier = weapon.tier;
 			this.attack = weapon.attack;
 			this.attackSpeed = weapon.attackSpeed;
@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour {
             tierColors.TryGetValue(tier, out hexColor);
             lightComponent.color = GetColorFromHexadecimal(hexColor);
 
-            StartCoroutine(DestroyWeapon(120f));
+            Destroy(gameObject, 120f);
         }       
     }
 
@@ -67,9 +67,4 @@ public class Weapon : MonoBehaviour {
 		name = name.Replace("(Clone)", "");
 		return Convert.ToInt32(name.Split('_')[1]);
 	}
-
-    private IEnumerator DestroyWeapon(float delay) {
-        yield return new WaitForSeconds(delay);
-        Destroy(gameObject); 
-    }
 }

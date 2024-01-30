@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Scripts")]
     [SerializeField] private LevelUpChoice levelUpChoice;
     [SerializeField] private HUDStats hudStats;
-    [SerializeField] private CameraController camera;
+    [SerializeField] private new CameraController camera;
     [SerializeField] private AudioController _audio;
 
     [Header("Canvas")]
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     private const float sensitivity = 10;
     private int enemyKillCounter;
-    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, enableAutomaticAttack = true;
+    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -126,12 +126,8 @@ public class PlayerController : MonoBehaviour {
             this.XPGain(1);
 
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze() && this.canAttack) {
-            // this.enableAutomaticAttack = !this.enableAutomaticAttack;
-            // this.hudStats.ChangeAutoAttackStatus(this.enableAutomaticAttack);
             this.goingAttack = true;
             this.hudStats.ChangeEnableAttackIcon(false);
-            
-            Debug.Log("in");
         }
         
         if(Input.GetKeyDown(KeyCode.E)) {
@@ -400,7 +396,7 @@ public class PlayerController : MonoBehaviour {
             }
 
             this.weaponID = weapon.id;
-            this.weaponName = weapon.name;
+            this.weaponName = weapon.weaponName;
             this.weaponAttack = weapon.attack;
             this.weaponAttackSpeed = weapon.attackSpeed;
             this.weaponKnockback = weapon.knockback;

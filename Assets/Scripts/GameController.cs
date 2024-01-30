@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    private Camera camera = FindObjectOfType<Camera>();
+    private Camera playerCamera = FindObjectOfType<Camera>();
 
 
     public static void SetGameState() {
