@@ -70,8 +70,8 @@ public class LevelUpChoice : MonoBehaviour {
     public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
 
-        while(uniqueNumbers.Count < Math.Max(3, excludes.Length)) {
-            int randomNumber = random.Next(min, max + 1);
+        while(uniqueNumbers.Count < Math.Max(this.bannersLength - 3, excludes.Length)) {
+            int randomNumber = random.Next(min, max);
 
             if(!uniqueNumbers.Contains(randomNumber)) 
                 uniqueNumbers.Add(randomNumber);     
@@ -81,7 +81,53 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
 
+    private void HideBanners(int[] excludes) {
+        int[][] positions = {
+            new int[] { 400, 225},
+            new int[] { 700, 225},
+            new int[] {1000, 225}
+        };
 
+        for(int i = 0; i < this.bannersLength; i++) 
+            GameController.SetPanelVisibility(this.banners[i], false);
+        
+
+        int cpt = 0;
+        for (int i = 0; i < this.bannersLength; i++) {
+            if(Array.IndexOf(excludes, i) == -1) {
+        
+                this.banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
+                RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(175, 350);
+
+                this.banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
+                GameController.SetPanelVisibility(this.banners[i], true);
+
+                cpt++;
+
+                if(cpt >= excludes.Length) 
+                    break;    
+            }
+        }
+    }
+
+
+
+
+    void ResumeGame() {
+        this.playerController.SetCanResume(true);
+        this.hudStats.UpdateStats();
+        
+        for(int i = 0; i < this.bannersLength; i++)
+            GameController.SetPanelVisibility(banners[i], true);
+
+        this._audio.PlayThemeSFX();
+        this._audio.StopLevelUpPanelSFX();
+        
+        GameController.SetGameState(true);
+        GameController.SetCursorVisibility(false);
+        GameController.SetPanelVisibility(levelUpPanel, false);   
+    }
 
 
     public void ChoiceAttack() {
@@ -117,51 +163,6 @@ public class LevelUpChoice : MonoBehaviour {
     public void ChoiceRegeneration() {
         this.playerController.UpdateRegeneration();
         this.ResumeGame();
-    }
-
-    void ResumeGame() {
-        this.playerController.SetCanResume(true);
-        this.hudStats.UpdateStats();
-        
-        for(int i = 0; i < this.bannersLength; i++)
-            GameController.SetPanelVisibility(banners[i], true);
-
-        this._audio.PlayThemeSFX();
-        this._audio.StopLevelUpPanelSFX();
-        
-        GameController.SetGameState(true);
-        GameController.SetCursorVisibility(false);
-        GameController.SetPanelVisibility(levelUpPanel, false);   
-    }
-
-
-    private void HideBanners(int[] excludes) {
-        int[][] positions = {
-            new int[] { 400, 225},
-            new int[] { 700, 225},
-            new int[] {1000, 225}
-        };
-
-        for(int i = 0; i < this.bannersLength; i++) 
-            GameController.SetPanelVisibility(this.banners[i], false);
-        
-        int cpt = 0;
-
-        for (int i = 0; i < this.bannersLength; i++) {
-            if(Array.IndexOf(excludes, i) == -1) {
-                this.banners[i].transform.position = new Vector3(positions[cpt][0], positions[cpt][1], 0);
-                RectTransform rectTransform = banners[i].GetComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(175, 350);
-
-                this.banners[i].GetComponent<Image>().sprite = LoadBannerSprite(this.bannersNames[i], this.bannersLevel[i]);
-                GameController.SetPanelVisibility(this.banners[i], true);
-
-                cpt++;
-
-                if(cpt >= excludes.Length) 
-                    break;    
-            }
-        }
     }
 
     private Sprite LoadBannerSprite(string spriteName, int level) {
