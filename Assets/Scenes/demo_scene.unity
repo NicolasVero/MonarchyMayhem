@@ -1297,9 +1297,9 @@ Transform:
   - {fileID: 1437843736}
   - {fileID: 338611798}
   - {fileID: 1299929708}
+  - {fileID: 666458936}
   - {fileID: 1344332517}
   - {fileID: 354644758}
-  - {fileID: 666458936}
   - {fileID: 929977601}
   - {fileID: 2070053371}
   - {fileID: 696904541}
@@ -2028,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5635549333579137465, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
       propertyPath: weaponsDropper
@@ -5136,7 +5136,7 @@ GameObject:
   - component: {fileID: 1652347139}
   - component: {fileID: 1652347138}
   m_Layer: 5
-  m_Name: AttackSpeed update
+  m_Name: Range update
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5188,7 +5188,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: ChoiceAttackSpeed
+        m_MethodName: ChoiceRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5861,7 +5861,7 @@ GameObject:
   - component: {fileID: 1784292585}
   - component: {fileID: 1784292584}
   m_Layer: 5
-  m_Name: Range update
+  m_Name: Attack Speed update
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5932,7 +5932,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1041285417}
         m_TargetAssemblyTypeName: LevelUpChoice, Assembly-CSharp
-        m_MethodName: ChoiceRange
+        m_MethodName: ChoiceAttackSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6749,12 +6749,12 @@ RectTransform:
   m_Children:
   - {fileID: 1804996152}
   - {fileID: 732635237}
-  - {fileID: 1454576340}
-  - {fileID: 15320217}
   - {fileID: 1652347141}
+  - {fileID: 1454576340}
   - {fileID: 1784292583}
-  - {fileID: 1993737931}
   - {fileID: 1463886100}
+  - {fileID: 15320217}
+  - {fileID: 1993737931}
   - {fileID: 1041285416}
   m_Father: {fileID: 307384240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

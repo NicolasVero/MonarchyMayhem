@@ -100,11 +100,13 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     public void ChoiceAttackSpeed() {
+        Debug.Log("on attack speed");
         this.playerController.UpdateAttackSpeed();
         this.ResumeGame();
     }
 
     public void ChoiceRange() {
+        Debug.Log("on range");
         this.playerController.UpdateRange();
         this.ResumeGame();
     }

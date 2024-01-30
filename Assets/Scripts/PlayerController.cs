@@ -29,12 +29,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private WeaponsDropper weaponsDropper;
 
 
-
-
-
-
-
-
     private const float sensitivity = 10;
     private int enemyKillCounter;
     private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, enableAutomaticAttack = true;
