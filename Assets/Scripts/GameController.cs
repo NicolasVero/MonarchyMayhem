@@ -61,4 +61,26 @@ public class GameController : MonoBehaviour {
 
         Destroy(weapon);
     }
+
+
+
+
+    public static bool ShowPauseMenu(GameObject pauseMenu) {
+        if(pauseMenu == null) return false;
+        
+        pauseMenu.SetActive(true);
+        GameController.SetCursorVisibility(true);
+        return true;
+    }
+    
+
+    public static bool HidePauseMenu(GameObject pauseMenu) {
+        if(pauseMenu == null) return false;
+
+        pauseMenu.SetActive(false);
+        GameController.SetCursorVisibility(false);
+        return true;
+    }
+    
+
 }

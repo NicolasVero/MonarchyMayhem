@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Canvas")]
     [SerializeField] private Canvas deathScreen;
     [SerializeField] private Canvas hudScreen;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private ProgressiveDarkeningController progressiveDarkening;
 
     [Header("Weapons")]
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour {
         this.camera.DisableBlackAndWhiteEffect();
         GameController.SetCanvasVisibility(deathScreen, false);
 
-
+        GameController.HidePauseMenu(pauseMenu);
         this.SetHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
@@ -119,8 +120,10 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
 
-        if(Input.GetKeyDown(KeyCode.P) && this.canResume) 
+        if(Input.GetKeyDown(KeyCode.P) && this.canResume) {
             GameController.SetGameState();
+            var state = Time.timeScale == 0 ? GameController.ShowPauseMenu(pauseMenu) : GameController.HidePauseMenu(pauseMenu);
+        } 
 
         if(Input.GetKeyDown(KeyCode.U)) 
             this.XPGain(1);
@@ -133,6 +136,8 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
+
+        
     }
 
     void FixedUpdate() {
