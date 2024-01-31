@@ -147,8 +147,12 @@ public class PlayerController : MonoBehaviour {
         
         if(this.inPause) {
             GameController.ShowPauseMenu(pauseMenu);
+            this._audio.PlayPauseMenuSFX();
+            this._audio.StopThemeSFX();
         } else {
             GameController.HidePauseMenu(pauseMenu);
+            this._audio.StopPauseMenuSFX();
+            this._audio.PlayThemeSFX();
         }
     }
 
