@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
+
+    [SerializeField] private PlayerController playerController;
+
     public void Reprendre() {
-       GameController.SetGameState(true);
+        GameController.SetGameState(true);
+        this.playerController.SetInPause(false);
+        this.playerController.ManagePauseMenu();
     }
     
     public void ChangeScene(string _sceneName) {
@@ -14,7 +19,7 @@ public class MenuController : MonoBehaviour {
     }
 
     public void Quit() {
-       Application.Quit();
+        Application.Quit();
     }
 
 }

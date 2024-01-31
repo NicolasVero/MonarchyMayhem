@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     private Camera playerCamera = FindObjectOfType<Camera>();
-    // private Canvas pauseMenu = 
 
 
     public static void SetGameState() {

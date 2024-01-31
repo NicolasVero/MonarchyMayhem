@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     private const float sensitivity = 10;
     private int enemyKillCounter;
-    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true;
+    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, inPause = false;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -125,8 +125,9 @@ public class PlayerController : MonoBehaviour {
         } 
 
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) {
-            GameController.SetGameState();
-            var state = Time.timeScale == 0 ? GameController.ShowPauseMenu(pauseMenu) : GameController.HidePauseMenu(pauseMenu);
+            GameController.SetGameState(false);
+            this.SetInPause(true);
+            this.ManagePauseMenu();
         } 
 
         if(Input.GetKeyDown(KeyCode.U)) 
@@ -139,6 +140,15 @@ public class PlayerController : MonoBehaviour {
         
         if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
+        }
+    }
+
+    public void ManagePauseMenu() {
+        
+        if(this.inPause) {
+            GameController.ShowPauseMenu(pauseMenu);
+        } else {
+            GameController.HidePauseMenu(pauseMenu);
         }
     }
 
@@ -478,6 +488,11 @@ public class PlayerController : MonoBehaviour {
 
 
     // Setters
+
+    public void SetInPause(bool state) {
+        this.inPause = state;
+    } 
+
     private void SetXPBar(int xp) {
         this.xpBar.value = xp;
     }
