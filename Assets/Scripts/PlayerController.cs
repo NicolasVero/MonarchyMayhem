@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Canvas deathScreen;
     [SerializeField] private Canvas hudScreen;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject questMenu;
     [SerializeField] private ProgressiveDarkeningController progressiveDarkening;
 
     [Header("Weapons")]
@@ -119,6 +120,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        if (Input.GetKeyDown(KeyCode.R) && this.canResume) {
+            questMenu.SetActive(!questMenu.activeSelf);
+        } 
 
         if(Input.GetKeyDown(KeyCode.P) && this.canResume) {
             GameController.SetGameState();
@@ -136,8 +140,6 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
-
-        
     }
 
     void FixedUpdate() {

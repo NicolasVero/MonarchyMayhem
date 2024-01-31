@@ -3,38 +3,34 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestManager : MonoBehaviour
+public class QuestController : MonoBehaviour
 {
-    public TextMeshProUGUI questText;
+    private Quest currentQuest;
     private List<Quest> quests = new List<Quest>();
     private int currentQuestIndex = 0;
-    private Quest currentQuest;
-
-    [Header("Joueur")]
-    [SerializeField] private PlayerController player;
     private int KillCounter;
 
-    void Start()
-    {
-        // Initialiser les quêtes ici
-        InitializeQuests();
-        
-        // Afficher la première quête au démarrage
+    [Header("Text")]
+    [SerializeField] private TextMeshProUGUI questText;
+    
+    [Header("Player")]
+    [SerializeField] private PlayerController player;
+
+    void Start() {
+        InitializeQuests();        
         ShowCurrentQuest();
     }
 
-    void Update()
-    {
-        ShowCurrentQuest();
+    void Update() {
+        // ShowCurrentQuest();
         CompleteCurrentQuest();
-        
     }
 
 
     void InitializeQuests()
     {
         // Pas besoin de récupérer KillCounter ici, il sera obtenu dynamiquement dans GetQuestDetails
-        quests.Add(new Quest("Élimination d'ennemis", "Éliminez 2 ennemis dans la forêt",2, player));
+        quests.Add(new Quest("Élimination d'ennemis", "Éliminez 2 ennemis dans la forêt", 2, player));
         
     }
 
@@ -46,12 +42,10 @@ public class QuestManager : MonoBehaviour
 
     }
 
-       public void CompleteCurrentQuest()
-    {
-        // Vérifie si la quête est complète
-        if (currentQuest.IsComplete())
-        {
-            // Marque la quête comme complétée
+    public void CompleteCurrentQuest() {
+
+        if (currentQuest.IsComplete()) {
+
             currentQuest.SetCompleted(true);
 
             // Passe à la quête suivante (si disponible)

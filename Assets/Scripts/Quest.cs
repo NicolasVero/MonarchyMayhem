@@ -1,15 +1,15 @@
 [System.Serializable]
-public class Quest
-{
-    public string title;
-    public string description;
+public class Quest {
+    
+    private string title;
+    private string description;
     private bool completed = false;
     private int killsRequired;
     private int currentKills;
     private PlayerController playerController;
 
-    public Quest(string title, string description, int killsRequired, PlayerController playerController)
-    {
+
+    public Quest(string title, string description, int killsRequired, PlayerController playerController) {
         this.title = title;
         this.description = description;
         this.killsRequired = killsRequired;
@@ -17,24 +17,19 @@ public class Quest
         this.playerController = playerController;
     }
 
-   public string GetQuestDetails()
-    {
-        // Utilise la méthode GetKillCounter du PlayerController pour obtenir la valeur actuelle
-        int currentKills = playerController.GetKillCounter();
+    public string GetQuestDetails() {
+        this.currentKills = playerController.GetKillCounter();
 
-        return "Quête : " + title + "\nDescription : " + description + "\nComplétée : " + (completed ? "Oui" : "Non") +
-            "\nKills actuels : " + currentKills + "/" + killsRequired;
+        return "Quête : " + this.title + "\nDescription : " + this.description + "\nComplétée : " + (this.completed ? "Oui" : "Non") +
+            "\nKills actuels : " + this.currentKills + "/" + this.killsRequired;
     }
 
-    public void SetCompleted(bool value)
-    {
-        completed = value;
+    public void SetCompleted(bool value) {
+        this.completed = value;
     }
 
-       public bool IsComplete()
-    {  
-        int currentKills = playerController.GetKillCounter();
-        return !completed && currentKills >= killsRequired;
+    public bool IsComplete() {
+        return !this.completed && this.currentKills >= this.killsRequired;
     }
 
 }

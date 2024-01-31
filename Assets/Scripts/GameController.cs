@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     private Camera playerCamera = FindObjectOfType<Camera>();
+    // private Canvas pauseMenu = 
 
 
     public static void SetGameState() {
@@ -61,8 +62,6 @@ public class GameController : MonoBehaviour {
 
         Destroy(weapon);
     }
-
-
 
 
     public static bool ShowPauseMenu(GameObject pauseMenu) {
