@@ -13,8 +13,7 @@ public class EnemyController : MonoBehaviour {
     private Animator animator;
     private ParticleSystem attackParticle;
     private PlayerController playerController;
-
-    [SerializeField] private WeaponsDropper weaponsDropper;
+    private WeaponsDropper weaponsDropper;
 
     private string enemyType;
     private int attack, health, xp;
@@ -168,5 +167,10 @@ public class EnemyController : MonoBehaviour {
 
     private static string GetEnemyType(string name) {
         return name.Split('_')[0];
+    }
+
+    public void Dance() {
+        Debug.Log("in dance");
+        this.animator.SetTrigger("Dance");
     }
 }

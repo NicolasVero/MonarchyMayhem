@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Canvas")]
     [SerializeField] private Canvas deathScreen;
     [SerializeField] private Canvas hudScreen;
+    [SerializeField] private Canvas questScreen;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject questMenu;
     [SerializeField] private ProgressiveDarkeningController progressiveDarkening;
@@ -120,11 +121,15 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.R) && this.canResume) {
+        if(Input.GetKeyDown(KeyCode.F)) {
+            this.animator.SetTrigger("Dance");
+        }
+
+        if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
             questMenu.SetActive(!questMenu.activeSelf);
         } 
 
-        if(Input.GetKeyDown(KeyCode.P) && this.canResume) {
+        if(Input.GetKeyDown(KeyCode.P) && this.canResume && this.isAlive) {
             GameController.SetGameState(false);
             this.SetInPause(true);
             this.ManagePauseMenu();
@@ -136,6 +141,7 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze() && this.canAttack) {
             this.goingAttack = true;
             this.hudStats.ChangeEnableAttackIcon(false);
+            this.animator.SetTrigger("Attack");
         }
         
         if(Input.GetKeyDown(KeyCode.E)) {
@@ -250,10 +256,13 @@ public class PlayerController : MonoBehaviour {
         Invoke("CameraDeathAnimation", 0.5f);
         this._audio.PlayDeathSFX();
         this._audio.StopThemeSFX();
+        this.DanceTriggered();
     }
 
     private void CameraDeathAnimation() {
         GameController.SetCanvasVisibility(hudScreen, false);
+        GameController.SetCanvasVisibility(questScreen, false);
+        
         this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
         this.camera.EnableBlackAndWhiteEffect();
         GameController.SetGameState(0.3f);
@@ -265,14 +274,21 @@ public class PlayerController : MonoBehaviour {
         progressiveDarkening.StartFading();
     }
 
-    //TODO voir pour mettre dans GameController
+    private void DanceTriggered() {
+        GameObject enemiesParent = GameObject.Find("Enemies");
+        EnemyController[] enemies = enemiesParent.GetComponentsInChildren<EnemyController>();
+        
+        foreach (EnemyController enemy in enemies)
+            enemy.Dance();
+    }
+
     public void SetCanResume(bool statut) {
         this.canResume = statut;
     }
 
     private int XPRequired() {
-        // return (int)(5 * Math.Pow(1.2, this.level - 1));
-        return 5;
+        return (int)(5 * Math.Pow(1.2, this.level - 1));
+        // return 5;
     }
 
     // Updates / Increments
@@ -394,13 +410,16 @@ public class PlayerController : MonoBehaviour {
                 EnemyController enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(this.attack + this.weaponAttack);
                 enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
-                this.animator.SetTrigger("Attack");
                 this._audio.PlaySlashSFX();
 
-                this.canAttack = false;
-                this.goingAttack = false;
+                Invoke("DisableAttack", 0.1f);
             }
         }
+    }
+
+    private void DisableAttack() {
+        this.goingAttack = false;
+        this.canAttack = false;
     }
 
     private void TakeWeapon() {
