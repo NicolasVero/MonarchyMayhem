@@ -63,21 +63,19 @@ public class GameController : MonoBehaviour {
     }
 
 
-    public static bool ShowPauseMenu(GameObject pauseMenu) {
-        if(pauseMenu == null) return false;
+    public static void ShowPauseMenu(GameObject pauseMenu) {
+        if(pauseMenu == null) return;
         
         pauseMenu.SetActive(true);
         GameController.SetCursorVisibility(true);
-        return true;
     }
     
 
-    public static bool HidePauseMenu(GameObject pauseMenu) {
-        if(pauseMenu == null) return false;
+    public static void HidePauseMenu(GameObject pauseMenu) {
+        if(pauseMenu == null) return;
 
         pauseMenu.SetActive(false);
         GameController.SetCursorVisibility(false);
-        return true;
     }
     
 
