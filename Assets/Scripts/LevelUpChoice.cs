@@ -60,7 +60,6 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
         GameController.SetCursorVisibility(true);
-    
     }
 
 
@@ -77,13 +76,27 @@ public class LevelUpChoice : MonoBehaviour {
         return uniqueNumbers.ToArray();
     }
 
+    private int[][] GetPositionArray() {
+        int initialXPosition = 325;
+        int initialYPosition = 250;
+        int marginX = 250;
+        int marginY = 0;
+
+        int[][] positions = new int[3][];
+
+        for(int i = 0; i < 3; i++) {
+            int[] position = new int[2];
+            position[0] = initialXPosition + i * marginX;
+            position[1] = initialYPosition + i * marginY;
+            positions[i] = position; 
+        }
+
+        return positions;
+    }
 
     private void HideBanners(int[] excludes) {
-        int[][] positions = {
-            new int[] { 400, 225},
-            new int[] { 700, 225},
-            new int[] {1000, 225}
-        };
+
+        int[][] positions = this.GetPositionArray();
 
         for(int i = 0; i < this.bannersLength; i++) 
             GameController.SetPanelVisibility(this.banners[i], false);
@@ -121,6 +134,7 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetGameState(true);
         GameController.SetCursorVisibility(false);
         GameController.SetPanelVisibility(levelUpPanel, false);   
+        GameController.SetCanvasVisibility(this.playerController.GetQuestCanvas(), this.playerController.IsQuestCanvasVisible());
     }
 
 

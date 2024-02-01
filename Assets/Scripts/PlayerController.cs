@@ -121,12 +121,12 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isSprinting && !GameController.GameIsFreeze() && GetCanResume() && IsAlive()) {
+        if(Input.GetKey(KeyCode.LeftShift) && !isSprinting && !GameController.GameIsFreeze() && GetCanResume() && IsAlive()) {
             this.isSprinting = true;
             this.sprint = 4;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || GameController.GameIsFreeze() || !GetCanResume() || !IsAlive()) {
+        if(Input.GetKeyUp(KeyCode.LeftShift) || GameController.GameIsFreeze() || !GetCanResume() || !IsAlive()) {
             this.isSprinting = false;
             this.sprint = 0;
         }
@@ -519,6 +519,8 @@ public class PlayerController : MonoBehaviour {
     public float GetWeaponSpeed()        { return this.weaponSpeed;        }
     public float GetWeaponRegeneration() { return this.weaponRegeneration; }
 
+    public Canvas GetQuestCanvas() { return this.questScreen; }
+    public bool IsQuestCanvasVisible() { return this.questMenu.activeSelf; }
 
     // Setters
 
@@ -568,7 +570,7 @@ public class PlayerController : MonoBehaviour {
             this.SetXPBar(0);
 
             this.SetCanResume(false);
-
+            GameController.SetCanvasVisibility(this.questScreen, false);
             this.levelUpChoice.UpdateStatsDisplay();
         }
     }
