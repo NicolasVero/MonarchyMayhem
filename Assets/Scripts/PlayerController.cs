@@ -121,14 +121,10 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        if(Input.GetKey(KeyCode.LeftShift) && !isSprinting && !GameController.GameIsFreeze() && GetCanResume() && IsAlive()) {
-            this.isSprinting = true;
-            this.sprint = 4;
-        }
 
-        if(Input.GetKeyUp(KeyCode.LeftShift) || GameController.GameIsFreeze() || !GetCanResume() || !IsAlive()) {
-            this.isSprinting = false;
-            this.sprint = 0;
+        if(Input.GetKey(KeyCode.LeftShift)) {
+            this.isSprinting = !this.isSprinting;
+            this.sprint = (this.sprint == 0) ? 4 : 0;
         }
 
         if(Input.GetKeyDown(KeyCode.F)) {
@@ -382,19 +378,33 @@ public class PlayerController : MonoBehaviour {
         this.animator.SetInteger("Strafe", 0);
         this.animator.SetInteger("Strafe_Forward", 0);
         this.animator.SetInteger("Strafe_Backward", 0);
+        this.animator.SetInteger("Sprint", 0);
+        this.animator.SetInteger("Sprint_Strafe", 0);
+        this.animator.SetInteger("Sprint_Forward_Strafe", 0);
     }
 
     private void MoveAnims() {
         ResetAnims();
         
         if (Input.GetAxis("Vertical") > 0) {
-            if(Input.GetAxis("Horizontal") > 0) 
-                this.animator.SetInteger("Strafe_Forward", 1);
-            else if(Input.GetAxis("Horizontal") < 0) 
-                this.animator.SetInteger("Strafe_Forward", -1);
-            else 
-                this.animator.SetInteger("Walk", 1);
-            
+            if(Input.GetAxis("Horizontal") > 0) {
+                if (this.isSprinting)
+                    this.animator.SetInteger("Sprint_Forward_Strafe", 1);
+                else
+                    this.animator.SetInteger("Strafe_Forward", 1);
+            }
+            else if(Input.GetAxis("Horizontal") < 0) {
+                if (this.isSprinting)
+                    this.animator.SetInteger("Sprint_Forward_Strafe", -1);
+                else
+                    this.animator.SetInteger("Strafe_Forward", -1);
+            }
+            else {
+                if (this.isSprinting) 
+                    this.animator.SetInteger("Sprint", 1);
+                else
+                    this.animator.SetInteger("Walk", 1);
+            }
         } else if(Input.GetAxis("Vertical") < 0) {
             if(Input.GetAxis("Horizontal") > 0)
                 this.animator.SetInteger("Strafe_Backward", 1);
@@ -403,10 +413,18 @@ public class PlayerController : MonoBehaviour {
             else
                 this.animator.SetInteger("Walk", -1);
         } else {
-            if(Input.GetAxis("Horizontal") > 0)
-                this.animator.SetInteger("Strafe", 1);
-            else if (Input.GetAxis("Horizontal") < 0)
-                this.animator.SetInteger("Strafe", -1);
+            if(Input.GetAxis("Horizontal") > 0){
+                if (this.isSprinting)
+                    this.animator.SetInteger("Sprint_Strafe", 1);
+                else
+                    this.animator.SetInteger("Strafe", 1);
+            }
+            else if (Input.GetAxis("Horizontal") < 0){
+                if (this.isSprinting)
+                    this.animator.SetInteger("Sprint_Strafe", -1);
+                else
+                    this.animator.SetInteger("Strafe", -1);
+            }
             else
                 this.animator.SetBool("Idle", true);
         }
