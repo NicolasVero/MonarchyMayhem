@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour {
 
 
     private const float sensitivity = 10;
-    private int enemyKillCounter;
-    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, inPause = false;
+    private int enemyKillCounter, sprint = 0;
+    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, inPause = false, isSprinting = false;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -120,6 +120,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+
+        if (Input.GetKey(KeyCode.LeftShift) && !isSprinting && !GameController.GameIsFreeze() && GetCanResume() && IsAlive()) {
+            this.isSprinting = true;
+            this.sprint = 4;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || GameController.GameIsFreeze() || !GetCanResume() || !IsAlive()) {
+            this.isSprinting = false;
+            this.sprint = 0;
+        }
 
         if(Input.GetKeyDown(KeyCode.F)) {
             this.animator.SetTrigger("Dance");
@@ -357,8 +367,8 @@ public class PlayerController : MonoBehaviour {
 
     // Animations
     private void Move() {
-        transform.Translate(Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed()) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        transform.Translate(Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         float moveZ = Input.GetAxis("Vertical");
         this.moveDirection = new Vector3(0, 0, moveZ);
         this.moveDirection = this.transform.TransformDirection(this.moveDirection);

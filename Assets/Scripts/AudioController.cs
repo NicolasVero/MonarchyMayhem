@@ -6,8 +6,8 @@ public class AudioController : MonoBehaviour
 {
 
     [Header("Sound Effects")]
-    private int randomFS = 0;
-    private int randomTheme = 0;
+    private int randomFS = -1;
+    private int randomTheme = -1;
     [SerializeField] AudioSource[] mainTheme;
     [SerializeField] AudioSource[] slashSFX;
     [SerializeField] AudioSource[] footstepsSFX;
