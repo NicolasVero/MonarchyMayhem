@@ -12,10 +12,7 @@ public class QuestController : MonoBehaviour
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI questText;
-    
-    [Header("Player")]
-    [SerializeField] private PlayerController player;
-
+ 
     void Start() {
         InitializeQuests();        
         ShowCurrentQuest();
@@ -30,7 +27,8 @@ public class QuestController : MonoBehaviour
     void InitializeQuests()
     {
         // Pas besoin de récupérer KillCounter ici, il sera obtenu dynamiquement dans GetQuestDetails
-        quests.Add(new Quest("Élimination d'ennemis", "Éliminez 2 ennemis dans la forêt", 2, player));
+        quests.Add(new Quest("Élimination d'ennemis", "Éliminez 2 ennemis dans la forêt", 2, "Killing"));
+        quests.Add(new Quest("Obtenir la clé", "Trouvez les trois fragments de clé", 3, "Finding"));
         
     }
 
@@ -44,7 +42,7 @@ public class QuestController : MonoBehaviour
 
     public void CompleteCurrentQuest() {
 
-        if (currentQuest.IsComplete()) {
+        if(currentQuest.IsComplete()) {
 
             currentQuest.SetCompleted(true);
 
