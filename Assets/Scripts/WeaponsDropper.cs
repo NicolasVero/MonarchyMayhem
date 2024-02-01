@@ -8,7 +8,7 @@ public class WeaponsDropper : MonoBehaviour {
     [SerializeField] private GameObject weaponsContainer;
     private System.Random random = new System.Random();
     private float[] probabilities = {
-        1, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f
+        0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 1f
     };
 
 
