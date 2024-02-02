@@ -15,7 +15,7 @@ public class Quest {
 
         this.type = type;
         this.currentCount = 0;
-        this.playerController = this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+        this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.title = title;
         this.description = description;
         this.required = required;

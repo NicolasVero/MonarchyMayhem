@@ -170,7 +170,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void Dance() {
-        Debug.Log("in dance");
         this.animator.SetTrigger("Dance");
     }
 }
