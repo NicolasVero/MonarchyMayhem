@@ -23,16 +23,20 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject[] bourgeois;
     [SerializeField] GameObject[] knights;
 
+    private bool isActive = false;
     private System.Random random = new System.Random();
     private float timer = 0f;
 
 
     void Update() {
-        this.timer += Time.deltaTime;
 
-        if(this.timer >= this.spawnDelay) {
-            this.timer = 0f;
-            SpawnEnemies();
+        if(this.isActive) {
+            this.timer += Time.deltaTime;
+
+            if(this.timer >= this.spawnDelay) {
+                this.timer = 0f;
+                SpawnEnemies();
+            }
         }
     }
     
@@ -57,5 +61,9 @@ public class Spawner : MonoBehaviour {
                 Instantiate(this.knights[this.random.Next(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
+    }
+
+    public void ActiveSpawner() {
+        this.isActive = true;
     }
 }
