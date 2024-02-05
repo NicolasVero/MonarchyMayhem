@@ -11,6 +11,7 @@ public class AudioController : MonoBehaviour {
     [SerializeField] AudioSource[] mainTheme;
     [SerializeField] AudioSource[] slashSFX;
     [SerializeField] AudioSource[] footstepsSFX;
+    [SerializeField] AudioSource pickUpSFX;
     [SerializeField] AudioSource deathSFX;
     [SerializeField] AudioSource pauseMenuSFX;
     [SerializeField] AudioSource lvlUpSFX;
@@ -20,16 +21,15 @@ public class AudioController : MonoBehaviour {
         this.PlayThemeSFX(); 
     }
 
-
     public void PlayThemeSFX() {
         this.randomTheme++;
-        this.mainTheme[this.randomTheme%3].Play();
-        Invoke(nameof(this.PlayThemeSFX), this.mainTheme[this.randomTheme%3].clip.length);
+        this.mainTheme[this.randomTheme % this.mainTheme.Length].Play();
+        Invoke(nameof(this.PlayThemeSFX), this.mainTheme[this.randomTheme % 3].clip.length);
     }
 
     public void PlayFootstepSFX() {
         this.randomFS++;
-        this.footstepsSFX[this.randomFS%2].Play();
+        this.footstepsSFX[this.randomFS % this.footstepsSFX.Length].Play();
     }
 
     public void PlaySlashSFX() { 
@@ -57,7 +57,7 @@ public class AudioController : MonoBehaviour {
     }
     
     public void StopThemeSFX() { 
-        this.mainTheme[this.randomTheme%3].Stop();
+        this.mainTheme[this.randomTheme % this.mainTheme.Length].Stop();
         CancelInvoke(nameof(this.PlayThemeSFX));
     }
 
@@ -66,6 +66,6 @@ public class AudioController : MonoBehaviour {
     }
 
     public void PlayPickUpSFX() {
-        
+        this.pickUpSFX.Play();
     }
 }
