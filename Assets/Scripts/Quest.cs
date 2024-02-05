@@ -9,36 +9,46 @@ public class Quest {
     private int required;
     private int currentCount;
     private PlayerController playerController;
+    private CollectibleController collectibleController;
 
-
-    public Quest(string title, string description, int required, string type) {
+    public Quest(string title, string description, int required, string type, CollectibleController collectibleController) {
 
         this.type = type;
         this.currentCount = 0;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+        // this.collectibleController = totalCollectedObjects.Collect<CollectibleController>();
+        this.collectibleController = collectibleController;
         this.title = title;
         this.description = description;
         this.required = required;
     }
 
-    public string GetQuestDetails() {
-        
-        string message = "";
-
-        if(this.type == "Killing") {
-            this.currentCount = playerController.GetKillCounter();
-            message = "Quête : " + this.title + "\nDescription : " + this.description + "\nComplétée : " + (this.completed ? "Oui" : "Non") +
-            "\nKills actuels : " + this.currentCount + "/" + this.required;
-        }
-
-        if(this.type == "Finding") {
-            this.currentCount = playerController.GetKillCounter();
-            message = "Quête : " + this.title + "\nDescription : " + this.description + "\nComplétée : " + (this.completed ? "Oui" : "Non") +
-            "\nMorceau trouvés : " + this.currentCount + "/" + this.required;
-        }
-
-        return message; 
+    public struct QuestDetails {
+        public string YellowTitle { get; set; }
+        public string Message { get; set; }
+        public string Progression { get; set; }
     }
+
+    public Quest.QuestDetails GetQuestDetails() {
+        QuestDetails questDetails = new QuestDetails();
+
+        if (this.type == "Killing") {
+            this.currentCount = playerController.GetKillCounter();
+            questDetails.YellowTitle = this.title;
+            questDetails.Message = this.description ;
+            questDetails.Progression = "Completee : " + "\t \t \t \t " + this.currentCount + "/" + this.required;
+        }
+
+         if (this.type == "Finding") {
+            this.currentCount = collectibleController.GetCollectibleCounter();
+            questDetails.YellowTitle = this.title;
+            questDetails.Message = this.description ;
+            questDetails.Progression = "Completee : " + "\t \t \t \t " + this.currentCount + "/" + this.required;
+        }
+
+        return questDetails;
+    }
+
 
     public void SetCompleted(bool value) {
         this.completed = value;

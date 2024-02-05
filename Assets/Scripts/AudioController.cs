@@ -64,4 +64,8 @@ public class AudioController : MonoBehaviour {
     public void StopLevelUpPanelSFX() { 
         this.lvlUpPanelSFX.Stop(); 
     }
+
+    public void PlayPickUpSFX() {
+        
+    }
 }

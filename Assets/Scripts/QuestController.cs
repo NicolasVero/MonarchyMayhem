@@ -11,7 +11,13 @@ public class QuestController : MonoBehaviour
     private int KillCounter;
 
     [Header("Text")]
-    [SerializeField] private TextMeshProUGUI questText;
+    [SerializeField] private TextMeshProUGUI questTitle;
+    [SerializeField] private TextMeshProUGUI questMessage;
+    [SerializeField] private TextMeshProUGUI questProgression;
+    [SerializeField] private CollectibleController collectibleController;
+
+
+
  
     void Start() {
         InitializeQuests();        
@@ -26,9 +32,10 @@ public class QuestController : MonoBehaviour
 
     void InitializeQuests()
     {
-        // Pas besoin de récupérer KillCounter ici, il sera obtenu dynamiquement dans GetQuestDetails
-        quests.Add(new Quest("Élimination d'ennemis", "Éliminez 2 ennemis dans la forêt", 2, "Killing"));
-        quests.Add(new Quest("Obtenir la clé", "Trouvez les trois fragments de clé", 3, "Finding"));
+        quests.Add(new Quest("Elimination d'ennemis", "Eliminez 30 ennemis ", 30, "Killing",collectibleController));
+        quests.Add(new Quest("Obtenir la clef", "Trouvez les 6 fragments de clef dans le niveau 1", 6, "Finding",collectibleController));
+     
+      
         
     }
 
@@ -65,7 +72,16 @@ public class QuestController : MonoBehaviour
 
     void UpdateQuestText()
     {
-        questText.text = currentQuest.GetQuestDetails();
+        Quest.QuestDetails questDetails = currentQuest.GetQuestDetails();
+        string yellowTitle = questDetails.YellowTitle;
+        string message = questDetails.Message;
+        string progression = questDetails.Progression;
+
+
+        questTitle.text = questDetails.YellowTitle;
+        questMessage.text = questDetails.Message;
+        questProgression.text = questDetails.Progression;
+        
     }
 
     public Quest GetCurrentQuest()

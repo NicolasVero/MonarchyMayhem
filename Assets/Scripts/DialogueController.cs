@@ -4,127 +4,98 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DialogueController : MonoBehaviour
-{
+public class DialogueController : MonoBehaviour {
+    
     [SerializeField] private bool isInRange = false;
+
     [Header("Canvas Settings")]
-    [SerializeField] public Canvas dialogueCanvas;
-    [SerializeField] public TextMeshProUGUI dialogueText;
-    [SerializeField] public Button closeButton;
-    [SerializeField] public Button nextButton;
-    [SerializeField] public Button prevButton; // Nouveau bouton pour afficher le message précédent
+    [SerializeField] private Canvas dialogueCanvas;
+    [SerializeField] private Canvas interaction;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Button closeButton;
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button prevButton;
 
-    [Header("Canvas à Désactiver")]
-    [SerializeField] public Canvas enableCanvas;
-    [SerializeField] public Canvas enableCanvas2;
+    [Header("Canvas to Deactivate")]
+    [SerializeField] private Canvas[] disabledCanvas;
+
+    private List<string> dialogueMessages = new List<string>();
+    private int currentIndex;
 
 
-    private List<string> dialogueMessages = new List<string>(); // Liste des messages
-    private int currentIndex = 0; // Indice du message en cours
-
-
-    void Start()
-    {
-        CloseDialogue();
-
-        dialogueMessages.Add("Message 0 pour set up la liste");// Il faut toujours un message pour incrémenter le nombre à 1 directement afin de faire une liste dynamique
+    void Start() {
+        GameController.SetCanvasVisibility(dialogueCanvas, false);
 
         dialogueMessages.Add("Bonjour, aventurier !");
         dialogueMessages.Add("Bienvenue dans notre village !");
         dialogueMessages.Add("N'hésitez pas à explorer.");
 
-         if (nextButton != null)
-        {
-            nextButton.onClick.AddListener(ShowNextMessage);
-        }
-
-        if (prevButton != null)
-        {
-            prevButton.onClick.AddListener(ShowPreviousMessage);
-        }
-
-        if (closeButton != null)
-        {
-            closeButton.onClick.AddListener(CloseDialogue);
-        }
+        nextButton.onClick.AddListener(ShowNextMessage);
+        prevButton.onClick.AddListener(ShowPreviousMessage);
+        closeButton.onClick.AddListener(CloseDialogue);
     }
 
-    void Update()
-    {
-        if (isInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            // Appeler la fonction de dialogue ici
+    void Update() {
+
+        if(isInRange && Input.GetKeyDown(KeyCode.E))
             StartDialogue();
+
+        Interaction();
+    }
+
+    private void Interaction() {
+        interaction.enabled = isInRange && !dialogueCanvas.enabled;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        isInRange = other.CompareTag("NPC");
+    }
+
+    private void OnTriggerExit(Collider other) {
+        isInRange = !other.CompareTag("NPC");
+    }
+
+
+    private void ShowNextMessage() {
+        this.currentIndex++;
+        ShowMessage();
+    }
+
+    private void ShowPreviousMessage() {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+            ShowMessage();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("NPC"))
-        {
-            isInRange = true;
-        }
-    }
+    private void ShowMessage() {
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("NPC"))
-        {
-            isInRange = false;
-        }
-    }
-
-    private void StartDialogue()
-    {
-        currentIndex = 0; // Réinitialise l'indice au début du dialogue
-        ShowNextMessage(); // Affiche le premier message
-        dialogueCanvas.enabled = true;
-        GameController.SetGameState(false);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        enableCanvas.enabled = false;
-        enableCanvas2.enabled = false;
-    }
-
-     private void UpdateDialogueText(string newDialogue)
-    {
-        if (dialogueText != null)
-        {
-            dialogueText.text = newDialogue;
-        }
-    }
-
-    private void ShowNextMessage()
-    {
-        if (currentIndex < dialogueMessages.Count -1)
-        {
-            currentIndex++;
-            UpdateDialogueText(dialogueMessages[currentIndex]);
-            Debug.Log("ShowNextMessage done" + currentIndex);
-        }
-        else
-        {
+        if(!(this.currentIndex < dialogueMessages.Count)) { 
             CloseDialogue();
+            return;
         }
+
+        dialogueText.text = dialogueMessages[this.currentIndex];
     }
 
-     private void ShowPreviousMessage()
-    {
-        if (currentIndex > 1)
-        {
-            currentIndex--;
-            UpdateDialogueText(dialogueMessages[currentIndex]);
-            Debug.Log("ShowPM done"+ currentIndex);
-        }
+    private void CloseDialogue() {
+        ManageDialogue(false);
     }
 
-    private void CloseDialogue()
-    {
-        dialogueCanvas.enabled = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        GameController.SetGameState(true);
-        enableCanvas.enabled = true;
-        enableCanvas2.enabled = false;
+    private void StartDialogue() {
+        this.currentIndex = -1; 
+        ShowNextMessage(); 
+        ManageDialogue(true);
+    }
+
+    private void ManageDialogue(bool state) {
+        dialogueCanvas.enabled = state;
+        GameController.SetGameState(!state);
+
+        Cursor.visible = state;
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+
+        for(int i = 0; i < disabledCanvas.Length; i++)
+            disabledCanvas[i].enabled = !state;
     }
 }
