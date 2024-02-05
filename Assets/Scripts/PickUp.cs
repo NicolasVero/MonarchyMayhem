@@ -2,24 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
-{
-    [SerializeField] private AudioController _audio;
-    private int nombreObjetsRamasses = 0;
+public class PickUp : MonoBehaviour {
 
-    void OnTriggerEnter(Collider other) 
-    {
+    [SerializeField] private new AudioController audio;
+    private int collectedItemsCount = 0;
 
-        if (other.gameObject.CompareTag("PickUp")) 
-        {   
-            this._audio.PlayPickUpSFX();
+    void OnTriggerEnter(Collider other) {
+        
+        if(other.gameObject.CompareTag("PickUp")) {   
+            this.audio.PlayPickUpSFX();
             Destroy(other.gameObject);
-            nombreObjetsRamasses++;
+            collectedItemsCount++;
         }
     }
 
-    public int GetNombreObjetsRamasses()
-    {
-        return nombreObjetsRamasses;
+    public int GetCollectedItemsCount() {
+        return collectedItemsCount;
     }
 }

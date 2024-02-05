@@ -24,7 +24,7 @@ public class AudioController : MonoBehaviour {
     public void PlayThemeSFX() {
         this.randomTheme++;
         this.mainTheme[this.randomTheme % this.mainTheme.Length].Play();
-        Invoke(nameof(this.PlayThemeSFX), this.mainTheme[this.randomTheme % 3].clip.length);
+        Invoke(nameof(this.PlayThemeSFX), this.mainTheme[this.randomTheme % this.mainTheme.Length].clip.length);
     }
 
     public void PlayFootstepSFX() {

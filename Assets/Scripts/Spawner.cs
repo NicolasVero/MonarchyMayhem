@@ -23,14 +23,14 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject[] bourgeois;
     [SerializeField] GameObject[] knights;
 
-    private bool isActive = false;
+    private bool isActive = false, isPaused = false;
     private System.Random random = new System.Random();
     private float timer = 0f;
 
 
     void Update() {
 
-        if(this.isActive) {
+        if(this.isActive && !this.isPaused) {
             this.timer += Time.deltaTime;
 
             if(this.timer >= this.spawnDelay) {
@@ -41,7 +41,7 @@ public class Spawner : MonoBehaviour {
     }
     
     private void SpawnEnemies() {
-    
+
         int randNumber = this.random.Next(0, 100);
 
         if(this.allowPeasants) {
@@ -65,5 +65,13 @@ public class Spawner : MonoBehaviour {
 
     public void ActiveSpawner() {
         this.isActive = true;
+    }
+
+    public void PauseSpawner() {
+        this.isPaused = true;
+    }
+
+    public void ResumeSpawner() {
+        this.isPaused = false;
     }
 }

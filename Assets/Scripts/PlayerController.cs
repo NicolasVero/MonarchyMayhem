@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LevelUpChoice levelUpChoice;
     [SerializeField] private HUDStats hudStats;
     [SerializeField] private new CameraController camera;
-    [SerializeField] private AudioController _audio;
+    [SerializeField] private new AudioController audio;
 
     [Header("Canvas")]
     [SerializeField] private Canvas deathScreen;
@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour {
             this.goingAttack = true;
             this.hudStats.ChangeEnableAttackIcon(false);
             this.animator.SetTrigger("Attack");
+            StartCoroutine(DisableGoingAttack());
         }
         
         if(Input.GetKeyDown(KeyCode.E)) {
@@ -160,16 +161,21 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private IEnumerator DisableGoingAttack() {
+        yield return new WaitForSeconds(0.5f);
+        this.goingAttack = false;
+    }
+
     public void ManagePauseMenu() {
         
         if(this.inPause) {
             GameController.ShowPauseMenu(pauseMenu);
-            this._audio.PlayPauseMenuSFX();
-            this._audio.StopThemeSFX();
+            this.audio.PlayPauseMenuSFX();
+            this.audio.StopThemeSFX();
         } else {
             GameController.HidePauseMenu(pauseMenu);
-            this._audio.StopPauseMenuSFX();
-            this._audio.PlayThemeSFX();
+            this.audio.StopPauseMenuSFX();
+            this.audio.PlayThemeSFX();
         }
     }
 
@@ -265,8 +271,8 @@ public class PlayerController : MonoBehaviour {
     private void Death() {
         this.isAlive = false;
         Invoke("CameraDeathAnimation", 0.5f);
-        this._audio.PlayDeathSFX();
-        this._audio.StopThemeSFX();
+        this.audio.PlayDeathSFX();
+        this.audio.StopThemeSFX();
         this.DanceTriggered();
     }
 
@@ -443,7 +449,7 @@ public class PlayerController : MonoBehaviour {
                 EnemyController enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(this.attack + this.weaponAttack);
                 enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
-                this._audio.PlaySlashSFX();
+                this.audio.PlaySlashSFX();
 
                 Invoke("DisableAttack", 0.1f);
             }

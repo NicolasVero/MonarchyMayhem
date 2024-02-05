@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
-
     [SerializeField] private PlayerController playerController;
 
-    public void Reprendre() {
+    public void Resume() {
         GameController.SetGameState(true);
         this.playerController.SetInPause(false);
         this.playerController.ManagePauseMenu();

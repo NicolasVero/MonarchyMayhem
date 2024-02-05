@@ -17,8 +17,6 @@ public class QuestController : MonoBehaviour
     [SerializeField] private CollectibleController collectibleController;
 
 
-
- 
     void Start() {
         InitializeQuests();        
         ShowCurrentQuest();

@@ -8,7 +8,9 @@ public class SpawnersController : MonoBehaviour {
     [SerializeField] private int maxActive;
     [SerializeField] private float radius;
     [SerializeField] private int maxEntities;
+    [SerializeField] private GameObject enemiesContainer;
     private GameObject[] spawnerObjects;
+    private bool isPaused = false;
 
 
     void Start(){
@@ -19,6 +21,7 @@ public class SpawnersController : MonoBehaviour {
                 spawnerList.Add(child.gameObject);
             }
         }
+
         spawnerObjects = spawnerList.ToArray();
 
         if(this.maxActive > spawnerObjects.Length)
@@ -29,20 +32,41 @@ public class SpawnersController : MonoBehaviour {
 
     void Update() {
 
+        if(enemiesContainer.transform.childCount > maxEntities) {
+            if (!isPaused) 
+                PauseSpawners();
+        } else {
+            if (isPaused) 
+                ResumeSpawners();
+        }
     }
 
     private void ActivateRandomSpawners() {
         List<int> indices = new List<int>();
 
-        for (int i = 0; i < spawnerObjects.Length; i++) {
+        for(int i = 0; i < spawnerObjects.Length; i++) {
             indices.Add(i);
         }
 
-        for (int i = 0; i < maxActive; i++) {
+        for(int i = 0; i < maxActive; i++) {
             int randomIndex = Random.Range(0, indices.Count);
             int spawnerIndex = indices[randomIndex];
             spawnerObjects[spawnerIndex].GetComponent<Spawner>().ActiveSpawner();
             indices.RemoveAt(randomIndex);
         }
+    }
+
+    private void PauseSpawners() {
+        foreach(GameObject spawnerObject in spawnerObjects) {
+            spawnerObject.GetComponent<Spawner>().PauseSpawner();
+        }
+        isPaused = true;
+    }
+
+    private void ResumeSpawners() {
+        foreach(GameObject spawnerObject in spawnerObjects) {
+            spawnerObject.GetComponent<Spawner>().ResumeSpawner();
+        }
+        isPaused = false;
     }
 }
