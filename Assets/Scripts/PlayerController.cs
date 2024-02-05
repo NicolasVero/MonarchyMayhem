@@ -121,11 +121,16 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-
         if(Input.GetKey(KeyCode.LeftShift)) {
-            this.isSprinting = !this.isSprinting;
-            this.sprint = (this.sprint == 0) ? 4 : 0;
+            this.isSprinting = true;
+            this.sprint = 4;
         }
+
+        if(!Input.GetKey(KeyCode.LeftShift)) {
+            this.isSprinting = false;
+            this.sprint = 0;
+        }
+
 
         if(Input.GetKeyDown(KeyCode.F)) {
             this.animator.SetTrigger("Dance");
