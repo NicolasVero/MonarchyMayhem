@@ -13,8 +13,8 @@ public class MenuController : MonoBehaviour {
         this.playerController.ManagePauseMenu();
     }
     
-    public void ChangeScene(string _sceneName) {
-        SceneManager.LoadScene(_sceneName);
+    public void ChangeScene(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Quit() {

@@ -8,8 +8,40 @@ public class WeaponsDropper : MonoBehaviour {
     [SerializeField] private GameObject weaponsContainer;
     private System.Random random = new System.Random();
     private float[] probabilities = {
-        0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 1f,
-        1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        0.1f, 
+        1f,
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f, 
+        1f
     };
 
 
@@ -23,15 +55,15 @@ public class WeaponsDropper : MonoBehaviour {
     }
 
     public void CreateWeapon(Vector3 position) {
-        CreateWeapon(-1, position);
+        this.CreateWeapon(-1, position);
     }
 
     private int GiveRandomWeaponID() {
 
         while(true) {
-            int number = random.Next(0, this.probabilities.Length);
+            int number = this.random.Next(0, this.probabilities.Length);
 
-            if(random.NextDouble() < this.probabilities[number]) {
+            if(this.random.NextDouble() < this.probabilities[number]) {
                 return number;
             }
         }

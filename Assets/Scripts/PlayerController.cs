@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Weapons")]
     [SerializeField] GameObject weapon;
     [SerializeField] private WeaponsDropper weaponsDropper;
+    [SerializeField] private GameObject weaponHolder;
 
 
     private const float sensitivity = 10;
@@ -117,6 +118,8 @@ public class PlayerController : MonoBehaviour {
 
         this.healthBar.maxValue = this.GetHealth();
         this.healthBar.value = this.GetHealth();
+
+        this.DisableWeapons();
     }
 
     void Update() {
@@ -124,9 +127,7 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKey(KeyCode.LeftShift)) {
             this.isSprinting = true;
             this.sprint = 4;
-        }
-
-        if(!Input.GetKey(KeyCode.LeftShift)) {
+        } else {
             this.isSprinting = false;
             this.sprint = 0;
         }
@@ -156,13 +157,13 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(DisableGoingAttack());
         }
         
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.J)) {
             TakeWeapon();
         }
     }
 
     private IEnumerator DisableGoingAttack() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         this.goingAttack = false;
     }
 
@@ -486,6 +487,22 @@ public class PlayerController : MonoBehaviour {
 
             GameController.DestroyWeapon(weapon);
             this.hudStats.UpdateStats();
+
+            string weaponNameInHand = "weapon_" + this.weaponID;
+
+            foreach (Transform child in weaponHolder.transform) {
+                if (child.gameObject.name == weaponNameInHand) {
+                    child.gameObject.SetActive(true);
+                } else {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void DisableWeapons() {
+        foreach (Transform child in weaponHolder.transform) {
+            child.gameObject.SetActive(false);
         }
     }
 
