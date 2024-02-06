@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour {
     private int regenerationLevel = 1;
 
     private int weaponID;
-    private string weaponName = "Epée de fer";
+    private string weaponName = "";
     private int   weaponAttack;
     private float weaponAttackSpeed;
     private float weaponKnockback;
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(DisableGoingAttack());
         }
         
-        if(Input.GetKeyDown(KeyCode.J)) {
+        if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
     }
@@ -471,7 +471,7 @@ public class PlayerController : MonoBehaviour {
 
         if(weapon != null) {
 
-            if(this.weaponName != "Epée de fer") {
+            if(this.weaponName != "") {
                 this.weaponsDropper.CreateWeapon(this.weaponID - 1, transform.position);
             }
 
@@ -490,8 +490,8 @@ public class PlayerController : MonoBehaviour {
 
             string weaponNameInHand = "weapon_" + this.weaponID;
 
-            foreach (Transform child in weaponHolder.transform) {
-                if (child.gameObject.name == weaponNameInHand) {
+            foreach(Transform child in weaponHolder.transform) {
+                if(child.gameObject.name == weaponNameInHand) {
                     child.gameObject.SetActive(true);
                 } else {
                     child.gameObject.SetActive(false);
@@ -501,7 +501,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void DisableWeapons() {
-        foreach (Transform child in weaponHolder.transform) {
+        foreach(Transform child in weaponHolder.transform) {
             child.gameObject.SetActive(false);
         }
     }
