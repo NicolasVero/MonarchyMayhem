@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInRange: 0
+  questController: {fileID: 1822582680}
   dialogueCanvas: {fileID: 181508999}
   interaction: {fileID: 299431008}
   dialogueText: {fileID: 1045923609}
@@ -2992,6 +2992,7 @@ MonoBehaviour:
   disabledCanvas:
   - {fileID: 307384239}
   - {fileID: 1822582683}
+  messagesPerStep: 1
 --- !u!1 &525655095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,7 +4438,7 @@ GameObject:
   - component: {fileID: 799266534}
   m_Layer: 0
   m_Name: Collectibles
-  m_TagString: Untagged
+  m_TagString: Collectibles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11033,7 +11034,7 @@ MonoBehaviour:
   questTitle: {fileID: 2085729282}
   questMessage: {fileID: 593216779}
   questProgression: {fileID: 594559202}
-  collectibleController: {fileID: 799266534}
+  dialogueController: {fileID: 521541534}
 --- !u!114 &1822582681
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,16 +8,18 @@ public class Quest {
     private bool completed = false;
     private int required;
     private int currentCount;
+    private bool currentBool;
     private PlayerController playerController;
     private CollectibleController collectibleController;
+    private DialogueController dialogueController;
 
-    public Quest(string title, string description, int required, string type, CollectibleController collectibleController) {
+    public Quest(string title, string description, int required, string type) {
 
         this.type = type;
         this.currentCount = 0;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
-        // this.collectibleController = totalCollectedObjects.Collect<CollectibleController>();
-        this.collectibleController = collectibleController;
+        this.dialogueController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<DialogueController>();
+        this.collectibleController = GameObject.FindGameObjectWithTag("Collectibles").GetComponent<CollectibleController>();  //ajouter un tag au parent collectible
         this.title = title;
         this.description = description;
         this.required = required;
@@ -45,7 +47,12 @@ public class Quest {
             questDetails.Message = this.description ;
             questDetails.Progression = "Completee : " + "\t \t \t \t " + this.currentCount + "/" + this.required;
         }
-
+        if (this.type == "Speaking") {
+            this.currentBool = dialogueController.GetDialogueInitiated();
+            questDetails.YellowTitle = this.title;
+            questDetails.Message = this.description ;
+            questDetails.Progression = "Completee : non" ;
+        }
         return questDetails;
     }
 
@@ -55,7 +62,19 @@ public class Quest {
     }
 
     public bool IsComplete() {
-        return !this.completed && this.currentCount >= this.required;
+        return !this.completed && this.currentCount >= this.required || !this.completed && this.currentBool == true;
     }
 
+    public string GetType(){
+        return this.type;
+    }
+    public string GetTitle(){
+        return this.title;
+    }
+    public string GetDescription(){
+        return this.description;
+    }
+    public int GetRequired(){
+        return this.required;
+    }    
 }

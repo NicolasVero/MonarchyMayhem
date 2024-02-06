@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestController : MonoBehaviour
 {
-    private Quest currentQuest;
+    public Quest currentQuest;
     private List<Quest> quests = new List<Quest>();
     private int currentQuestIndex = 0;
     private int KillCounter;
@@ -14,57 +14,57 @@ public class QuestController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questTitle;
     [SerializeField] private TextMeshProUGUI questMessage;
     [SerializeField] private TextMeshProUGUI questProgression;
-    [SerializeField] private CollectibleController collectibleController;
+    [SerializeField] private DialogueController dialogueController; // lié l'un vers l'autre
 
 
+
+ 
     void Start() {
-        InitializeQuests();        
+        InitializeQuests();   
         ShowCurrentQuest();
     }
 
     void Update() {
-        // ShowCurrentQuest();
         CompleteCurrentQuest();
     }
 
 
     void InitializeQuests()
     {
-        quests.Add(new Quest("Elimination d'ennemis", "Eliminez 30 ennemis ", 30, "Killing",collectibleController));
-        quests.Add(new Quest("Obtenir la clef", "Trouvez les 6 fragments de clef dans le niveau 1", 6, "Finding",collectibleController));
-     
-      
-        
+        quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking"));   
     }
 
     void ShowCurrentQuest()
     {
-        // Afficher la quête actuelle dans le canvas
         currentQuest = quests[currentQuestIndex];
         UpdateQuestText();
-
     }
 
     public void CompleteCurrentQuest() {
 
-        if(currentQuest.IsComplete()) {
+        if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) { // permet de parler au pnj pour pouvoir recevoir une quete avant de passer a la quete d'apres sinon sa bug
 
             currentQuest.SetCompleted(true);
-
-            // Passe à la quête suivante (si disponible)
             currentQuestIndex++;
+            dialogueController.SetDialogueState(false); // remet a false pour pouvoir etre relancer
+
             if (currentQuestIndex < quests.Count)
             {
                 ShowCurrentQuest();
+                Debug.Log(currentQuestIndex);
             }
             else
             {
-                // Toutes les quêtes ont été complétées
                 Debug.Log("Toutes les quêtes ont été complétées. Passage au niveau suivant...");
+                GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
+                if (npcObject != null)
+                {   
+                    dialogueController.SetIsInRange(false);
+                    npcObject.tag = "Untagged";
+                }
             }
         }
 
-        // Mise à jour du texte de la quête
         UpdateQuestText();
     }
 
@@ -85,5 +85,16 @@ public class QuestController : MonoBehaviour
     public Quest GetCurrentQuest()
     {
         return currentQuest;
+    }
+
+      public void AddQuestFromDialogue(string questTitle, string questMessage, int requiredAmount, string questType) {
+
+        quests.Add(new Quest(questTitle, questMessage, requiredAmount, questType));
+
+        Debug.Log("Quêtes actuelles :");
+
+        foreach (Quest quest in quests) {
+            Debug.Log($"- {quest.GetQuestDetails().YellowTitle}");
+        }
     }
 }
