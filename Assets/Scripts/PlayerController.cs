@@ -135,7 +135,17 @@ public class PlayerController : MonoBehaviour {
 
 
         if(Input.GetKeyDown(KeyCode.F)) {
-            this.animator.SetTrigger("Dance");
+            this.animator.SetInteger("Dance", UnityEngine.Random.Range(1, 5));
+        }
+
+        // Touche W en AZERTY pas reconnu par Unity
+        if(Input.GetKeyDown(KeyCode.W)) {
+        this.animator.SetTrigger("Wave");
+        }
+        if(Input.GetKeyDown(KeyCode.X)) {
+            GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
+            this.animator.SetTrigger("Ibreakyou");
+            Invoke("WeaponAppearance", 3.5f);
         }
 
         if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
@@ -158,7 +168,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(DisableGoingAttack());
         }
         
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.J)) {
             TakeWeapon();
         }
     }
@@ -341,7 +351,7 @@ public class PlayerController : MonoBehaviour {
         this.health += this.increaseHealth[this.healthLevel - 1];
         this.maxActualHealth += this.increaseHealth[this.healthLevel - 1];
         this.SetMaxHealthBar(this.maxActualHealth);
-        
+
         this.healthLevel++;
         if(this.health > this.maxHealth) 
             this.health = this.maxHealth;
@@ -394,6 +404,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ResetAnims() {
+        this.animator.SetInteger("Dance", 0);
         this.animator.SetBool("Idle", false);
         this.animator.SetInteger("Walk", 0);
         this.animator.SetInteger("Strafe", 0);
@@ -449,6 +460,10 @@ public class PlayerController : MonoBehaviour {
             else
                 this.animator.SetBool("Idle", true);
         }
+    }
+
+    private void WeaponAppearance() {
+        GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0.1295791f, 0.1295791f, 0.1295791f);
     }
 
 
@@ -610,8 +625,8 @@ public class PlayerController : MonoBehaviour {
 
     public void Heal(int healAmount) {
         this.health += healAmount;
-        if(this.health >= this.maxHealth) 
-            this.health = this.maxHealth;
+        if(this.health >= this.maxActualHealth) 
+            this.health = this.maxActualHealth;
         
         this.SetHealthBar(this.health);
         this.hudStats.UpdateHealth();
