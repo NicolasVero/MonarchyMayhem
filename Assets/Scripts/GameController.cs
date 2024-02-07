@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour {
 
     private Camera playerCamera = FindObjectOfType<Camera>();
 
-
     public static void SetGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }

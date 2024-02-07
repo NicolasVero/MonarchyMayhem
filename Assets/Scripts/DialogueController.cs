@@ -9,7 +9,7 @@ public class DialogueController : MonoBehaviour {
     private bool isInRange = false;
 
     [Header("QuestRelation")]
-    [SerializeField] private QuestController questController; // lié les 2 
+    [SerializeField] private QuestController questController;
 
     [Header("Canvas Settings")]
     [SerializeField] private Canvas dialogueCanvas;
@@ -17,7 +17,7 @@ public class DialogueController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button closeButton;
     [SerializeField] private Button nextButton;
-    [SerializeField] private Button prevButton;
+    [SerializeField] private Button previousButton;
 
     [Header("Canvas to Deactivate")]
     [SerializeField] private Canvas[] disabledCanvas;
@@ -37,27 +37,25 @@ public class DialogueController : MonoBehaviour {
     void Start() {
         GameController.SetCanvasVisibility(dialogueCanvas, false);
 
-        dialogueSets = new List<string>[] {
+        this.dialogueSets = new List<string>[] {
             new List<string> { "Dialogue 1 - Message 1", "Dialogue 1 - Message 2", "Dialogue 1 - Message 3", "zejhgfezifgvze" },
             new List<string> { "Dialogue 2 - Message 1", "Dialogue 2 - Message 2", "Dialogue 2 - Message 3" },
             new List<string> { "Dialogue 3 - Message 1", "Dialogue 3 - Message 2", "Dialogue 3 - Message 3" },
             new List<string> { "Dialogue 4 - Message 1", "Dialogue 4 - Message 2", "Dialogue 4 - Message 3" },
             new List<string> { "Dialogue 5 - Message 1", "Dialogue 5 - Message 2", "Dialogue 5 - Message 3" },
-            // Ajoutez autant de ensembles de dialogues que nécessaire
         };
 
-        questList = new List<Quest> {
+        this.questList = new List<Quest> {
             new Quest("Quest 1", "Description de la quête 1", 1, "Finding"),
             new Quest("Quest 2", "Description de la quête 2", 2, "Finding"),
             new Quest("Quest 3", "Description de la quête 3", 1, "Speaking"),
             new Quest("Quest 4", "Description de la quête 4", 3, "Finding"),
             new Quest("Quest 5", "Va t en ", 3, "Speaking"),
-            // Ajoutez autant de quêtes que nécessaire
         };    
 
-        nextButton.onClick.AddListener(ShowNextMessage);
-        prevButton.onClick.AddListener(ShowPreviousMessage);
-        closeButton.onClick.AddListener(CloseDialogue);
+        this.nextButton.onClick.AddListener(ShowNextMessage);
+        this.previousButton.onClick.AddListener(ShowPreviousMessage);
+        this.closeButton.onClick.AddListener(CloseDialogue);
         
     }
 
@@ -73,29 +71,22 @@ public class DialogueController : MonoBehaviour {
         interaction.enabled = isInRange && !dialogueCanvas.enabled;
     }
 
-     private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("NPC"))
-        {
             isInRange = true;
-        }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other) {
         if (other.CompareTag("NPC"))
-        {
             isInRange = false;
-        }
     }
 
     private void ShowNextMessage() {
         this.currentIndex += messagesPerStep; 
         ShowMessage();
 
-         if (this.currentIndex >= dynamicDialogue.Count) {
-             CloseDialogue(); 
-        }
+        if (this.currentIndex >= dynamicDialogue.Count) 
+            CloseDialogue(); 
     }
 
 
@@ -103,6 +94,7 @@ public class DialogueController : MonoBehaviour {
         this.currentIndex -= messagesPerStep; 
         if (this.currentIndex < 0)
             this.currentIndex = 0; 
+
         ShowMessage();
     }
 
@@ -110,7 +102,8 @@ public class DialogueController : MonoBehaviour {
     private void ShowMessage() {
 
         int endIndex = Mathf.Min(this.currentIndex + messagesPerStep, dynamicDialogue.Count); 
-        dialogueText.text = ""; 
+        dialogueText.text = "";
+         
         for (int i = this.currentIndex; i < endIndex; i++) {
             dialogueText.text += dynamicDialogue[i] + "\n"; 
         }
@@ -133,6 +126,7 @@ public class DialogueController : MonoBehaviour {
             SetCurrentDialogueSet();
             questController.AddQuestFromDialogue(questList[currentQuestIndex].GetTitle(), questList[currentQuestIndex].GetDescription(), questList[currentQuestIndex].GetRequired(), questList[currentQuestIndex].GetType());
         }
+
         if(questList[currentQuestIndex].GetType() == "Speaking"){ 
             currentDialogueSetIndex++;
             currentQuestIndex++;
@@ -142,6 +136,7 @@ public class DialogueController : MonoBehaviour {
             }
             dialogueInitiated = true;
         }
+        
         if(dialogueInitiated == false && questController.currentQuest.IsComplete() ){ 
             currentQuestIndex++;
             currentDialogueSetIndex++;
@@ -157,7 +152,7 @@ public class DialogueController : MonoBehaviour {
 
     private void SetCurrentDialogueSet() {
         if (currentDialogueSetIndex >= 0 && currentDialogueSetIndex < dialogueSets.Length) {
-            dynamicDialogue = dialogueSets[currentDialogueSetIndex]; // Définir le nouvel ensemble de dialogues
+            dynamicDialogue = dialogueSets[currentDialogueSetIndex]; 
         }
     }
 

@@ -649,9 +649,7 @@ RectTransform:
   - {fileID: 1745620681}
   - {fileID: 358018986}
   - {fileID: 1045923608}
-  - {fileID: 455043581}
-  - {fileID: 834886946}
-  - {fileID: 1830175266}
+  - {fileID: 241692306}
   m_Father: {fileID: 857943326}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -722,6 +720,44 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &241692305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241692306}
+  m_Layer: 5
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &241692306
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241692305}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 455043581}
+  - {fileID: 834886946}
+  - {fileID: 1830175266}
+  m_Father: {fileID: 181508996}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 518.5, y: -183.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &250020467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1429,7 @@ GameObject:
   - component: {fileID: 358018988}
   - component: {fileID: 358018987}
   m_Layer: 5
-  m_Name: Nom PNJ
+  m_Name: NPC Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1912,7 +1948,7 @@ GameObject:
   - component: {fileID: 455043583}
   - component: {fileID: 455043582}
   m_Layer: 5
-  m_Name: Terminer
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1925,17 +1961,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455043580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1145515040}
-  m_Father: {fileID: 181508996}
+  m_Father: {fileID: 241692306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 518.5, y: 104.600006}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455043582
@@ -2666,6 +2702,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 181508999}
     - target: {fileID: 5504797034660794526, guid: 694efacff61a74d4d9b22e9b34d474cd, type: 3}
+      propertyPath: previousButton
+      value: 
+      objectReference: {fileID: 1830175267}
+    - target: {fileID: 5504797034660794526, guid: 694efacff61a74d4d9b22e9b34d474cd, type: 3}
       propertyPath: questController
       value: 
       objectReference: {fileID: 1822582680}
@@ -3266,7 +3306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fcc0f6a97bba24d8797e0d484c8b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxActive: 1
+  maxActive: 0
   radius: 0
   maxEntities: 3
   enemiesContainer: {fileID: 488669865}
@@ -3283,7 +3323,7 @@ GameObject:
   - component: {fileID: 834886948}
   - component: {fileID: 834886947}
   m_Layer: 5
-  m_Name: Suivant
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3296,17 +3336,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834886945}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1877557385}
-  m_Father: {fileID: 181508996}
+  m_Father: {fileID: 241692306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 332.12, y: 204.679}
+  m_AnchoredPosition: {x: -186.38, y: 150.07901}
   m_SizeDelta: {x: 120.3506, y: 22.56601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834886947
@@ -3967,7 +4007,7 @@ GameObject:
   - component: {fileID: 1045923610}
   - component: {fileID: 1045923609}
   m_Layer: 5
-  m_Name: Texte
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7818,7 +7858,7 @@ GameObject:
   - component: {fileID: 1745620683}
   - component: {fileID: 1745620682}
   m_Layer: 5
-  m_Name: Logo-Perso
+  m_Name: NPC Picture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8385,7 +8425,7 @@ GameObject:
   - component: {fileID: 1830175268}
   - component: {fileID: 1830175267}
   m_Layer: 5
-  m_Name: "Pr\xE9c\xE9dant"
+  m_Name: Previous
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8398,17 +8438,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830175265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1506117249}
-  m_Father: {fileID: 181508996}
+  m_Father: {fileID: 241692306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 199, y: 204.679}
+  m_AnchoredPosition: {x: -319.5, y: 150.07901}
   m_SizeDelta: {x: 120.3506, y: 22.56601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1830175267
