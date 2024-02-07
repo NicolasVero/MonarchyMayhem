@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour {
 
         this.keyActions.Add(KeyCode.E, TakeWeapon);
         this.keyActions.Add(KeyCode.F, DanseAnimations);
+        this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
+        this.keyActions.Add(KeyCode.P, TooglePauseMenu);
 
 
         DontDestroyOnLoad(this.gameObject);
@@ -147,16 +149,17 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
-            questMenu.SetActive(!questMenu.activeSelf);
-        } 
+        // if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
+        //     questMenu.SetActive(!questMenu.activeSelf);
+        // } 
 
-        if(Input.GetKeyDown(KeyCode.P) && this.canResume && this.isAlive) {
-            GameController.SetGameState(false);
-            this.SetInPause(true);
-            this.ManagePauseMenu();
-        } 
+        // if(Input.GetKeyDown(KeyCode.P) && this.canResume && this.isAlive) {
+        //     GameController.SetGameState(false);
+        //     this.SetInPause(true);
+        //     this.ManagePauseMenu();
+        // } 
 
+        //! a supprimer
         if(Input.GetKeyDown(KeyCode.U)) 
             this.XPGain(1);
 
@@ -166,6 +169,19 @@ public class PlayerController : MonoBehaviour {
             this.animator.SetTrigger("Attack");
             StartCoroutine(DisableGoingAttack());
         }
+    }
+
+    private void TooglePauseMenu() {
+        if(this.canResume && this.isAlive) {
+            GameController.SetGameState(false);
+            this.SetInPause(true);
+            this.ManagePauseMenu();
+        }
+    }
+
+    private void ToggleQuestMenu() {
+        if(this.canResume) 
+            this.questMenu.SetActive(!this.questMenu.activeSelf);
     }
 
     private void DanseAnimations() {
