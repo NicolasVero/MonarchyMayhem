@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour {
     private int xpToNext;
     private int level;
     private int health;
+    private int maxActualHealth;
     private int resistance;
     private int attack;
     private float attackSpeed;
@@ -209,6 +210,7 @@ public class PlayerController : MonoBehaviour {
             this.xpToNext             = playerBaseStats.xpToNext;
             this.level                = playerBaseStats.level;
             this.health               = playerBaseStats.health;
+            this.maxActualHealth      = playerBaseStats.health;
             this.resistance           = playerBaseStats.resistance;
             this.attack               = playerBaseStats.attack;
             this.attackSpeed          = playerBaseStats.attackSpeed;
@@ -262,6 +264,8 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamage(int damage) {
 
         this.health -= Mathf.RoundToInt(damage * 1.0f - (float) this.resistance / 100.0f);
+        this.hudStats.UpdateHealth();
+        
         if(this.health <= 0) {
             this.Death();
         } else {
@@ -335,10 +339,15 @@ public class PlayerController : MonoBehaviour {
 
     public void UpdateHealth() {
         this.health += this.increaseHealth[this.healthLevel - 1];
+        this.maxActualHealth += this.increaseHealth[this.healthLevel - 1];
+        this.SetMaxHealthBar(this.maxActualHealth);
+        
         this.healthLevel++;
-        if(this.health > this.maxHealth) this.health = this.maxHealth;
+        if(this.health > this.maxHealth) 
+            this.health = this.maxHealth;
             
         this.SetHealthBar(this.health);
+        this.hudStats.UpdateHealth();
     }
 
     public void UpdateAttack() {
@@ -542,6 +551,7 @@ public class PlayerController : MonoBehaviour {
     public int GetResistance()           { return this.resistance;         }
     public int GetAttack()               { return this.attack;             }
     public int GetHealth()               { return this.health;             }
+    public int GetMaxActualHealth()      { return this.maxActualHealth;    }
     public int GetMaxHealth()            { return this.maxHealth;          }
     public int GetLevel()                { return this.level;              }
     public float GetAttackSpeed()        { return this.attackSpeed;        }
@@ -590,6 +600,10 @@ public class PlayerController : MonoBehaviour {
         this.healthBar.value = hp;
     }
 
+    private void SetMaxHealthBar(int hpMax) {
+        this.healthBar.maxValue = hpMax;
+    }
+
     private void SetHealthBarMax(int max) {
         this.healthBar.maxValue = max;
     }
@@ -600,6 +614,7 @@ public class PlayerController : MonoBehaviour {
             this.health = this.maxHealth;
         
         this.SetHealthBar(this.health);
+        this.hudStats.UpdateHealth();
     }
 
     public void XPGain(int xpAmount) {

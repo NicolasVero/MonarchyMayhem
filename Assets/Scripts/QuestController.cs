@@ -9,13 +9,15 @@ public class QuestController : MonoBehaviour
     private List<Quest> quests = new List<Quest>();
     private int currentQuestIndex = 0;
     private int KillCounter;
+    private bool isAllQuestCompleted = false;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI questTitle;
     [SerializeField] private TextMeshProUGUI questMessage;
     [SerializeField] private TextMeshProUGUI questProgression;
+    [Header("Link")]
     [SerializeField] private DialogueController dialogueController; // lié l'un vers l'autre
-
+    [SerializeField] private SpawnersController spawnersController; 
 
 
  
@@ -31,6 +33,7 @@ public class QuestController : MonoBehaviour
 
     void InitializeQuests()
     {
+        IsAllQuestCompleted(false);
         quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking"));   
     }
 
@@ -46,22 +49,38 @@ public class QuestController : MonoBehaviour
 
             currentQuest.SetCompleted(true);
             currentQuestIndex++;
-            dialogueController.SetDialogueState(false); // remet a false pour pouvoir etre relancer
+            dialogueController.SetDialogueInitiated(false); // remet a false pour pouvoir etre relancer
 
             if (currentQuestIndex < quests.Count)
             {
                 ShowCurrentQuest();
                 Debug.Log(currentQuestIndex);
+                
+                if(currentQuest.GetType() == "Finding"){
+                   
+                    Spawner[] spawners = spawnersController.GetComponentsInChildren<Spawner>();
+                    Debug.Log(spawners);  
+                    
+                    foreach (Spawner spawner in spawners){
+                        spawner.ActiveSpawnerPickUp();
+                    }
+                    Debug.Log(currentQuest.GetRequired());
+                }
+
             }
             else
             {
                 Debug.Log("Toutes les quêtes ont été complétées. Passage au niveau suivant...");
+
                 GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
                 if (npcObject != null)
                 {   
-                    dialogueController.SetIsInRange(false);
-                    npcObject.tag = "Untagged";
+                    dialogueController.GetIsInRangeFalse();
+                    npcObject.tag = "Untagged"; 
                 }
+
+                IsAllQuestCompleted(true);
+
             }
         }
 
@@ -96,5 +115,14 @@ public class QuestController : MonoBehaviour
         foreach (Quest quest in quests) {
             Debug.Log($"- {quest.GetQuestDetails().YellowTitle}");
         }
+    }
+
+
+    public void IsAllQuestCompleted(bool state){
+        isAllQuestCompleted = state;
+    }
+
+    public bool GetIsAllQuestCompleted(){
+        return isAllQuestCompleted;
     }
 }

@@ -17,13 +17,15 @@ public class Spawner : MonoBehaviour {
     [Header("Spawn parameters")]
     [SerializeField] private float spawnDelay;
     [SerializeField] private GameObject enemiesContainer;
+    [SerializeField] private GameObject collectiblesContainer;
 
     [Header("Instances")]
     [SerializeField] GameObject[] peasants;
     [SerializeField] GameObject[] bourgeois;
     [SerializeField] GameObject[] knights;
+    [SerializeField] GameObject pickUp;
 
-    private bool isActive = false, isPaused = false;
+    private bool isActive = false, isPaused = false, allowPickUp;
     private System.Random random = new System.Random();
     private float timer = 0f;
 
@@ -61,6 +63,19 @@ public class Spawner : MonoBehaviour {
                 Instantiate(this.knights[this.random.Next(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
+    }
+
+    private void SpawnPickUp() {
+
+        if(this.allowPickUp) {
+            Instantiate(this.pickUp, transform.position, Quaternion.identity).transform.parent = this.collectiblesContainer.transform; 
+            this.allowPickUp = false;
+        }
+    }
+
+    public void ActiveSpawnerPickUp() {
+        this.allowPickUp = true;
+        SpawnPickUp();
     }
 
     public void ActiveSpawner() {

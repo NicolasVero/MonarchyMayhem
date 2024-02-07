@@ -4,6 +4,7 @@ public class PlayerBaseStats {
     public int xpToNext;
     public int level;
     public int health;
+    public int maxActualHealth;
     public int resistance;
     public int attack;
     public float attackSpeed;

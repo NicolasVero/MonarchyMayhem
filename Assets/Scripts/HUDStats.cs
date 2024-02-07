@@ -8,6 +8,7 @@ public class HUDStats : MonoBehaviour {
 
     [Header("Text Mesh")]
     [SerializeField] private TextMeshProUGUI levelStat;
+    [SerializeField] private TextMeshProUGUI healthStat;
     [SerializeField] private TextMeshProUGUI killStat;
     [SerializeField] private TextMeshProUGUI attackStat;
     [SerializeField] private TextMeshProUGUI attackSpeedStat;
@@ -44,7 +45,12 @@ public class HUDStats : MonoBehaviour {
         this.UpdateStats();
     }
 
+    public void UpdateHealth() {
+        healthStat.text = player.GetHealth() + " / " + player.GetMaxActualHealth();
+    }
+
     public void UpdateStats() {
+        UpdateHealth();
         levelStat.text        = "" + player.GetLevel();
         killStat.text         = "" + player.GetKillCounter();
         attackStat.text       = "" + player.GetAttack();
