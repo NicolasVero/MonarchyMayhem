@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 
     private const float sensitivity = 10;
     private int enemyKillCounter, sprint = 0;
-    private bool goingAttack = false, canAttack = true, canResume = true, isAlive = true, inPause = false, isSprinting = false;
+    private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -99,19 +99,26 @@ public class PlayerController : MonoBehaviour {
     private SphereCollider rangeCollider;
     private Animator animator;
     private Vector3 moveDirection;
+    private Dictionary<KeyCode, Action> keyActions = new Dictionary<KeyCode, Action>();
 
 
 
     void Awake() {
+
+        this.keyActions.Add(KeyCode.E, TakeWeapon);
+        this.keyActions.Add(KeyCode.F, DanseAnimations);
+
+
         DontDestroyOnLoad(this.gameObject);
         this.camera.DisableBlackAndWhiteEffect();
-        GameController.SetCanvasVisibility(deathScreen, false);
 
+        GameController.SetCanvasVisibility(deathScreen, false);
         GameController.HidePauseMenu(pauseMenu);
+        GameController.SetPanelVisibility(this.levelUpPanel, false);
+
         this.SetHealthBarMax(this.maxHealth);
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
-        GameController.SetPanelVisibility(this.levelUpPanel, false);
         this.LoadAttributes();
 
         this.xpBar.maxValue = 1;
@@ -125,6 +132,12 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        foreach (var kvp in keyActions) {
+            if (Input.GetKeyDown(kvp.Key)) {
+                kvp.Value.Invoke();
+            }
+        }
+
         if(Input.GetKey(KeyCode.LeftShift)) {
             this.isSprinting = true;
             this.sprint = 4;
@@ -133,20 +146,6 @@ public class PlayerController : MonoBehaviour {
             this.sprint = 0;
         }
 
-
-        if(Input.GetKeyDown(KeyCode.F)) {
-            this.animator.SetInteger("Dance", UnityEngine.Random.Range(1, 5));
-        }
-
-        // Touche W en AZERTY pas reconnu par Unity
-        if(Input.GetKeyDown(KeyCode.C)) {
-        this.animator.SetTrigger("Wave");
-        }
-        if(Input.GetKeyDown(KeyCode.X)) {
-            GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
-            this.animator.SetTrigger("Ibreakyou");
-            Invoke("WeaponAppearance", 3.5f);
-        }
 
         if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
             questMenu.SetActive(!questMenu.activeSelf);
@@ -167,11 +166,22 @@ public class PlayerController : MonoBehaviour {
             this.animator.SetTrigger("Attack");
             StartCoroutine(DisableGoingAttack());
         }
-        
-        if(Input.GetKeyDown(KeyCode.E)) {
-            TakeWeapon();
-        }
     }
+
+    private void DanseAnimations() {
+        int random = GameController.Random(0, 2);
+        int randomDanse = (random == 2) ? GameController.Random(1, 4) : 1;
+        float[] weaponsAppearanceDurations = {3.5f, 1.5f, 6.5f, 8.5f, 8f, 9.5f};
+        
+        GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
+        Invoke("WeaponAppearance", weaponsAppearanceDurations[random + randomDanse - 1]);
+
+        if(random == 0) this.animator.SetTrigger("Ibreakyou");
+        if(random == 1) this.animator.SetTrigger("Wave");
+        if(random == 2) this.animator.SetInteger("Dance", randomDanse);
+    }
+
+
 
     private IEnumerator DisableGoingAttack() {
         yield return new WaitForSeconds(0.2f);

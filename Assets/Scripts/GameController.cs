@@ -8,10 +8,14 @@ public class GameController : MonoBehaviour {
 
     private Camera playerCamera = FindObjectOfType<Camera>();
 
+    public static int Random(int min, int max) {
+        return UnityEngine.Random.Range(min, max + 1);
+    }
+
     public static void SetGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }
-    
+
     public static void SetGameState(bool state) {
         Time.timeScale = (state) ? 1 : 0;
     }

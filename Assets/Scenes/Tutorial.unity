@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4504428, g: 0.50044554, b: 0.5751995, a: 1}
+  m_IndirectSpecularColor: {r: 0.45044297, g: 0.50044596, b: 0.57520026, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3300,6 +3300,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 3124511293334555521, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 793462387}
+    - target: {fileID: 3124511293334555521, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
+      propertyPath: maskedCanvas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124511293334555521, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
+      propertyPath: maskedCanvas.Array.data[0]
+      value: 
+      objectReference: {fileID: 307384239}
+    - target: {fileID: 3124511293334555521, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
+      propertyPath: maskedCanvas.Array.data[1]
+      value: 
+      objectReference: {fileID: 1822582683}
     - target: {fileID: 5312548331918150433, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
       propertyPath: m_Pivot.x
       value: 0
