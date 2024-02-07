@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour {
 
 
     void Awake() {
-
+        DontDestroyOnLoad(this.gameObject);
         this.camera.DisableBlackAndWhiteEffect();
         GameController.SetCanvasVisibility(deathScreen, false);
 
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Touche W en AZERTY pas reconnu par Unity
-        if(Input.GetKeyDown(KeyCode.W)) {
+        if(Input.GetKeyDown(KeyCode.C)) {
         this.animator.SetTrigger("Wave");
         }
         if(Input.GetKeyDown(KeyCode.X)) {
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(DisableGoingAttack());
         }
         
-        if(Input.GetKeyDown(KeyCode.J)) {
+        if(Input.GetKeyDown(KeyCode.E)) {
             TakeWeapon();
         }
     }
@@ -319,8 +319,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        return (int)(5 * Math.Pow(1.2, this.level - 1));
-        // return 5;
+        // return (int)(5 * Math.Pow(1.2, this.level - 1));
+        return 3;
     }
 
     // Updates / Increments

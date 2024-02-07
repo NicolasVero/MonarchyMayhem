@@ -136,7 +136,7 @@ public class HUDStats : MonoBehaviour {
     }
 
     public void ChangeEnableAttackIcon(bool status) {
-        string textureLink = status ? "Interface/Icons/canAttack" : "Interface/Icons/cantAttack";
+        string textureLink = status ? "Interface/Icons/can_attack" : "Interface/Icons/cant_attack";
         Texture2D enableAttackTexture = Resources.Load<Texture2D>(textureLink);
 
         this.enableAttackIcon.texture = enableAttackTexture;
