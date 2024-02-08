@@ -1790,7 +1790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139207343277592592, guid: 7c0aa0a2a5ebd7f49bb0018602d2177b, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3196370427017975371, guid: 7c0aa0a2a5ebd7f49bb0018602d2177b, type: 3}
       propertyPath: m_Name
@@ -1915,9 +1915,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3139207343277592592, guid: 7c0aa0a2a5ebd7f49bb0018602d2177b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7186386368010720363}
-    - targetCorrespondingSourceObject: {fileID: 3139207343277592592, guid: 7c0aa0a2a5ebd7f49bb0018602d2177b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5504797034660794526}
     - targetCorrespondingSourceObject: {fileID: 5112847672955834494, guid: 7c0aa0a2a5ebd7f49bb0018602d2177b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4987899376022407528}
@@ -2019,29 +2016,6 @@ MonoBehaviour:
   weapon: {fileID: 1260218701210926914}
   weaponsDropper: {fileID: 0}
   weaponHolder: {fileID: 3480342782227867346}
---- !u!114 &5504797034660794526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763816649319611895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questController: {fileID: 0}
-  dialogueCanvas: {fileID: 0}
-  interaction: {fileID: 0}
-  dialogueText: {fileID: 0}
-  closeButton: {fileID: 0}
-  nextButton: {fileID: 0}
-  prevButton: {fileID: 0}
-  disabledCanvas:
-  - {fileID: 0}
-  - {fileID: 0}
-  messagesPerStep: 1
 --- !u!1001 &6033351029567202225
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,18 +12,19 @@ public class QuestController : MonoBehaviour
     private int currentQuestIndex = 0;
     private int KillCounter;
     private bool isAllQuestCompleted = false;
+    private DialogueController dialogueController; 
+    private SpawnersController spawnersController; 
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI questTitle;
     [SerializeField] private TextMeshProUGUI questMessage;
     [SerializeField] private TextMeshProUGUI questProgression;
-    [Header("Link")]
-    [SerializeField] private DialogueController dialogueController; // lié l'un vers l'autre
-    private SpawnersController spawnersController; 
+
 
 
  
     void Start() {
+        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>();
         InitializeQuests();   
         ShowCurrentQuest();
     }
@@ -32,7 +33,9 @@ public class QuestController : MonoBehaviour
         if(this.spawnersController == null){
             this.spawnersController = GameObject.Find("Spawners").GetComponent<SpawnersController>();
         }
-        CompleteCurrentQuest();
+        
+        if(currentQuest.IsComplete())
+            CompleteCurrentQuest();
     }
 
 
@@ -64,8 +67,6 @@ public class QuestController : MonoBehaviour
                     Spawner[] spawners = spawnersController.GetComponentsInChildren<Spawner>();
                     
                     int required = currentQuest.GetRequired(); 
-
-                    // System.Random random = new System.Random();
 
                     List<int> selectedIndices = new List<int>();
 
@@ -120,7 +121,7 @@ public class QuestController : MonoBehaviour
         questTitle.text = questDetails.YellowTitle;
         questMessage.text = questDetails.Message;
         questProgression.text = questDetails.Progression;
-        
+         Debug.Log("UpdateQuestText");
     }
 
     public Quest GetCurrentQuest()

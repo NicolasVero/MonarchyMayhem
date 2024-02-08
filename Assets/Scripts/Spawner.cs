@@ -26,17 +26,15 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject[] pickUps;
 
     private bool isActive = false, isPaused = false, allowPickUp;
-    private System.Random random = new System.Random();
     private float timer = 0f;
     private int currentPickUpIndex = 0;
     private GameObject[] currentPickUpGroup;
-    private int pickUpsGroupSize = 2;
 
 
 
     void Awake(){
-            if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {
-            // Si le groupe actuel est nul ou vide, générez un nouveau groupe de pickups
+
+        if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {
             GeneratePickUpGroup();
         }
     }
@@ -55,34 +53,32 @@ public class Spawner : MonoBehaviour {
     
     private void SpawnEnemies() {
 
-        int randNumber = this.random.Next(0, 100);
+        int randNumber = GameController.Random(0, 100);
 
         if(this.allowPeasants) {
             if(randNumber < this.chancePeasants) {
-                Instantiate(this.peasants[this.random.Next(0, this.peasants.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.peasants[GameController.Random(0, this.peasants.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
 
         if(this.allowBourgeois) {
             if(randNumber < this.chanceBourgeois) {
-                Instantiate(this.bourgeois[this.random.Next(0, this.bourgeois.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.bourgeois[GameController.Random(0, this.bourgeois.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
 
         if(this.allowKnights) {
             if(randNumber < this.chanceKnights) {
-                Instantiate(this.knights[this.random.Next(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.knights[GameController.Random(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
     }
 
     private void SpawnPickUp() {
-        // Vérifier si l'index dépasse la taille du tableau de pickUps du groupe
         if (currentPickUpIndex >= currentPickUpGroup.Length) {
-            currentPickUpIndex = 0; // Revenir au début du groupe
+            currentPickUpIndex = 0;
         }
 
-        // Instancier le pickup correspondant à l'index actuel du groupe
         GameObject pickupToSpawn = currentPickUpGroup[currentPickUpIndex];
         Instantiate(pickupToSpawn, transform.position, Quaternion.identity).transform.parent = this.collectiblesContainer.transform; 
 
@@ -95,11 +91,9 @@ public class Spawner : MonoBehaviour {
     }
 
     private void GeneratePickUpGroup() {
-        // Remplir le groupe de pickups avec les pickups dans l'ordre du tableau
-        currentPickUpGroup = new GameObject[pickUpsGroupSize];
-        for (int i = 0; i < pickUpsGroupSize; i++) {
-            currentPickUpGroup[i] = pickUps[i % pickUps.Length]; // Utiliser l'opérateur modulo pour boucler à travers le tableau de pickups
-        }
+        currentPickUpGroup = new GameObject[pickUps.Length];
+        for(int i = 0; i < currentPickUpGroup.Length; i++) 
+            currentPickUpGroup[i] = pickUps[i % pickUps.Length];
     }
 
     public void ActiveSpawner() {

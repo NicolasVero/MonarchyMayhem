@@ -34,7 +34,7 @@ public class DialogueController : MonoBehaviour {
     [Header("Quest Settings")]
     [SerializeField] private List<Quest> questList; // Liste des quêtes disponibles
     private int currentQuestIndex = 0; // Indice de la quête actuelle
-
+    private GameObject npcObject;
     void Start() {
         GameController.SetCanvasVisibility(dialogueCanvas, false);
 
@@ -76,7 +76,8 @@ public class DialogueController : MonoBehaviour {
 
      private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
+        if (other.CompareTag("Player") && npcObject != null && npcObject.CompareTag("NPC")) //! Changer
         {
             isInRange = true;
         }
@@ -84,7 +85,8 @@ public class DialogueController : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("NPC"))
+        GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
+        if (other.CompareTag("Player") && npcObject != null && npcObject.CompareTag("NPC")) //! Changer
         {
             isInRange = false;
         }

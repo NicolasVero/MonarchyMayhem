@@ -19,8 +19,8 @@ public class Quest {
         this.type = type;
         this.currentCount = 0;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
-        this.dialogueController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<DialogueController>();
-        this.collectibleController = GameObject.FindGameObjectWithTag("Collectibles").GetComponent<CollectibleController>();  //ajouter un tag au parent collectible
+        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>(); //! Changer
+        this.collectibleController = GameObject.FindGameObjectWithTag("Collectibles").GetComponent<CollectibleController>();  
         this.title = title;
         this.description = description;
         this.required = required;
