@@ -564,7 +564,7 @@ public class PlayerController : MonoBehaviour {
 
             Weapon[] weapons = weaponsObject.GetComponentsInChildren<Weapon>();
             
-            float minimalDistance = float.MaxValue;
+            float minimalDistance = 5.0f;
             Weapon nearestWeapon = null;
 
             foreach(var weapon in weapons) {

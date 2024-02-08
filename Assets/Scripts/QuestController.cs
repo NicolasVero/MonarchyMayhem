@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+
 public class QuestController : MonoBehaviour
 {
     public Quest currentQuest;
@@ -64,6 +65,7 @@ public class QuestController : MonoBehaviour
                     
                     int required = currentQuest.GetRequired(); 
 
+                    // System.Random random = new System.Random();
 
                     List<int> selectedIndices = new List<int>();
 
@@ -74,13 +76,16 @@ public class QuestController : MonoBehaviour
                             int randomIndex;
                             do
                             {
-                                randomIndex = GameController.Random(0, spawners.Length - 1);
+                                randomIndex = GameController.Random(0, spawners.Length -1 );
                             } while (selectedIndices.Contains(randomIndex)); 
 
                             selectedIndices.Add(randomIndex);
 
                             spawners[randomIndex].ActiveSpawnerPickUp();
                         }
+
+                        foreach( Spawner spawner in spawners)
+                            spawner.IncrementIndex();
                     }
                 }
 
