@@ -1,0 +1,73 @@
+{
+    "npcs" : 
+    [
+        {
+            "id" : 1,
+            "dialogues" :
+            [
+                
+                    ["Dialogue 1 - Message 1" , "Dialogue 1 - Message 2"],
+                    ["Dialogue 2 - Message 1" , "Dialogue 2 - Message 2"],
+                    ["Dialogue 3 - Message 1" , "Dialogue 3 - Message 2"]
+                
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Quest 1",
+                    "description" : "Description de la quete 1",
+                    "required" : 1,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Quest 2",
+                    "description" : "Description de la quete 2",
+                    "required" : 2,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Quest 3",
+                    "description" : "Description de la quete 3",
+                    "required" : 2,
+                    "type" : "Finding"
+                }
+
+            ]
+        },
+        {
+            "id" : 2,
+            "dialogues" :
+            [
+                
+                    ["Dialogue 1 - Message 1" , "Dialogue 1 - Message 2"],
+                    ["Dialogue 2 - Message 1" , "Dialogue 2 - Message 2"],
+                    ["Dialogue 3 - Message 1" , "Dialogue 3 - Message 2"]
+                
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Quest 1",
+                    "description" : "Description de la quete 1",
+                    "required" : 1,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Quest 2",
+                    "description" : "Description de la quete 2",
+                    "required" : 2,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Quest 3",
+                    "description" : "Description de la quete 3",
+                    "required" : 2,
+                    "type" : "Finding"
+                }
+
+            ]
+        }
+
+
+    ]
+}
