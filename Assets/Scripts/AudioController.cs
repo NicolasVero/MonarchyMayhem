@@ -33,7 +33,7 @@ public class AudioController : MonoBehaviour {
     }
 
     public void PlaySlashSFX() { 
-        this.slashSFX[UnityEngine.Random.Range(1, this.slashSFX.Length)].Play(); 
+        this.slashSFX[GameController.Random(1, this.slashSFX.Length - 1)].Play(); 
     }
 
     public void PlayDeathSFX() { 

@@ -20,8 +20,6 @@ public class EnemyController : MonoBehaviour {
     private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack;
     private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
 
-    private System.Random random = new System.Random();
-
     private void Awake() {
 
         this.enemyType = EnemyController.GetEnemyType(gameObject.name);
@@ -115,7 +113,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void Death() {
-        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        this.animator.SetInteger("Death", GameController.Random(1, 3));
         canMove = false;
         canAttack = false;
         isAlive = false;
@@ -158,7 +156,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private bool WillDropWeapon() {
-        return random.NextDouble() < this.chanceToDrop;
+        return GameController.RandomFloat() < this.chanceToDrop;
     }
 
     private void ActivateCollectParticle(){

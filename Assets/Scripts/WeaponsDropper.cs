@@ -6,7 +6,6 @@ public class WeaponsDropper : MonoBehaviour {
     
     [SerializeField] private GameObject[] models;
     [SerializeField] private GameObject weaponsContainer;
-    private System.Random random = new System.Random();
     private float[] probabilities = {
         0.1f, 
         0.1f, 
@@ -61,9 +60,9 @@ public class WeaponsDropper : MonoBehaviour {
     private int GiveRandomWeaponID() {
 
         while(true) {
-            int number = this.random.Next(0, this.probabilities.Length);
+            int number = GameController.Random(0, this.probabilities.Length - 1);
 
-            if(this.random.NextDouble() < this.probabilities[number]) {
+            if(GameController.RandomFloat() < this.probabilities[number]) {
                 return number;
             }
         }

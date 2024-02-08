@@ -12,6 +12,10 @@ public class GameController : MonoBehaviour {
         return UnityEngine.Random.Range(min, max + 1);
     }
 
+    public static float RandomFloat() {
+        return UnityEngine.Random.value;
+    }
+
     public static void SetGameState() {
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
     }

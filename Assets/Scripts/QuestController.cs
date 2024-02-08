@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class QuestController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class QuestController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questProgression;
     [Header("Link")]
     [SerializeField] private DialogueController dialogueController; // lié l'un vers l'autre
-    [SerializeField] private SpawnersController spawnersController; 
+    private SpawnersController spawnersController; 
 
 
  
@@ -27,6 +28,9 @@ public class QuestController : MonoBehaviour
     }
 
     void Update() {
+        if(this.spawnersController == null){
+            this.spawnersController = GameObject.Find("Spawners").GetComponent<SpawnersController>();
+        }
         CompleteCurrentQuest();
     }
 
@@ -46,7 +50,7 @@ public class QuestController : MonoBehaviour
     public void CompleteCurrentQuest() {
 
         if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) { // permet de parler au pnj pour pouvoir recevoir une quete avant de passer a la quete d'apres sinon sa bug
-
+                
             currentQuest.SetCompleted(true);
             currentQuestIndex++;
             dialogueController.SetDialogueInitiated(false); // remet a false pour pouvoir etre relancer
@@ -54,17 +58,30 @@ public class QuestController : MonoBehaviour
             if (currentQuestIndex < quests.Count)
             {
                 ShowCurrentQuest();
-                Debug.Log(currentQuestIndex);
                 
                 if(currentQuest.GetType() == "Finding"){
-                   
                     Spawner[] spawners = spawnersController.GetComponentsInChildren<Spawner>();
-                    Debug.Log(spawners);  
                     
-                    foreach (Spawner spawner in spawners){
-                        spawner.ActiveSpawnerPickUp();
+                    int required = currentQuest.GetRequired(); 
+
+
+                    List<int> selectedIndices = new List<int>();
+
+                    if (spawners != null && spawners.Length > 0)
+                    {
+                        for (int i = 0; i < required; i++)
+                        {
+                            int randomIndex;
+                            do
+                            {
+                                randomIndex = GameController.Random(0, spawners.Length - 1);
+                            } while (selectedIndices.Contains(randomIndex)); 
+
+                            selectedIndices.Add(randomIndex);
+
+                            spawners[randomIndex].ActiveSpawnerPickUp();
+                        }
                     }
-                    Debug.Log(currentQuest.GetRequired());
                 }
 
             }

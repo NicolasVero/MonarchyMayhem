@@ -49,7 +49,7 @@ public class SpawnersController : MonoBehaviour {
         }
 
         for(int i = 0; i < maxActive; i++) {
-            int randomIndex = Random.Range(0, indices.Count);
+            int randomIndex = GameController.Random(0, indices.Count - 1);
             int spawnerIndex = indices[randomIndex];
             spawnerObjects[spawnerIndex].GetComponent<Spawner>().ActiveSpawner();
             indices.RemoveAt(randomIndex);

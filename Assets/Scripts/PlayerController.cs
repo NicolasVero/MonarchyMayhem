@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour {
         GameController.SetCanvasVisibility(hudScreen, false);
         GameController.SetCanvasVisibility(questScreen, false);
         
-        this.animator.SetInteger("Death", UnityEngine.Random.Range(1, 4));
+        this.animator.SetInteger("Death", GameController.Random(1, 3));
         this.camera.EnableBlackAndWhiteEffect();
         GameController.SetGameState(0.3f);
         Invoke("DeathScreen", 0.55f);

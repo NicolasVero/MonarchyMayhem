@@ -19,7 +19,6 @@ public class LevelUpChoice : MonoBehaviour {
     private string[] bannersNames;
     private int[] bannersLevel;
     private int bannersLength = 7;
-    private System.Random random = new System.Random();
 
     public void Awake() {
 
@@ -52,7 +51,7 @@ public class LevelUpChoice : MonoBehaviour {
                 isMaxLevel.Add(i);
 
 
-        int[] excludes = this.GenerateUniquesRandom(0, this.bannersLength, isMaxLevel.ToArray());
+        int[] excludes = this.GenerateUniquesRandom(0, this.bannersLength - 1, isMaxLevel.ToArray());
 
         this._audio.PlayLevelUpSFX();
 
@@ -67,7 +66,7 @@ public class LevelUpChoice : MonoBehaviour {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);
 
         while(uniqueNumbers.Count < Math.Max(this.bannersLength - 3, excludes.Length)) {
-            int randomNumber = random.Next(min, max);
+            int randomNumber = GameController.Random(min, max);
 
             if(!uniqueNumbers.Contains(randomNumber)) 
                 uniqueNumbers.Add(randomNumber);     

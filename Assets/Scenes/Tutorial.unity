@@ -3448,9 +3448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fcc0f6a97bba24d8797e0d484c8b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxActive: 0
+  maxActive: 3
   radius: 0
-  maxEntities: 3
+  maxEntities: 1000
   enemiesContainer: {fileID: 488669865}
 --- !u!1 &834886945
 GameObject:
@@ -5171,13 +5171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 1
+  allowPeasants: 0
   allowBourgeois: 0
-  allowKnights: 0
+  allowKnights: 1
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 3
+  spawnDelay: 7.96
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:
@@ -7636,13 +7636,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 1
+  allowPeasants: 0
   allowBourgeois: 0
-  allowKnights: 0
+  allowKnights: 1
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 3
+  spawnDelay: 7.96
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:
@@ -8690,7 +8690,6 @@ MonoBehaviour:
   questMessage: {fileID: 593216779}
   questProgression: {fileID: 594559202}
   dialogueController: {fileID: 793462386}
-  spawnersController: {fileID: 818991050}
 --- !u!114 &1822582681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9391,13 +9390,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 1
+  allowPeasants: 0
   allowBourgeois: 0
-  allowKnights: 0
+  allowKnights: 1
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 3
+  spawnDelay: 7.96
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:

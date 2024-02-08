@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject pickUp;
 
     private bool isActive = false, isPaused = false, allowPickUp;
-    private System.Random random = new System.Random();
+    // private System.Random random = new System.Random();
     private float timer = 0f;
 
 
@@ -44,23 +44,23 @@ public class Spawner : MonoBehaviour {
     
     private void SpawnEnemies() {
 
-        int randNumber = this.random.Next(0, 100);
+        int randNumber = GameController.Random(0, 100);
 
         if(this.allowPeasants) {
             if(randNumber < this.chancePeasants) {
-                Instantiate(this.peasants[this.random.Next(0, this.peasants.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.peasants[GameController.Random(0, this.peasants.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
 
         if(this.allowBourgeois) {
             if(randNumber < this.chanceBourgeois) {
-                Instantiate(this.bourgeois[this.random.Next(0, this.bourgeois.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.bourgeois[GameController.Random(0, this.bourgeois.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
 
         if(this.allowKnights) {
             if(randNumber < this.chanceKnights) {
-                Instantiate(this.knights[this.random.Next(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
+                Instantiate(this.knights[GameController.Random(0, this.knights.Length - 1)], transform.position, Quaternion.identity).transform.parent = this.enemiesContainer.transform;
             }
         }
     }
