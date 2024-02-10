@@ -4417,7 +4417,7 @@ GameObject:
   - component: {fileID: 1045923610}
   - component: {fileID: 1045923609}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NPC_Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7591,7 +7591,7 @@ GameObject:
   - component: {fileID: 1581946794}
   - component: {fileID: 1581946793}
   - component: {fileID: 1581946792}
-  - component: {fileID: 1581946796}
+  - component: {fileID: 1581946798}
   - component: {fileID: 1581946797}
   m_Layer: 0
   m_Name: NPC
@@ -7686,31 +7686,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1581946796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581946791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInRange: 0
-  questController: {fileID: 1822582680}
-  dialogueCanvas: {fileID: 181508999}
-  interaction: {fileID: 299431008}
-  dialogueText: {fileID: 1045923609}
-  closeButton: {fileID: 455043582}
-  nextButton: {fileID: 834886947}
-  prevButton: {fileID: 1830175267}
-  disabledCanvas:
-  - {fileID: 307384239}
-  - {fileID: 1822582683}
-  dialogueInitiated: 0
-  messagesPerStep: 1
 --- !u!114 &1581946797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7724,6 +7699,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+--- !u!114 &1581946798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581946791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCanvas: {fileID: 0}
+  interaction: {fileID: 0}
+  dialogueText: {fileID: 0}
+  closeButton: {fileID: 0}
+  nextButton: {fileID: 0}
+  prevButton: {fileID: 0}
+  disabledCanvas: []
+  messagesPerStep: 1
+  isInRange: 0
+  dialogueInitiated: 0
 --- !u!1 &1582200607
 GameObject:
   m_ObjectHideFlags: 0
