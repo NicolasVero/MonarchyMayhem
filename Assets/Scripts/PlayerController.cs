@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
 
         this.keyActions.Add(KeyCode.E, TakeWeapon);
-        this.keyActions.Add(KeyCode.F, DanseAnimations);
         this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
         this.keyActions.Add(KeyCode.P, TooglePauseMenu);
 
@@ -183,21 +182,6 @@ public class PlayerController : MonoBehaviour {
         if(this.canResume) 
             this.questMenu.SetActive(!this.questMenu.activeSelf);
     }
-
-    private void DanseAnimations() {
-        int random = GameController.Random(0, 2);
-        int randomDanse = (random == 2) ? GameController.Random(1, 4) : 1;
-        float[] weaponsAppearanceDurations = {3.5f, 1.5f, 6.5f, 8.5f, 8f, 9.5f};
-        
-        GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
-        Invoke("WeaponAppearance", weaponsAppearanceDurations[random + randomDanse - 1]);
-
-        if(random == 0) this.animator.SetTrigger("Ibreakyou");
-        if(random == 1) this.animator.SetTrigger("Wave");
-        if(random == 2) this.animator.SetInteger("Dance", randomDanse);
-    }
-
-
 
     private IEnumerator DisableGoingAttack() {
         yield return new WaitForSeconds(0.2f);
@@ -420,8 +404,8 @@ public class PlayerController : MonoBehaviour {
 
     // Animations
     private void Move() {
-        transform.Translate(Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        transform.Translate(2 * Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+        transform.Translate(2 * Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         float moveZ = Input.GetAxis("Vertical");
         this.moveDirection = new Vector3(0, 0, moveZ);
         this.moveDirection = this.transform.TransformDirection(this.moveDirection);
@@ -507,7 +491,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void DisableAttack() {
+    public void DisableAttack() {
         this.goingAttack = false;
         this.canAttack = false;
     }
@@ -615,6 +599,7 @@ public class PlayerController : MonoBehaviour {
     public float GetWeaponKnockback()    { return this.weaponKnockback;    }
     public float GetWeaponSpeed()        { return this.weaponSpeed;        }
     public float GetWeaponRegeneration() { return this.weaponRegeneration; }
+    public Animator GetAnimator()        { return this.animator;           }
 
     public Canvas GetQuestCanvas() { return this.questScreen; }
     public bool IsQuestCanvasVisible() { return this.questMenu.activeSelf; }
