@@ -1,17 +1,25 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class NpcDatas {
-    public NpcData[] npc;
+    public NpcData[] npcs;
 }
-
 
 [Serializable]
 public class NpcData {
-    public List<string> messages;
+    public int id;
+    public Dialogue[] dialogues;
+    public CustomQuest[] quests;
+}
+
+[Serializable]
+public class Dialogue {
+    public string[] messages;
+}
+
+[Serializable]
+public class CustomQuest {
     public string title;
     public string description;
     public int required;

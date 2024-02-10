@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-    private NpcData npcData;
+    private NpcData npcData; // Déclaration de la variable npcData au niveau de la classe
 
     void Start()
     {
@@ -20,27 +20,30 @@ public class NPCController : MonoBehaviour
 
         Debug.Log(jsonFile);
 
-        // if (jsonFile != null)
-        // {
-        NpcDatas npcDatas = JsonUtility.FromJson<NpcDatas>(jsonFile.text);
-        // NpcData npcData = Array.Find(npcDatas.npcs, e => e.id == 1);
-        // Debug.Log(npcData);
+        if (jsonFile != null)
+        {
+            NpcDatas npcDatas = JsonUtility.FromJson<NpcDatas>(jsonFile.text);
+            npcData = Array.Find(npcDatas.npcs, e => e.id == 1); // Utilisation de la variable de classe npcData
+            Debug.Log(npcData);
 
-        //     // Recherche des données spécifiques pour ce NPC
-        //     foreach (NpcData data in npcDatas.npcs)
-        //     {
-        //         if (data.id == GetComponent<NPC>().npcID) // Suppose que le NPCController est attaché au même GameObject que le composant NPC
-        //         {
-        //             npcData = data;
-        //             return;
-        //         }
-        //     }
+            foreach (NpcData npcData in npcDatas.npcs) {
+    Debug.Log("NPC ID: " + npcData.id);
 
-        //     Debug.LogWarning("NPC data not found for NPC ID: " + GetComponent<NPC>().npcID);
-        // }
-        // else
-        // {
-        //     Debug.LogError("NPC data file not found at path: " + jsonFilePath);
-        // }
+    // Accéder aux dialogues
+    foreach (Dialogue dialogue in npcData.dialogues) {
+        foreach (string message in dialogue.messages) {
+            Debug.Log("Dialogue message: " + message);
+        }
+    }
+
+    // Accéder aux quêtes
+    foreach (CustomQuest quest in npcData.quests) { // Notez que j'ai utilisé CustomQuest à la place de Quest
+        Debug.Log("Quest title: " + quest.title);
+        Debug.Log("Quest description: " + quest.description);
+        Debug.Log("Quest required: " + quest.required);
+        Debug.Log("Quest type: " + quest.type);
+    }
+}
+        }
     }
 }
