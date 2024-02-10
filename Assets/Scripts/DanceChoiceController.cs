@@ -21,10 +21,7 @@ public class DanceChoiceController : MonoBehaviour
         this.DanceWheelController.DanceAnimations(this.ID);
         Invoke("DeselectClickedButton", 1f);
     }
-    public void Deselected() {
-        Debug.Log("Deselected");
-    }
-    
+
     public void HoverEnter() {
         this.animator.SetBool("Hover", true);
         GameController.SetPanelVisibility(this.danceText, true);
