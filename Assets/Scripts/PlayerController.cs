@@ -480,7 +480,7 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
 
         if(this.canAttack) {
-            if(this.goingAttack && this.isAlive && other.CompareTag(Names.BaseEnemy)) {
+            if(this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
                 EnemyController enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(this.attack + this.weaponAttack);
                 enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
