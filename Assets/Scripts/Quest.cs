@@ -40,24 +40,20 @@ public class Quest {
 
         if (this.type == "Killing") {
             this.currentCount = playerController.GetKillCounter() - this.countReset;
-            questDetails.YellowTitle = this.title;
-            questDetails.Message = this.description ;
-            questDetails.Progression = "Completee : " + "\t \t \t \t " + this.currentCount + "/" + this.required;
         }
 
-        if (this.type == "Finding") {
+        if(this.type == "Finding") {
             this.currentCount = collectibleController.GetCollectibleCounter() - this.countReset;
-            questDetails.YellowTitle = this.title;
-            questDetails.Message = this.description ;
-            questDetails.Progression = "Completee : " + "\t \t \t \t " + this.currentCount + "/" + this.required;
         }
 
         if (this.type == "Speaking") {
             this.currentBool = dialogueController.GetDialogueInitiated();
-            questDetails.YellowTitle = this.title;
-            questDetails.Message = this.description ;
-            questDetails.Progression = "Completee : non" ;
         }
+
+        questDetails.YellowTitle = this.title;
+        questDetails.Message = this.description;
+        questDetails.Progression = (this.type == "Speaking") ? "Complétée : non" : "Complétée : " + this.currentCount + " / " + this.required;
+
         return questDetails;
     }
 
@@ -67,7 +63,7 @@ public class Quest {
     }
 
     public bool IsComplete() {
-        return !this.completed && this.currentCount >= this.required || !this.completed && this.currentBool == true;
+        return !this.completed && (this.currentCount >= this.required || this.currentBool);
     }
 
     public string GetType(){

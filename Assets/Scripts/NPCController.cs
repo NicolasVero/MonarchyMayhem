@@ -18,8 +18,8 @@ public class NPCController : MonoBehaviour {
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath);
 
 
-        if (jsonFile != null) {
-
+        if (jsonFile != null){
+ 
             NpcDatas npcDatas = JsonUtility.FromJson<NpcDatas>(jsonFile.text);
             npcData = Array.Find(npcDatas.npcs, e => e.id == this.id);
             // Debug.Log(npcData);
