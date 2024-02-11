@@ -19,6 +19,7 @@ public class LevelUpChoice : MonoBehaviour {
     private string[] bannersNames;
     private int[] bannersLevel;
     private int bannersLength = 7;
+    private int marginMultiplicator;
 
     public void Awake() {
 
@@ -76,17 +77,19 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     private int[][] GetPositionArray() {
-        int initialXPosition = 325;
-        int initialYPosition = 250;
-        int marginX = 250;
-        int marginY = 0;
+        int bannerWidth = 175;
+        int bannerHeight = 250;
+        int initialXPosition = Screen.width / 2;
+        int initialYPosition = Screen.height / 2 - bannerHeight / 2;
+        int marginX = Convert.ToInt32(bannerWidth * 2.2f);
 
         int[][] positions = new int[3][];
 
         for(int i = 0; i < 3; i++) {
             int[] position = new int[2];
-            position[0] = initialXPosition + i * marginX;
-            position[1] = initialYPosition + i * marginY;
+            this.marginMultiplicator = i - 1;
+            position[0] = initialXPosition + this.marginMultiplicator * marginX;
+            position[1] = initialYPosition;
             positions[i] = position; 
         }
 

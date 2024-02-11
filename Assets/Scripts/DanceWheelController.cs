@@ -34,7 +34,7 @@ public class DanceWheelController : MonoBehaviour {
         this.ToggleWheelAnimation(this.danceWheelSelected);
         GameController.SetCursorVisibility(this.danceWheelSelected);
 
-        float[] weaponsAppearanceDurations = {0f, 6.5f, 8.5f, 8f, 9.5f, 0f/*Anim à trouver*/, 3.5f, 1.5f};
+        float[] weaponsAppearanceDurations = {0f, 6.5f, 8.5f, 8f, 9.5f, 3.5f, 1.5f};
         
         GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
         this.playerController.Invoke("WeaponAppearance", weaponsAppearanceDurations[danceID]);
