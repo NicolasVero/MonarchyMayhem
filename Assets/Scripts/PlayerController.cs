@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour {
         this.attackSpeed += this.increaseAttackSpeed[this.attackSpeedLevel - 1];
         this.attackSpeedLevel++;
         if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
-        if(this.attackSpeed > 5) this.hudStats.MaxAttackSpeed();
+        if(this.attackSpeedLevel > 5) this.hudStats.MaxAttackSpeed();
     }
 
     public void UpdateRange() {
