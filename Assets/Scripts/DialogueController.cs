@@ -7,6 +7,7 @@ using TMPro;
 public class DialogueController : MonoBehaviour {
 
     private QuestController questController; 
+    [SerializeField] private NPCController npcController;
 
     [Header("Canvas Settings")]
     [SerializeField]private Canvas dialogueCanvas;
@@ -103,23 +104,26 @@ public class DialogueController : MonoBehaviour {
 
     GameController.SetCanvasVisibility(dialogueCanvas, false);
 
-    dialogueSets = new List<string>[] {
-        new List<string> { "Dialogue 1 - Message 1", "Dialogue 1 - Message 2", "Dialogue 1 - Message 3", "zejhgfezifgvze" },
-        new List<string> { "Dialogue 2 - Message 1", "Dialogue 2 - Message 2", "Dialogue 2 - Message 3" },
-        new List<string> { "Dialogue 3 - Message 1", "Dialogue 3 - Message 2", "Dialogue 3 - Message 3" },
-        new List<string> { "Dialogue 4 - Message 1", "Dialogue 4 - Message 2", "Dialogue 4 - Message 3" },
-        new List<string> { "Dialogue 5 - Message 1", "Dialogue 5 - Message 2", "Dialogue 5 - Message 3" },
-        // Ajoutez autant de ensembles de dialogues que nécessaire
-    };
+    dialogueSets = npcController.GetDialogueSets();
+    questList = npcController.GetQuestList();
 
-    questList = new List<Quest> {
-        new Quest("Quest 1", "Description de la quête 1", 1, "Finding"),
-        new Quest("Quest 2", "Description de la quête 2", 2, "Finding"),
-        new Quest("Quest 3", "Description de la quête 3", 1, "Speaking"),
-        new Quest("Quest 4", "Description de la quête 4", 3, "Finding"),
-        new Quest("Quest 5", "Va t en ", 3, "Speaking"),
-        // Ajoutez autant de quêtes que nécessaire
-    };    
+    // dialogueSets = new List<string>[] {
+    //     new List<string> { "Dialogue 1 - Message 1", "Dialogue 1 - Message 2", "Dialogue 1 - Message 3", "zejhgfezifgvze" },
+    //     new List<string> { "Dialogue 2 - Message 1", "Dialogue 2 - Message 2", "Dialogue 2 - Message 3" },
+    //     new List<string> { "Dialogue 3 - Message 1", "Dialogue 3 - Message 2", "Dialogue 3 - Message 3" },
+    //     new List<string> { "Dialogue 4 - Message 1", "Dialogue 4 - Message 2", "Dialogue 4 - Message 3" },
+    //     new List<string> { "Dialogue 5 - Message 1", "Dialogue 5 - Message 2", "Dialogue 5 - Message 3" },
+    //     // Ajoutez autant de ensembles de dialogues que nécessaire
+    // };
+
+    // questList = new List<Quest> {
+    //     new Quest("Quest 1", "Description de la quête 1", 1, "Finding"),
+    //     new Quest("Quest 2", "Description de la quête 2", 2, "Finding"),
+    //     new Quest("Quest 3", "Description de la quête 3", 1, "Speaking"),
+    //     new Quest("Quest 4", "Description de la quête 4", 3, "Finding"),
+    //     new Quest("Quest 5", "Va t en ", 3, "Speaking"),
+    //     // Ajoutez autant de quêtes que nécessaire
+    // };    
 
     nextButton.onClick.AddListener(ShowNextMessage);
     prevButton.onClick.AddListener(ShowPreviousMessage);
