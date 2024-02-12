@@ -34,7 +34,7 @@ public class QuestController : MonoBehaviour
             this.spawnersController = GameObject.Find("Spawners").GetComponent<SpawnersController>();
         }
         
-        if(currentQuest.IsComplete())
+        if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated())
             CompleteCurrentQuest();
     }
 
@@ -53,7 +53,7 @@ public class QuestController : MonoBehaviour
 
     public void CompleteCurrentQuest() {
 
-        if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) { // permet de parler au pnj pour pouvoir recevoir une quete avant de passer a la quete d'apres sinon sa bug
+        // if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) { // permet de parler au pnj pour pouvoir recevoir une quete avant de passer a la quete d'apres sinon sa bug
                 
             currentQuest.SetCompleted(true);
             currentQuestIndex++;
@@ -105,12 +105,12 @@ public class QuestController : MonoBehaviour
                 IsAllQuestCompleted(true);
 
             }
-        }
+        // }
 
         UpdateQuestText();
     }
 
-    void UpdateQuestText()
+    public void UpdateQuestText()
     {
         Quest.QuestDetails questDetails = currentQuest.GetQuestDetails();
         string yellowTitle = questDetails.YellowTitle;

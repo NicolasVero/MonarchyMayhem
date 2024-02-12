@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour {
     private ParticleSystem attackParticle;
     private PlayerController playerController;
     private WeaponsDropper weaponsDropper;
+    private QuestController questController;
+
 
     private string enemyType;
     private int attack, health, xp;
@@ -41,7 +43,8 @@ public class EnemyController : MonoBehaviour {
         this.playerPosition = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
         this.navMeshAgent = GetComponent<NavMeshAgent>();
         this.enemyPosition = this.navMeshAgent.transform;
-        
+        this.questController = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<QuestController>();
+
         this.attackParticle = this.GetComponentInChildren<ParticleSystem>();
         this.animator = GetComponentInChildren<Animator>();
         
@@ -114,6 +117,7 @@ public class EnemyController : MonoBehaviour {
 
     private void Death() {
         this.animator.SetInteger("Death", GameController.Random(1, 3));
+        questController.UpdateQuestText();
         canMove = false;
         canAttack = false;
         isAlive = false;

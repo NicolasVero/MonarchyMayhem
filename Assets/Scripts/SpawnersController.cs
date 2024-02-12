@@ -32,7 +32,7 @@ public class SpawnersController : MonoBehaviour {
 
     void Update() {
 
-        if(enemiesContainer.transform.childCount > maxEntities) {
+        if(enemiesContainer.transform.childCount >= maxEntities) {
             if (!isPaused) 
                 PauseSpawners();
         } else {

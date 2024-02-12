@@ -12,7 +12,6 @@ public class CollectibleController : MonoBehaviour {
     }
 
     public int GetCollectibleCounter() {
-
         PickUp playerPickupScript = FindObjectOfType<PickUp>();
         return playerPickupScript.GetCollectedItemsCount();
     }

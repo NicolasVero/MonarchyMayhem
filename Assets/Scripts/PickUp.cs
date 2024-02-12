@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour {
 
     [SerializeField] private new AudioController audio;
+    [SerializeField] private QuestController questController;
     private int collectedItemsCount = 0;
 
     void OnTriggerEnter(Collider other) {
@@ -13,6 +14,8 @@ public class PickUp : MonoBehaviour {
             this.audio.PlayPickUpSFX();
             Destroy(other.gameObject);
             collectedItemsCount++;
+            Debug.Log("item ramassÃ© : " + collectedItemsCount);
+            questController.UpdateQuestText();
         }
     }
 

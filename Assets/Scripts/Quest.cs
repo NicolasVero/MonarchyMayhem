@@ -19,7 +19,7 @@ public class Quest {
         this.type = type;
         this.currentCount = 0;
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
-        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>(); //! Changer
+        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>(); 
         this.collectibleController = GameObject.FindGameObjectWithTag("Collectibles").GetComponent<CollectibleController>();  
         this.title = title;
         this.description = description;
@@ -35,9 +35,7 @@ public class Quest {
         public string Progression { get; set; }
     }
 
-    public Quest.QuestDetails GetQuestDetails() {
-        QuestDetails questDetails = new QuestDetails();
-
+    public void IncrementCounter() {
         if (this.type == "Killing") {
             this.currentCount = playerController.GetKillCounter() - this.countReset;
         }
@@ -49,6 +47,12 @@ public class Quest {
         if (this.type == "Speaking") {
             this.currentBool = dialogueController.GetDialogueInitiated();
         }
+    }
+
+    public Quest.QuestDetails GetQuestDetails() {
+        QuestDetails questDetails = new QuestDetails();
+
+        IncrementCounter();
 
         questDetails.YellowTitle = this.title;
         questDetails.Message = this.description;
@@ -66,16 +70,19 @@ public class Quest {
         return !this.completed && (this.currentCount >= this.required || this.currentBool);
     }
 
-    public string GetType(){
+    public string GetType() {
         return this.type;
     }
-    public string GetTitle(){
+
+    public string GetTitle() {
         return this.title;
     }
-    public string GetDescription(){
+
+    public string GetDescription() {
         return this.description;
     }
-    public int GetRequired(){
+
+    public int GetRequired() {
         return this.required;
     }    
 }
