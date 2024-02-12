@@ -80,9 +80,10 @@ public class Spawner : MonoBehaviour {
         }
 
         GameObject pickupToSpawn = currentPickUpGroup[currentPickUpIndex];
-        Instantiate(pickupToSpawn, transform.position, Quaternion.identity).transform.parent = this.collectiblesContainer.transform; 
-
+        Vector3 spawnPosition = transform.position + Vector3.up * 1.0f;
+        Instantiate(pickupToSpawn, spawnPosition, Quaternion.identity).transform.parent = this.collectiblesContainer.transform;
     }
+
 
 
     public void ActiveSpawnerPickUp() {

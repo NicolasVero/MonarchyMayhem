@@ -483,9 +483,8 @@ public class PlayerController : MonoBehaviour {
             if(this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
                 EnemyController enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(this.attack + this.weaponAttack);
-                enemy.ApplyKnockback(this.knockback + this.weaponKnockback);
+                // enemy.ApplyKnockback();
                 this.audio.PlaySlashSFX();
-
                 Invoke("DisableAttack", 0.1f);
             }
         }
@@ -583,6 +582,7 @@ public class PlayerController : MonoBehaviour {
     public float GetRange()              { return this.range;              }
     public float GetSpeed()              { return this.speed;              }
     public float GetRegeneration()       { return this.regeneration;       }
+    public float GetKnockback()          { return this.knockback;          }
     
     public int GetHealthLevel()          { return this.healthLevel;        }
     public int GetResistanceLevel()      { return this.resistanceLevel;    }

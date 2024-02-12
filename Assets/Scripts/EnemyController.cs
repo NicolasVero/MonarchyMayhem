@@ -107,6 +107,8 @@ public class EnemyController : MonoBehaviour {
                 this.playerController.IncrementStatCounter();
                 this.deathCount = true;
             }
+        } else {
+            Invoke("ApplyKnockback", 0.3f);
         }
     }
 
@@ -133,7 +135,8 @@ public class EnemyController : MonoBehaviour {
         this.playerController.XPGain(this.xp);
     }
 
-    public void ApplyKnockback(float multiply) {
+    public void ApplyKnockback() {
+        float multiply = playerController.GetKnockback() + playerController.GetWeaponKnockback();
         Vector3 knockbackDirection = -transform.forward;
         float knockbackDistance = 1f * multiply; 
         float knockbackDuration = 0.2f; 
