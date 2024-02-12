@@ -6,10 +6,22 @@
             "dialogues" :
             [
                 {
-                    "messages": ["D1M1", "D1M2", "D1M3"]
+                    "messages": [
+                        "Mon cher ami, je vois que tu es de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
+                        "Les paysans, tes fidèles sujets, se sont retournés contre toi. Ils ont été manipulés par des forces obscures et ont succombé à la colère. Ton trône est en péril, mais tout espoir n'est pas perdu.", 
+                        "Tu dois te battre, mon ami. Affronte ceux qui te trahissent et regagne ton trône légitime. Mais avant cela, laisse-moi te montrer les rudiments du combat et de la survie.",
+                        "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement,  la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
+                        "Lorsque vous triomphez de vos ennemis sur le champ de bataille, vous gagnez en expérience. À chaque montée de niveau, vous aurez l'opportunité de renforcer vos compétences. Trois chemins se présenteront à vous, chacun représentant une voie vers la grandeur. Choisissez sagement, car chaque décision peut façonner le cours de votre destinée.",
+                        "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes sont d'une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
+                        "Bien, votre Majesté, il est temps d'agir. Votre première tâche : éliminer un certain nombre de ces paysans révoltés. Oui, je sais, c'est ironique, n'est-ce pas ? Mais que voulez-vous, c'est la vie dans ce royaume de fous."
+                    ]
                 },
                 {
-                    "messages": ["Dialogue 2 - Message 1", "Dialogue 2 - Message 2"]
+                    "messages": [
+                        "Mon roi, un groupe d'hérétiques a juré fidélité à votre frère !", 
+                        "Ils se font appeler SunBurn, et ils ont commencé à parsemer la ville de messages impies",
+                        "Je vous en supplie mon roi, allez les réduire au silence !"
+                    ]
                 },
                 {
                     "messages": ["Dialogue 3 - Message 1", "Dialogue 3 - Message 2"]
@@ -24,8 +36,8 @@
                     "type" : "Killing"
                 },
                 {
-                    "title" : "Quest 1",
-                    "description" : "Description de la quete 1",
+                    "title" : "Anti-Propagande",
+                    "description" : "Faites taire les fauteurs de troubles",
                     "required" : 1,
                     "type" : "Finding"
                 },

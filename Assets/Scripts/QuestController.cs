@@ -129,7 +129,7 @@ public class QuestController : MonoBehaviour
         return currentQuest;
     }
 
-      public void AddQuestFromDialogue(string questTitle, string questMessage, int requiredAmount, string questType) {
+    public void AddQuestFromDialogue(string questTitle, string questMessage, int requiredAmount, string questType) {
 
         quests.Add(new Quest(questTitle, questMessage, requiredAmount, questType));
 

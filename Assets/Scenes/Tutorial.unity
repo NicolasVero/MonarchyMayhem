@@ -2222,6 +2222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 953399693577235900, guid: 694efacff61a74d4d9b22e9b34d474cd, type: 3}
+      propertyPath: questController
+      value: 
+      objectReference: {fileID: 1822582680}
     - target: {fileID: 5504797034660794526, guid: 694efacff61a74d4d9b22e9b34d474cd, type: 3}
       propertyPath: nextButton
       value: 
@@ -2937,6 +2941,10 @@ PrefabInstance:
       propertyPath: maskedCanvas.Array.data[1]
       value: 
       objectReference: {fileID: 1822582683}
+    - target: {fileID: 4249084037058832234, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: c48741651f6e48e4491d8817cef597dc, type: 3}
     - target: {fileID: 5312548331918150433, guid: b0d2192722d1ee646af0a6547f810b82, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3073,9 +3081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fcc0f6a97bba24d8797e0d484c8b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxActive: 0
+  maxActive: 1
   radius: 0
-  maxEntities: 1000
+  maxEntities: 1
   enemiesContainer: {fileID: 488669865}
 --- !u!1 &857943325
 GameObject:
@@ -3844,7 +3852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67a9e43188fb3cc4cb338bf1fca17762, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc89d05d17ab6ce4e8ca5f5b174ab9c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4451,13 +4459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 0
+  allowPeasants: 1
   allowBourgeois: 0
-  allowKnights: 1
+  allowKnights: 0
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 7.96
+  spawnDelay: 2
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:
@@ -6767,6 +6775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcController: {fileID: 1581946797}
   dialogueCanvas: {fileID: 0}
   interaction: {fileID: 0}
   dialogueText: {fileID: 0}
@@ -6822,13 +6831,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 0
+  allowPeasants: 1
   allowBourgeois: 0
-  allowKnights: 1
+  allowKnights: 0
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 7.96
+  spawnDelay: 2
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:
@@ -7198,6 +7207,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Dialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 1403545371020895285, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 166.0742
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403545371020895285, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 119.11197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232609940254410163, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232609940254410163, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278968980679364639, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1547.0547
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278968980679364639, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 334.0011
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278968980679364639, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 773.23193
+      objectReference: {fileID: 0}
     - target: {fileID: 3717778198101049432, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_text
       value: null
@@ -7205,6 +7242,14 @@ PrefabInstance:
     - target: {fileID: 6716885998351982100, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_Name
       value: Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584221994218378576, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584221994218378576, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 308
       objectReference: {fileID: 0}
     - target: {fileID: 8646519660937902309, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_Pivot.x
@@ -7864,7 +7909,7 @@ GameObject:
   - component: {fileID: 1822582680}
   m_Layer: 5
   m_Name: Quest Menu
-  m_TagString: Untagged
+  m_TagString: QuestCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8352,13 +8397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 0
+  allowPeasants: 1
   allowBourgeois: 0
-  allowKnights: 1
+  allowKnights: 0
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
-  spawnDelay: 7.96
+  spawnDelay: 2
   enemiesContainer: {fileID: 488669865}
   collectiblesContainer: {fileID: 799266532}
   peasants:
