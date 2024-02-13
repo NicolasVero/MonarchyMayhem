@@ -46,7 +46,8 @@ public class SceneController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")) {
-            this.isInRange = true;
+            if(questController.GetIsAllQuestCompleted())
+                this.isInRange = true;
         }
     }
 

@@ -95,8 +95,13 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(int damage) {
+    public void ApplyDamage() {
+        Invoke("TakeDamage", (this.playerController.GetWeaponAttackSpeed() + this.playerController.GetAttackSpeed()) / 5);
+    }
 
+    public void TakeDamage() {
+
+        int damage = this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
         this.health -= damage;
 
         if(this.health <= 0) {
@@ -108,7 +113,7 @@ public class EnemyController : MonoBehaviour {
                 this.deathCount = true;
             }
         } else {
-            Invoke("ApplyKnockback", 0.3f);
+            ApplyKnockback();
         }
     }
 
@@ -136,6 +141,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void ApplyKnockback() {
+        Debug.Log("now ");
         float multiply = playerController.GetKnockback() + playerController.GetWeaponKnockback();
         Vector3 knockbackDirection = -transform.forward;
         float knockbackDistance = 1f * multiply; 

@@ -487,7 +487,7 @@ public class PlayerController : MonoBehaviour {
         if(this.canAttack) {
             if(this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
                 EnemyController enemy = other.GetComponent<EnemyController>();
-                enemy.TakeDamage(this.attack + this.weaponAttack);
+                enemy.ApplyDamage();
                 // enemy.ApplyKnockback();
                 this.audio.PlaySlashSFX();
                 Invoke("DisableAttack", 0.1f);
