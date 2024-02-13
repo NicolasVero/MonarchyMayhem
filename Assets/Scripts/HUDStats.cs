@@ -16,6 +16,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI regenerationStat;
     [SerializeField] private TextMeshProUGUI resistanceStat;
     [SerializeField] private TextMeshProUGUI speedStat;
+    [SerializeField] private TextMeshProUGUI knockbackStat;
     [SerializeField] private TextMeshProUGUI weaponName;
 
     [Header("Secondary Text Mesh")]
@@ -24,6 +25,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI weaponRange;
     [SerializeField] private TextMeshProUGUI weaponRegeneration;
     [SerializeField] private TextMeshProUGUI weaponSpeed;
+    [SerializeField] private TextMeshProUGUI weaponKnockback;
 
 
     [Header("Images")]
@@ -33,6 +35,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage regenerationIcon;
     [SerializeField] private RawImage resistanceIcon;
     [SerializeField] private RawImage speedIcon;
+    [SerializeField] private RawImage knockbackIcon;
     [SerializeField] private RawImage enableAttackIcon;
 
     [Header("Joueur")]
@@ -58,6 +61,7 @@ public class HUDStats : MonoBehaviour {
         rangeStat.text        = "" + player.GetRange();
         resistanceStat.text   = "" + player.GetResistance();
         speedStat.text        = "" + player.GetSpeed();
+        knockbackStat.text    = "" + player.GetKnockback();
         regenerationStat.text = "" + player.GetRegeneration();
         weaponName.text       = "" + player.GetWeaponName();
 
@@ -66,6 +70,7 @@ public class HUDStats : MonoBehaviour {
         weaponAttackSpeed.text = "";
         weaponSpeed.text = "";
         weaponRegeneration.text = "";
+        weaponKnockback.text = "";
 
         if(player.GetWeaponAttack() != 0) {
             weaponAttack.text = "" + player.GetWeaponAttack();
@@ -90,6 +95,11 @@ public class HUDStats : MonoBehaviour {
         if(player.GetWeaponRegeneration() != 0) {
             weaponRegeneration.text = "" + player.GetWeaponRegeneration();
             weaponRegeneration.color = (player.GetWeaponRegeneration() > 0) ? Color.green : Color.red;
+        }
+
+        if(player.GetWeaponKnockback() != 0) {
+            weaponKnockback.text = "" + player.GetWeaponKnockback();
+            weaponKnockback.color = (player.GetWeaponKnockback() > 0) ? Color.green : Color.red;
         }
     }
     
@@ -132,6 +142,13 @@ public class HUDStats : MonoBehaviour {
         Texture2D regenerationTexture = Resources.Load<Texture2D>(this.iconsPath + "max_regeneration");
         if(regenerationTexture != null) {
             this.regenerationIcon.texture = regenerationTexture;
+        }
+    }
+
+    public void MaxKnockback() {
+        Texture2D knockbackTexture = Resources.Load<Texture2D>(this.iconsPath + "max_knockback");
+        if(knockbackTexture != null) {
+            this.knockbackIcon.texture = knockbackTexture;
         }
     }
 

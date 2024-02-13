@@ -24,15 +24,19 @@
                     ]
                 },
                 {
-                    "messages": ["Dialogue 3 - Message 1", "Dialogue 3 - Message 2"]
+                    "messages": [
+                        "Je ne voudrais pas vous retenir plus longtemps mon roi. Le royaume a besoin de vous !",
+                        "Allez simplement faire passer l'arme à gauche à encore quelques personnes...",
+                        "C'est mon petit plaisir coupable. *caresse le roi*"
+                    ]
                 }
             ],
             "quests" : 
             [
                 {
-                    "title" : "Quest 0",
-                    "description" : "heh de la quete 1",
-                    "required" : 1,
+                    "title" : "Ménage de printemps",
+                    "description" : "Allez occire les mécréants.",
+                    "required" : 5,
                     "type" : "Killing"
                 },
                 {
@@ -42,16 +46,10 @@
                     "type" : "Finding"
                 },
                 {
-                    "title" : "Quest 2",
-                    "description" : "Description de la quete 2",
+                    "title" : "Encore un petit coup de balai",
+                    "description" : "Allez occire encore plus de mécréants.",
                     "required" : 2,
-                    "type" : "Finding"
-                },
-                {
-                    "title" : "Quest 3",
-                    "description" : "Description de la quete 3",
-                    "required" : 2,
-                    "type" : "Finding"
+                    "type" : "Killing"
                 }
             ]
         },
@@ -60,34 +58,18 @@
             "dialogues" :
             [
                 {
-                    "messages": ["Dialogue 1 - Message 1", "Dialogue 1 - Message 2"]
-                },
-                {
-                    "messages": ["Dialogue 2 - Message 1", "Dialogue 2 - Message 2"]
-                },
-                {
-                    "messages": ["Dialogue 3 - Message 1", "Dialogue 3 - Message 2"]
+                    "messages": [
+                        
+                    ]
                 }
             ],
             "quests" : 
             [
                 {
-                    "title" : "Quest 1",
+                    "title" : "Rien de tel qu'un roi pour faire le ménage",
                     "description" : "Description de la quete 1",
                     "required" : 1,
-                    "type" : "Finding"
-                },
-                {
-                    "title" : "Quest 2",
-                    "description" : "Description de la quete 2",
-                    "required" : 2,
-                    "type" : "Finding"
-                },
-                {
-                    "title" : "Quest 3",
-                    "description" : "Description de la quete 3",
-                    "required" : 2,
-                    "type" : "Finding"
+                    "type" : "Killing"
                 }
             ]
         }

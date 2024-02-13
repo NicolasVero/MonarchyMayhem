@@ -133,6 +133,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        this.animator.SetFloat("AttackSpeed", (1/(this.GetAttackSpeed() + this.GetWeaponAttackSpeed())*2));
+
         foreach (var kvp in keyActions) {
             if (Input.GetKeyDown(kvp.Key)) {
                 kvp.Value.Invoke();
@@ -376,7 +378,10 @@ public class PlayerController : MonoBehaviour {
         this.attackLevel++;
         if(this.attack > this.maxAttack) this.attack = this.maxAttack;
         if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
-        if(this.attackLevel > 5) this.hudStats.MaxAttack();
+        if(this.attackLevel > 5) {
+            this.hudStats.MaxAttack();
+            this.hudStats.MaxKnockback();
+        }
     }
 
     public void UpdateSpeed() {
