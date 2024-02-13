@@ -175,6 +175,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void Dance() {
-        this.animator.SetTrigger("Dance");
+        // this.animator.SetTrigger("Dance");
+        this.animator.SetInteger("Dance", GameController.Random(0, 4));
     }
 }

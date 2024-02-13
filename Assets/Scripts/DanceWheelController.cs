@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class DanceWheelController : MonoBehaviour {
 
     [SerializeField] private Canvas danceMenu;
     [SerializeField] private GameObject danceText;
+    private List<string> listDances = new List<string> { "Fortnite_Dance", "ElectroShuffle", "RobotDance", "BreakDance", "Wave", "IBreakYou" };
     private PlayerController playerController;
     private Animator animator;
     private bool danceWheelSelected;
@@ -19,27 +21,36 @@ public class DanceWheelController : MonoBehaviour {
     }
 
     void Update() {
+
+        if(this.danceWheelSelected)
+            this.playerController.DisableAttack();
+
         if (Input.GetKeyDown(KeyCode.F) && this.canOpenWheelMenu) {
             this.danceWheelSelected = !this.danceWheelSelected;
             GameController.SetCursorVisibility(this.danceWheelSelected);
             this.ToggleWheelAnimation(this.danceWheelSelected);
         }
+        try {
+            if (listDances.IndexOf(this.playerController.GetAnimator().GetCurrentAnimatorClipInfo(this.playerController.GetAnimator().GetLayerIndex("Movement Layer"))[0].clip.name) != -1) {
+                this.DisableCanOpenMenu();
+                GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
+            }
+            else if (listDances.IndexOf(this.playerController.GetAnimator().GetCurrentAnimatorClipInfo(this.playerController.GetAnimator().GetLayerIndex("UpperBody Layer"))[0].clip.name) != -1) {
+                this.DisableCanOpenMenu(); 
+                GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
+            }
+        }
+        catch { 
+            this.EnableCanOpenMenu();
+            this.playerController.WeaponAppearance();
+        }
     }
 
     public void DanceAnimations(int danceID) {
-        this.DisableCanOpenMenu();
-        this.playerController.DisableAttack();
 
         this.danceWheelSelected = false;
         this.ToggleWheelAnimation(this.danceWheelSelected);
         GameController.SetCursorVisibility(this.danceWheelSelected);
-
-        float[] weaponsAppearanceDurations = {0f, 6.5f, 8.5f, 8f, 9.5f, 3.5f, 1.5f};
-        
-        GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
-        this.playerController.Invoke("WeaponAppearance", weaponsAppearanceDurations[danceID]);
-        
-        Invoke("EnableCanOpenMenu", weaponsAppearanceDurations[danceID]);
 
         switch (danceID){
             case 0:

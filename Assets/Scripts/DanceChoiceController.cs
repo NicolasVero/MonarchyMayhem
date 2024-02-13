@@ -11,10 +11,10 @@ public class DanceChoiceController : MonoBehaviour
     [SerializeField] private string itemName;
     [SerializeField] private TextMeshProUGUI itemText;
     private Animator animator;
-    private bool selected = false;
 
     void Awake() {
         this.animator = GetComponent<Animator>();
+        this.GetComponent<Button>().onClick.AddListener(Selected);
     }
 
     public void Selected() {
@@ -22,13 +22,13 @@ public class DanceChoiceController : MonoBehaviour
         Invoke("DeselectClickedButton", 1f);
     }
 
-    public void HoverEnter() {
+    public void OnMouseEnter() {
         this.animator.SetBool("Hover", true);
         GameController.SetPanelVisibility(this.danceText, true);
         this.itemText.text = this.itemName;
     }
 
-    public void HoverExit() {
+    public void OnMouseExit() {
         this.animator.SetBool("Hover", false);
         GameController.SetPanelVisibility(this.danceText, false);
         this.itemText.text = "";

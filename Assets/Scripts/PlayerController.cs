@@ -472,7 +472,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void WeaponAppearance() {
+    public void WeaponAppearance() {
         GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0.1295791f, 0.1295791f, 0.1295791f);
     }
 
