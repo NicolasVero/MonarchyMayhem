@@ -483,17 +483,24 @@ public class PlayerController : MonoBehaviour {
 
 
     private void OnTriggerStay(Collider other) {
-
-        if(this.canAttack) {
-            if(this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
-                EnemyController enemy = other.GetComponent<EnemyController>();
-                enemy.ApplyDamage();
-                // enemy.ApplyKnockback();
-                this.audio.PlaySlashSFX();
-                Invoke("DisableAttack", 0.1f);
+        if (this.canAttack) {
+            if (this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
+                Vector3 directionToEnemy = other.transform.position - transform.position;
+                
+                // float dotProduct = Vector3.Dot(transform.forward, directionToEnemy.normalized);
+                
+                // Vérifiez si l'ennemi est face à vous (dotProduct > seuil)
+                // float angleThreshold = Mathf.Cos(Mathf.Deg2Rad * 70f); // Angle de 45 degrés
+                // if (dotProduct > angleThreshold) {
+                    EnemyController enemy = other.GetComponent<EnemyController>();
+                    enemy.ApplyDamage();
+                    this.audio.PlaySlashSFX();
+                    Invoke("DisableAttack", 0.1f);
+                // }
             }
         }
     }
+
 
     public void DisableAttack() {
         this.goingAttack = false;

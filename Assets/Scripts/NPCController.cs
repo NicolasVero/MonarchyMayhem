@@ -9,6 +9,7 @@ public class NPCController : MonoBehaviour {
     private List<Quest> questList;
 
     void Start() {
+        if(this.id != 0)
         LoadNPCData();
     }
 
