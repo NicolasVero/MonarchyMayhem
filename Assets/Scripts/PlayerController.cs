@@ -492,11 +492,21 @@ public class PlayerController : MonoBehaviour {
                 // Vérifiez si l'ennemi est face à vous (dotProduct > seuil)
                 // float angleThreshold = Mathf.Cos(Mathf.Deg2Rad * 70f); // Angle de 45 degrés
                 // if (dotProduct > angleThreshold) {
+                // }
+
+
+
+                if (other.CompareTag(Names.BaseEnemy)) {
                     EnemyController enemy = other.GetComponent<EnemyController>();
                     enemy.ApplyDamage();
                     this.audio.PlaySlashSFX();
-                    Invoke("DisableAttack", 0.1f);
+                }
+                // } else if((other.CompareTag(Names.Boss))) {
+                //     BossController enemy = other.GetComponent<BossController>();
+                //     enemy.ApplyDamage();
+                //     this.audio.PlaySlashSFX();
                 // }
+                Invoke("DisableAttack", 0.1f);
             }
         }
     }

@@ -6,10 +6,12 @@ public class AudioController : MonoBehaviour {
     
     private int randomFS = -1;
     private int randomTheme = -1;
+    private int randomBossTheme = -1;
     
     [Header("Sound Effects")]
     [SerializeField] AudioSource[] mainTheme;
     [SerializeField] AudioSource[] slashSFX;
+    [SerializeField] AudioSource[] bossTheme;
     [SerializeField] AudioSource pickUpSFX;
     [SerializeField] AudioSource deathSFX;
     [SerializeField] AudioSource pauseMenuSFX;
@@ -23,6 +25,12 @@ public class AudioController : MonoBehaviour {
         this.randomTheme = GameController.Random(0, this.mainTheme.Length - 1);
         this.mainTheme[this.randomTheme].Play();
         Invoke(nameof(this.PlayThemeSFX), this.mainTheme[this.randomTheme].clip.length);
+    }
+
+    public void PlayBossThemeSFX() {
+        this.randomBossTheme = GameController.Random(0, this.bossTheme.Length - 1);
+        this.bossTheme[this.randomBossTheme].Play();
+        Invoke(nameof(this.PlayBossThemeSFX), this.bossTheme[this.randomBossTheme].clip.length);
     }
 
     public void PlaySlashSFX() { 
@@ -52,5 +60,10 @@ public class AudioController : MonoBehaviour {
 
     public void PlayPickUpSFX() {
         this.pickUpSFX.Play();
+    }
+
+    public void StopBossThemeSFX() { 
+        this.bossTheme[this.randomBossTheme].Stop();
+        CancelInvoke(nameof(this.PlayBossThemeSFX));
     }
 }
