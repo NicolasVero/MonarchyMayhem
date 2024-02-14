@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour {
 
         this.enemyType = EnemyController.GetEnemyType(gameObject.name);
         TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
+        this.navMeshAgent = GetComponent<NavMeshAgent>();
 
         if(enemiesStats != null) {
             EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
@@ -38,10 +39,11 @@ public class EnemyController : MonoBehaviour {
             this.range        = enemy.range;
             this.speed        = enemy.speed;
             this.xp           = enemy.xp;
+
+            this.navMeshAgent.stoppingDistance = this.range;
         }
 
         this.playerPosition = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;
-        this.navMeshAgent = GetComponent<NavMeshAgent>();
         this.enemyPosition = this.navMeshAgent.transform;
         this.questController = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<QuestController>();
 

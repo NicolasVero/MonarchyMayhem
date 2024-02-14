@@ -499,13 +499,12 @@ public class PlayerController : MonoBehaviour {
                 if (other.CompareTag(Names.BaseEnemy)) {
                     EnemyController enemy = other.GetComponent<EnemyController>();
                     enemy.ApplyDamage();
+                    this.audio.Invoke("PlaySlashSFX", ((this.GetWeaponAttackSpeed() + this.GetAttackSpeed()) / 5));
+                } else if((other.CompareTag(Names.Boss))) {
+                    BossController enemy = other.GetComponent<BossController>();
+                    enemy.ApplyDamage();
                     this.audio.PlaySlashSFX();
                 }
-                // } else if((other.CompareTag(Names.Boss))) {
-                //     BossController enemy = other.GetComponent<BossController>();
-                //     enemy.ApplyDamage();
-                //     this.audio.PlaySlashSFX();
-                // }
                 Invoke("DisableAttack", 0.1f);
             }
         }

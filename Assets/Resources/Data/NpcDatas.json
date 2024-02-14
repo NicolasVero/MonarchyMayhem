@@ -8,10 +8,10 @@
             [
                 {
                     "messages": [
-                        "Mon cher ami, je vois que tu es de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
+                        "Mon Cher Ami, je vois que tu es de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
                         "Les paysans, tes fidèles sujets, se sont retournés contre toi. Ils ont été manipulés par des forces obscures et ont succombé à la colère. Ton trône est en péril, mais tout espoir n'est pas perdu.", 
                         "Tu dois te battre, mon ami. Affronte ceux qui te trahissent et regagne ton trône légitime. Mais avant cela, laisse-moi te montrer les rudiments du combat et de la survie.",
-                        "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement,  la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
+                        "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement, la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
                         "Lorsque vous triomphez de vos ennemis sur le champ de bataille, vous gagnez en expérience. À chaque montée de niveau, vous aurez l'opportunité de renforcer vos compétences. Trois chemins se présenteront à vous, chacun représentant une voie vers la grandeur. Choisissez sagement, car chaque décision peut façonner le cours de votre destinée.",
                         "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes ont une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
                         "Bien, votre Majesté, il est temps d'agir. Votre première tâche : éliminer un certain nombre de ces paysans révoltés. Oui, je sais, c'est ironique, n'est-ce pas ? Mais que voulez-vous, c'est la vie de ce royaume de fous."
@@ -19,7 +19,7 @@
                 },
                 {
                     "messages": [
-                        "Mon roi, un groupe d'hérétiques a juré fidélité à votre frère !", 
+                        "Mon roi, un groupe d'hérétiques a juré fidélité au nouveau roi l'usurpateur !", 
                         "Ils se font appeler Sunburn, et ils ont commencé à parsemer la ville de messages impies.",
                         "Je vous en supplie mon roi, allez les réduire au silence !"
                     ]
@@ -28,28 +28,28 @@
                     "messages": [
                         "Je ne voudrais pas vous retenir plus longtemps mon roi. Le royaume a besoin de vous !",
                         "Bonté divine !!!",
-                        "Une horde de geux s'approche de nous. Je vous en supplie immense roi Makram, sauvez moi de ses hérétiques ! "
+                        "Une horde de gueux s'approche de nous. Je vous en supplie immense roi Makram, sauvez moi de des diciples de Sunburn ! "
                     ]
                 },
                 {
                     "messages": [
-                        "Merci ô grand roi Makram, j'ai vu que vous avez volé les armes que ses hérétiques ont brandient vers vous !",
-                        "Comme vous pouvez le voir, grâce a ses armes votre force à augumentée dans certain domaine. Malheuresement la plus part des armes de rareté commune vous procure des maluces.",
-                        "Faites attention a ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumière de plus en plus étincelante.",
+                        "Merci ô grand roi Makram, j'ai vu que vous avez volé les armes que ses hérétiques ont brandi vers vous !",
+                        "Comme vous pouvez le voir, grâce à ses armes votre force à augmenter dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
+                        "Faites attention à ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumières des plus en plus étincelantes.",
                         "Que dite vous ? Vous voulez retourner à votre château au plus vite ?",
-                        "Il exsiste bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
+                        "Il existe bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
                         "JE NE RETROUVE PLUS CE PARCHEMIN !!!",
-                        "J'ai du le perdre en fuiant ses hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
+                        "J'ai dû le perdre en fuyant ses hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
                     ]
                 },
                 {
                     "messages": [
                         "Bien jouez, vous avez retrouvé le parchemin menant vers votre château !",
-                        "Pour sortir de ce sentier battu il vous faudra passez par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
-                        "Vous y trouverez un arbre géant à coter d'une porte en bois décorer, c'est ici que vous pourrez partir.",
-                        "Retrouvez votre château et sauvez notre royaume. Tel est la tâche qui vous incombe",
-                        "Je ne vous servirez plus à rien, Bonne route mon seigneur."
-
+                        "Pour sortir de ce sentier battu, il vous faudra passer par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
+                        "Vous y trouverez un arbre géant à côté d'une porte en bois décoré, c'est ici que vous pourrez partir.",
+                        "Retrouvez votre château et sauvez notre royaume. Telle est la tâche qui vous incombe.",
+                        "Je ne vous servirez plus à rien, bonne route mon seigneur."
+                        
                     ]
                 }
             ],
@@ -89,44 +89,114 @@
         },
         {
             "id" : 2,
-            "name" : "autre pnj",
+            "name" : "Docteur LaPeste",
             "dialogues" :
             [
                 {
                     "messages": [
-                        
+                        "Ah, votre Majesté, quel plaisir de vous voir ici. Vous avez besoin d'aide pour remonter sur le trône ?",
+                        "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide."
+                      
+                    ]
+                },
+                {
+                    "messages": [
+                        "J'ai eu quelques querelles avec des gens qui se sont moqués de moi à cause du fait que je n'aie pas de vrais diplômes de médecine.",
+                        "Allez, les faire taire, je vous prie."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Vous les avez tous tuées ? C'est ma foi une façon bien efficace de les faire taire. En tout cas je m'en réjouis.",
+                        "J'ai entendu dire qu'un nouveau médecin venait de recevoir son diplôme. Je crois que...",
+                        "Vous venez de le tuer...",
+                        "Parfait récupérez moi son diplôme, il doit traîner par terre.",
+                        "S'il est déchiré vous dites ? Ne vous inquiétez pas, j'ai juste besoin de recopier son contenu. J'inventerais les morceaux manquants."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Merci votre Majesté, grâce à cela, je vais pouvoir me faire beaucoup d'argent.",
+                        "Que dites-vous ? Vous voulez retourner dans votre château ? Vous savez que cela risque d'être compliqué, les gueux font des barrages pour que personne ne puisse accéder au château ! C'est pourquoi je reste ici dans ce petit village.",
+                        "Plus personne ne reste dans votre château depuis que l'usurpateur a prit votre place.",
+                        "J'ai besoin de revenir vers la richesse de ce lieu. Les nobles pourraient me payer cher grâce à mon nouveau diplôme...",
+                        "Je vais vous aider à remonter sur le trône ! Pour cela, je vous confierais une liste de quêtes vous aidant à y parvenir.",
+                        "Aidez-moi à récupérer des potions. Elles sont de couleurs vertes."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Merci pour les potions. En échange, je vais vous donner un renseignement sur le nouveau souverain de ce royaume.",
+                        "Il parait que l'usurpateur vous ressemble. Du moins, c'est ce que disent les nobles de la cour qui se sont retournés contre vous.",
+                        "Pourquoi vous avoir trahi s'il vous ressemble alors ?",
+                        "Je pense qu'ils ne parlent pas des nouvelles règles qu'il a établi, mais plutôt d'autre chose.",
+                        "Pour vous informer, les potions contiennent un puissant poison. Je vous ai demandé de les récupérer pour que je les distribue à vos opposants.",
+                        "Il viendront tous vers moi pour que je les soigne HahAhAhAHA ! Car je suis le dernier docteur de la ville et je deviendrais riche et puissant. Mon plan est machiavélique.",
+                        "Bien revenons-en au fait, j'aurais également besoin de potions rouges, sinon je ne pourrais pas les guérir !"
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Ces potions rouges vont m'être bien utiles merci.",
+                        "Pendant votre absence, un noble est venu me prévenir d'une chose. Il vous a vu erré en ville dernièrement, il m'a demandé de l'aider pour vous tuer.",
+                        "BIEN-SUR que NON, je ne l'écouterais pas, je suis de votre côté. Il m'a mis dans la confidence, mais je vais tout vous révéler, oui, je n'ai aucune dignité.",
+                        "Il m'a dit qu'il était le chef d'une secte s'appelant Border-Box. Il a préparé ses hommes et les a armés pour vous « trucider » je cite.",
+                        "Il m'a dit pourquoi il voulait vous tuer. Apparemment, les taxes du royaume que vous avez fait passer vous ont enrichi personnellement tandis que le peuple souffrait de la famine et du manque de richesse.",
+                        "Cela m'étonne, car c'est la première fois que j'entends parler de ces « taxes ». Il y a anguille sous roche méfiez-vous.",
+                        "Ils lanceront l'attaque ce soir au plus tard. Essayez de les arrêter avant que cela ne se produise."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Vous avez tué tous les adeptes... Vous êtes si puissant mon roi.",
+                        "Pendant que vous faisiez le ménage, j'ai donné le poison à vos opposants, vous pouvez maintenant accéder à votre château, mais dépêchez vous. J'ai l'impression que quelque chose se trame dans votre dos.",
+                        "Le chemin vers le château se trouve derrière le village, foncez ! "
                     ]
                 }
             ],
             "quests" : 
             [
                 {
-                    "title" : "Rien de tel qu'un roi pour faire le ménage",
-                    "description" : "Description de la quete 1",
-                    "required" : 1,
-                    "type" : "Killing"
-                }
-            ]
-        },
-        {
-            "id" : 3,
-            "name" : "test pnj",
-            "dialogues" :
-            [
-                {
-                    "messages": [
-                        "Je suis un tst",
-                        "maaaaaaaaaaaaa"
-                    ]
-                }
-            ],
-            "quests" : 
-            [
-                {
-                    "title" : "Rien de tel qu'un roi pour faire le ménage",
-                    "description" : "Description de la quete 1",
-                    "required" : 1,
+                    "title" : "Suivre la voix périlleuse ?",
+                    "description" : "Revenez parler au Docteur LaPeste quand vous serez prêt.",
+                    "required" : 0,
                     "type" : "Speaking"
+                },
+                {
+                    "title" : "Rien de tel qu'un roi pour faire le ménage",
+                    "description" : "Faite taire les paysans qui se moque du Docteur LaPeste. Tuez 40 gueux.",
+                    "required" : 40,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Le 'précieux' du Docteur LaPeste",
+                    "description" : "Trouvez le diplôme du vrai médecin dont vous a parlé Docteur LaPeste.",
+                    "required" : 1,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Mieux vaut prévenir ...",
+                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions vertes. Mais pourquoi faire ? Ne vous posez pas de questions. ",
+                    "required" : 4,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "... Que guérir",
+                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouge. Cette fois ci vous savez pourquoi :). ",
+                    "required" : 4,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Une punition pour Border-Box",
+                    "description" : "Tuez les tous. Les adeptes de Border-Box doivent être soumis.",
+                    "required" : 30,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Retrouvaille",
+                    "description" : "Rendez-vous au château, le chemin se trouve derrière le village.",
+                    "required" : 0,
+                    "type" : "Finding"
                 }
             ]
         }

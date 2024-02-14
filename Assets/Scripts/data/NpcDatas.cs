@@ -10,6 +10,7 @@ public class NpcDatas {
 public class NpcData {
     public int id;
     public string name;
+    public bool giveQuest;
     public Dialogue[] dialogues;
     public CustomQuest[] quests;
 }
