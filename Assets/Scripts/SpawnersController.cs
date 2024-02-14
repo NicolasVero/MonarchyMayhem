@@ -69,4 +69,8 @@ public class SpawnersController : MonoBehaviour {
         }
         isPaused = false;
     }
+
+    public void SetMaxEntities(int maxEntities) {
+        this.maxEntities = maxEntities;
+    } 
 }

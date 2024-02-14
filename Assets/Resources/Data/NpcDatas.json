@@ -3,7 +3,7 @@
     [
         {
             "id" : 1,
-            "name" : "le antonin",
+            "name" : "Armand le prêtre",
             "dialogues" :
             [
                 {
@@ -13,8 +13,8 @@
                         "Tu dois te battre, mon ami. Affronte ceux qui te trahissent et regagne ton trône légitime. Mais avant cela, laisse-moi te montrer les rudiments du combat et de la survie.",
                         "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement,  la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
                         "Lorsque vous triomphez de vos ennemis sur le champ de bataille, vous gagnez en expérience. À chaque montée de niveau, vous aurez l'opportunité de renforcer vos compétences. Trois chemins se présenteront à vous, chacun représentant une voie vers la grandeur. Choisissez sagement, car chaque décision peut façonner le cours de votre destinée.",
-                        "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes sont d'une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
-                        "Bien, votre Majesté, il est temps d'agir. Votre première tâche : éliminer un certain nombre de ces paysans révoltés. Oui, je sais, c'est ironique, n'est-ce pas ? Mais que voulez-vous, c'est la vie dans ce royaume de fous."
+                        "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes ont une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
+                        "Bien, votre Majesté, il est temps d'agir. Votre première tâche : éliminer un certain nombre de ces paysans révoltés. Oui, je sais, c'est ironique, n'est-ce pas ? Mais que voulez-vous, c'est la vie de ce royaume de fous."
                     ]
                 },
                 {
@@ -27,8 +27,29 @@
                 {
                     "messages": [
                         "Je ne voudrais pas vous retenir plus longtemps mon roi. Le royaume a besoin de vous !",
-                        "Allez simplement faire passer l'arme à gauche à encore quelques personnes...",
-                        "C'est mon petit plaisir coupable. *caresse le roi*"
+                        "Bonté divine !!!",
+                        "Une horde de geux s'approche de nous. Je vous en supplie immense roi Makram, sauvez moi de ses hérétiques ! "
+                    ]
+                },
+                {
+                    "messages": [
+                        "Merci ô grand roi Makram, j'ai vu que vous avez volé les armes que ses hérétiques ont brandient vers vous !",
+                        "Comme vous pouvez le voir, grâce a ses armes votre force à augumentée dans certain domaine. Malheuresement la plus part des armes de rareté commune vous procure des maluces.",
+                        "Faites attention a ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumière de plus en plus étincelante.",
+                        "Que dite vous ? Vous voulez retourner à votre château au plus vite ?",
+                        "Il exsiste bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
+                        "JE NE RETROUVE PLUS CE PARCHEMIN !!!",
+                        "J'ai du le perdre en fuiant ses hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
+                    ]
+                },
+                {
+                    "messages": [
+                        "Bien jouez, vous avez retrouvé le parchemin menant vers votre château !",
+                        "Pour sortir de ce sentier battu il vous faudra passez par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
+                        "Vous y trouverez un arbre géant à coter d'une porte en bois décorer, c'est ici que vous pourrez partir.",
+                        "Retrouvez votre château et sauvez notre royaume. Tel est la tâche qui vous incombe",
+                        "Je ne vous servirez plus à rien, Bonne route mon seigneur."
+
                     ]
                 }
             ],
@@ -36,32 +57,44 @@
             [
                 {
                     "title" : "Ménage de printemps",
-                    "description" : "Allez occire les mécréants.",
+                    "description" : "Allez occire 5 paysans.",
                     "required" : 5,
                     "type" : "Killing"
                 },
                 {
                     "title" : "Anti-Propagande",
-                    "description" : "Faites taire les fauteurs de troubles.",
+                    "description" : "Faites taire les fauteurs de troubles. Ramassez les affiches du groupe Sunburn à travers le royaume",
                     "required" : 3,
                     "type" : "Finding"
                 },
                 {
                     "title" : "Encore un petit coup de balai",
-                    "description" : "Allez occire encore plus de mécréants.",
-                    "required" : 2,
+                    "description" : "Allez occire le groupe d'hérétique qui fonce sur vous et defendez le prêtre",
+                    "required" : 20,
                     "type" : "Killing"
+                },
+                {
+                    "title" : "Un parchemin dans une botte de foin",
+                    "description" : "Retrouvez le parchemin perdu du prêtre dans les sentiers perdu.",
+                    "required" : 1,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "GRAND REMPLACEMENT : Dehors les arbres",
+                    "description" : "Trouvez la piste de l'arbre géant et quittez le sentier battu par la porte en bois",
+                    "required" : 0,
+                    "type" : "Finding"
                 }
             ]
         },
         {
             "id" : 2,
-            "name" : "maaaa",
+            "name" : "autre pnj",
             "dialogues" :
             [
                 {
                     "messages": [
-                        "maaaaz"
+                        
                     ]
                 }
             ],
@@ -70,8 +103,30 @@
                 {
                     "title" : "Rien de tel qu'un roi pour faire le ménage",
                     "description" : "Description de la quete 1",
-                    "required" : 30,
+                    "required" : 1,
                     "type" : "Killing"
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "name" : "test pnj",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Je suis un tst",
+                        "maaaaaaaaaaaaa"
+                    ]
+                }
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Rien de tel qu'un roi pour faire le ménage",
+                    "description" : "Description de la quete 1",
+                    "required" : 1,
+                    "type" : "Speaking"
                 }
             ]
         }

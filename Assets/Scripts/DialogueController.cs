@@ -14,7 +14,7 @@ public class DialogueController : MonoBehaviour {
     [SerializeField]private Canvas interaction;
     [SerializeField]private TextMeshProUGUI dialogueText;
     [SerializeField]private TextMeshProUGUI nameText;
-    // [SerializeField]private TextMeshProUGUI dialogueText;
+    [SerializeField]private Image picture;
     [SerializeField]private Button closeButton;
     [SerializeField]private Button nextButton;
     [SerializeField]private Button prevButton;
@@ -47,6 +47,7 @@ public class DialogueController : MonoBehaviour {
 
         Transform dialogueTextTransform = dialogueCanvas.transform.Find("NPC_Dialogue");
         Transform nameTextTransform = dialogueCanvas.transform.Find("NPC_Name");
+        Transform pictureTextTransform = dialogueCanvas.transform.Find("NPC_Picture");
         Transform closeButtonTransform = dialogueCanvas.transform.Find("Buttons/Close");
         Transform previousTransform = dialogueCanvas.transform.Find("Buttons/Previous");
         Transform nextTransform = dialogueCanvas.transform.Find("Buttons/Next");
@@ -57,6 +58,10 @@ public class DialogueController : MonoBehaviour {
             this.nextButton = nextTransform.GetComponent<Button>();
             this.dialogueText = dialogueTextTransform.GetComponent<TextMeshProUGUI>();
             this.nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
+            this.picture = pictureTextTransform.GetComponent<Image>();
+            
+            Debug.Log(picture);
+            // this.picture.GetComponent<Image>().sprite = npcController.GetPictureSprite();
         }
 
 
@@ -124,6 +129,7 @@ public class DialogueController : MonoBehaviour {
     private void ShowMessage() {
 
         nameText.text = npcController.GetName();
+        picture.sprite = npcController.GetPictureSprite();
         int endIndex = Mathf.Min(this.currentIndex + messagesPerStep, dynamicDialogue.Count); 
         dialogueText.text = ""; 
         for (int i = this.currentIndex; i < endIndex; i++) {
@@ -146,6 +152,7 @@ public class DialogueController : MonoBehaviour {
 
             dialogueInitiated = true;
             SetCurrentDialogueSet();
+            
             questController.AddQuestFromDialogue(questList[currentQuestIndex].GetTitle(), questList[currentQuestIndex].GetDescription(), questList[currentQuestIndex].GetRequired(), questList[currentQuestIndex].GetType());
         }
         if(questList[currentQuestIndex].GetType() == "Speaking"){ 

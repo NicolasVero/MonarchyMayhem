@@ -1417,7 +1417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -269}
   m_SizeDelta: {x: 626.6343, y: 113.3932}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421766572
@@ -4905,9 +4905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPeasants: 1
+  allowPeasants: 0
   allowBourgeois: 0
-  allowKnights: 0
+  allowKnights: 1
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
@@ -7375,6 +7375,7 @@ MonoBehaviour:
   interaction: {fileID: 0}
   dialogueText: {fileID: 0}
   nameText: {fileID: 0}
+  picture: {fileID: 0}
   closeButton: {fileID: 0}
   nextButton: {fileID: 0}
   prevButton: {fileID: 0}

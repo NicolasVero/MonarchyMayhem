@@ -63,10 +63,6 @@ public class EnemyController : MonoBehaviour {
 
             this.timeSinceLastAttack += Time.fixedDeltaTime;
 
-            if(this.playerPosition) {
-                this.navMeshAgent.destination = playerPosition.position;
-            }
-
             if(this.playerPosition && this.canMove){
                 if(Vector3.Distance(this.playerPosition.position, this.enemyPosition.position) <= this.navMeshAgent.stoppingDistance){
                     this.animator.SetBool("Idle", true);
@@ -84,6 +80,7 @@ public class EnemyController : MonoBehaviour {
     
     private void Move() {
         this.animator.SetBool("Walk", true);
+        this.navMeshAgent.destination = playerPosition.position;
     }
     
     private void Attack() {

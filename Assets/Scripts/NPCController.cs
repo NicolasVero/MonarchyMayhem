@@ -23,31 +23,32 @@ public class NPCController : MonoBehaviour {
             NpcData npcData = Array.Find(npcDatas.npcs, e => e.id == this.id);
 
             this.name = npcData.name;
-            Debug.Log("NAAAAAAAAMEEEEE : " + this.name); 
             
-            dialogueSets = new List<string>[npcData.dialogues.Length];
+            this.dialogueSets = new List<string>[npcData.dialogues.Length];
             for (int i = 0; i < npcData.dialogues.Length; i++) {
-                dialogueSets[i] = new List<string>(npcData.dialogues[i].messages);
+                this.dialogueSets[i] = new List<string>(npcData.dialogues[i].messages);
             }
 
-            questList = new List<Quest>();
+            this.questList = new List<Quest>();
             foreach (CustomQuest customQuest in npcData.quests) {
-                questList.Add(new Quest(customQuest.title, customQuest.description, customQuest.required, customQuest.type));
+                this.questList.Add(new Quest(customQuest.title, customQuest.description, customQuest.required, customQuest.type));
             }
         }
     }
 
-    // Getter for dialogue sets
     public List<string>[] GetDialogueSets() {
-        return dialogueSets;
+        return this.dialogueSets;
     }
 
-    // Getter for quest list
     public List<Quest> GetQuestList() {
-        return questList;
+        return this.questList;
     }
 
     public string GetName() {
         return this.name;
+    }
+
+    public Sprite GetPictureSprite() {
+        return Resources.Load<Sprite>("Interface/NPC/npc_" + this.id);
     }
 }

@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour {
     }
 
     private void ChooseNextZone(string sceneName) {
-        if(!questController.GetIsAllQuestCompleted())
+        if(questController.GetIsAllQuestCompleted())
             return;
 
         // string[] sceneNames = {"Tutorial", "Village", "Castle"};
