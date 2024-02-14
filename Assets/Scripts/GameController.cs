@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
     public static void SetCursorVisibility(bool state) {
         Cursor.visible = state;
-        Cursor.lockState = (state) ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.lockState = (state) ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
 
     public static void SetPanelVisibility(GameObject panel, bool state) {

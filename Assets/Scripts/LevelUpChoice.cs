@@ -60,8 +60,8 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
         GameController.SetCursorVisibility(true);
+        // Cursor.position = new Vector3(targetPosition.x, targetPosition.y, 0);
     }
-
 
     public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {
         HashSet<int> uniqueNumbers = new HashSet<int>(excludes);

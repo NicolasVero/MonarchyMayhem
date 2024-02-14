@@ -9,6 +9,7 @@ public class NpcDatas {
 [Serializable]
 public class NpcData {
     public int id;
+    public string name;
     public Dialogue[] dialogues;
     public CustomQuest[] quests;
 }

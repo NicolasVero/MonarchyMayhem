@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour {
     private string enemyType;
     private int attack, health, xp;
     private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack;
-    private bool canMove = true, canAttack = true, isAlive = true, deathCount = false;
+    private bool canMove = true, canAttack = true, isAlive = true, deathCount = false, cooldown = false;
 
     private void Awake() {
 
@@ -101,20 +101,28 @@ public class EnemyController : MonoBehaviour {
 
     public void TakeDamage() {
 
-        int damage = this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
-        this.health -= damage;
+        if(!this.cooldown) {
+            int damage = this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
+            this.health -= damage;
+            Invoke("DisableCooldown", 1.5f);
+            this.cooldown = true;
 
-        if(this.health <= 0) {
-            this.Death();
+            if(this.health <= 0) {
+                this.Death();
 
-            if(!this.deathCount) {
-                this.playerController.IncrementKillCounter();
-                this.playerController.IncrementStatCounter();
-                this.deathCount = true;
+                if(!this.deathCount) {
+                    this.playerController.IncrementKillCounter();
+                    this.playerController.IncrementStatCounter();
+                    this.deathCount = true;
+                }
+            } else {
+                ApplyKnockback();
             }
-        } else {
-            ApplyKnockback();
         }
+    }
+
+    private void DisableCooldown() {
+        this.cooldown = false;
     }
 
     private void ResetAnims(){

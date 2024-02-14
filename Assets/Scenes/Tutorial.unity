@@ -499,14 +499,14 @@ RectTransform:
   m_GameObject: {fileID: 244093929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -15.997437}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.80633, y: 0.77364004, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1680108541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -172.5, y: -36.32759}
+  m_AnchoredPosition: {x: -172.5, y: -38.3}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244093931
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d791e47be8cb8cc4d8ee3a19be675b53, type: 3}
+  m_Texture: {fileID: 2800000, guid: f455c649f196b25448743ef6c0f07537, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7374,6 +7374,7 @@ MonoBehaviour:
   dialogueCanvas: {fileID: 0}
   interaction: {fileID: 0}
   dialogueText: {fileID: 0}
+  nameText: {fileID: 0}
   closeButton: {fileID: 0}
   nextButton: {fileID: 0}
   prevButton: {fileID: 0}
@@ -7834,6 +7835,14 @@ PrefabInstance:
     - target: {fileID: 3717778198101049432, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_text
       value: null
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510665102744464768, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_Name
+      value: NPC_Picture
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629619094442868806, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+      propertyPath: m_Name
+      value: NPC_Name
       objectReference: {fileID: 0}
     - target: {fileID: 6716885998351982100, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_Name

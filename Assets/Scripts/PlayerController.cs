@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 
         this.keyActions.Add(KeyCode.E, TakeWeapon);
         this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
-        this.keyActions.Add(KeyCode.P, TooglePauseMenu);
+        this.keyActions.Add(KeyCode.P, TogglePauseMenu);
 
 
         DontDestroyOnLoad(this.gameObject);
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void TooglePauseMenu() {
+    private void TogglePauseMenu() {
         if(this.canResume && this.isAlive) {
             GameController.SetGameState(false);
             this.SetInPause(true);

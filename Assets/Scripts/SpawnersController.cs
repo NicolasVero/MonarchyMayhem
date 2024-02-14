@@ -56,14 +56,14 @@ public class SpawnersController : MonoBehaviour {
         }
     }
 
-    private void PauseSpawners() {
+    public void PauseSpawners() {
         foreach(GameObject spawnerObject in spawnerObjects) {
             spawnerObject.GetComponent<Spawner>().PauseSpawner();
         }
         isPaused = true;
     }
 
-    private void ResumeSpawners() {
+    public void ResumeSpawners() {
         foreach(GameObject spawnerObject in spawnerObjects) {
             spawnerObject.GetComponent<Spawner>().ResumeSpawner();
         }

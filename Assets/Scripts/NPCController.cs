@@ -5,12 +5,13 @@ using UnityEngine;
 public class NPCController : MonoBehaviour {
 
     [SerializeField] private int id;
+    private string name; 
     private List<string>[] dialogueSets;
     private List<Quest> questList;
 
     void Start() {
         if(this.id != 0)
-        LoadNPCData();
+            LoadNPCData();
     }
 
     private void LoadNPCData() {
@@ -20,6 +21,9 @@ public class NPCController : MonoBehaviour {
         if (jsonFile != null){
             NpcDatas npcDatas = JsonUtility.FromJson<NpcDatas>(jsonFile.text);
             NpcData npcData = Array.Find(npcDatas.npcs, e => e.id == this.id);
+
+            this.name = npcData.name;
+            Debug.Log("NAAAAAAAAMEEEEE : " + this.name); 
             
             dialogueSets = new List<string>[npcData.dialogues.Length];
             for (int i = 0; i < npcData.dialogues.Length; i++) {
@@ -30,22 +34,6 @@ public class NPCController : MonoBehaviour {
             foreach (CustomQuest customQuest in npcData.quests) {
                 questList.Add(new Quest(customQuest.title, customQuest.description, customQuest.required, customQuest.type));
             }
-
-            // Debug.Log("NPC ID: " + npcData.id);
-            // You can uncomment and use the lines below to log the loaded data for verification
-
-            // foreach (Dialogue dialogue in npcData.dialogues) {
-            //     foreach (string message in dialogue.messages) {
-            //         Debug.Log("Dialogue message: " + message);
-            //     }
-            // }
-
-            // foreach (CustomQuest quest in npcData.quests) {
-            //     Debug.Log("Quest title: " + quest.title);
-            //     Debug.Log("Quest description: " + quest.description);
-            //     Debug.Log("Quest required: " + quest.required);
-            //     Debug.Log("Quest type: " + quest.type);
-            // }
         }
     }
 
@@ -57,5 +45,9 @@ public class NPCController : MonoBehaviour {
     // Getter for quest list
     public List<Quest> GetQuestList() {
         return questList;
+    }
+
+    public string GetName() {
+        return this.name;
     }
 }

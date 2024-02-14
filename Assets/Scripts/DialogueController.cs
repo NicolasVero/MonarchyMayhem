@@ -13,6 +13,8 @@ public class DialogueController : MonoBehaviour {
     [SerializeField]private Canvas dialogueCanvas;
     [SerializeField]private Canvas interaction;
     [SerializeField]private TextMeshProUGUI dialogueText;
+    [SerializeField]private TextMeshProUGUI nameText;
+    // [SerializeField]private TextMeshProUGUI dialogueText;
     [SerializeField]private Button closeButton;
     [SerializeField]private Button nextButton;
     [SerializeField]private Button prevButton;
@@ -44,15 +46,17 @@ public class DialogueController : MonoBehaviour {
         this.interaction = GameObject.Find("Interaction").GetComponent<Canvas>();
 
         Transform dialogueTextTransform = dialogueCanvas.transform.Find("NPC_Dialogue");
+        Transform nameTextTransform = dialogueCanvas.transform.Find("NPC_Name");
         Transform closeButtonTransform = dialogueCanvas.transform.Find("Buttons/Close");
         Transform previousTransform = dialogueCanvas.transform.Find("Buttons/Previous");
         Transform nextTransform = dialogueCanvas.transform.Find("Buttons/Next");
         
-        if (closeButtonTransform != null && previousTransform != null && nextTransform != null && dialogueTextTransform != null) {
+        if (closeButtonTransform != null && previousTransform != null && nextTransform != null && dialogueTextTransform != null && nameTextTransform != null) {
             this.closeButton = closeButtonTransform.GetComponent<Button>();
             this.prevButton = previousTransform.GetComponent<Button>();
             this.nextButton = nextTransform.GetComponent<Button>();
             this.dialogueText = dialogueTextTransform.GetComponent<TextMeshProUGUI>();
+            this.nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
         }
 
 
@@ -74,6 +78,8 @@ public class DialogueController : MonoBehaviour {
         nextButton.onClick.AddListener(ShowNextMessage);
         prevButton.onClick.AddListener(ShowPreviousMessage);
         closeButton.onClick.AddListener(CloseDialogue);
+
+        npcController = npcObject.GetComponent<NPCController>();
     }
 
     void Update() {
@@ -117,6 +123,7 @@ public class DialogueController : MonoBehaviour {
 
     private void ShowMessage() {
 
+        nameText.text = npcController.GetName();
         int endIndex = Mathf.Min(this.currentIndex + messagesPerStep, dynamicDialogue.Count); 
         dialogueText.text = ""; 
         for (int i = this.currentIndex; i < endIndex; i++) {
