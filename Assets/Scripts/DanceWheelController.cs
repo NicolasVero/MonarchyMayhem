@@ -26,6 +26,7 @@ public class DanceWheelController : MonoBehaviour {
             this.playerController.DisableAttack();
 
         if (Input.GetKeyDown(KeyCode.F) && this.canOpenWheelMenu) {
+            this.playerController.SetRotation(this.danceWheelSelected);
             this.danceWheelSelected = !this.danceWheelSelected;
             GameController.SetCursorVisibility(this.danceWheelSelected);
             this.ToggleWheelAnimation(this.danceWheelSelected);
@@ -80,10 +81,19 @@ public class DanceWheelController : MonoBehaviour {
                 this.playerController.GetAnimator().SetTrigger("Wave");
                 break;
         }
+
+        this.playerController.SetRotation(true);
     }
 
-    private void ToggleWheelAnimation(bool state) { this.animator.SetBool("OpenDanceWheel", state); }
-    private void EnableCanOpenMenu() { this.canOpenWheelMenu = true; }
-    private void DisableCanOpenMenu() { this.canOpenWheelMenu = false; }
+    private void ToggleWheelAnimation(bool state) { 
+        this.animator.SetBool("OpenDanceWheel", state);
+    }
 
+    private void EnableCanOpenMenu() { 
+        this.canOpenWheelMenu = true; 
+    }
+
+    private void DisableCanOpenMenu() { 
+        this.canOpenWheelMenu = false; 
+    }
 }

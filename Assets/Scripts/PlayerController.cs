@@ -33,9 +33,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject weaponHolder;
 
 
-    private const float sensitivity = 10;
+    private float sensitivity = 10;
     private int enemyKillCounter, sprint = 0;
-    private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false;
+    private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false, inDanseMenu = false;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -207,8 +207,8 @@ public class PlayerController : MonoBehaviour {
 
         this.Move();
 
-        if(this.isAlive) {
-            float y = Input.GetAxis("Mouse X") * PlayerController.sensitivity;
+        if(this.isAlive && !this.inDanseMenu) {
+            float y = Input.GetAxis("Mouse X") * this.sensitivity;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
         }
 
@@ -644,6 +644,10 @@ public class PlayerController : MonoBehaviour {
 
     private void SetHealthBarMax(int max) {
         this.healthBar.maxValue = max;
+    }
+
+    public void SetRotation(bool state) {
+        this.sensitivity = state ? 10 : 0;
     }
 
     public void Heal(int healAmount) {
