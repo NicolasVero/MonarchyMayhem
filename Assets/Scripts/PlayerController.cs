@@ -484,7 +484,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerStay(Collider other) {
         if (this.canAttack) {
-            if (this.goingAttack && this.isAlive && !this.inPause && other.CompareTag(Names.BaseEnemy)) {
+            if (this.goingAttack && this.isAlive && !this.inPause) {
                 Vector3 directionToEnemy = other.transform.position - transform.position;
                 
                 // float dotProduct = Vector3.Dot(transform.forward, directionToEnemy.normalized);
@@ -495,12 +495,14 @@ public class PlayerController : MonoBehaviour {
                 // }
 
 
+        Debug.Log("td");
 
                 if (other.CompareTag(Names.BaseEnemy)) {
                     EnemyController enemy = other.GetComponent<EnemyController>();
                     enemy.ApplyDamage();
                     this.audio.Invoke("PlaySlashSFX", ((this.GetWeaponAttackSpeed() + this.GetAttackSpeed()) / 5));
                 } else if((other.CompareTag(Names.Boss))) {
+        Debug.Log("td");
                     BossController enemy = other.GetComponent<BossController>();
                     enemy.ApplyDamage();
                     this.audio.PlaySlashSFX();

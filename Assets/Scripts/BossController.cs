@@ -12,6 +12,8 @@ public class BossController : MonoBehaviour {
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject smokeGO;
     [SerializeField] private TextMeshProUGUI bossName;
+    [SerializeField] private GameObject weaponHolder;
+    [SerializeField] private Material darkSkin;
 
     private Transform playerPosition;
     private Transform enemyPosition;
@@ -23,13 +25,13 @@ public class BossController : MonoBehaviour {
 
     private string walkMethod;
     private int attack, health, maxHealth, xp;
-    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack;
-    private bool canMove = true, canAttack = true, isAlive = true, firstPhasePassed = false, cooldown = false;
+    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack, sliderVelocity = 0.0f;
+    private bool canMove = true, canAttack = true, isAlive = true, firstPhasePassed = false, cooldown = false, isInTransition = false, bossRegen = false;
 
     void Start() {
-        // Set Max entities -> 0
         this.spawnersController.SetMaxEntities(0);
         this.walkMethod = "Walk";
+        this.bossName.text = "Nabil";
     }
 
     private void Awake() {
@@ -80,16 +82,21 @@ public class BossController : MonoBehaviour {
 
         GameController.DrawCircleAroundObject(transform.position, this.range, 10);
 
-        if(isAlive) {
+        if (this.bossRegen) {
+            this.BossRegen();
+        }        
 
+        if(isAlive) {
+            
             ResetAnims();
+            if (!this.isInTransition)
+                this.enemyPosition.LookAt(playerPosition);
 
             this.timeSinceLastAttack += Time.fixedDeltaTime;
 
             if(this.playerPosition && this.canMove) {
-                if(Vector3.Distance(this.playerPosition.position, this.enemyPosition.position) <= this.navMeshAgent.stoppingDistance) {
+                if(Vector2.Distance(new Vector2(playerPosition.position.x, playerPosition.position.z), new Vector2(enemyPosition.position.x, enemyPosition.position.z)) <= this.navMeshAgent.stoppingDistance) {
                     this.animator.SetBool("Idle", true);
-
                     if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
                         this.Attack();
                         this.timeSinceLastAttack = 0f;
@@ -104,12 +111,14 @@ public class BossController : MonoBehaviour {
 
     private void Move() {
         this.navMeshAgent.destination = playerPosition.position;
+        Debug.Log(this.walkMethod);
         this.animator.SetBool(this.walkMethod, true);
     }
     
     private void Attack() {
         if(this.playerController.IsAlive()) {
             this.animator.SetTrigger("Attack");
+            this.audio.PlaySlashSFX();
             this.playerController.TakeDamage(this.attack);
         }
     }
@@ -167,10 +176,14 @@ public class BossController : MonoBehaviour {
 
     private void ResetAnims() {
         this.animator.SetBool("Idle", false);
-        this.animator.SetBool(this.walkMethod, false);
+        this.animator.SetBool("Walk", false);
+        this.animator.SetBool("Sprint", false);
     }
 
-    private void Death() {
+    private void Death() {        
+        foreach(Transform child in weaponHolder.transform) {
+            child.gameObject.SetActive(false);
+        }
         this.animator.SetBool("Death", true);
     }
 
@@ -188,40 +201,64 @@ public class BossController : MonoBehaviour {
     private void StartPhaseTwo() {
         this.tag = "Untagged";
         this.firstPhasePassed = true;
+        this.isInTransition = true;
 
         this.animator.SetBool("Walk", false);
         this.walkMethod = "Sprint";
 
-        this.transform.LookAt(this.playerController.transform);
-
         this.LoadBossStats();
-        this.animator.SetTrigger("TransitionSecondPhase");
+        this.animator.SetBool("TransitionSecondPhase", true);
 
-        Instantiate(smokeGO, new Vector3(this.transform.position.x, 0, this.transform.position.z), Quaternion.identity);
-        Invoke("PlaySmoke", 2.5f);
+        Invoke("Camouflage", 2.5f);
+        Invoke("ChangeSkin", 5f);
         Invoke("PhaseTwo", 10f);
 
     }
 
     private void PhaseTwo() {
         this.tag = "Boss";
+        this.isInTransition = false;
+        this.bossRegen = false;
 
         this.audio.StopThemeSFX();
         this.audio.PlayBossThemeSFX();
+        // this.SetHealthBarMax(this.maxHealth);
+        // this.SetHealthBar(this.health);
 
         this.StartMovement();
 
-        this.spawnersController.SetMaxEntities(150);
+        this.spawnersController.SetMaxEntities(50);
         
         this.bossName.text = "Dark Nabil";
-        this.SetHealthBarMax(this.maxHealth);
-        this.SetHealthBar(this.health);
     }
 
-    private void PlaySmoke() { GameObject.FindGameObjectWithTag("Smoke").GetComponent<ParticleSystem>().Play(); }
+    private void ChangeSkin() {
+        this.animator.SetBool("TransitionSecondPhase", false);
+        this.bossRegen = true;
+        foreach(Transform child in weaponHolder.transform) {
+            if(child.gameObject.name == "weapon_3") {
+                child.gameObject.SetActive(true);
+            } else {
+                child.gameObject.SetActive(false);
+            }
+        }
+        GameObject.Find("BossSkin").GetComponent<Renderer>().material = darkSkin;
+    }
+
+    private void Camouflage() {
+        Instantiate(smokeGO, new Vector3(this.transform.position.x, 0, this.transform.position.z), Quaternion.identity);
+        GameObject.FindGameObjectWithTag("Smoke").GetComponent<ParticleSystem>().Play();
+
+        // Regen Tah Dark Souls un jour
+        this.SetHealthBarMax(this.maxHealth);
+    }
 
     private void SetHealthBar(int hp) { this.healthBar.value = hp; }
     private void SetHealthBarMax(int max) { this.healthBar.maxValue = max; }
+    private void BossRegen() {
+        float currentHealth = Mathf.MoveTowards(this.healthBar.value, this.maxHealth, 300 * Time.deltaTime);
+        this.healthBar.value = currentHealth;
+    }
 
     public int GetHealth()               { return this.health;             }
     public int GetMaxHealth()            { return this.maxHealth;          }    

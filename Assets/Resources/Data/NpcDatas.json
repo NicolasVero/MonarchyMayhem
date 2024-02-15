@@ -107,7 +107,7 @@
                 },
                 {
                     "messages" : [
-                        "Vous les avez tous tuées ? C'est ma foi une façon bien efficace de les faire taire. En tout cas je m'en réjouis.",
+                        "Vous les avez tous tués ? C'est ma foi une façon bien efficace de les faire taire. En tout cas je m'en réjouis.",
                         "J'ai entendu dire qu'un nouveau médecin venait de recevoir son diplôme. Je crois que...",
                         "Vous venez de le tuer...",
                         "Parfait récupérez moi son diplôme, il doit traîner par terre.",
@@ -198,6 +198,107 @@
                     "required" : 0,
                     "type" : "Finding"
                 }
+            ]
+        },
+        {
+            "id" : 3,
+            "name" : "Foufou le fou",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Majester ne partez pas !!! J'ai besoin de votre aide !",
+                        "Vous cherchez les clefs de la salle du trône ?",
+                        "JE SAIS OU ELLE SONT !!! AHHHHHHHHHHHHHH OHHHHHHHHHHHHH HIIIIIIIIIIIIIIII *se roule par terre*",
+                        "Je ne vous direz JAMAIS ou elles sont HAHAHAHAHA *Se relève*",
+                        "Sauf si ...",
+                        "DANCEZ POUR MOI et je vous dirais...",
+                        "peux être...",
+                        "OU SON LES CLEFS QUE VOUS CONVOITEZ"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Hmmmmmmmm HOOOOO OUI HMMM J'AIME ce que je VOIS ! *se roule à vos pieds*",
+                        "BIEN, vous avez gagnez le droit de... ",
+                        "Recommencez :D"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Allez sa suffit arrêter moi ca je n'en peux plus !!! Vous dancez trop bien pour moi... *Pleure*",
+                        "وكان نبيل أقل غموضا من الفتاة التي كانت في فرنسا منذ ثلاث سنوات شقيق",
+                        "Si j'ai bien vu les clefs ? Oui je sais où elles sont. C'est un geolier qui les a. *se frote les mains*",
+                        "Lequel ? Hmmmmm Je ne sais pas.",
+                        "Tuez les tous, comme ça on serra sûr de récupérer les clefs !"
+                    ]
+                },
+                {
+                    "messages": [
+                        "*Vous surprenez le fou en train de lecher le mur* slurp slurp",
+                        "Hmm, ce mur n'est pas à mon goût...",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum dolor a justo bibendum, vitae sodales mauris efficitur. Donec quis rutrum est.",
+                        "Haaa vous êtes la ??",
+                        "Vous les avez tous tués ? Parfait ces mécréant qui m'on fouetté pendant que j'étais en cellule sont mort ! *Dance (moin bien que vous)*",
+                        "Oui je me suis échappé de ma cellule d'isolement quand tout les garde ont affluer vers le village. D'ailleurs, je crois qu'ils vous cherchez pour vous tuer.",
+                        "Si vous êtes encore vivant... C'est que vous les avez tous massacrés je suppose.",
+                        "Vous n'avez pas trouvés les clefs sur les géoliers ?",
+                        "HHAAA MAIS OUI JE SAIS ! Enfaite les clefs sont dans des potions violettes qui sont éparpiller sur les camps de géoliers",
+                        "Ils les avaient cachés là pour ne pas avoir à les surveiller.",
+                        "Ramenez moi donc les potions violettes ! *Se met à genoux devant vous*"
+                    ]
+                },
+                {
+                    "messages": [
+                        "OUI OUI HA OUI DONNEZ MOI CES POTIONS DE SUITE !!!!!",
+                        "Gloup Gloup Gloup. Il se met a boire toutes les potions... *A une bonne décente* ",
+                        "QUOI !!!! LES CLEFS NE SONT PAS DEDANS !!! hhihihihi *Rigole*",
+                        "*Cling Cling*",
+                        "Et oui c'est bien ce que vous entendez...",
+                        "J'ai vos clefs depuis le début !!! HAHAGHZIYFE FGDUYGZ OUGYVDCOUBH",
+                        "Non arrêter vous allez me faire mal ! *Vous soumissez le fou*",
+                        "HAAAAAAAAAA",
+                        "D'accord je vous les donnes tenez...",
+                        "Ce sont les clefs de la grande porte.. enfin celle du trône.",
+                        "Attention le roi usurpateur vous y attend, il s'est préparer à cette derrnière bataille",
+                        "VOUS ALLEZ MOURIR !! MOUHAHAHAA"
+                    ]
+                }
+               
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Mais pour qui il se prend ?",
+                    "description" : "Dancez pour le fou... Il n'y a pas d'autre solution que de se salir.",
+                    "required" : 1,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Gardez votre calme",
+                    "description" : "Dancez à nouveau... Non ne le frappez pas il a peut être la galle.",
+                    "required" : 1,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Genocide Géolier",
+                    "description" : "Tuez tout les géoliers ! Vous ne faites jamais dans la dantelle de toute façon.",
+                    "required" : 20,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Une potion un peu trop magique",
+                    "description" : "Ramenez lui ses potions. Vous avez le droit de doutr de ce qu'il vien de dire quand même",
+                    "required" : 3,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Dernière ligne droite",
+                    "description" : "Allez vers la grande porte et ouvrez la. Vous mettrez le fou en prison plus tard.",
+                    "required" : 0,
+                    "type" : "Finding"
+                }
+
             ]
         }
     ]
