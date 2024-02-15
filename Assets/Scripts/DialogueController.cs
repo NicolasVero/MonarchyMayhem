@@ -202,7 +202,7 @@ public class DialogueController : MonoBehaviour {
         this.dialogueInitiated = state;
     }
 
-    public bool GetIsInRangeFalse() {
-        return isInRange= false;
+    public void SetIsInRange(bool state) {
+        isInRange = state;
     }
 }

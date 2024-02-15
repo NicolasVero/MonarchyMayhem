@@ -34,8 +34,12 @@ public class QuestController : MonoBehaviour
             this.spawnersController = GameObject.Find("Spawners").GetComponent<SpawnersController>();
         }
         
-        if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated())
+        if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) {
+            Debug.Log("dedans");
             CompleteCurrentQuest();
+        } else {
+            Debug.Log("Dehors");
+        }
     }
 
 
@@ -52,61 +56,53 @@ public class QuestController : MonoBehaviour
     }
 
     public void CompleteCurrentQuest() {
+    
+        currentQuest.SetCompleted(true);
+        currentQuestIndex++;
+        dialogueController.SetDialogueInitiated(false);
 
-        // if(currentQuest.IsComplete() && dialogueController.GetDialogueInitiated()) { // permet de parler au pnj pour pouvoir recevoir une quete avant de passer a la quete d'apres sinon sa bug
-                
-            currentQuest.SetCompleted(true);
-            currentQuestIndex++;
-            dialogueController.SetDialogueInitiated(false); // remet a false pour pouvoir etre relancer
 
-            if (currentQuestIndex < quests.Count)
-            {
-                ShowCurrentQuest();
-                
-                if(currentQuest.GetType() == "Finding"){
-                    Spawner[] spawners = spawnersController.GetComponentsInChildren<Spawner>();
-                    
-                    int required = currentQuest.GetRequired(); 
+        if(currentQuestIndex < quests.Count) {
+            ShowCurrentQuest();
+            
+            if(currentQuest.GetType() == "Finding")
+                SpawnPickUps();
+        } else {
 
-                    List<int> selectedIndices = new List<int>();
-
-                    if (spawners != null && spawners.Length > 0)
-                    {
-                        for (int i = 0; i < required; i++)
-                        {
-                            int randomIndex;
-                            do
-                            {
-                                randomIndex = GameController.Random(0, spawners.Length -1 );
-                            } while (selectedIndices.Contains(randomIndex)); 
-
-                            selectedIndices.Add(randomIndex);
-
-                            spawners[randomIndex].ActiveSpawnerPickUp();
-                        }
-
-                        foreach( Spawner spawner in spawners)
-                            spawner.IncrementIndex();
-                    }
-                }
-
-            }
-            else
-            {
-
-                GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
-                if (npcObject != null)
-                {   
-                    dialogueController.GetIsInRangeFalse();
-                    npcObject.tag = "Untagged"; 
-                }
-
-                IsAllQuestCompleted(true);
-
-            }
-        // }
+            GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
+            dialogueController.SetIsInRange(false);
+            npcObject.tag = "Untagged"; 
+            IsAllQuestCompleted(true);
+        }
 
         UpdateQuestText();
+    }
+
+    private void SpawnPickUps() {
+        Spawner[] spawners = spawnersController.GetComponentsInChildren<Spawner>();
+                
+        int required = currentQuest.GetRequired(); 
+
+        List<int> selectedIndices = new List<int>();
+
+        if (spawners != null && spawners.Length > 0)
+        {
+            for (int i = 0; i < required; i++)
+            {
+                int randomIndex;
+                do
+                {
+                    randomIndex = GameController.Random(0, spawners.Length -1 );
+                } while (selectedIndices.Contains(randomIndex)); 
+
+                selectedIndices.Add(randomIndex);
+
+                spawners[randomIndex].ActiveSpawnerPickUp();
+            }
+
+            foreach( Spawner spawner in spawners)
+                spawner.IncrementIndex();
+        }
     }
 
     public void UpdateQuestText()
