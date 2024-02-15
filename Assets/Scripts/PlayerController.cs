@@ -300,6 +300,7 @@ public class PlayerController : MonoBehaviour {
         Invoke("CameraDeathAnimation", 0.5f);
         this.audio.PlayDeathSFX();
         this.audio.StopThemeSFX();
+        this.audio.StopBossThemeSFX();
         this.DanceTriggered();
     }
 

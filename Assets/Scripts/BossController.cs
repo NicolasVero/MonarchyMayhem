@@ -218,6 +218,8 @@ public class BossController : MonoBehaviour {
         this.tag = "Boss";
         this.isInTransition = false;
         this.bossRegen = false;
+        
+        this.bossName.text = "Dark Nabil";
 
         this.audio.StopThemeSFX();
         this.audio.PlayBossThemeSFX();
@@ -228,7 +230,6 @@ public class BossController : MonoBehaviour {
 
         this.spawnersController.SetMaxEntities(50);
         
-        this.bossName.text = "Dark Nabil";
     }
 
     private void ChangeSkin() {

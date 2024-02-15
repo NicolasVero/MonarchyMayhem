@@ -148,7 +148,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void ApplyKnockback() {
-        Debug.Log("now ");
         float multiply = playerController.GetKnockback() + playerController.GetWeaponKnockback();
         Vector3 knockbackDirection = -transform.forward;
         float knockbackDistance = 1f * multiply; 
