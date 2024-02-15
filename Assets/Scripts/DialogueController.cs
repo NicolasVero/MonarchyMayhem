@@ -206,4 +206,8 @@ public class DialogueController : MonoBehaviour {
     public bool GetIsInRangeFalse() {
         return isInRange= false;
     }
+
+    public void ResetCurrentQuestIndex() {
+        this.currentQuestIndex = 0;
+    }
 }

@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using System;
 
 
-public class QuestController : MonoBehaviour
-{
+public class QuestController : MonoBehaviour {
+
     public Quest currentQuest;
     private List<Quest> quests = new List<Quest>();
     private int currentQuestIndex = 0;
-    private int KillCounter;
     private bool isAllQuestCompleted = false;
     private DialogueController dialogueController; 
     private SpawnersController spawnersController; 
@@ -21,13 +20,7 @@ public class QuestController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questProgression;
 
 
-
- 
-    void Start() {
-        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>();
-        InitializeQuests();   
-        ShowCurrentQuest();
-    }
+    void Start() {}
 
     void Update() {
         if(this.spawnersController == null){
@@ -38,9 +31,15 @@ public class QuestController : MonoBehaviour
             CompleteCurrentQuest();
     }
 
+    public void InitQuestController() {
+        this.dialogueController = GameObject.FindGameObjectWithTag("NPC").GetComponent<DialogueController>();
+        InitializeQuests();   
+        ShowCurrentQuest();
+        this.dialogueController.ResetCurrentQuestIndex();
+    }
 
-    void InitializeQuests()
-    {
+
+    void InitializeQuests() {
         IsAllQuestCompleted(false);
         quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking"));   
     }
