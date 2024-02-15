@@ -60,6 +60,7 @@ public class DialogueController : MonoBehaviour {
             this.nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
             this.picture = pictureTextTransform.GetComponent<Image>();
             
+            Debug.Log(picture);
             // this.picture.GetComponent<Image>().sprite = npcController.GetPictureSprite();
         }
 
@@ -202,7 +203,7 @@ public class DialogueController : MonoBehaviour {
         this.dialogueInitiated = state;
     }
 
-    public void SetIsInRange(bool state) {
-        isInRange = state;
+    public bool GetIsInRangeFalse() {
+        return isInRange= false;
     }
 }

@@ -67,7 +67,7 @@ public class Quest {
     }
 
     public bool IsComplete() {
-        return this.completed && (this.currentCount >= this.required || this.currentBool);
+        return !this.completed && (this.currentCount >= this.required || this.currentBool);
     }
 
     public string GetType() {
