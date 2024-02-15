@@ -1,0 +1,36 @@
+Open the project in common Unity 2018, 2019.
+I created it in w 2019.4.21f1 Unity version in Render Standard
+
+
+Instal Universal-Render Pipeline in Package-Menager or Run Unity with ready profile URP (the best with the use of Unity HUB). Go to Window>Package menager and in "Unity registry" label choice and install Universal-Render Pipeline 
+
+To use URP in your project, you need to use a Universal-Render Pipeline Asset 
+
+Make sure to assign it to the project. 
+1. Go to Edit > Project Settings > Graphics and Universal-Render Pipeline Asset. 
+2. Look for the folder [Emaceart>Assets>Slavic World Free>URP_Support>URP] and instal URP_Support.unitypackage
+
+ERRORS
+
+If something doesn’t look right, because you've mixed up too much (rose or blue scene, dissapear prefabs, too bright) that may be because the materials you’re using are not compatible with URP or any other Unity Editor bugs. Before you proceed with the Five actions mentioned below, make sure the Unity Console is free - error :D
+If there are no bugs in your console:
+1) NECESSARILY reinstall the project. Click Right Mouse button on the EMACEART folder in hierarchy and choice "Reinstall"
+2) Also remember to reset the Unity often
+3) On Light on the scene.
+4) Revert layouts to Default if the Unity is too slow ;)
+5) Use the Render Pipeline Wizard to check that your settings, materials, and lighting are compatible with URP.
+
+COLOR GRADING IN YOUR GAME.
+
+RENDER STANDARD - Find Camera object in on the hierarchy and conncect ready profile in Post-process Volume component in profile slot.
+URP- Find Global Volume object on the hierarchy and connect ready profile in Post-process Volume component in profile slot. Ready profile is URP_Support>PostProcessProfile location.
+
+CONTACT
+
+If you have any question please write: contact@emaceart.com
+
+
+
+
+
+

@@ -30,11 +30,11 @@ public class SceneController : MonoBehaviour {
     }
 
     private void ChooseNextZone(string sceneName) {
-        if(questController.GetIsAllQuestCompleted())
-            return;
+        // if(questController.GetIsAllQuestCompleted())
+            // return;
 
         // string[] sceneNames = {"Tutorial", "Village", "Castle"};
-        string[] sceneNames = {"Tutorial", "Village"};
+        string[] sceneNames = {"Tutorial", "Village", "Chateau", "Salle_combat_final"};
         int index = Array.IndexOf(sceneNames, sceneName);
         if (index >= 0)
             ChangeScene(sceneNames[(index + 1)%sceneNames.Length]);
@@ -45,10 +45,10 @@ public class SceneController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")) {
-            if(questController.GetIsAllQuestCompleted())
+        // if(other.CompareTag("Player")) {
+        //     if(questController.GetIsAllQuestCompleted())
                 this.isInRange = true;
-        }
+        // }
     }
 
     private void OnTriggerExit(Collider other) {

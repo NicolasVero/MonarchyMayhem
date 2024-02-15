@@ -1,0 +1,550 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!200 &20000000
+ShaderVariantCollection:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NewShaderVariants
+  m_Shaders:
+  - first: {fileID: 64, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 62, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 75, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 12
+  - first: {fileID: 66, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH SHADOWS_SCREEN
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR INSTANCING_ON LIGHTPROBE_SH
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR INSTANCING_ON LIGHTPROBE_SH SHADOWS_SCREEN
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SHADOWS_SCREEN
+          SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_EXP LIGHTPROBE_SH SHADOWS_SCREEN
+          SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR INSTANCING_ON
+          LIGHTPROBE_SH SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR INSTANCING_ON LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR INSTANCING_ON
+          LIGHTPROBE_SH SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR INSTANCING_ON
+          LIGHTPROBE_SH SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_EXP INSTANCING_ON LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR INSTANCING_ON LIGHTPROBE_SH _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR INSTANCING_ON
+          LIGHTPROBE_SH SOFTPARTICLES_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL INSTANCING_ON LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR INSTANCING_ON LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR INSTANCING_ON
+          LIGHTPROBE_SH SOFTPARTICLES_ON UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_EXP INSTANCING_ON LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH SHADOWS_SCREEN _METALLICGLOSSMAP
+          _NORMALMAP
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+          _METALLICGLOSSMAP _NORMALMAP
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH SHADOWS_SCREEN _GLOSSYREFLECTIONS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+          _GLOSSYREFLECTIONS_OFF
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH SHADOWS_SCREEN _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SOFTPARTICLES_ON
+          _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+          _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SHADOWS_SCREEN
+          SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SHADOWS_SCREEN SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_EXP LIGHTPROBE_SH SHADOWS_SCREEN
+          SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR UNITY_HDR_ON
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON _METALLICGLOSSMAP
+          _NORMALMAP
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 5
+      - keywords: 
+        passType: 8
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 8
+      - keywords: INSTANCING_ON
+        passType: 8
+      - keywords: INSTANCING_ON SHADOWS_DEPTH
+        passType: 8
+      - keywords: FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+        passType: 8
+      - keywords: FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH
+          SOFTPARTICLES_ON
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH
+          SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP INSTANCING_ON SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 8
+      - keywords: INSTANCING_ON _ALPHABLEND_ON
+        passType: 8
+      - keywords: INSTANCING_ON SHADOWS_DEPTH _ALPHABLEND_ON
+        passType: 8
+      - keywords: FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+          _ALPHABLEND_ON
+        passType: 8
+      - keywords: FOG_LINEAR INSTANCING_ON SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+          UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 8
+      - keywords: FOG_EXP INSTANCING_ON SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+          UNITY_HDR_ON _ALPHABLEND_ON
+        passType: 8
+      - keywords: SHADOWS_DEPTH _METALLICGLOSSMAP
+        passType: 8
+      - keywords: _METALLICGLOSSMAP _NORMALMAP
+        passType: 8
+      - keywords: _GLOSSYREFLECTIONS_OFF
+        passType: 8
+      - keywords: _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON _GLOSSYREFLECTIONS_OFF
+          _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+          _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+          _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+        passType: 8
+  - first: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS UNITY_HDR_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR UNITY_HDR_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP UNITY_HDR_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+          _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SHADOWS_DEPTH SOFTPARTICLES_ON
+          UNITY_HDR_ON _EMISSION
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+          _EMISSION
+        passType: 0
+  - first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS _SUNDISK_SIMPLE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON _SUNDISK_SIMPLE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS UNITY_HDR_ON _SUNDISK_SIMPLE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON _SUNDISK_SIMPLE
+        passType: 0
+  - first: {fileID: 10500, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+  - first: {fileID: 10501, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 8
+  - first: {fileID: 10502, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 8
+  - first: {fileID: 9000, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9001, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9002, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9003, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9004, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9006, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9007, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 10625, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 8
+  - first: {fileID: 10626, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 10623, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: DIRECTIONAL FOG_EXP LIGHTPROBE_SH SHADOWS_SCREEN _NORMALMAP
+        passType: 4
+      - keywords: 
+        passType: 8
+      - keywords: INSTANCING_ON
+        passType: 8
+      - keywords: _NORMALMAP
+        passType: 8
+      - keywords: SHADOWS_DEPTH _NORMALMAP
+        passType: 8
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP _NORMALMAP
+        passType: 13
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+          _NORMALMAP
+        passType: 13
+  - first: {fileID: 4800000, guid: 382151503e2a43a4ebb7366d1632731d, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FINALPASS
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FINALPASS SOFTPARTICLES_ON
+        passType: 0
+      - keywords: COLOR_GRADING_HDR_3D FINALPASS VIGNETTE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS COLOR_GRADING_HDR_3D FINALPASS FOG_LINEAR
+          SOFTPARTICLES_ON VIGNETTE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS COLOR_GRADING_HDR_3D FINALPASS FOG_LINEAR
+          SOFTPARTICLES_ON UNITY_HDR_ON VIGNETTE
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS COLOR_GRADING_HDR_3D FINALPASS FOG_EXP
+          SOFTPARTICLES_ON UNITY_HDR_ON VIGNETTE
+        passType: 0
+  - first: {fileID: 4800000, guid: 4bf4cff0d0bac3d43894e2e8839feb40, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: de7f3ac52268a194383c7d62c2a343c1, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: e678c986b82cbcb46950e4d1fdd1fa29, type: 3}
+    second:
+      variants:
+      - keywords: DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR LIGHTPROBE_SH SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_LINEAR LIGHTPROBE_SH
+          SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON
+        passType: 5
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL FOG_EXP2 UNITY_HDR_ON
+        passType: 5
+      - keywords: 
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON
+        passType: 8
+      - keywords: SHADOWS_DEPTH SHADOWS_SOFT SHADOWS_SPLIT_SPHERES SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 8
+      - keywords: FOG_LINEAR SHADOWS_DEPTH SHADOWS_SOFT SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 8
+      - keywords: FOG_EXP2 SHADOWS_DEPTH SHADOWS_SOFT SHADOWS_SPLIT_SPHERES SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 8
+      - keywords: SHADOWS_DEPTH UNITY_PASS_SHADOWCASTER
+        passType: 8
+  - first: {fileID: 4800000, guid: 47076bc6b042d8845afcc738ee629c80, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: 83a2a9b75b9386c4682154ce79367fde, type: 3}
+    second:
+      variants:
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL LIGHTPROBE_SH UNITY_HDR_ON
+        passType: 4
+      - keywords: BILLBOARD_FACE_CAMERA_POS DIRECTIONAL UNITY_HDR_ON
+        passType: 5
+  - first: {fileID: 4800000, guid: d7640629310e79646af0f46eb55ae466, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: APPLY_FORWARD_FOG FOG_LINEAR
+        passType: 0
+      - keywords: APPLY_FORWARD_FOG BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: APPLY_FORWARD_FOG BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 0
+      - keywords: APPLY_FORWARD_FOG BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON
+          UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: 51bcf79c50dc92e47ba87821b61100c3, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: cdbdb71de5f9c454b980f6d0e87f0afb, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_EXP SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: 5bb6ef6f3e1b20348b4fdb01e4c404e2, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON
+        passType: 0
+      - keywords: BILLBOARD_FACE_CAMERA_POS FOG_LINEAR SOFTPARTICLES_ON UNITY_HDR_ON
+        passType: 0
