@@ -8,9 +8,9 @@
             [
                 {
                     "messages": [
-                        "Mon Cher Ami, je vois que tu es de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
-                        "Les paysans, tes fidèles sujets, se sont retournés contre toi. Ils ont été manipulés par des forces obscures et ont succombé à la colère. Ton trône est en péril, mais tout espoir n'est pas perdu.", 
-                        "Tu dois te battre, mon ami. Affronte ceux qui te trahissent et regagne ton trône légitime. Mais avant cela, laisse-moi te montrer les rudiments du combat et de la survie.",
+                        "Mon Cher Ami, je vois que vous êtes de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
+                        "Les paysans, vos fidèles sujets, se sont retournés contre vous. Ils ont été manipulés par des forces obscures et ont succombé à la colère. Votre trône est en péril, mais tout espoir n'est pas perdu.", 
+                        "Vous dzvez vous battre, mon ami. Affrontez ceux qui vpus trahissent et regagnez votre trône. Mais avant cela, laissez-moi vous montrer les rudiments du combat et de la survie.",
                         "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement, la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
                         "Lorsque vous triomphez de vos ennemis sur le champ de bataille, vous gagnez en expérience. À chaque montée de niveau, vous aurez l'opportunité de renforcer vos compétences. Trois chemins se présenteront à vous, chacun représentant une voie vers la grandeur. Choisissez sagement, car chaque décision peut façonner le cours de votre destinée.",
                         "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes ont une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
@@ -33,20 +33,20 @@
                 },
                 {
                     "messages": [
-                        "Merci ô grand roi Makram, j'ai vu que vous avez volé les armes que ses hérétiques ont brandi vers vous !",
-                        "Comme vous pouvez le voir, grâce à ses armes votre force à augmenter dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
+                        "Merci ô grand roi Makram, j'ai vu que vous aviez volé les armes que ses hérétiques ont brandi vers vous !",
+                        "Comme vous pouvez le voir, grâce à ces armes, votre force à augmentée dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
                         "Faites attention à ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumières des plus en plus étincelantes.",
                         "Que dite vous ? Vous voulez retourner à votre château au plus vite ?",
                         "Il existe bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
                         "JE NE RETROUVE PLUS CE PARCHEMIN !!!",
-                        "J'ai dû le perdre en fuyant ses hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
+                        "J'ai dû le perdre en fuyant ces hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
                     ]
                 },
                 {
                     "messages": [
-                        "Bien jouez, vous avez retrouvé le parchemin menant vers votre château !",
-                        "Pour sortir de ce sentier battu, il vous faudra passer par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
-                        "Vous y trouverez un arbre géant à côté d'une porte en bois décoré, c'est ici que vous pourrez partir.",
+                        "Bien joué, vous avez retrouvé le parchemin menant vers votre château !",
+                        "Pour sortir de cet endroit, il vous faudra passer par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
+                        "Vous y trouverez un arbre géant à côté d'une porte en bois décorée, c'est ici que vous pourrez partir.",
                         "Retrouvez votre château et sauvez notre royaume. Telle est la tâche qui vous incombe.",
                         "Je ne vous servirez plus à rien, bonne route mon seigneur."
                         
@@ -69,18 +69,18 @@
                 },
                 {
                     "title" : "Encore un petit coup de balai",
-                    "description" : "Allez occire le groupe d'hérétique qui fonce sur vous et defendez le prêtre",
+                    "description" : "Allez occire le groupe d'hérétiques qui fonce sur vous et défendez le prêtre",
                     "required" : 20,
                     "type" : "Killing"
                 },
                 {
                     "title" : "Un parchemin dans une botte de foin",
-                    "description" : "Retrouvez le parchemin perdu du prêtre dans les sentiers perdu.",
+                    "description" : "Retrouvez le parchemin perdu du prêtre dans les sentiers perdus.",
                     "required" : 1,
                     "type" : "Finding"
                 },
                 {
-                    "title" : "GRAND REMPLACEMENT : Dehors les arbres",
+                    "title" : "Dehors les arbres",
                     "description" : "Trouvez la piste de l'arbre géant et quittez le sentier battu par la porte en bois",
                     "required" : 0,
                     "type" : "Finding"
@@ -96,7 +96,6 @@
                     "messages": [
                         "Ah, votre Majesté, quel plaisir de vous voir ici. Vous avez besoin d'aide pour remonter sur le trône ?",
                         "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide."
-                      
                     ]
                 },
                 {
@@ -118,9 +117,9 @@
                     "messages" : [
                         "Merci votre Majesté, grâce à cela, je vais pouvoir me faire beaucoup d'argent.",
                         "Que dites-vous ? Vous voulez retourner dans votre château ? Vous savez que cela risque d'être compliqué, les gueux font des barrages pour que personne ne puisse accéder au château ! C'est pourquoi je reste ici dans ce petit village.",
-                        "Plus personne ne reste dans votre château depuis que l'usurpateur a prit votre place.",
-                        "J'ai besoin de revenir vers la richesse de ce lieu. Les nobles pourraient me payer cher grâce à mon nouveau diplôme...",
-                        "Je vais vous aider à remonter sur le trône ! Pour cela, je vous confierais une liste de quêtes vous aidant à y parvenir.",
+                        "Plus personne ne reste dans votre château depuis que l'usurpateur a pris votre place.",
+                        "J'ai besoin de devenir riche, très riche. Les nobles pourraient me payer cher grâce à mon nouveau diplôme...",
+                        "Je vais vous aider à remonter sur le trône ! Pour cela, je vous confierai une liste de quêtes vous aidant à y parvenir.",
                         "Aidez-moi à récupérer des potions. Elles sont de couleurs vertes."
                     ]
                 },
@@ -130,26 +129,26 @@
                         "Il parait que l'usurpateur vous ressemble. Du moins, c'est ce que disent les nobles de la cour qui se sont retournés contre vous.",
                         "Pourquoi vous avoir trahi s'il vous ressemble alors ?",
                         "Je pense qu'ils ne parlent pas des nouvelles règles qu'il a établi, mais plutôt d'autre chose.",
-                        "Pour vous informer, les potions contiennent un puissant poison. Je vous ai demandé de les récupérer pour que je les distribue à vos opposants.",
-                        "Il viendront tous vers moi pour que je les soigne HahAhAhAHA ! Car je suis le dernier docteur de la ville et je deviendrais riche et puissant. Mon plan est machiavélique.",
-                        "Bien revenons-en au fait, j'aurais également besoin de potions rouges, sinon je ne pourrais pas les guérir !"
+                        "Pour vous informer, les potions contiennent un puissant poison. Je vous ai demandé de les récupérer pour que je puisse les distribuer aux habitants du village.",
+                        "Ils viendront tous vers moi pour que je les soigne HahAhAhAHA ! Car je suis le dernier docteur de la ville et je deviendrai riche et puissant. Mon plan est machiavélique.",
+                        "Bien revenons-en au fait, j'aurais également besoin de potions rouges, sinon je ne pourrai pas les guérir !"
                     ]
                 },
                 {
                     "messages" : [
                         "Ces potions rouges vont m'être bien utiles merci.",
-                        "Pendant votre absence, un noble est venu me prévenir d'une chose. Il vous a vu erré en ville dernièrement, il m'a demandé de l'aider pour vous tuer.",
-                        "BIEN-SUR que NON, je ne l'écouterais pas, je suis de votre côté. Il m'a mis dans la confidence, mais je vais tout vous révéler, oui, je n'ai aucune dignité.",
+                        "Pendant votre absence, un noble est venu me prévenir d'une chose. Il vous a vu errer en ville dernièrement, il m'a demandé de l'aider pour vous tuer.",
+                        "BIEN-SUR que NON, je ne l'écouterai pas, je suis de votre côté. Il m'a mis dans la confidence, mais je vais tout vous révéler, oui, je n'ai aucune dignité.",
                         "Il m'a dit qu'il était le chef d'une secte s'appelant Border-Box. Il a préparé ses hommes et les a armés pour vous « trucider » je cite.",
-                        "Il m'a dit pourquoi il voulait vous tuer. Apparemment, les taxes du royaume que vous avez fait passer vous ont enrichi personnellement tandis que le peuple souffrait de la famine et du manque de richesse.",
-                        "Cela m'étonne, car c'est la première fois que j'entends parler de ces « taxes ». Il y a anguille sous roche méfiez-vous.",
+                        "Il m'a dit pourquoi il voulait vous tuer. Apparemment, les taxes du royaume que vous avez faites passer vous ont enrichi personnellement tandis que le peuple souffrait de la famine et du manque de richesse.",
+                        "Cela m'étonne, car c'est la première fois que j'entends parler de ces « taxes ». Il y a anguille sous roche, méfiez-vous.",
                         "Ils lanceront l'attaque ce soir au plus tard. Essayez de les arrêter avant que cela ne se produise."
                     ]
                 },
                 {
                     "messages" : [
                         "Vous avez tué tous les adeptes... Vous êtes si puissant mon roi.",
-                        "Pendant que vous faisiez le ménage, j'ai donné le poison à vos opposants, vous pouvez maintenant accéder à votre château, mais dépêchez vous. J'ai l'impression que quelque chose se trame dans votre dos.",
+                        "Pendant que vous faisiez le ménage, j'ai donné le poison aux habitants, vous pouvez maintenant accéder à votre château, mais dépêchez vous. J'ai l'impression que quelque chose se trame dans votre dos.",
                         "Le chemin vers le château se trouve derrière le village, foncez ! "
                     ]
                 }
@@ -164,7 +163,7 @@
                 },
                 {
                     "title" : "Rien de tel qu'un roi pour faire le ménage",
-                    "description" : "Faite taire les paysans qui se moque du Docteur LaPeste. Tuez 40 gueux.",
+                    "description" : "Faites taire les paysans qui se moquent du Docteur LaPeste. Tuez 40 gueux.",
                     "required" : 40,
                     "type" : "Killing"
                 },
@@ -182,7 +181,7 @@
                 },
                 {
                     "title" : "... Que guérir",
-                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouge. Cette fois ci vous savez pourquoi :). ",
+                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pourquoi :). ",
                     "required" : 4,
                     "type" : "Finding"
                 },
@@ -210,9 +209,9 @@
                         "Majesté ne partez pas !!! J'ai besoin de votre aide !",
                         "Vous cherchez les clefs de la salle du trône ?",
                         "JE SAIS OÙ ELLES SONT !!! AHHHHHHHHHHHHHH OHHHHHHHHHHHHH HIIIIIIIIIIIIIIII *se roule par terre*",
-                        "Je ne vous dirais JAMAIS où elles sont HAHAHAHAHA *se relève*",
+                        "Je ne vous dirai JAMAIS où elles sont HAHAHAHAHA *se relève*",
                         "Sauf si ...",
-                        "DANSEZ POUR MOI et je vous dirais...",
+                        "DANSEZ POUR MOI et je vous dirai...",
                         "peut-être...",
                         "OÙ SONT LES CLEFS QUE VOUS CONVOITEZ !!!"
                     ]
@@ -221,14 +220,14 @@
                     "messages": [
                         "Hmmmmmmmm HOOOOO OUI HMMM J'AIME ce que je VOIS ! *se roule à vos pieds*",
                         "BIEN, vous avez gagnez le droit de... ",
-                        "Recommencez :D"
+                        "Recommencer :D"
                     ]
                 },
                 {
                     "messages": [
-                        "Allez sa suffit arrêtez moi ça je n'en peux plus !!! Vous dansez trop bien pour moi... *pleure*",
-                        "وكان نبيل أقل غموضا من الفتاة التي كانت في فرنسا منذ ثلاث سنوات شقيق",
-                        "Si j'ai bien vu les clefs ? Oui je sais où elles sont. C'est un géolier qui les a. *se frotte les mains*",
+                        "Allez ça suffit arrêtez-moi ça je n'en peux plus !!! Vous dansez trop bien pour moi... *pleure*",
+                        "wakan nabil 'aqalu ghumudan min alfataat alati kanat fi faransa mundh thalath sanawat shaqiqin",
+                        "Si j'ai bien vu les clefs ? Oui je sais où elles sont. C'est un geôlier qui les a. *se frotte les mains*",
                         "Lequel ? Hmmmmm Je ne sais pas.",
                         "Tuez les tous, comme ça on sera sûr de récupérer les clefs !"
                     ]
@@ -242,16 +241,16 @@
                         "Vous les avez tous tués ? Parfait ces mécréants qui m'ont fouetté pendant que j'étais en cellule sont morts ! *Danse (moins bien que vous)*",
                         "Oui, je me suis échappé de ma cellule d'isolement quand tous les gardes ont afflué vers le village. D'ailleurs, je crois qu'ils vous cherchaient pour vous tuer.",
                         "Si vous êtes encore vivant... C'est que vous les avez tous massacrés je suppose.",
-                        "Vous n'avez pas trouvés les clefs sur les géoliers ?",
-                        "HHAAA MAIS OUI JE SAIS ! En fait, les clefs sont dans des potions violettes qui sont éparpillées sur les camps de géoliers",
-                        "Ils les avaient cachés là pour ne pas avoir à les surveiller.",
-                        "Ramenez moi donc les potions violettes ! *se met à genoux devant vous*"
+                        "Vous n'avez pas trouvé les clefs sur les geôliers ?",
+                        "HHAAA MAIS OUI JE SAIS ! En fait, les clefs sont dans des potions violettes qui sont éparpillées sur les camps de geôliers",
+                        "Ils les avaient cachées là pour ne pas avoir à les surveiller.",
+                        "Ramenez-moi donc les potions violettes ! *se met à genoux devant vous*"
                     ]
                 },
                 {
                     "messages": [
-                        "OUI OUI AH OUI DONNEZ MOI CES POTIONS DE SUITE !!!!!",
-                        "*gloup gloup gloups* *Il se met a boire toutes les potions très rapidement* ",
+                        "OUI OUI AH OUI DONNEZ-MOI CES POTIONS DE SUITE !!!!!",
+                        "*gloup gloup gloup* *Il se met à boire toutes les potions très rapidement* ",
                         "QUOI !!!! LES CLEFS NE SONT PAS DEDANS !!! hhihihihi *rigole*",
                         "*cling cling*",
                         "Et oui c'est bien ce que vous entendez...",
@@ -270,19 +269,19 @@
             [
                 {
                     "title" : "Mais pour qui il se prend ?",
-                    "description" : "Dansez pour le fou... Il n'y a pas d'autres solutions que de se salir.",
+                    "description" : "Dansez pour le fou... Il n'y a pas d'autre solution que de se salir.",
                     "required" : 1,
                     "type" : "Killing"
                 },
                 {
                     "title" : "Gardez votre calme",
-                    "description" : "Dansez à nouveau... Non, ne le frappez pas il a peut être la galle.",
+                    "description" : "Dansez à nouveau... Non, ne le frappez pas il a peut-être la gale.",
                     "required" : 1,
                     "type" : "Killing"
                 },
                 {
-                    "title" : "Génocide Géolier",
-                    "description" : "Tuez tout les géoliers ! Vous ne faites jamais dans la dentelle de toute façon.",
+                    "title" : "Génocide geôlier",
+                    "description" : "Tuez tous les geôliers ! Vous ne faites jamais dans la dentelle de toute façon.",
                     "required" : 20,
                     "type" : "Killing"
                 },
@@ -294,11 +293,10 @@
                 },
                 {
                     "title" : "Dernière ligne droite",
-                    "description" : "Allez vers la grande porte et ouvrez la. Vous mettrez le fou en prison plus tard.",
+                    "description" : "Allez vers la grande porte et ouvrez-la. Vous mettrez le fou en prison plus tard.",
                     "required" : 0,
                     "type" : "Finding"
                 }
-
             ]
         }
     ]
