@@ -60,7 +60,6 @@ public class DialogueController : MonoBehaviour {
             this.nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
             this.picture = pictureTextTransform.GetComponent<Image>();
             
-            Debug.Log(picture);
             // this.picture.GetComponent<Image>().sprite = npcController.GetPictureSprite();
         }
 

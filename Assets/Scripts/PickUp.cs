@@ -14,7 +14,6 @@ public class PickUp : MonoBehaviour {
             this.audio.PlayPickUpSFX();
             Destroy(other.gameObject);
             collectedItemsCount++;
-            Debug.Log("item ramassÃ© : " + collectedItemsCount);
             questController.UpdateQuestText();
         }
     }

@@ -93,7 +93,6 @@ public class QuestController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Toutes les quêtes ont été complétées. Passage au niveau suivant...");
 
                 GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
                 if (npcObject != null)
@@ -121,7 +120,6 @@ public class QuestController : MonoBehaviour
         questTitle.text = questDetails.YellowTitle;
         questMessage.text = questDetails.Message;
         questProgression.text = questDetails.Progression;
-         Debug.Log("UpdateQuestText");
     }
 
     public Quest GetCurrentQuest()
@@ -133,11 +131,6 @@ public class QuestController : MonoBehaviour
 
         quests.Add(new Quest(questTitle, questMessage, requiredAmount, questType));
 
-        Debug.Log("Quêtes actuelles :");
-
-        foreach (Quest quest in quests) {
-            Debug.Log($"- {quest.GetQuestDetails().YellowTitle}");
-        }
     }
 
 

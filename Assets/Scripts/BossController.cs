@@ -111,7 +111,6 @@ public class BossController : MonoBehaviour {
 
     private void Move() {
         this.navMeshAgent.destination = playerPosition.position;
-        Debug.Log(this.walkMethod);
         this.animator.SetBool(this.walkMethod, true);
     }
     
