@@ -10,17 +10,17 @@ public class DialogueController : MonoBehaviour {
     [SerializeField] private NPCController npcController;
 
     [Header("Canvas Settings")]
-    [SerializeField]private Canvas dialogueCanvas;
-    [SerializeField]private Canvas interaction;
-    [SerializeField]private TextMeshProUGUI dialogueText;
-    [SerializeField]private TextMeshProUGUI nameText;
-    [SerializeField]private Image picture;
-    [SerializeField]private Button closeButton;
-    [SerializeField]private Button nextButton;
-    [SerializeField]private Button prevButton;
+    [SerializeField] private Canvas dialogueCanvas;
+    [SerializeField] private Canvas interaction;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Image picture;
+    [SerializeField] private Button closeButton;
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button prevButton;
 
     [Header("Canvas to Deactivate")]
-    [SerializeField]private Canvas[] disabledCanvas;
+    [SerializeField] private Canvas[] disabledCanvas;
 
     [Header("Dynamic Dialogue Settings")]
     [SerializeField] private int messagesPerStep = 1; 
