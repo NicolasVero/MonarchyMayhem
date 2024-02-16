@@ -5358,11 +5358,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4612329036020226, guid: e1032c9b5d7d362489670d42997dceb5, type: 3}
   m_PrefabInstance: {fileID: 220673805}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &221344758 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8646519660937902309, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
-  m_PrefabInstance: {fileID: 1678400440}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &222049601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7117,7 +7112,7 @@ Transform:
   m_GameObject: {fileID: 274791330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.39, y: 0.03, z: -9.85}
+  m_LocalPosition: {x: -25.39, y: -1.565, z: -9.85}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7137,11 +7132,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 0
+  allowBourgeois: 1
   allowKnights: 0
-  chancePeasants: 100
-  chanceBourgeois: 100
+  chancePeasants: 50
+  chanceBourgeois: 25
   chanceKnights: 100
+  viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -7719,7 +7715,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 421766571}
-  m_Father: {fileID: 857943326}
+  m_Father: {fileID: 1064731042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9308,11 +9304,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 0
+  allowBourgeois: 1
   allowKnights: 0
-  chancePeasants: 100
-  chanceBourgeois: 100
+  chancePeasants: 50
+  chanceBourgeois: 25
   chanceKnights: 100
+  viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -9919,11 +9916,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 0
+  allowBourgeois: 1
   allowKnights: 0
-  chancePeasants: 100
-  chanceBourgeois: 100
+  chancePeasants: 50
+  chanceBourgeois: 25
   chanceKnights: 100
+  viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -19036,7 +19034,7 @@ Transform:
   m_GameObject: {fileID: 670152529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.7, y: -1.19, z: 20.5}
+  m_LocalPosition: {x: 46.67, y: -2.676, z: 21.85}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19056,11 +19054,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 0
+  allowBourgeois: 1
   allowKnights: 0
-  chancePeasants: 100
-  chanceBourgeois: 100
+  chancePeasants: 50
+  chanceBourgeois: 25
   chanceKnights: 100
+  viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -24524,9 +24523,6 @@ Transform:
   - {fileID: 307384240}
   - {fileID: 1568598924}
   - {fileID: 1520952401}
-  - {fileID: 1822582679}
-  - {fileID: 221344758}
-  - {fileID: 299431005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &857943327
@@ -31356,6 +31352,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064159696}
   m_CullTransparentMesh: 1
+--- !u!1 &1064731041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064731042}
+  m_Layer: 0
+  m_Name: Quests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1064731042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064731041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.526001, y: -14.609467, z: -2.2270126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1822582679}
+  - {fileID: 1182870177}
+  - {fileID: 299431005}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1066229845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34996,6 +35026,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1403094151}
   m_SourcePrefab: {fileID: 100100000, guid: 63ce2b31e16acab4d8a41f884c36333c, type: 3}
+--- !u!224 &1182870177 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8646519660937902309, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
+  m_PrefabInstance: {fileID: 1678400440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1184559102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49276,7 +49311,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 857943326}
+    m_TransformParent: {fileID: 1064731042}
     m_Modifications:
     - target: {fileID: 381915541853172959, guid: a0b18e6b837d9e94e854a177d8dee592, type: 3}
       propertyPath: m_Name
@@ -53710,7 +53745,7 @@ RectTransform:
   - {fileID: 2085729281}
   - {fileID: 593216778}
   - {fileID: 594559201}
-  m_Father: {fileID: 857943326}
+  m_Father: {fileID: 1064731042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -62095,7 +62130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dc7a6f7ccd4544380e4b5202b79976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
+  id: 1
 --- !u!114 &2051368657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65344,3 +65379,4 @@ SceneRoots:
   - {fileID: 857943326}
   - {fileID: 662671158}
   - {fileID: 1726792339}
+  - {fileID: 1064731042}

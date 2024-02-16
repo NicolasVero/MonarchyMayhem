@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour {
     [Range(0, 100)][SerializeField] float chanceKnights;
 
     [Header("Spawn parameters")]
+    [SerializeField] bool viewSpawnPoint;
     [SerializeField] private float spawnDelay;
     [SerializeField] private GameObject enemiesContainer;
     [SerializeField] private GameObject collectiblesContainer;
@@ -33,6 +34,9 @@ public class Spawner : MonoBehaviour {
 
 
     void Awake(){
+
+        GameObject spawn = transform.Find("Spawn").gameObject;
+        spawn.SetActive(viewSpawnPoint);
 
         if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {
             GeneratePickUpGroup();

@@ -3,6 +3,7 @@ public class PlayerBaseStats {
     public int xp;
     public int xpToNext;
     public int level;
+    public int maxLevel;
     public int health;
     public int maxActualHealth;
     public int resistance;

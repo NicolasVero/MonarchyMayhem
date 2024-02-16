@@ -59,15 +59,7 @@ public class PlayerController : MonoBehaviour {
     // controlleur attributs
     private int xpRequired = 0;
 
-    private int maxHealth;
     private int maxLevel;
-    private int maxResistance;
-    private int maxAttack;
-    private float maxRange;
-    private float minAttackSpeed;
-    private float maxSpeed;
-    private float maxKnockback;
-    private int maxRegeneration;
 
     private int[] increaseHealth;
     private int[] increaseResistance;
@@ -117,7 +109,7 @@ public class PlayerController : MonoBehaviour {
         GameController.HidePauseMenu(pauseMenu);
         GameController.SetPanelVisibility(this.levelUpPanel, false);
 
-        this.SetHealthBarMax(this.maxHealth);
+        this.SetHealthBarMax(this.health);
         this.rangeCollider = GetComponent<SphereCollider>();
         this.animator = GetComponentInChildren<Animator>();
         this.LoadAttributes();
@@ -133,7 +125,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        this.animator.SetFloat("AttackSpeed", (1/(this.GetAttackSpeed() + this.GetWeaponAttackSpeed())*2));
+        this.animator.SetFloat("AttackSpeed", (1 / (this.GetAttackSpeed() + this.GetWeaponAttackSpeed())*2));
 
         foreach (var kvp in keyActions) {
             if (Input.GetKeyDown(kvp.Key)) {
@@ -143,22 +135,11 @@ public class PlayerController : MonoBehaviour {
 
         if(Input.GetKey(KeyCode.LeftShift)) {
             this.isSprinting = true;
-            this.sprint = 4;
+            this.sprint = 2;
         } else {
             this.isSprinting = false;
             this.sprint = 0;
         }
-
-
-        // if(Input.GetKeyDown(KeyCode.R) && this.canResume) {
-        //     questMenu.SetActive(!questMenu.activeSelf);
-        // } 
-
-        // if(Input.GetKeyDown(KeyCode.P) && this.canResume && this.isAlive) {
-        //     GameController.SetGameState(false);
-        //     this.SetInPause(true);
-        //     this.ManagePauseMenu();
-        // } 
 
         //! a supprimer
         if(Input.GetKeyDown(KeyCode.U)) 
@@ -218,12 +199,10 @@ public class PlayerController : MonoBehaviour {
 
     private void LoadAttributes() {
         TextAsset baseStats     = Resources.Load<TextAsset>("Data/PlayerBaseStats");
-        TextAsset maxStats      = Resources.Load<TextAsset>("Data/PlayerMaxStats");
         TextAsset increaseStats = Resources.Load<TextAsset>("Data/PlayerIncreaseStats");
 
-        if(baseStats != null && maxStats != null && increaseStats != null) {
+        if(baseStats != null && increaseStats != null) {
             PlayerBaseStats playerBaseStats = JsonUtility.FromJson<PlayerBaseStats>(baseStats.text);
-            PlayerMaxStats playerMaxStats = JsonUtility.FromJson<PlayerMaxStats>(maxStats.text);
             PlayerIncreaseStats playerIncreaseStats = JsonUtility.FromJson<PlayerIncreaseStats>(increaseStats.text);
 
 
@@ -241,16 +220,8 @@ public class PlayerController : MonoBehaviour {
             this.speed                = playerBaseStats.speed;
             this.knockback            = playerBaseStats.knockback;
             this.regeneration         = playerBaseStats.regeneration;
-     
-            this.maxHealth            = playerMaxStats.maxHealth;
-            this.maxLevel             = playerMaxStats.maxLevel;
-            this.maxResistance        = playerMaxStats.maxResistance;
-            this.maxAttack            = playerMaxStats.maxAttack;
-            this.maxRange             = playerMaxStats.maxRange;
-            this.minAttackSpeed       = playerMaxStats.minAttackSpeed;
-            this.maxSpeed             = playerMaxStats.maxSpeed;
-            this.maxKnockback         = playerMaxStats.maxKnockback;
-            this.maxRegeneration      = playerMaxStats.maxRegeneration;
+    
+            this.maxLevel             = playerBaseStats.maxLevel;
 
             this.increaseHealth       = playerIncreaseStats.increaseHealth;
             this.increaseResistance   = playerIncreaseStats.increaseResistance;
@@ -332,29 +303,26 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        // return (int)(5 * Math.Pow(1.2, this.level - 1));
-        return 3;
+        return (int)(5 * Math.Pow(1.2, this.level - 1));
+        // return 3;
     }
 
     // Updates / Increments
     public void UpdateResistance() {
         this.resistance += this.increaseResistance[this.resistanceLevel - 1];
         this.resistanceLevel++;
-        if(this.resistance > this.maxResistance) this.resistance = this.maxResistance;
         if(this.resistanceLevel > 5) this.hudStats.MaxResistance();
     }
 
     public void UpdateAttackSpeed() {
         this.attackSpeed += this.increaseAttackSpeed[this.attackSpeedLevel - 1];
         this.attackSpeedLevel++;
-        if(this.attackSpeed < this.minAttackSpeed) this.attackSpeed = this.minAttackSpeed;
         if(this.attackSpeedLevel > 5) this.hudStats.MaxAttackSpeed();
     }
 
     public void UpdateRange() {
         this.range += this.increaseRange[this.rangeLevel - 1];
         this.rangeLevel++;
-        if(this.range > this.maxRange) this.range = this.maxRange;
         if(this.rangeLevel > 5) this.hudStats.MaxRange();
 
         this.rangeCollider.radius = this.range + this.weaponRange;
@@ -365,10 +333,7 @@ public class PlayerController : MonoBehaviour {
         this.maxActualHealth += this.increaseHealth[this.healthLevel - 1];
         this.SetMaxHealthBar(this.maxActualHealth);
 
-        this.healthLevel++;
-        if(this.health > this.maxHealth) 
-            this.health = this.maxHealth;
-            
+        this.healthLevel++;          
         this.SetHealthBar(this.health);
         this.hudStats.UpdateHealth();
     }
@@ -377,8 +342,6 @@ public class PlayerController : MonoBehaviour {
         this.attack += this.increaseAttack[this.attackLevel - 1];
         this.knockback += this.increaseKnockback[this.attackLevel - 1];
         this.attackLevel++;
-        if(this.attack > this.maxAttack) this.attack = this.maxAttack;
-        if(this.knockback > this.maxKnockback) this.knockback = this.maxKnockback;
         if(this.attackLevel > 5) {
             this.hudStats.MaxAttack();
             this.hudStats.MaxKnockback();
@@ -388,14 +351,12 @@ public class PlayerController : MonoBehaviour {
     public void UpdateSpeed() {
         this.speed += this.increaseSpeed[this.speedLevel - 1];
         this.speedLevel++;
-        if(this.speed > this.maxSpeed) this.speed = this.maxSpeed;
         if(this.speedLevel > 5) this.hudStats.MaxSpeed();
     }
 
     public void UpdateRegeneration() {
         this.regeneration += this.increaseRegeneration[this.regenerationLevel - 1];
         this.regenerationLevel++;
-        if(this.regeneration > this.maxRegeneration) this.regeneration = this.maxRegeneration;
         if(this.regenerationLevel > 5) this.hudStats.MaxRegeneration();
     }
 
@@ -597,7 +558,6 @@ public class PlayerController : MonoBehaviour {
     public int GetAttack()               { return this.attack;             }
     public int GetHealth()               { return this.health;             }
     public int GetMaxActualHealth()      { return this.maxActualHealth;    }
-    public int GetMaxHealth()            { return this.maxHealth;          }
     public int GetLevel()                { return this.level;              }
     public float GetAttackSpeed()        { return this.attackSpeed;        }
     public float GetRange()              { return this.range;              }
