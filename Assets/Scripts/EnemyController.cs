@@ -124,7 +124,7 @@ public class EnemyController : MonoBehaviour {
         this.cooldown = false;
     }
 
-    private void ResetAnims(){
+    private void ResetAnims() {
         this.animator.SetBool("Idle", false);
         this.animator.SetBool("Walk", false);
     }

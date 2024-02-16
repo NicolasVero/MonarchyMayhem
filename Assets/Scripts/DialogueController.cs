@@ -43,7 +43,7 @@ public class DialogueController : MonoBehaviour {
 
         Debug.Log("CDSI : " + currentDialogueSetIndex);
         Debug.Log("CQI : " + currentQuestIndex);
-
+        this.currentDialogueSetIndex = 0;
         this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
         this.dialogueCanvas = GameObject.Find("Dialogue").GetComponent<Canvas>();
         this.interaction = GameObject.Find("Interaction").GetComponent<Canvas>();
@@ -80,14 +80,15 @@ public class DialogueController : MonoBehaviour {
 
         GameController.SetCanvasVisibility(dialogueCanvas, false);
 
-        dialogueSets = npcController.GetDialogueSets();
-        questList = npcController.GetQuestList();
 
         nextButton.onClick.AddListener(ShowNextMessage);
         prevButton.onClick.AddListener(ShowPreviousMessage);
         closeButton.onClick.AddListener(CloseDialogue);
 
         npcController = npcObject.GetComponent<NPCController>();
+
+        dialogueSets = npcController.GetDialogueSets();
+        questList = npcController.GetQuestList();
     }
 
     void Update() {
@@ -184,7 +185,7 @@ public class DialogueController : MonoBehaviour {
     }
 
     private void SetCurrentDialogueSet() {
-        if (currentDialogueSetIndex >= 0 && currentDialogueSetIndex < dialogueSets.Length) {
+        if(currentDialogueSetIndex >= 0/* && currentDialogueSetIndex < dialogueSets.Length*/) {
             dynamicDialogue = dialogueSets[currentDialogueSetIndex]; // Définir le nouvel ensemble de dialogues
         }
     }
