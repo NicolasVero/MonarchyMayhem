@@ -67,13 +67,14 @@ Material:
     - _BumpScale: 1
     - _CUSTOMCOLORSTINTING: 0
     - _CUSTOMWIND: 1
+    - _CUSTOMWIND1: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Gradient: 0.167
+    - _Gradient: 0.326
     - _GradientPower: 2.54
     - _LeavesThickness: 0.445
     - _MaskClipValue: 0.5
@@ -91,16 +92,19 @@ Material:
     - _SrcBlend: 1
     - _TRANSLUCENCYONOFF: 1
     - _TransAmbient: 0.7
-    - _TransDirect: 0.58
-    - _TransNormalDistortion: 0.486
-    - _TransScattering: 25.1
-    - _TransShadow: 0.5
-    - _Translucency: 5
+    - _TransDirect: 0.655
+    - _TransNormalDistortion: 0.762
+    - _TransScattering: 32.2
+    - _TransShadow: 0
+    - _Translucency: 36
     - _UVSec: 0
     - _WINDMASKONOFF: 0
     - _WindDensity: 0.5
+    - _WindDensity1: 0.2
     - _WindMovement: 1
+    - _WindMovement1: 0.5
     - _WindStrength: 0.1
+    - _WindStrength1: 0.3
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:
@@ -108,3 +112,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 1, g: 0, b: 0, a: 1}
     - _TopColor: {r: 1, g: 0.6415998, b: 0, a: 1}
+  m_BuildTextureStacks: []
