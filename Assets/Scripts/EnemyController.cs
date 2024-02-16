@@ -178,7 +178,7 @@ public class EnemyController : MonoBehaviour {
         return GameController.RandomFloat() < this.chanceToDrop;
     }
 
-    private void ActivateCollectParticle(){
+    private void ActivateCollectParticle() {
         this.attackParticle.Play();
     }
 
@@ -187,7 +187,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void Dance() {
-        // this.animator.SetTrigger("Dance");
         this.animator.SetInteger("Dance", GameController.Random(0, 4));
     }
 }

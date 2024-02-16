@@ -95,11 +95,7 @@
                 {
                     "messages": [
                         "Ah, votre Majesté, quel plaisir de vous voir ici. Vous avez besoin d'aide pour remonter sur le trône ?",
-                        "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide."
-                    ]
-                },
-                {
-                    "messages": [
+                        "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide.",
                         "J'ai eu quelques querelles avec des gens qui se sont moqués de moi à cause du fait que je n'aie pas de vrais diplômes de médecine.",
                         "Allez, les faire taire, je vous prie."
                     ]
@@ -155,16 +151,11 @@
             ],
             "quests" : 
             [
-                {
-                    "title" : "Suivre la voix périlleuse ?",
-                    "description" : "Revenez parler au Docteur LaPeste quand vous serez prêt.",
-                    "required" : 0,
-                    "type" : "Speaking"
-                },
+
                 {
                     "title" : "Rien de tel qu'un roi pour faire le ménage",
                     "description" : "Faites taire les paysans qui se moquent du Docteur LaPeste. Tuez 40 gueux.",
-                    "required" : 40,
+                    "required" : 1,
                     "type" : "Killing"
                 },
                 {
@@ -176,19 +167,19 @@
                 {
                     "title" : "Mieux vaut prévenir ...",
                     "description" : "Docteur LaPeste vous a demandé de lui apporter des potions vertes. Mais pourquoi faire ? Ne vous posez pas de questions. ",
-                    "required" : 4,
+                    "required" : 1,
                     "type" : "Finding"
                 },
                 {
                     "title" : "... Que guérir",
                     "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pourquoi :). ",
-                    "required" : 4,
+                    "required" : 1,
                     "type" : "Finding"
                 },
                 {
                     "title" : "Une punition pour Border-Box",
                     "description" : "Tuez les tous. Les adeptes de Border-Box doivent être soumis.",
-                    "required" : 30,
+                    "required" : 1,
                     "type" : "Killing"
                 },
                 {

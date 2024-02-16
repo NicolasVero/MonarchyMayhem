@@ -17,6 +17,7 @@ public class SceneController : MonoBehaviour {
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.playerController.transform.position = SetSpawnPoint();
         this.questController.InitQuestController();
+        this.playerController.ConfigureQuestCanvas();
     }
 
     void Update() {

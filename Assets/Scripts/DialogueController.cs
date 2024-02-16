@@ -41,6 +41,9 @@ public class DialogueController : MonoBehaviour {
 
     void Start() {
 
+        Debug.Log("CDSI : " + currentDialogueSetIndex);
+        Debug.Log("CQI : " + currentQuestIndex);
+
         this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
         this.dialogueCanvas = GameObject.Find("Dialogue").GetComponent<Canvas>();
         this.interaction = GameObject.Find("Interaction").GetComponent<Canvas>();
@@ -157,6 +160,7 @@ public class DialogueController : MonoBehaviour {
         }
         if(questList[currentQuestIndex].GetType() == "Speaking"){ 
             currentDialogueSetIndex++;
+            Debug.Log("+");
             currentQuestIndex++;
             SetCurrentDialogueSet(); // Changer le dialogue en fonction de la nouvelle quête
             if(currentQuestIndex < questList.Count) {
@@ -166,6 +170,7 @@ public class DialogueController : MonoBehaviour {
         }
         if(dialogueInitiated == false && questController.currentQuest.IsComplete() ){ 
             currentQuestIndex++;
+            Debug.Log("+");
             currentDialogueSetIndex++;
             SetCurrentDialogueSet(); // Changer le dialogue en fonction de la nouvelle quête
             dialogueInitiated = true;

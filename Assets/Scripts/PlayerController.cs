@@ -153,6 +153,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void ConfigureQuestCanvas() {
+        this.questScreen = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<Canvas>();
+        this.questMenu = GameObject.FindGameObjectWithTag("QuestCanvas");
+        // this.questMenu
+    }
+
     private void TogglePauseMenu() {
         if(this.canResume && this.isAlive) {
             GameController.SetGameState(false);
