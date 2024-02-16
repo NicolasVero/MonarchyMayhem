@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5921829824397050495}
   - component: {fileID: 5297112541036577987}
   - component: {fileID: 5318322051197569286}
-  - component: {fileID: 535419676589775849}
-  - component: {fileID: 6222545758274868626}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -81,44 +79,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0.91, y: 0, z: 0.96}
---- !u!114 &535419676589775849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255245369788569438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc5472188f1f6439d7068f458dec28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcController: {fileID: 6222545758274868626}
-  dialogueCanvas: {fileID: 0}
-  interaction: {fileID: 0}
-  dialogueText: {fileID: 0}
-  nameText: {fileID: 0}
-  picture: {fileID: 0}
-  closeButton: {fileID: 0}
-  nextButton: {fileID: 0}
-  prevButton: {fileID: 0}
-  disabledCanvas: []
-  messagesPerStep: 1
-  isInRange: 0
-  dialogueInitiated: 0
---- !u!114 &6222545758274868626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255245369788569438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2dc7a6f7ccd4544380e4b5202b79976, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 2
 --- !u!1001 &6792951071653863788
 PrefabInstance:
   m_ObjectHideFlags: 0

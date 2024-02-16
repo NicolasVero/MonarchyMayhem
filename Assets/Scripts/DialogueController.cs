@@ -185,7 +185,7 @@ public class DialogueController : MonoBehaviour {
     }
 
     private void SetCurrentDialogueSet() {
-        if(currentDialogueSetIndex >= 0/* && currentDialogueSetIndex < dialogueSets.Length*/) {
+        if(currentDialogueSetIndex >= 0 && currentDialogueSetIndex < dialogueSets.Length) {
             dynamicDialogue = dialogueSets[currentDialogueSetIndex]; // Définir le nouvel ensemble de dialogues
         }
     }
