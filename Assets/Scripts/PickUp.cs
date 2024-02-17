@@ -8,8 +8,11 @@ public class PickUp : MonoBehaviour {
     [SerializeField] private QuestController questController;
     private int collectedItemsCount = 0;
 
+    public void InitPickUp() {
+        this.questController = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<QuestController>();
+    }
+
     void OnTriggerEnter(Collider other) {
-        
         if(other.gameObject.CompareTag("PickUp")) {   
             this.audio.PlayPickUpSFX();
             Destroy(other.gameObject);

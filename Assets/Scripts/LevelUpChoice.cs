@@ -10,6 +10,7 @@ public class LevelUpChoice : MonoBehaviour {
     [Header("Attributs")]
     [SerializeField] private GameObject[] banners;
     [SerializeField] private GameObject levelUpPanel;
+    [SerializeField] private GameObject dancePanel;
 
     [Header("Classes utilitaires")]
     [SerializeField] private HUDStats hudStats;
@@ -60,6 +61,7 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
         GameController.SetCursorVisibility(true);
+        GameController.SetPanelVisibility(this.dancePanel, false);
         // Cursor.position = new Vector3(targetPosition.x, targetPosition.y, 0);
     }
 
@@ -124,8 +126,6 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
 
-
-
     void ResumeGame() {
         this.playerController.SetCanResume(true);
         this.hudStats.UpdateStats();
@@ -137,6 +137,7 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetCursorVisibility(false);
         GameController.SetPanelVisibility(levelUpPanel, false);   
         GameController.SetCanvasVisibility(this.playerController.GetQuestCanvas(), this.playerController.IsQuestCanvasVisible());
+        GameController.SetPanelVisibility(this.dancePanel, true);
     }
 
 

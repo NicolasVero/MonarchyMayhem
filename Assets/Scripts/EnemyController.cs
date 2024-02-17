@@ -16,11 +16,10 @@ public class EnemyController : MonoBehaviour {
     private WeaponsDropper weaponsDropper;
     private QuestController questController;
 
-
     private string enemyType;
     private int attack, health, xp;
-    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack;
-    private bool canMove = true, canAttack = true, isAlive = true, deathCount = false, cooldown = false;
+    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack, attackDelay = .5f;
+    private bool canMove = true, canAttack = true, isAlive = true, deathCount = false, cooldown = false, isWaitingToAttack = false;
 
     private void Awake() {
 
@@ -69,15 +68,26 @@ public class EnemyController : MonoBehaviour {
                 if(Vector2.Distance(new Vector2(playerPosition.position.x, playerPosition.position.z), new Vector2(enemyPosition.position.x, enemyPosition.position.z)) <= this.navMeshAgent.stoppingDistance) {
                     this.animator.SetBool("Idle", true);
 
-                    if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
-                        this.Attack();
-                        this.timeSinceLastAttack = 0f;
+                    if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack && !this.isWaitingToAttack){
+                        StartCoroutine(WaitAndAttack());   
                     }
                 } else {
                     this.Move();
                 }
             }
         }
+    }
+
+    private IEnumerator WaitAndAttack() {
+        this.isWaitingToAttack = true;
+        yield return new WaitForSeconds(this.attackDelay);
+        
+        if(Vector2.Distance(new Vector2(playerPosition.position.x, playerPosition.position.z), new Vector2(enemyPosition.position.x, enemyPosition.position.z)) <= this.navMeshAgent.stoppingDistance) {
+            this.Attack();
+            this.timeSinceLastAttack = 0f;
+        }
+        
+        this.isWaitingToAttack = false;
     }
     
     private void Move() {

@@ -25,8 +25,8 @@ public class BossController : MonoBehaviour {
 
     private string walkMethod;
     private int attack, health, maxHealth, xp;
-    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack, sliderVelocity = 0.0f;
-    private bool canMove = true, canAttack = true, isAlive = true, firstPhasePassed = false, cooldown = false, isInTransition = false, bossRegen = false;
+    private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack, sliderVelocity = 0.0f, attackDelay = 0.5f;
+    private bool canMove = true, canAttack = true, isAlive = true, firstPhasePassed = false, cooldown = false, isInTransition = false, bossRegen = false, isWaitingToAttack = false;
 
     void Start() {
         this.spawnersController.SetMaxEntities(0);
@@ -97,9 +97,9 @@ public class BossController : MonoBehaviour {
             if(this.playerPosition && this.canMove) {
                 if(Vector2.Distance(new Vector2(playerPosition.position.x, playerPosition.position.z), new Vector2(enemyPosition.position.x, enemyPosition.position.z)) <= this.navMeshAgent.stoppingDistance) {
                     this.animator.SetBool("Idle", true);
-                    if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack){
-                        this.Attack();
-                        this.timeSinceLastAttack = 0f;
+                    
+                    if(this.timeSinceLastAttack >= this.attackSpeed && this.canAttack && !this.isWaitingToAttack){
+                        StartCoroutine(WaitAndAttack());
                     }
                 }
                 else {
@@ -107,6 +107,16 @@ public class BossController : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private IEnumerator WaitAndAttack() {
+        this.isWaitingToAttack = true;
+        yield return new WaitForSeconds(this.attackDelay);
+        if(Vector2.Distance(new Vector2(playerPosition.position.x, playerPosition.position.z), new Vector2(enemyPosition.position.x, enemyPosition.position.z)) <= this.navMeshAgent.stoppingDistance && !this.isInTransition) {
+            this.Attack();
+            this.timeSinceLastAttack = 0f;
+        }
+        this.isWaitingToAttack = false;
     }
 
     private void Move() {

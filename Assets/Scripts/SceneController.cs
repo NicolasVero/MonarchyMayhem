@@ -10,14 +10,21 @@ public class SceneController : MonoBehaviour {
     private PlayerController playerController;
     private QuestController questController;
     private Canvas interactionScreen;
+    private PickUp pickUp;
 
     void Awake() {
-        this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
-        this.interactionScreen = GameObject.Find("Interaction").GetComponent<Canvas>();
+
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.playerController.transform.position = SetSpawnPoint();
-        this.questController.InitQuestController();
-        this.playerController.ConfigureQuestCanvas();
+
+        if (this.GetSceneName() != "Salle_combat_final"){
+            this.interactionScreen = GameObject.Find("Interaction").GetComponent<Canvas>();
+            this.pickUp = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponentInChildren<PickUp>();
+            this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
+            this.questController.InitQuestController();
+            this.pickUp.InitPickUp();
+            this.playerController.ConfigureQuestCanvas();
+        }
     }
 
     void Update() {
@@ -28,14 +35,14 @@ public class SceneController : MonoBehaviour {
     }
 
     private void ShowInteraction() {
-        this.interactionScreen.enabled = this.isInRange;
+        if (this.GetSceneName() != "Salle_combat_final")
+            this.interactionScreen.enabled = this.isInRange;
     }
 
     private void ChooseNextZone(string sceneName) {
-        // if(questController.GetIsAllQuestCompleted())
-        //     return;
+        if(!questController.GetIsAllQuestCompleted())
+            return;
 
-        // string[] sceneNames = {"Tutorial", "Village", "Castle"};
         string[] sceneNames = {"Tutorial", "Village", "Chateau", "Salle_combat_final"};
         int index = Array.IndexOf(sceneNames, sceneName);
         if (index >= 0)
