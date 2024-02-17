@@ -21562,6 +21562,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9679e7c8c7f9be8409cae43d2d9a9947, type: 3}
+--- !u!1 &756721494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3409120945116705354, guid: 9679e7c8c7f9be8409cae43d2d9a9947, type: 3}
+  m_PrefabInstance: {fileID: 756721493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &756886717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30350,6 +30355,7 @@ MonoBehaviour:
   - {fileID: 1993737930}
   - {fileID: 1463886099}
   levelUpPanel: {fileID: 2018713877}
+  dancePanel: {fileID: 756721494}
   hudStats: {fileID: 434141872}
   playerController: {fileID: 793462387}
   _audio: {fileID: 129279935}

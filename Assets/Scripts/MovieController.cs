@@ -22,6 +22,6 @@ public class MovieController : MonoBehaviour {
     }
 
     void LoadNextScene() {
-        SceneManager.LoadScene("Tutorial"); 
+        SceneManager.LoadScene("GameMenu"); 
     }
 }
