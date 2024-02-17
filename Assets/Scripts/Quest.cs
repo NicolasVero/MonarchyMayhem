@@ -57,7 +57,7 @@ public class Quest {
         questDetails.YellowTitle = this.title;
         questDetails.Message = this.description;
         questDetails.Progression = (this.type == "Speaking") ? "Complétée : non" : "Complétée : " + this.currentCount + " / " + this.required;
-
+        
         return questDetails;
     }
 

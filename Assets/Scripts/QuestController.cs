@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-
 public class QuestController : MonoBehaviour {
 
     public Quest currentQuest;
@@ -13,6 +12,7 @@ public class QuestController : MonoBehaviour {
     private bool isAllQuestCompleted = false;
     private DialogueController dialogueController; 
     private SpawnersController spawnersController; 
+    [SerializeField] private SceneController sceneController;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI questTitle;
@@ -41,7 +41,19 @@ public class QuestController : MonoBehaviour {
 
     void InitializeQuests() {
         IsAllQuestCompleted(false);
-        quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking"));   
+
+
+        switch (this.sceneController.GetSceneName()){
+            case "Tutorial":
+                quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking")); 
+                break;
+            case "Village":
+                quests.Add(new Quest("Parler au docteur", "Parler au docteur près du point d'apparition", 1, "Speaking")); 
+                break;
+            case "Chateau":
+                quests.Add(new Quest("Parler au fou", "Parler à l'étrange individu dans le château", 1, "Speaking")); 
+                break;
+        }  
     }
 
     void ShowCurrentQuest()
