@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Difficulty : MonoBehaviour {
 
 	[SerializeField] private Canvas choice;

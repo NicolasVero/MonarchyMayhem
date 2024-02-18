@@ -30,13 +30,30 @@ public class Spawner : MonoBehaviour {
     private float timer = 0f;
     private int currentPickUpIndex = 0;
     private GameObject[] currentPickUpGroup;
-
+    private Difficulty difficultyController;
 
 
     void Awake(){
 
         GameObject spawn = transform.Find("Spawn").gameObject;
         spawn.SetActive(viewSpawnPoint);
+
+
+        difficultyController = FindObjectOfType<Difficulty>();
+        difficultyController.DisableChoice();
+
+        if(difficultyController.Getdifficulty() == "Easy"){
+            spawnDelay = 5;
+        }
+        if(difficultyController.Getdifficulty() == "Medium"){
+            spawnDelay = 4;
+        }
+        if(difficultyController.Getdifficulty() == "Hard"){
+            spawnDelay = 2;
+        }
+
+
+
 
         if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {
             GeneratePickUpGroup();

@@ -9,11 +9,26 @@ public class SpawnersController : MonoBehaviour {
     [SerializeField] private float radius;
     [SerializeField] private int maxEntities;
     [SerializeField] private GameObject enemiesContainer;
-    private GameObject[] spawnerObjects;
+    
     private bool isPaused = false;
-
+    private GameObject[] spawnerObjects;
+    private Difficulty difficultyController;
 
     void Start(){
+
+        difficultyController = FindObjectOfType<Difficulty>();
+        difficultyController.DisableChoice();
+
+
+        if(difficultyController.Getdifficulty() == "Easy"){
+            maxEntities = 9;
+        }
+        if(difficultyController.Getdifficulty() == "Medium"){
+            maxEntities = 14;
+        }
+        if(difficultyController.Getdifficulty() == "Hard"){
+            maxEntities = 21;
+        }
     
         List<GameObject> spawnerList = new List<GameObject>();
         foreach (Transform child in transform) {

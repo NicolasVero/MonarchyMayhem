@@ -3,40 +3,40 @@
     [
         {
             "type" : "peasant",
-            "chanceToDrop" : 0.77,
-            "health" : 30,
+            "chanceToDrop" : 0.30,
+            "health" : 15,
             "attack" : 5, 
             "attackSpeed" : 2.0,
             "speed" : 1.0, 
-            "range" : 3.0, 
+            "range" : 2.0, 
             "xp" : 1
         },
         {
             "type" : "bourgeois",
-            "chanceToDrop" : 0.15,
-            "health" : 50,
-            "attack" : 6, 
+            "chanceToDrop" : 0.50,
+            "health" : 20,
+            "attack" : 7, 
             "attackSpeed" : 1.5,
             "speed" : 2.5, 
-            "range" : 3.0, 
+            "range" : 2.5, 
             "xp" : 2
         },
         {
             "type" : "knight",
-            "chanceToDrop" : 0.5,
-            "health" : 100,
+            "chanceToDrop" : 1,
+            "health" : 50,
             "attack" : 20, 
             "attackSpeed" : 2,
-            "speed" : 3.0, 
-            "range" : 2.0, 
+            "speed" : 4.0, 
+            "range" : 3.0, 
             "xp" : 5
         },
         
         {
             "type" : "boss_1",
             "chanceToDrop" : 0,
-            "health" : 50,
-            "attack" : 30, 
+            "health" : 250,
+            "attack" : 25, 
             "attackSpeed" : 2,
             "speed" : 3.0, 
             "range" : 3.0, 
@@ -45,9 +45,9 @@
         {
             "type" : "boss_2",
             "chanceToDrop" : 0,
-            "health" : 1000,
-            "attack" : 60, 
-            "attackSpeed" : 2,
+            "health" : 500,
+            "attack" : 30, 
+            "attackSpeed" : 1,
             "speed" : 9.0, 
             "range" : 3.0, 
             "xp" : 0
