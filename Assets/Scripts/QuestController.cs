@@ -45,13 +45,13 @@ public class QuestController : MonoBehaviour {
 
         switch (this.sceneController.GetSceneName()){
             case "Tutorial":
-                quests.Add(new Quest("Parler au prêtre", "Parler au prêtre près du point d'apparition", 1, "Speaking")); 
+                quests.Add(new Quest("Parlez au prêtre", "Parlez au prêtre près du point d'apparition", 1, "Speaking")); 
                 break;
             case "Village":
-                quests.Add(new Quest("Parler au docteur", "Parler au docteur près du point d'apparition", 1, "Speaking")); 
+                quests.Add(new Quest("Parlez au docteur", "Parlez au docteur près du point d'apparition", 1, "Speaking")); 
                 break;
             case "Chateau":
-                quests.Add(new Quest("Parler au fou", "Parler à l'étrange individu dans le château", 1, "Speaking")); 
+                quests.Add(new Quest("Parlez au fou", "Parlez à l'étrange individu dans le château", 1, "Speaking")); 
                 break;
         }  
     }

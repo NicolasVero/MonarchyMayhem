@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour {
         this.healthBar.maxValue = this.GetHealth();
         this.healthBar.value = this.GetHealth();
 
+        this.AddWeaponsDropper();
         this.DisableWeapons();
     }
 
@@ -155,6 +156,10 @@ public class PlayerController : MonoBehaviour {
             this.animator.SetTrigger("Attack");
             StartCoroutine(DisableGoingAttack());
         }
+    }
+
+    public void AddWeaponsDropper() {
+        this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
     }
 
     private void ShowRetryMenu() {

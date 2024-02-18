@@ -20,6 +20,7 @@ public class SceneController : MonoBehaviour {
         this.playerController.ConfigureQuestCanvas();
 
         if(this.GetSceneName() != "Salle_combat_final"){
+            this.playerController.AddWeaponsDropper();
             this.danceWheelController = GameObject.Find("DanceWheel").GetComponent<DanceWheelController>();
             this.danceWheelController.InitQuestController();
             this.playerController.InitSceneController();
