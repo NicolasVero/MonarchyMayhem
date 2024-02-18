@@ -28,18 +28,18 @@
                     "messages": [
                         "Je ne voudrais pas vous retenir plus longtemps mon roi. Le royaume a besoin de vous !",
                         "Bonté divine !!!",
-                        "Une horde de gueux s'approche de nous. Je vous en supplie immense roi Makram, sauvez moi de des diciples de Sunburn ! "
+                        "Une horde de gueux s'approche de nous. Je vous en supplie immense roi Makram, sauvez-moi de des disciples de Sunburn ! "
                     ]
                 },
                 {
                     "messages": [
                         "Merci ô grand roi Makram, j'ai vu que vous aviez volé les armes que ses hérétiques ont brandi vers vous !",
-                        "Comme vous pouvez le voir, grâce à ces armes, votre force à augmentée dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
+                        "Comme vous pouvez le voir, grâce à ces armes, votre force a augmenté dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
                         "Faites attention à ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumières des plus en plus étincelantes.",
-                        "Que dite vous ? Vous voulez retourner à votre château au plus vite ?",
+                        "Que dites-vous ? Vous voulez retourner à votre château au plus vite ?",
                         "Il existe bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
                         "JE NE RETROUVE PLUS CE PARCHEMIN !!!",
-                        "J'ai dû le perdre en fuyant ces hérétiques, pouvez vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
+                        "J'ai dû le perdre en fuyant ces hérétiques, pouvez-vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
                     ]
                 },
                 {
@@ -48,7 +48,7 @@
                         "Pour sortir de cet endroit, il vous faudra passer par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
                         "Vous y trouverez un arbre géant à côté d'une porte en bois décorée, c'est ici que vous pourrez partir.",
                         "Retrouvez votre château et sauvez notre royaume. Telle est la tâche qui vous incombe.",
-                        "Je ne vous servirez plus à rien, bonne route mon seigneur."
+                        "Je ne vous servirai plus à rien, bonne route mon seigneur."
                         
                     ]
                 }
@@ -63,7 +63,7 @@
                 },
                 {
                     "title" : "Anti-Propagande",
-                    "description" : "Faites taire les fauteurs de troubles. Ramassez les affiches du groupe Sunburn à travers le royaume",
+                    "description" : "Faites taire les fauteurs de trouble. Ramassez les affiches du groupe Sunburn à travers le royaume",
                     "required" : 3,
                     "type" : "Finding"
                 },
@@ -148,7 +148,7 @@
                 {
                     "title" : "Rien de tel qu'un roi pour faire le ménage",
                     "description" : "Faites taire les paysans qui se moquent du Docteur LaPeste. Tuez 40 gueux.",
-                    "required" : 1,
+                    "required" : 40,
                     "type" : "Killing"
                 },
                 {
@@ -160,19 +160,19 @@
                 {
                     "title" : "Mieux vaut prévenir ...",
                     "description" : "Docteur LaPeste vous a demandé de lui apporter des potions vertes. Mais pourquoi faire ? Ne vous posez pas de questions. ",
-                    "required" : 1,
+                    "required" : 3,
                     "type" : "Finding"
                 },
                 {
                     "title" : "... Que guérir",
                     "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pourquoi :). ",
-                    "required" : 1,
+                    "required" : 3,
                     "type" : "Finding"
                 },
                 {
                     "title" : "Une punition pour Border-Box",
                     "description" : "Tuez les tous. Les adeptes de Border-Box doivent être soumis.",
-                    "required" : 1,
+                    "required" : 15,
                     "type" : "Killing"
                 }
             ]
@@ -254,7 +254,7 @@
                 {
                     "title" : "Gardez votre calme",
                     "description" : "Dansez à nouveau... Non, ne le frappez pas il a peut-être la gale.",
-                    "required" : 1,
+                    "required" : 2,
                     "type" : "Dancing"
                 },
                 {
