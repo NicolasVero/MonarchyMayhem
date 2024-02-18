@@ -18,6 +18,7 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI speedStat;
     [SerializeField] private TextMeshProUGUI knockbackStat;
     [SerializeField] private TextMeshProUGUI weaponName;
+    [SerializeField] private TextMeshProUGUI difficultyName;
 
     [Header("Secondary Text Mesh")]
     [SerializeField] private TextMeshProUGUI weaponAttack;
@@ -37,6 +38,9 @@ public class HUDStats : MonoBehaviour {
     [SerializeField] private RawImage speedIcon;
     [SerializeField] private RawImage knockbackIcon;
     [SerializeField] private RawImage enableAttackIcon;
+    [SerializeField] private RawImage difficultyIcon;
+
+    private Difficulty difficultyController;
 
     [Header("Joueur")]
     [SerializeField] private PlayerController player;
@@ -46,6 +50,21 @@ public class HUDStats : MonoBehaviour {
 
     void Start() {
         this.UpdateStats();
+        this.SetDifficulty();
+    }
+
+    private void SetDifficulty() {
+        difficultyController = FindObjectOfType<Difficulty>();
+        difficultyController.DisableChoice();
+
+        this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + this.difficultyController.GetDifficulty());
+        string name = "";
+
+        if(this.difficultyController.GetDifficulty() == "Easy") name = "Agitation"; 
+        if(this.difficultyController.GetDifficulty() == "Medium") name = "Soulèvement"; 
+        if(this.difficultyController.GetDifficulty() == "Hard") name = "Insurrection";
+
+        this.difficultyName.text = name; 
     }
 
     public void UpdateHealth() {

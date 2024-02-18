@@ -20,13 +20,13 @@ public class SpawnersController : MonoBehaviour {
         difficultyController.DisableChoice();
 
 
-        if(difficultyController.Getdifficulty() == "Easy"){
+        if(difficultyController.GetDifficulty() == "Easy"){
             maxEntities = 9;
         }
-        if(difficultyController.Getdifficulty() == "Medium"){
+        if(difficultyController.GetDifficulty() == "Medium"){
             maxEntities = 14;
         }
-        if(difficultyController.Getdifficulty() == "Hard"){
+        if(difficultyController.GetDifficulty() == "Hard"){
             maxEntities = 21;
         }
     

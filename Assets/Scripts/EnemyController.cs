@@ -145,13 +145,15 @@ public class EnemyController : MonoBehaviour {
         canMove = false;
         canAttack = false;
         isAlive = false;
-        this.playerController.XPGain(this.xp);
         this.gameObject.tag = "Untagged";
 
         Invoke("DestroyEnemy", 2f);
     }
 
     private void DestroyEnemy() {
+
+        this.playerController.XPGain(this.xp);
+
         if(WillDropWeapon())
             this.weaponsDropper.CreateWeapon(transform.position);
         

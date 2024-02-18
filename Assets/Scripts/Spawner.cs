@@ -42,13 +42,13 @@ public class Spawner : MonoBehaviour {
         difficultyController = FindObjectOfType<Difficulty>();
         difficultyController.DisableChoice();
 
-        if(difficultyController.Getdifficulty() == "Easy"){
+        if(difficultyController.GetDifficulty() == "Easy") {
             spawnDelay = 5;
         }
-        if(difficultyController.Getdifficulty() == "Medium"){
+        if(difficultyController.GetDifficulty() == "Medium") {
             spawnDelay = 4;
         }
-        if(difficultyController.Getdifficulty() == "Hard"){
+        if(difficultyController.GetDifficulty() == "Hard") {
             spawnDelay = 2;
         }
 
