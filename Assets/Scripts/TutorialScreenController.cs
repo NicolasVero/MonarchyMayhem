@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class TutorialScreenController : MonoBehaviour {
-    [SerializeField] private Canvas tutorial;
 
     void Awake() {
         GameController.SetGameState(false);
     }
 
-    public void OnMouseDown() {
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            this.DeactivateCanvas();
+    }
+
+    public void DeactivateCanvas() {
+        Destroy(this.gameObject);
         GameController.SetGameState(true);
-        Destroy(this.tutorial.gameObject);
     }
 }

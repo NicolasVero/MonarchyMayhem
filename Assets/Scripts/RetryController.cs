@@ -7,7 +7,7 @@ public class RetryController : MonoBehaviour
 {
     public void ChangeScene() {
         Destroy(GameObject.FindGameObjectWithTag(Names.MainCharacter));
-        // GameController()
+        Destroy(GameObject.FindGameObjectWithTag("UI"));
         SceneManager.LoadScene("GameMenu");
     }
 

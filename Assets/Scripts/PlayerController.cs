@@ -299,9 +299,10 @@ public class PlayerController : MonoBehaviour {
     private void CameraDeathAnimation() {
         GameController.SetCanvasVisibility(hudScreen, false);
         GameController.SetCanvasVisibility(questScreen, false);
-        GameController.SetCanvasVisibility(this.bossCanvas, false);
-        Destroy(GameObject.FindGameObjectWithTag("UI"));
         
+        if(this.sceneController.GetSceneName() == "Salle_combat_final")
+            GameController.SetCanvasVisibility(this.bossCanvas, false);
+                
         this.animator.SetInteger("Death", GameController.Random(1, 3));
         this.camera.EnableBlackAndWhiteEffect();
         GameController.SetGameState(0.3f);
