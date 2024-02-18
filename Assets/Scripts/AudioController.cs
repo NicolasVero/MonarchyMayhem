@@ -19,9 +19,6 @@ public class AudioController : MonoBehaviour {
     [SerializeField] AudioSource pauseMenuSFX;
     [SerializeField] AudioSource lvlUpSFX;
 
-    void Awake() { 
-        this.PlayThemeSFX();
-    }
 
     public void PlayThemeSFX() {
         this.randomTheme = GameController.Random(0, this.mainTheme.Length - 1);

@@ -52,6 +52,9 @@ public class BossController : MonoBehaviour {
         this.healthBar.value = this.GetHealth();
         
         this.SetHealthBarMax(this.maxHealth);
+
+        this.audio.StopThemeSFX();
+        this.audio.PlayBossThemeSFX();
     }
 
     private void LoadBossStats() {
@@ -229,22 +232,19 @@ public class BossController : MonoBehaviour {
         this.isInTransition = false;
         this.bossRegen = false;
         
-        this.bossName.text = "Dark Nabil";
-
-        this.audio.StopThemeSFX();
-        this.audio.PlayBossThemeSFX();
         // this.SetHealthBarMax(this.maxHealth);
         // this.SetHealthBar(this.health);
 
         this.StartMovement();
 
-        this.spawnersController.SetMaxEntities(50);
-        
+        this.spawnersController.SetMaxEntities(15);
     }
 
     private void ChangeSkin() {
         this.animator.SetBool("TransitionSecondPhase", false);
         this.bossRegen = true;
+        this.bossName.text = "Dark Nabil";
+
         foreach(Transform child in weaponHolder.transform) {
             if(child.gameObject.name == "weapon_3") {
                 child.gameObject.SetActive(true);

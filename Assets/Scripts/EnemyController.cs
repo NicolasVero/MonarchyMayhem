@@ -122,6 +122,7 @@ public class EnemyController : MonoBehaviour {
                 if(!this.deathCount) {
                     this.playerController.IncrementKillCounter();
                     this.playerController.IncrementStatCounter();
+                    questController.UpdateQuestText();
                     this.deathCount = true;
                 }
             } else {
@@ -141,10 +142,10 @@ public class EnemyController : MonoBehaviour {
 
     private void Death() {
         this.animator.SetInteger("Death", GameController.Random(1, 3));
-        questController.UpdateQuestText();
         canMove = false;
         canAttack = false;
         isAlive = false;
+        this.gameObject.tag = "Untagged";
 
         Invoke("DestroyEnemy", 2f);
     }

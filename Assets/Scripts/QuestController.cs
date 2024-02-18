@@ -105,6 +105,8 @@ public class QuestController : MonoBehaviour {
             else
             {
                 Debug.Log("Toutes les quêtes ont été complétées. Passage au niveau suivant...");
+                quests.Add(new Quest("Changement de zone", "Rendez-vous dans la zone suivante", 0, "Speaking"));
+                ShowCurrentQuest();
 
                 GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
                 if (npcObject != null)

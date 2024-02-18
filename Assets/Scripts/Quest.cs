@@ -26,7 +26,8 @@ public class Quest {
         this.required = required;
 
         if(this.type == "Killing") this.countReset = playerController.GetKillCounter();
-        if(this.type == "Finding") this.countReset =  collectibleController.GetCollectibleCounter();
+        if(this.type == "Finding") this.countReset = collectibleController.GetCollectibleCounter();
+        if(this.type == "Dancing") this.countReset = this.playerController.GetDanceCounter();
     }
 
     public struct QuestDetails {
@@ -36,7 +37,7 @@ public class Quest {
     }
 
     public void IncrementCounter() {
-        if (this.type == "Killing") {
+        if(this.type == "Killing") {
             this.currentCount = playerController.GetKillCounter() - this.countReset;
         }
 
@@ -44,8 +45,12 @@ public class Quest {
             this.currentCount = collectibleController.GetCollectibleCounter() - this.countReset;
         }
 
-        if (this.type == "Speaking") {
+        if(this.type == "Speaking") {
             this.currentBool = dialogueController.GetDialogueInitiated();
+        }
+
+        if(this.type == "Dancing") {
+            this.currentCount = this.playerController.GetDanceCounter() - this.countReset;
         }
     }
 

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject questMenu;
     [SerializeField] private ProgressiveDarkeningController progressiveDarkening;
+    [SerializeField] private GameObject retry;
 
     [Header("Weapons")]
     [SerializeField] GameObject weapon;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 
 
     private float sensitivity = 10;
-    private int enemyKillCounter, sprint = 0;
+    private int enemyKillCounter, sprint = 0, danceCounter = 0;
     private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false, inDanseMenu = false;
 
     private float timeSinceLastAttack = 0f;
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour {
     private SphereCollider rangeCollider;
     private Animator animator;
     private Vector3 moveDirection;
+    private SceneController sceneController;
+    private Canvas bossCanvas;
     private Dictionary<KeyCode, Action> keyActions = new Dictionary<KeyCode, Action>();
 
 
@@ -101,13 +104,14 @@ public class PlayerController : MonoBehaviour {
         this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
         this.keyActions.Add(KeyCode.P, TogglePauseMenu);
 
-
+        this.audio.PlayThemeSFX();
         DontDestroyOnLoad(this.gameObject);
         this.camera.DisableBlackAndWhiteEffect();
 
         GameController.SetCanvasVisibility(deathScreen, false);
         GameController.HidePauseMenu(pauseMenu);
         GameController.SetPanelVisibility(this.levelUpPanel, false);
+        GameController.SetPanelVisibility(this.retry, false);
 
         this.SetHealthBarMax(this.health);
         this.rangeCollider = GetComponent<SphereCollider>();
@@ -153,6 +157,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void ShowRetryMenu() {
+        GameController.SetCursorVisibility(true);
+        GameController.SetGameState(false);
+        GameController.SetPanelVisibility(this.retry, true);
+    }
+
     public void ConfigureQuestCanvas() {
         this.questScreen = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<Canvas>();
         this.questMenu = GameObject.FindGameObjectWithTag("QuestCanvas");
@@ -183,10 +193,15 @@ public class PlayerController : MonoBehaviour {
             GameController.ShowPauseMenu(pauseMenu);
             this.audio.PlayPauseMenuSFX();
             this.audio.StopThemeSFX();
+            this.audio.StopBossThemeSFX();
         } else {
             GameController.HidePauseMenu(pauseMenu);
             this.audio.StopPauseMenuSFX();
-            this.audio.PlayThemeSFX();
+
+            if(this.sceneController.GetSceneName() != "Salle_combat_final")
+                this.audio.PlayThemeSFX();
+            else
+                this.audio.PlayBossThemeSFX();
         }
     }
 
@@ -284,6 +299,8 @@ public class PlayerController : MonoBehaviour {
     private void CameraDeathAnimation() {
         GameController.SetCanvasVisibility(hudScreen, false);
         GameController.SetCanvasVisibility(questScreen, false);
+        GameController.SetCanvasVisibility(this.bossCanvas, false);
+        Destroy(GameObject.FindGameObjectWithTag("UI"));
         
         this.animator.SetInteger("Death", GameController.Random(1, 3));
         this.camera.EnableBlackAndWhiteEffect();
@@ -294,6 +311,7 @@ public class PlayerController : MonoBehaviour {
     private void DeathScreen() {
         GameController.SetCanvasVisibility(deathScreen, true);
         progressiveDarkening.StartFading();
+        Invoke("ShowRetryMenu", 1f);
     }
 
     private void DanceTriggered() {
@@ -651,5 +669,21 @@ public class PlayerController : MonoBehaviour {
             GameController.SetCanvasVisibility(this.questScreen, false);
             this.levelUpChoice.UpdateStatsDisplay();
         }
+    }
+
+    public void IncrementDanceCounter() {
+        this.danceCounter++;
+    }
+
+    public int GetDanceCounter() { 
+        return this.danceCounter;   
+    }
+
+    public void InitSceneController() {
+        this.sceneController = GameObject.Find("Out").GetComponent<SceneController>();
+    }
+    
+    public void InitBossCanvas() {
+        this.bossCanvas = GameObject.FindGameObjectWithTag("BossCanvas").GetComponent<Canvas>();
     }
 }

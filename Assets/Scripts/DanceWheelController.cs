@@ -13,6 +13,7 @@ public class DanceWheelController : MonoBehaviour {
     private Animator animator;
     private bool danceWheelSelected;
     private bool canOpenWheelMenu = true;
+    private QuestController questController;
 
     void Awake() {
         this.animator = GetComponent<Animator>();
@@ -47,7 +48,16 @@ public class DanceWheelController : MonoBehaviour {
         }
     }
 
+    public void InitQuestController(){
+        this.questController = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<QuestController>();
+    }
+
     public void DanceAnimations(int danceID) {
+
+        if (danceID >= 1 && danceID <= 4) {
+            this.playerController.IncrementDanceCounter();
+            this.questController.UpdateQuestText();
+        }
 
         this.danceWheelSelected = false;
         this.ToggleWheelAnimation(this.danceWheelSelected);

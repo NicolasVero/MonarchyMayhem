@@ -11,19 +11,26 @@ public class SceneController : MonoBehaviour {
     private QuestController questController;
     private Canvas interactionScreen;
     private PickUp pickUp;
+    private DanceWheelController danceWheelController;
 
     void Awake() {
 
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.playerController.transform.position = SetSpawnPoint();
+        this.playerController.ConfigureQuestCanvas();
 
-        if (this.GetSceneName() != "Salle_combat_final"){
+        if(this.GetSceneName() != "Salle_combat_final"){
+            this.danceWheelController = GameObject.Find("DanceWheel").GetComponent<DanceWheelController>();
+            this.danceWheelController.InitQuestController();
+            this.playerController.InitSceneController();
             this.interactionScreen = GameObject.Find("Interaction").GetComponent<Canvas>();
             this.pickUp = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponentInChildren<PickUp>();
             this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
             this.questController.InitQuestController();
             this.pickUp.InitPickUp();
             this.playerController.ConfigureQuestCanvas();
+        } else {
+            this.playerController.InitBossCanvas();
         }
     }
 
@@ -40,8 +47,8 @@ public class SceneController : MonoBehaviour {
     }
 
     private void ChooseNextZone(string sceneName) {
-        if(!questController.GetIsAllQuestCompleted())
-            return;
+        // if(!questController.GetIsAllQuestCompleted())
+            // return;
 
         string[] sceneNames = {"Tutorial", "Village", "Chateau", "Salle_combat_final"};
         int index = Array.IndexOf(sceneNames, sceneName);
