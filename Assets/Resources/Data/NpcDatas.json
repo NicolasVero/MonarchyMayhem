@@ -70,7 +70,7 @@
                 {
                     "title" : "Encore un petit coup de balai",
                     "description" : "Allez occire le groupe d'hérétiques qui fonce sur vous et défendez le prêtre",
-                    "required" : 1,
+                    "required" : 15,
                     "type" : "Killing"
                 },
                 {
@@ -90,7 +90,7 @@
                     "messages": [
                         "Ah, votre Majesté, quel plaisir de vous voir ici. Vous avez besoin d'aide pour remonter sur le trône ?",
                         "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide.",
-                        "J'ai eu quelques querelles avec des gens qui se sont moqués de moi à cause du fait que je n'aie pas de vrais diplômes de médecine.",
+                        "J'ai eu quelques querelles avec des gens qui se sont moqués de moi à cause du fait que je n'aie pas de vrai diplôme de médecine.",
                         "Allez, les faire taire, je vous prie."
                     ]
                 },
@@ -99,8 +99,8 @@
                         "Vous les avez tous tués ? C'est ma foi une façon bien efficace de les faire taire. En tout cas je m'en réjouis.",
                         "J'ai entendu dire qu'un nouveau médecin venait de recevoir son diplôme. Je crois que...",
                         "Vous venez de le tuer...",
-                        "Parfait récupérez moi son diplôme, il doit traîner par terre.",
-                        "S'il est déchiré vous dites ? Ne vous inquiétez pas, j'ai juste besoin de recopier son contenu. J'inventerais les morceaux manquants."
+                        "Parfait récupérez-moi son diplôme, il doit traîner par terre.",
+                        "S'il est déchiré vous dites ? Ne vous inquiétez pas, j'ai juste besoin de recopier son contenu. J'inventerai les morceaux manquants."
                     ]
                 },
                 {
@@ -147,25 +147,25 @@
             [
                 {
                     "title" : "Rien de tel qu'un roi pour faire le ménage",
-                    "description" : "Faites taire les paysans qui se moquent du Docteur LaPeste. Tuez 40 gueux.",
-                    "required" : 1,
+                    "description" : "Faites taire les paysans qui se moquent du Docteur Lapeste.",
+                    "required" : 40,
                     "type" : "Killing"
                 },
                 {
-                    "title" : "Le 'précieux' du Docteur LaPeste",
-                    "description" : "Trouvez le diplôme du vrai médecin dont vous a parlé Docteur LaPeste.",
+                    "title" : "Le 'précieux' du docteur Lapeste",
+                    "description" : "Trouvez le diplôme du vrai médecin dont vous a parlé docteur Lapeste.",
                     "required" : 1,
                     "type" : "Finding"
                 },
                 {
                     "title" : "Mieux vaut prévenir ...",
-                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions vertes. Mais pourquoi faire ? Ne vous posez pas de question. ",
+                    "description" : "Le docteur Lapeste vous a demandé de lui apporter des potions vertes. Mais pour quoi faire ? Ne vous posez pas de question. ",
                     "required" : 3,
                     "type" : "Finding"
                 },
                 {
                     "title" : "... Que guérir",
-                    "description" : "Docteur LaPeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pourquoi :). ",
+                    "description" : "Le docteur Lapeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pour quoi :). ",
                     "required" : 3,
                     "type" : "Finding"
                 },
@@ -216,20 +216,20 @@
                         "Hmm, ce mur n'est pas à mon goût...",
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum dolor a justo bibendum, vitae sodales mauris efficitur. Donec quis rutrum est.",
                         "Haaa vous êtes la ??",
-                        "Vous les avez tous tués ? Parfait ces mécréants qui m'ont fouetté pendant que j'étais en cellule sont morts ! *Danse (moins bien que vous)*",
+                        "Vous les avez tous tués ? Parfait ces mécréants qui m'ont fouettés pendant que j'étais en cellule sont morts ! *Danse (moins bien que vous)*",
                         "Oui, je me suis échappé de ma cellule d'isolement quand tous les gardes ont afflué vers le village. D'ailleurs, je crois qu'ils vous cherchaient pour vous tuer.",
                         "Si vous êtes encore vivant... C'est que vous les avez tous massacrés je suppose.",
                         "Vous n'avez pas trouvé les clefs sur les geôliers ?",
                         "HHAAA MAIS OUI JE SAIS ! Mais d'abord, je dois manger. J'ai FAIMMMMM !",
-                        "Ramenez moi quelque chose à manger, et je vous dirai tout. TOUT !! *se met à genoux devant vous*"
+                        "Ramenez-moi quelque chose à manger et je vous dirai tout. TOUT !! *se met à genoux devant vous*"
                     ]
                 },
                 {
                     "messages": [
                         "OUI OUI AH OUI ! MANGEZ ! MANGEZ !!!",
                         "*miam miam miam* *Il se met à manger toutes les 'provisions' très rapidement*",
-                        "QUOI ??!! LES CLEFS ?? AUCUNE IDÉE DE OU ELLES SONT...",
-                        "Peut-être qu'une bonne boisson me rafraichirai la mémoire. Hihihihi",
+                        "QUOI ??!! LES CLEFS ?? AUCUNE IDÉE D'OÙ ELLES SONT...",
+                        "Peut-être qu'une bonne boisson me rafraichirais la mémoire. Hihihihi",
                         "*cling cling*",
                         "Oh ! Les clefs, je les avais donc depuis tout ce temps ??",
                         "Je vous ai bien eu ! HAHAGHZIYFE FGDUYGZ OUGYVDCOUBH KDNKJDNKD",
@@ -253,19 +253,19 @@
                 },
                 {
                     "title" : "Gardez votre calme",
-                    "description" : "Dansez à nouveau... Non, ne le frappez pas il a peut-être la gale.",
+                    "description" : "Dansez à nouveau... Non, ne le frappez pas, il a peut-être la gale.",
                     "required" : 2,
                     "type" : "Dancing"
                 },
                 {
                     "title" : "Génocide geôlier",
                     "description" : "Tuez tous les geôliers ! Vous ne faites jamais dans la dentelle de toute façon.",
-                    "required" : 1,
+                    "required" : 15,
                     "type" : "Killing"
                 },
                 {
                     "title" : "Un festin de roi",
-                    "description" : "Ramenez lui à manger. Quelque chose, n'importe quoi !",
+                    "description" : "Ramenez-lui à manger. Quelque chose, n'importe quoi !",
                     "required" : 3,
                     "type" : "Finding"
                 }
