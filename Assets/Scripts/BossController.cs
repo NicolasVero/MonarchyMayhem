@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour {
 
@@ -205,6 +206,7 @@ public class BossController : MonoBehaviour {
             child.gameObject.SetActive(false);
         }
         this.animator.SetBool("Death", true);
+        Invoke("Destroyer", 5f);
     }
 
     private void StopMovement() {
@@ -289,7 +291,16 @@ public class BossController : MonoBehaviour {
     
     public int GetMaxHealth() {
         return this.maxHealth;
-    }    
+    }   
 
+    private void Destroyer() {
+        Destroy(GameObject.FindGameObjectWithTag(Names.MainCharacter));
+        Destroy(GameObject.FindGameObjectWithTag("UI"));
+        Destroy(GameObject.FindGameObjectWithTag("Difficulty"));
+        this.ChangeScene();
+    } 
 
+    private void ChangeScene() {
+        SceneManager.LoadScene("Conclusion", LoadSceneMode.Single);
+    }
 }
