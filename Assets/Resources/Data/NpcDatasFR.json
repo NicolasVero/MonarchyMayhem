@@ -1,0 +1,275 @@
+{
+    "npcs" : 
+    [
+        {
+            "id" : 1,
+            "name" : "Armand le prêtre",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Mon Cher Ami, je vois que vous êtes de retour. Mais hélas, les temps sont sombres et le royaume est en proie au chaos.", 
+                        "Les paysans, vos fidèles sujets, se sont retournés contre vous. Ils ont été manipulés par des forces obscures et ont succombé à la colère. Votre trône est en péril, mais tout espoir n'est pas perdu.", 
+                        "Vous devez vous battre, mon ami. Affrontez ceux qui vous trahissent et regagnez votre trône. Mais avant cela, laissez-moi vous montrer les rudiments du combat et de la survie.",
+                        "Sur le côté gauche de votre écran, vous trouverez différentes statistiques pour vous aider dans votre quête : l'attaque, la vitesse d'attaque, la vitesse de déplacement, la portée d'attaque, la résistance et la régénération. Faites attention à ces chiffres, car ils pourraient faire la différence entre la victoire et la défaite.",
+                        "Lorsque vous triomphez de vos ennemis sur le champ de bataille, vous gagnez en expérience. À chaque montée de niveau, vous aurez l'opportunité de renforcer vos compétences. Trois chemins se présenteront à vous, chacun représentant une voie vers la grandeur. Choisissez sagement, car chaque décision peut façonner le cours de votre destinée.",
+                        "Lorsque vous terrassez vos ennemis, ils laisseront parfois tomber des armes. Ces armes ont une variété de raretés, allant de basique à légendaire. Chacune offre ses propres avantages et inconvénients, alors prenez garde à choisir celles qui correspondent le mieux à votre style de combat.",
+                        "Bien, votre Majesté, il est temps d'agir. Votre première tâche : éliminer un certain nombre de ces paysans révoltés. Oui, je sais, c'est ironique, n'est-ce pas ? Mais que voulez-vous, c'est la vie de ce royaume de fous."
+                    ]
+                },
+                {
+                    "messages": [
+                        "Mon roi, un groupe d'hérétiques a juré fidélité au nouveau roi l'usurpateur !", 
+                        "Ils se font appeler Sunburn, et ils ont commencé à parsemer la ville de messages impies.",
+                        "Je vous en supplie mon roi, allez les réduire au silence !"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Je ne voudrais pas vous retenir plus longtemps mon roi. Le royaume a besoin de vous !",
+                        "Bonté divine !!!",
+                        "Une horde de gueux s'approche de nous. Je vous en supplie immense roi Makram, sauvez-moi de des disciples de Sunburn ! "
+                    ]
+                },
+                {
+                    "messages": [
+                        "Merci ô grand roi Makram, j'ai vu que vous aviez volé les armes que ses hérétiques ont brandi vers vous !",
+                        "Comme vous pouvez le voir, grâce à ces armes, votre force a augmenté dans certains domaines. Malheureusement, la plupart des armes de rareté commune vous procure des malus.",
+                        "Faites attention à ce que vous ramassez sur les dépouilles de vos victimes, cherchez toujours des lumières des plus en plus étincelantes.",
+                        "Que dites-vous ? Vous voulez retourner à votre château au plus vite ?",
+                        "Il existe bien un parchemin qui mène à votre château, je l'avais gardé dans ma besace... ",
+                        "JE NE RETROUVE PLUS CE PARCHEMIN !!!",
+                        "J'ai dû le perdre en fuyant ces hérétiques, pouvez-vous le retrouvez et me l'apporter, je vous montrerez ensuite le chemin qui mène vers votre trône."
+                    ]
+                },
+                {
+                    "messages": [
+                        "Bien joué, vous avez retrouvé le parchemin menant vers votre château !",
+                        "Pour sortir de cet endroit, il vous faudra passer par le village puis aller vers la maison de Richard, c'est la plus grande maison de ce sentier.",
+                        "Vous y trouverez un arbre géant à côté d'une porte en bois décorée, c'est ici que vous pourrez partir.",
+                        "Retrouvez votre château et sauvez notre royaume. Telle est la tâche qui vous incombe.",
+                        "Je ne vous servirai plus à rien, bonne route mon seigneur."
+                        
+                    ]
+                }
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Ménage de printemps",
+                    "description" : "Allez occire 5 paysans.",
+                    "required" : 5,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Anti-Propagande",
+                    "description" : "Faites taire les fauteurs de trouble. Ramassez les affiches du groupe Sunburn à travers le royaume",
+                    "required" : 3,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Encore un petit coup de balai",
+                    "description" : "Allez occire le groupe d'hérétiques qui fonce sur vous et défendez le prêtre",
+                    "required" : 15,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Un parchemin dans une botte de foin",
+                    "description" : "Retrouvez le parchemin perdu du prêtre dans les sentiers perdus.",
+                    "required" : 1,
+                    "type" : "Finding"
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "name" : "Docteur Lapeste",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Ah, votre Majesté, quel plaisir de vous voir ici. Vous avez besoin d'aide pour remonter sur le trône ?",
+                        "Je suis prêt à vous offrir mon aide, mais rappelez-vous, mes services ont un prix. Revenez me parler si vous êtes sûr de bien vouloir mon aide.",
+                        "J'ai eu quelques querelles avec des gens qui se sont moqués de moi à cause du fait que je n'aie pas de vrai diplôme de médecine.",
+                        "Allez, les faire taire, je vous prie."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Vous les avez tous tués ? C'est ma foi une façon bien efficace de les faire taire. En tout cas je m'en réjouis.",
+                        "J'ai entendu dire qu'un nouveau médecin venait de recevoir son diplôme. Je crois que...",
+                        "Vous venez de le tuer...",
+                        "Parfait récupérez-moi son diplôme, il doit traîner par terre.",
+                        "S'il est déchiré vous dites ? Ne vous inquiétez pas, j'ai juste besoin de recopier son contenu. J'inventerai les morceaux manquants."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Merci votre Majesté, grâce à cela, je vais pouvoir me faire beaucoup d'argent.",
+                        "Que dites-vous ? Vous voulez retourner dans votre château ? Vous savez que cela risque d'être compliqué, les gueux font des barrages pour que personne ne puisse accéder au château ! C'est pourquoi je reste ici dans ce petit village.",
+                        "Plus personne ne reste dans votre château depuis que l'usurpateur a pris votre place.",
+                        "J'ai besoin de devenir riche, très riche. Les nobles pourraient me payer cher grâce à mon nouveau diplôme...",
+                        "Je vais vous aider à remonter sur le trône ! Pour cela, je vous confierai une liste de quêtes vous aidant à y parvenir.",
+                        "Aidez-moi à récupérer des potions. Elles sont de couleurs vertes."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Merci pour les potions. En échange, je vais vous donner un renseignement sur le nouveau souverain de ce royaume.",
+                        "Il parait que l'usurpateur vous ressemble. Du moins, c'est ce que disent les nobles de la cour qui se sont retournés contre vous.",
+                        "Pourquoi vous avoir trahi s'il vous ressemble alors ?",
+                        "Je pense qu'ils ne parlent pas des nouvelles règles qu'il a établi, mais plutôt d'autre chose.",
+                        "Pour vous informer, les potions contiennent un puissant poison. Je vous ai demandé de les récupérer pour que je puisse les distribuer aux habitants du village.",
+                        "Ils viendront tous vers moi pour que je les soigne HahAhAhAHA ! Car je suis le dernier docteur de la ville et je deviendrai riche et puissant. Mon plan est machiavélique.",
+                        "Bien revenons-en au fait, j'aurais également besoin de potions rouges, sinon je ne pourrai pas les guérir !"
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Ces potions rouges vont m'être bien utiles merci.",
+                        "Pendant votre absence, un noble est venu me prévenir d'une chose. Il vous a vu errer en ville dernièrement, il m'a demandé de l'aider pour vous tuer.",
+                        "BIEN-SUR que NON, je ne l'écouterai pas, je suis de votre côté. Il m'a mis dans la confidence, mais je vais tout vous révéler, oui, je n'ai aucune dignité.",
+                        "Il m'a dit qu'il était le chef d'une secte s'appelant Border-Box. Il a préparé ses hommes et les a armés pour vous « trucider » je cite.",
+                        "Il m'a dit pourquoi il voulait vous tuer. Apparemment, les taxes du royaume que vous avez faites passer vous ont enrichi personnellement tandis que le peuple souffrait de la famine et du manque de richesse.",
+                        "Ils lanceront l'attaque ce soir au plus tard. Essayez de les arrêter avant que cela ne se produise."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Vous avez tué tous les adeptes... Vous êtes si puissant mon roi.",
+                        "Pendant que vous faisiez le ménage, j'ai donné le poison aux habitants, vous pouvez maintenant accéder à votre château, mais dépêchez vous. J'ai l'impression que quelque chose se trame dans votre dos.",
+                        "Le chemin vers le château se trouve derrière le village, foncez ! "
+                    ]
+                }
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Rien de tel qu'un roi pour faire le ménage",
+                    "description" : "Faites taire les paysans qui se moquent du Docteur Lapeste.",
+                    "required" : 40,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Le 'précieux' du docteur Lapeste",
+                    "description" : "Trouvez le diplôme du vrai médecin dont vous a parlé docteur Lapeste.",
+                    "required" : 1,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Mieux vaut prévenir ...",
+                    "description" : "Le docteur Lapeste vous a demandé de lui apporter des potions vertes. Mais pour quoi faire ? Ne vous posez pas de question. ",
+                    "required" : 3,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "... Que guérir",
+                    "description" : "Le docteur Lapeste vous a demandé de lui apporter des potions rouges. Cette fois-ci vous savez pour quoi :). ",
+                    "required" : 3,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Une punition pour Border-Box",
+                    "description" : "Tuez-les tous. Les adeptes de Border-Box doivent être soumis.",
+                    "required" : 15,
+                    "type" : "Killing"
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "name" : "Foufou le fou",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Majesté ne partez pas !!! J'ai besoin de votre aide !",
+                        "Vous cherchez les clefs de la salle du trône ?",
+                        "JE SAIS OÙ ELLES SONT !!! AHHHHHHHHHHHHHH OHHHHHHHHHHHHH HIIIIIIIIIIIIIIII *se roule par terre*",
+                        "Je ne vous dirai JAMAIS où elles sont HAHAHAHAHA *se relève*",
+                        "Sauf si ...",
+                        "DANSEZ POUR MOI et je vous dirai...",
+                        "peut-être...",
+                        "OÙ SONT LES CLEFS QUE VOUS CONVOITEZ !!!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Hmmmmmmmm HOOOOO OUI HMMM J'AIME ce que je VOIS ! *se roule à vos pieds*",
+                        "BIEN, vous avez gagnez le droit de... ",
+                        "Recommencer :D"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Allez ça suffit arrêtez-moi ça je n'en peux plus !!! Vous dansez trop bien pour moi... *pleure*",
+                        "wakan nabil 'aqalu ghumudan min alfataat alati kanat fi faransa mundh thalath sanawat shaqiqin",
+                        "Si j'ai bien vu les clefs ? Oui je sais où elles sont. C'est un geôlier qui les a. *se frotte les mains*",
+                        "Lequel ? Hmmmmm Je ne sais pas.",
+                        "Tuez les tous, comme ça on sera sûr de récupérer les clefs !"
+                    ]
+                },
+                {
+                    "messages": [
+                        "*Vous surprenez le fou en train de lécher le mur* *slurp slurp*",
+                        "Hmm, ce mur n'est pas à mon goût...",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum dolor a justo bibendum, vitae sodales mauris efficitur. Donec quis rutrum est.",
+                        "Haaa vous êtes la ??",
+                        "Vous les avez tous tués ? Parfait ces mécréants qui m'ont fouettés pendant que j'étais en cellule sont morts ! *Danse (moins bien que vous)*",
+                        "Oui, je me suis échappé de ma cellule d'isolement quand tous les gardes ont afflué vers le village. D'ailleurs, je crois qu'ils vous cherchaient pour vous tuer.",
+                        "Si vous êtes encore vivant... C'est que vous les avez tous massacrés je suppose.",
+                        "Vous n'avez pas trouvé les clefs sur les geôliers ?",
+                        "HHAAA MAIS OUI JE SAIS ! Mais d'abord, je dois manger. J'ai FAIMMMMM !",
+                        "Ramenez-moi quelque chose à manger et je vous dirai tout. TOUT !! *se met à genoux devant vous*"
+                    ]
+                },
+                {
+                    "messages": [
+                        "OUI OUI AH OUI ! MANGEZ ! MANGEZ !!!",
+                        "*miam miam miam* *Il se met à manger toutes les 'provisions' très rapidement*",
+                        "QUOI ??!! LES CLEFS ?? AUCUNE IDÉE D'OÙ ELLES SONT...",
+                        "Peut-être qu'une bonne boisson me rafraichirais la mémoire. Hihihihi",
+                        "*cling cling*",
+                        "Oh ! Les clefs, je les avais donc depuis tout ce temps ??",
+                        "Je vous ai bien eu ! HAHAGHZIYFE FGDUYGZ OUGYVDCOUBH KDNKJDNKD",
+                        "Non, arrêtez, vous allez me faire mal ! *vous soumettez le fou*",
+                        "HAAAAAAAAAA",
+                        "D'accord je vous les donne. Tenez...",
+                        "Ce sont les clefs de la grande porte.. enfin celles du trône.",
+                        "Mais jamais vous ne regagnerez votre couronne ! Le peuple s'est rallié à votre frère, il est bon avec le peuple.",
+                        "MOUHAHAHA, C'ÉTAIT VOTRE FRERE DEPUIS LE DEBUT *se frotte au mur*",
+                        "VOUS AVEZ TRAHI LE PEUPLE ! JAMAIS VOUS NE REPRENDREZ VOTRE PLACE. VOUS ALLEZ MOURIR !!"
+                    ]
+                }
+               
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Mais pour qui il se prend ?",
+                    "description" : "Dansez pour le fou... Il n'y a pas d'autre solution que de se salir.",
+                    "required" : 1,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Gardez votre calme",
+                    "description" : "Dansez à nouveau... Non, ne le frappez pas, il a peut-être la gale.",
+                    "required" : 2,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Génocide geôlier",
+                    "description" : "Tuez tous les geôliers ! Vous ne faites jamais dans la dentelle de toute façon.",
+                    "required" : 15,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Un festin de roi",
+                    "description" : "Ramenez-lui à manger. Quelque chose, n'importe quoi !",
+                    "required" : 3,
+                    "type" : "Finding"
+                }
+            ]
+        }
+    ]
+}

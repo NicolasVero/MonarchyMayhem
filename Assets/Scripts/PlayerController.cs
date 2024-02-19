@@ -170,7 +170,6 @@ public class PlayerController : MonoBehaviour {
     public void ConfigureQuestCanvas() {
         this.questScreen = GameObject.FindGameObjectWithTag("QuestCanvas").GetComponent<Canvas>();
         this.questMenu = GameObject.FindGameObjectWithTag("QuestCanvas");
-        // this.questMenu
     }
 
     private void TogglePauseMenu() {

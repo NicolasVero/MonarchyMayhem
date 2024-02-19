@@ -8,14 +8,18 @@ public class NPCController : MonoBehaviour {
     private string name; 
     private List<string>[] dialogueSets;
     private List<Quest> questList;
+    private string language;
 
     void Start() {
+
+        this.language = (Application.systemLanguage == SystemLanguage.French) ? "FR" : "EN";
+
         if(this.id != 0)
             this.LoadNPCData();
     }
 
     private void LoadNPCData() {
-        string jsonFilePath = "Data/NpcDatas"; 
+        string jsonFilePath = "Data/NpcDatas" + this.language; 
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath);
 
         if (jsonFile != null){

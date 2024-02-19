@@ -1,0 +1,273 @@
+{
+    "npcs" : 
+    [
+        {
+            "id" : 1,
+            "name" : "Armand the priest",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "My Dear Friend, I see that you're back. But alas, the times are dark, and the kingdom is in the grip of chaos.", 
+                        "The peasants, your loyal subjects, have turned against you. They have been manipulated by dark forces and succumbed to anger. Your throne is in peril, but all hope is not lost.", 
+                        "You must fight, my friend. Confront those who betray you and reclaim your throne. But before that, let me show you the basics of combat and survival.",
+                        "On the left side of your screen, you will find various statistics to aid you in your quest: attack, attack speed, knockback, attack range, resistance, movement speed and regeneration. Pay attention to these numbers, as they could make the difference between victory and defeat.",
+                        "When you triumph over your enemies on the battlefield, you gain experience. With each level-up, you will have the opportunity to strengthen your skills. Three paths will unfold before you, each representing a path to greatness. Choose wisely, as each decision can shape the course of your destiny.",
+                        "When you defeat your enemies, they will sometimes drop weapons. These weapons come in various rarities, ranging from common to legendary. Each offers its own advantages and disadvantages, so be careful to choose ones that best suit your combat style.",
+                        "Well, Your Majesty, it's time to take action. Your first task: eliminate a certain number of these rebellious peasants. Yes, I know, it's ironic, isn't it? But what can you do, it's the life of this mad kingdom."
+                    ]
+                },
+                {
+                    "messages": [
+                        "My king, a group of heretics has sworn allegiance to the new usurper king!", 
+                        "They call themselves Sunburn, and they have started spreading impious messages throughout the city.",
+                        "I beg you, my king, go silence them!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "I wouldn't want to keep you any longer, my king. The kingdom needs you!",
+                        "Goodness gracious!!!",
+                        "A horde of beggars is approaching us. I implore you, mighty King Makram, save me from the disciples of Sunburn!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Thank you, oh great King Makram, I saw that you had confiscated the weapons those heretics brandished towards you!",
+                        "As you can see, thanks to these weapons, your strength has increased in certain areas. Unfortunately, most common rarity weapons give you penalties.",
+                        "Be careful what you pick up from the remains of your victims, always look for the increasingly sparkling lights.",
+                        "What do you say? You want to return to your castle as soon as possible?",
+                        "There is indeed a parchment that leads to your castle; I had kept it in my bag...",
+                        "I CAN'T FIND THIS PARCHMENT ANYMORE!!!",
+                        "I must have lost it while fleeing those heretics; can you find it and bring it to me? I will then show you the way to your throne."
+                    ]
+                },
+                {
+                    "messages": [
+                        "Well done, you found the parchment leading to your castle!",
+                        "To exit this place, you'll need to pass through the village and head towards Richard's house, it's the largest house on this path.",
+                        "You'll find a giant tree next to a decorated wooden door, that's where you can depart.",
+                        "Reclaim your castle and save our kingdom. That is the task that lies before you.",
+                        "I will be of no further use, safe travels, my lord."
+                        
+                    ]
+                }
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Spring Cleaning",
+                    "description" : "Go slay 5 peasants.",
+                    "required" : 5,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "Anti-Propaganda",
+                    "description" : "Silence the troublemakers. Collect Sunburn group posters throughout the kingdom.",
+                    "required" : 3,
+                    "type" : "Finding"
+                },
+                {
+                    "title" : "Another sweep",
+                    "description" : "Go slay the group of heretics charging at you and defend the priest.",
+                    "required" : 1,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "A parchment in a haystack",
+                    "description" : "Retrieve the lost parchment of the priest in the lost paths.",
+                    "required" : 1,
+                    "type" : "Finding"
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "name" : "Dr. Pestilence",
+            "dialogues" :
+            [
+                {
+                    "messages": [
+                        "Ah, Your Majesty, what a pleasure to see you here. Need help getting back to the throne?",
+                        "I'm ready to offer my assistance, but remember, my services come at a price. Come back to talk to me if you're sure you want my help.",
+                        "I've had some quarrels with people who mocked me because I don't have real medical degrees.",
+                        "Come on, silence them, I beg you."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "You've killed them all? That's indeed an effective way to shut them up. Anyway, I'm delighted.",
+                        "I heard that a new doctor just received his diploma. I believe that...",
+                        "You just killed him...",
+                        "Perfect, retrieve his diploma for me; it must be lying on the ground.",
+                        "If it's torn, you say? Don't worry, I just need to copy its content. I'll invent the missing parts."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Thank you, Your Majesty. With this, I can make a lot of money.",
+                        "What do you say? You want to return to your castle? You know it might be tricky; the commoners are setting up barricades to prevent anyone from reaching the castle! That's why I stay here in this little village.",
+                        "No one has been left in your castle since the usurper took your place.",
+                        "I need to become rich, very rich. The nobles might pay me handsomely with my new diploma...",
+                        "I will help you reclaim the throne! For that, I'll entrust you with a list of quests to help you achieve it.",
+                        "Help me gather potions. They are green."
+                    ]
+                },
+                {
+                    "messages" : [
+                        "Thanks for the potions. In return, I'll give you information about the new ruler of this kingdom.",
+                        "It seems that the usurper resembles you. At least, that's what the nobles at the court who turned against you say.",
+                        "Why betray you if he looks like you then?",
+                        "I think they're not talking about the new rules he established but something else.",
+                        "Just to inform you, those potions contain a powerful poison. I asked you to retrieve them so I can distribute them to the villagers.",
+                        "They will all come to me for healing, HahAhAhAHA! Because I am the last doctor in town, and I'll become rich and powerful. My plan is diabolical.",
+                        "But let's get back to the point, I also need red potions, or I won't be able to cure them!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "These red potions will be very useful, thank you.",
+                        "During your absence, a nobleman came to warn me about something. He saw you wandering in the city recently and asked for my help to kill you.",
+                        "OF COURSE NOT, I won't listen to him; I'm on your side. He confided in me, but I'll reveal everything to you. Yes, I have no dignity.",
+                        "He said he was the leader of a sect called Border-Box. He prepared his men and armed them to 'butcher' you, in his words.",
+                        "He told me why he wanted to kill you. Apparently, the kingdom's taxes that you imposed enriched you personally while the people suffered from famine and lack of wealth.",
+                        "It surprises me because it's the first time I've heard about these 'taxes.' Something fishy is going on, be cautious.",
+                        "They will launch the attack tonight at the latest. Try to stop them before it happens."
+                    ]
+                },
+                {
+                    "messages": [
+                        "You killed all the followers... You are so powerful, my king.",
+                        "While you were cleaning up, I administered the poison to the villagers. You can now access your castle, but hurry. I feel something is brewing behind your back.",
+                        "The path to the castle is behind the village, go for it!"
+                    ]
+                }
+            ],
+            "quests": [
+                {
+                    "title": "Nothing like a King to do the cleaning",
+                    "description": "Silence the peasants mocking Dr. Pestilence. Kill 40 beggars.",
+                    "required": 1,
+                    "type": "Killing"
+                },
+                {
+                    "title": "Dr. Pestilence's precious'",
+                    "description": "Find the diploma of the real doctor Dr. Pestilence mentioned.",
+                    "required": 1,
+                    "type": "Finding"
+                },
+                {
+                    "title": "Prevention is better...",
+                    "description": "Dr. Pestilence asked you to bring him green potions. But why? Don't ask questions.",
+                    "required": 3,
+                    "type": "Finding"
+                },
+                {
+                    "title": "...than cure",
+                    "description": "Dr. Pestilence asked you to bring him red potions. This time you know why :).",
+                    "required": 3,
+                    "type": "Finding"
+                },
+                {
+                    "title": "A punishment for Border-Box",
+                    "description": "Kill them all. Border-Box's followers must be subdued.",
+                    "required": 15,
+                    "type": "Killing"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Whacky the Mad",
+            "dialogues": [
+                {
+                    "messages": [
+                        "Majesty, don't leave!!! I need your help!",
+                        "Are you looking for the keys to the throne room?",
+                        "I KNOW WHERE THEY ARE!!! AHHHHHHHHHHHHHH OHHHHHHHHHHHHH HIIIIIIIIIIIIIIII *rolls on the ground*",
+                        "I will NEVER tell you where they are HAHAHAHAHA *stands up*",
+                        "Unless...",
+                        "DANCE FOR ME, and I will tell you...",
+                        "maybe...",
+                        "WHERE ARE THE KEYS YOU DESIRE!!!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Hmmmmmmmm HOOOOO YES HMMM I LIKE what I SEE! *rolls at your feet*",
+                        "WELL, you've earned the right to... ",
+                        "Start over :D"
+                    ]
+                },
+                {
+                    "messages": [
+                        "Alright, that's enough, stop it, I can't take it anymore!!! You dance too well for me... *cries*",
+                        "wakan nabil 'aqalu ghumudan min alfataat alati kanat fi faransa mundh thalath sanawat shaqiqin",
+                        "If I saw the keys correctly? Yes, I know where they are. A jailer has them. *rubs hands*",
+                        "Which one? Hmmmmm I don't know.",
+                        "Kill them all, that way we'll be sure to get the keys!"
+                    ]
+                },
+                {
+                    "messages": [
+                        "*You catch the madman licking the wall* *slurp slurp*",
+                        "Hmm, this wall doesn't suit my taste...",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum dolor a justo bibendum, vitae sodales mauris efficitur. Donec quis rutrum est.",
+                        "Haaa you're here ??",
+                        "Did you kill them all? Perfect, those infidels who whipped me while I was in the cell are dead! *Dances (less well than you)*",
+                        "Yes, I escaped from my isolation cell when all the guards rushed to the village. By the way, I think they were looking for you to kill you.",
+                        "If you're still alive... it's because you've massacred them all, I suppose.",
+                        "You didn't find the keys on the jailers?",
+                        "HHAAA BUT YES I KNOW! But first, I have to eat. I'm HUNGRY!!!",
+                        "Bring me something to eat, and I'll tell you everything. EVERYTHING!! *kneels before you*"
+                    ]
+                },
+                {
+                    "messages": [
+                        "YES YES AH YES! EAT! EAT!!!",
+                        "*nom nom nom* *He quickly eats all the 'provisions'*",
+                        "WHAT ??!! THE KEYS ?? NO IDEA WHERE THEY ARE...",
+                        "Maybe a good drink will refresh my memory. Hihihihi",
+                        "*cling cling*",
+                        "Oh! The keys, did I have them all this time??",
+                        "I got you good! HAHAGHZIYFE FGDUYGZ OUGYVDCOUBH KDNKJDNKD",
+                        "No, stop, you're going to hurt me! *you subdue the madman*",
+                        "HAAAAAAAAAA",
+                        "Okay, I'll give them to you. Here...",
+                        "These are the keys to the grand door... well, the throne's keys.",
+                        "Beware, the usurper king awaits you; he's prepared for this final battle.",
+                        "YOU WILL DIE!! MOUHAHAHAA"
+                    ]
+                }
+               
+            ],
+            "quests" : 
+            [
+                {
+                    "title" : "Who does he think he is?",
+                    "description" : "Dance for the madman... There's no other solution but to get dirty.",
+                    "required" : 1,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Keep Your Cool",
+                    "description" : "Dance again... No, don't hit him; he might have scabies.",
+                    "required" : 2,
+                    "type" : "Dancing"
+                },
+                {
+                    "title" : "Jailers Genocide",
+                    "description" : "Kill all the jailers! You never do things delicately anyway.",
+                    "required" : 1,
+                    "type" : "Killing"
+                },
+                {
+                    "title" : "A feast fit for a King",
+                    "description" : "Bring him something to eat. Anything, really!",
+                    "required" : 3,
+                    "type" : "Finding"
+                }
+            ]
+        }
+    ]
+}

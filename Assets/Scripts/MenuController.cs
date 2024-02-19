@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag(Names.MainCharacter));
         Destroy(GameObject.FindGameObjectWithTag("UI"));
         Destroy(GameObject.FindGameObjectWithTag("Difficulty"));
+        GameController.SetCursorVisibility(true);
         SceneManager.LoadScene("GameMenu");
     }
 

@@ -10,6 +10,7 @@ public class StartMenuController : MonoBehaviour {
 
     void Start() {
         this.audioController.PlayMenuSFX();
+        GameController.SetCursorVisibility(true);
     }
 
     public void Play() {
