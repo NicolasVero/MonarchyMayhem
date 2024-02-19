@@ -54,7 +54,7 @@ public class BossController : MonoBehaviour {
         this.SetHealthBarMax(this.maxHealth);
 
         this.audio.StopThemeSFX();
-        this.audio.PlayBossThemeSFX();
+        this.audio.PlayBossThemeSFX(0);
     }
 
     private void LoadBossStats() {
@@ -232,8 +232,8 @@ public class BossController : MonoBehaviour {
         this.isInTransition = false;
         this.bossRegen = false;
         
-        // this.SetHealthBarMax(this.maxHealth);
-        // this.SetHealthBar(this.health);
+        this.audio.StopBossThemeSFX();
+        this.audio.PlayBossThemeSFX(1);
 
         this.StartMovement();
 

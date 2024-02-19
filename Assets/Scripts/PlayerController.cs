@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour {
             if(this.sceneController.GetSceneName() != "Salle_combat_final")
                 this.audio.PlayThemeSFX();
             else
-                this.audio.PlayBossThemeSFX();
+                this.audio.PlayBossThemeSFX(0);
         }
     }
 

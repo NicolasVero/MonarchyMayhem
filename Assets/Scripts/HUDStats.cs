@@ -68,7 +68,7 @@ public class HUDStats : MonoBehaviour {
     }
 
     public void UpdateHealth() {
-        healthStat.text = player.GetHealth() + " / " + player.GetMaxActualHealth();
+        healthStat.text = (player.GetHealth() >= 0) ? player.GetHealth() + " / " + player.GetMaxActualHealth() : "0 / " + player.GetMaxActualHealth();
     }
 
     public void UpdateStats() {

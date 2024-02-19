@@ -32,8 +32,9 @@ public class AudioController : MonoBehaviour {
         Invoke(nameof(this.PlayMenuSFX), this.menuSFX[this.randomMenuSFX].clip.length);
     }
 
-    public void PlayBossThemeSFX() {
-        this.randomBossTheme = GameController.Random(0, this.bossTheme.Length - 1);
+    public void PlayBossThemeSFX(int music) {
+        // this.randomBossTheme = GameController.Random(0, this.bossTheme.Length - 1);
+        this.randomBossTheme = music;
         this.bossTheme[this.randomBossTheme].Play();
         Invoke(nameof(this.PlayBossThemeSFX), this.bossTheme[this.randomBossTheme].clip.length);
     }
