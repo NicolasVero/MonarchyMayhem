@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour {
     private PlayerController playerController;
     private WeaponsDropper weaponsDropper;
     private QuestController questController;
+    private Difficulty difficultyController;
 
     private string enemyType;
     private int attack, health, xp;
@@ -28,18 +29,43 @@ public class EnemyController : MonoBehaviour {
         this.navMeshAgent = GetComponent<NavMeshAgent>();
 
         if(enemiesStats != null) {
-            EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
-            EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == this.enemyType);
+            EnemiesStats enemiesStatsData = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+            DifficultyStats difficultyStats = null;
+            this.difficultyController = FindObjectOfType<Difficulty>();
+            string difficulty = difficultyController.GetDifficulty();
 
-            this.chanceToDrop = enemy.chanceToDrop;
-            this.attack       = enemy.attack;
-            this.attackSpeed  = enemy.attackSpeed;
-            this.health       = enemy.health;
-            this.range        = enemy.range;
-            this.speed        = enemy.speed;
-            this.xp           = enemy.xp;
+            Debug.Log("diff : " + difficulty); 
 
-            this.navMeshAgent.stoppingDistance = this.range;
+            switch(difficulty) {
+                case "easy":
+                    difficultyStats = enemiesStatsData.easy;
+                    break;
+                case "medium":
+                    difficultyStats = enemiesStatsData.medium;
+                    break;
+                case "hard":
+                    difficultyStats = enemiesStatsData.hard;
+                    break;
+                default:
+                    difficultyStats = enemiesStatsData.easy; 
+                    break;
+            }
+
+            if(difficultyStats != null) {
+                EnemyStats enemy = Array.Find(difficultyStats.enemiesStat, e => e.type == this.enemyType);
+
+                this.chanceToDrop = enemy.chanceToDrop;
+                this.attack       = enemy.attack;
+                this.attackSpeed  = enemy.attackSpeed;
+                this.health       = enemy.health;
+                this.range        = enemy.range;
+                this.speed        = enemy.speed;
+                this.xp           = enemy.xp;
+
+                this.navMeshAgent.stoppingDistance = this.range;
+
+                Debug.Log("att : " + this.attack);
+            }
         }
 
         this.playerPosition = GameObject.FindGameObjectWithTag(Names.MainCharacter).transform;

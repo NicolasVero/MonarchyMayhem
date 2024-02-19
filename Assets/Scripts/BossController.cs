@@ -22,6 +22,7 @@ public class BossController : MonoBehaviour {
     private Animator animator;
     private PlayerController playerController;
     private AudioController audio;
+    private Difficulty difficultyController; 
 
     private string walkMethod;
     private int attack, health, maxHealth, xp;
@@ -58,13 +59,32 @@ public class BossController : MonoBehaviour {
     }
 
     private void LoadBossStats() {
-        
-        TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
-        string phase = !this.firstPhasePassed ? "boss_1" : "boss_2";
+    TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
+    string phase = !this.firstPhasePassed ? "boss_1" : "boss_2";
 
-        if(enemiesStats != null) {
-            EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
-            EnemyStats enemy = Array.Find(enemiesStatsData.enemiesStat, e => e.type == phase);
+    if(enemiesStats != null) {
+        EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+        DifficultyStats difficultyStats = null;
+        this.difficultyController = FindObjectOfType<Difficulty>();
+        string difficulty = difficultyController.GetDifficulty();
+        
+        switch(difficulty) {
+            case "easy":
+                difficultyStats = enemiesStatsData.easy;
+                break;
+            case "medium":
+                difficultyStats = enemiesStatsData.medium;
+                break;
+            case "hard":
+                difficultyStats = enemiesStatsData.hard;
+                break;
+            default:
+                difficultyStats = enemiesStatsData.easy; // Par défaut, utilise les stats de difficulté facile
+                break;
+        }
+
+        if(difficultyStats != null) {
+            EnemyStats enemy = Array.Find(difficultyStats.enemiesStat, e => e.type == phase);
 
             this.chanceToDrop = enemy.chanceToDrop;
             this.attack       = enemy.attack;
@@ -77,9 +97,10 @@ public class BossController : MonoBehaviour {
 
             this.navMeshAgent.speed = this.speed;
             this.navMeshAgent.stoppingDistance = this.range;
-
         }
     }
+}
+
 
     private void FixedUpdate() {
 

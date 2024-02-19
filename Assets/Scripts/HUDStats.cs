@@ -60,9 +60,9 @@ public class HUDStats : MonoBehaviour {
         this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + this.difficultyController.GetDifficulty());
         string name = "";
 
-        if(this.difficultyController.GetDifficulty() == "Easy") name = "Agitation"; 
-        if(this.difficultyController.GetDifficulty() == "Medium") name = "Soulèvement"; 
-        if(this.difficultyController.GetDifficulty() == "Hard") name = "Insurrection";
+        if(this.difficultyController.GetDifficulty() == "easy") name = "Agitation"; 
+        if(this.difficultyController.GetDifficulty() == "medium") name = "Soulèvement"; 
+        if(this.difficultyController.GetDifficulty() == "hard") name = "Insurrection";
 
         this.difficultyName.text = name; 
     }

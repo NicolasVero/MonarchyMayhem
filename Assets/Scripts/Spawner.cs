@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour {
             spawnDelay = 2;
         }
 
-
+        
 
 
         if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {

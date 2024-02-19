@@ -84,6 +84,4 @@ public class GameController : MonoBehaviour {
         pauseMenu.SetActive(false);
         GameController.SetCursorVisibility(false);
     }
-    
-
 }
