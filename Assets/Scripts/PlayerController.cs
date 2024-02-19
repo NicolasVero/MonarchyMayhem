@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
 
         this.keyActions.Add(KeyCode.E, TakeWeapon);
-        this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
+        // this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
         this.keyActions.Add(KeyCode.P, TogglePauseMenu);
 
         this.audio.PlayThemeSFX();
@@ -148,10 +148,6 @@ public class PlayerController : MonoBehaviour {
             this.isSprinting = false;
             this.sprint = 0;
         }
-
-        //! a supprimer
-        if(Input.GetKeyDown(KeyCode.U)) 
-            this.XPGain(1);
 
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze() && this.canAttack) {
             this.goingAttack = true;
@@ -338,8 +334,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private int XPRequired() {
-        return (int)(5 * Math.Pow(1.2, this.level - 1));
-        // return 3;
+        return (int)(5 * Math.Pow(1.1, this.level - 1));
     }
 
     // Updates / Increments
