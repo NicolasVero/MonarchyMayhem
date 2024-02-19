@@ -7132,11 +7132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 1
+  allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 50
-  chanceBourgeois: 10
-  chanceKnights: 100
+  chanceBourgeois: 0
+  chanceKnights: 0
   viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
@@ -9257,6 +9257,78 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 83ca3216726525148a325296526fcfa7, type: 3}
+--- !u!1 &361701906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361701907}
+  - component: {fileID: 361701908}
+  m_Layer: 0
+  m_Name: Spawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361701907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361701906}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.9, y: -2.674, z: -36.3}
+  m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 822640955}
+  m_Father: {fileID: 1045691921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &361701908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361701906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowPeasants: 1
+  allowBourgeois: 0
+  allowKnights: 0
+  chancePeasants: 50
+  chanceBourgeois: 0
+  chanceKnights: 0
+  viewSpawnPoint: 0
+  spawnDelay: 2
+  enemiesContainer: {fileID: 379407981}
+  collectiblesContainer: {fileID: 72405800}
+  peasants:
+  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
+  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
+  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
+  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
+  bourgeois:
+  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
+  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
+  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
+  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
+  knights:
+  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
+  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
+  pickUps:
+  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
+  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1 &365134208
 GameObject:
   m_ObjectHideFlags: 0
@@ -9303,11 +9375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 1
+  allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 50
-  chanceBourgeois: 10
-  chanceKnights: 100
+  chanceBourgeois: 0
+  chanceKnights: 0
   viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
@@ -9914,11 +9986,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 1
+  allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 50
-  chanceBourgeois: 10
-  chanceKnights: 100
+  chanceBourgeois: 0
+  chanceKnights: 0
   viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
@@ -11334,8 +11406,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Appuyez sur E
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6f33fc7ff362c7b4bb02b153dc80f5ac, type: 2}
-  m_sharedMaterial: {fileID: -6803250790554687910, guid: 6f33fc7ff362c7b4bb02b153dc80f5ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9143a76b2a77c44bb45b50719af6c7a, type: 2}
+  m_sharedMaterial: {fileID: 5137409003278042972, guid: f9143a76b2a77c44bb45b50719af6c7a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19211,11 +19283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowPeasants: 1
-  allowBourgeois: 1
+  allowBourgeois: 0
   allowKnights: 0
   chancePeasants: 50
-  chanceBourgeois: 10
-  chanceKnights: 100
+  chanceBourgeois: 0
+  chanceKnights: 0
   viewSpawnPoint: 0
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
@@ -23701,6 +23773,111 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1154cf6ac27b2f45b4ae35582e7e363, type: 3}
+--- !u!1 &822640954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822640955}
+  - component: {fileID: 822640958}
+  - component: {fileID: 822640957}
+  - component: {fileID: 822640956}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &822640955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822640954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 361701907}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &822640956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822640954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &822640957
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822640954}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ddd0f10326dcb5845bbd0f2fecf22bb9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &822640958
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822640954}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &824000235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27677,8 +27854,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.6259451, y: 1.2418871, z: 0.856308}
+  m_Center: {x: 0.023675922, y: 0.12094355, z: 0.07184601}
 --- !u!23 &946435730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27686,7 +27863,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946435726}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -30836,6 +31013,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 373943522}
+  - {fileID: 361701907}
+  - {fileID: 1887699135}
   - {fileID: 365134209}
   - {fileID: 274791331}
   - {fileID: 670152530}
@@ -34820,6 +34999,111 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f867a2534aa85914d9e6b62f681cdf69, type: 3}
+--- !u!1 &1170014573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170014574}
+  - component: {fileID: 1170014577}
+  - component: {fileID: 1170014576}
+  - component: {fileID: 1170014575}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1170014574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170014573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1887699135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1170014575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170014573}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1170014576
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170014573}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ddd0f10326dcb5845bbd0f2fecf22bb9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1170014577
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170014573}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1173111315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56228,6 +56512,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1825600446845946724, guid: e0afa3e7c3f32d94a83974947c2c975d, type: 3}
   m_PrefabInstance: {fileID: 1885696368}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887699134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1887699135}
+  - component: {fileID: 1887699136}
+  m_Layer: 0
+  m_Name: Spawner (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1887699135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887699134}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25.7, y: -2.674, z: -6.9}
+  m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1170014574}
+  m_Father: {fileID: 1045691921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1887699136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887699134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowPeasants: 1
+  allowBourgeois: 0
+  allowKnights: 0
+  chancePeasants: 50
+  chanceBourgeois: 0
+  chanceKnights: 0
+  viewSpawnPoint: 0
+  spawnDelay: 2
+  enemiesContainer: {fileID: 379407981}
+  collectiblesContainer: {fileID: 72405800}
+  peasants:
+  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
+  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
+  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
+  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
+  bourgeois:
+  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
+  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
+  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
+  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
+  knights:
+  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
+  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
+  pickUps:
+  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
+  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1001 &1888918646
 PrefabInstance:
   m_ObjectHideFlags: 0
