@@ -39,26 +39,15 @@ public class Spawner : MonoBehaviour {
         spawn.SetActive(viewSpawnPoint);
 
 
-        difficultyController = FindObjectOfType<Difficulty>();
-        difficultyController.DisableChoice();
+        this.difficultyController = FindObjectOfType<Difficulty>();
+        this.difficultyController.DisableChoice();
 
-        if(difficultyController.GetDifficulty() == "easy") {
-            spawnDelay = 5;
-        }
-
-        if(difficultyController.GetDifficulty() == "medium") {
-            spawnDelay = 4;
-        }
-
-        if(difficultyController.GetDifficulty() == "hard") {
-            spawnDelay = 2;
-        }
-
+        if(this.difficultyController.GetDifficulty() == "easy") this.spawnDelay = 5;
+        if(this.difficultyController.GetDifficulty() == "medium") this.spawnDelay = 4;
+        if(this.difficultyController.GetDifficulty() == "hard") this.spawnDelay = 2;
         
-
-
-        if (currentPickUpGroup == null || currentPickUpGroup.Length == 0) {
-            GeneratePickUpGroup();
+        if(this.currentPickUpGroup == null || this.currentPickUpGroup.Length == 0) {
+            this.GeneratePickUpGroup();
         }
     }
 
@@ -69,7 +58,7 @@ public class Spawner : MonoBehaviour {
 
             if(this.timer >= this.spawnDelay) {
                 this.timer = 0f;
-                SpawnEnemies();
+                this.SpawnEnemies();
             }
         }
     }
@@ -98,11 +87,11 @@ public class Spawner : MonoBehaviour {
     }
 
     private void SpawnPickUp() {
-        if (currentPickUpIndex >= currentPickUpGroup.Length) {
-            currentPickUpIndex = 0;
+        if(this.currentPickUpIndex >= this.currentPickUpGroup.Length) {
+            this.currentPickUpIndex = 0;
         }
 
-        GameObject pickupToSpawn = currentPickUpGroup[currentPickUpIndex];
+        GameObject pickupToSpawn = this.currentPickUpGroup[this.currentPickUpIndex];
         Vector3 spawnPosition = transform.position + Vector3.up * 1.0f;
         Instantiate(pickupToSpawn, spawnPosition, Quaternion.identity).transform.parent = this.collectiblesContainer.transform;
     }
@@ -115,9 +104,9 @@ public class Spawner : MonoBehaviour {
     }
 
     private void GeneratePickUpGroup() {
-        currentPickUpGroup = new GameObject[pickUps.Length];
-        for(int i = 0; i < currentPickUpGroup.Length; i++) 
-            currentPickUpGroup[i] = pickUps[i % pickUps.Length];
+        this.currentPickUpGroup = new GameObject[this.pickUps.Length];
+        for(int i = 0; i < this.currentPickUpGroup.Length; i++) 
+            this.currentPickUpGroup[i] = this.pickUps[i % this.pickUps.Length];
     }
 
     public void ActiveSpawner() {

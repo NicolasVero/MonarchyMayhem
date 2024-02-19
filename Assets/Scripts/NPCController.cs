@@ -11,7 +11,7 @@ public class NPCController : MonoBehaviour {
 
     void Start() {
         if(this.id != 0)
-            LoadNPCData();
+            this.LoadNPCData();
     }
 
     private void LoadNPCData() {

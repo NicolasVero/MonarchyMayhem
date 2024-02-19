@@ -34,22 +34,10 @@ public class EnemyController : MonoBehaviour {
             this.difficultyController = FindObjectOfType<Difficulty>();
             string difficulty = difficultyController.GetDifficulty();
 
-            Debug.Log("diff : " + difficulty); 
-
-            switch(difficulty) {
-                case "easy":
-                    difficultyStats = enemiesStatsData.easy;
-                    break;
-                case "medium":
-                    difficultyStats = enemiesStatsData.medium;
-                    break;
-                case "hard":
-                    difficultyStats = enemiesStatsData.hard;
-                    break;
-                default:
-                    difficultyStats = enemiesStatsData.easy; 
-                    break;
-            }
+            if(difficulty == "easy") difficultyStats = enemiesStatsData.easy;
+            if(difficulty == "medium") difficultyStats = enemiesStatsData.medium;
+            if(difficulty == "hard") difficultyStats = enemiesStatsData.hard;
+            
 
             if(difficultyStats != null) {
                 EnemyStats enemy = Array.Find(difficultyStats.enemiesStat, e => e.type == this.enemyType);
@@ -63,8 +51,6 @@ public class EnemyController : MonoBehaviour {
                 this.xp           = enemy.xp;
 
                 this.navMeshAgent.stoppingDistance = this.range;
-
-                Debug.Log("att : " + this.attack);
             }
         }
 
@@ -136,9 +122,8 @@ public class EnemyController : MonoBehaviour {
 
     public void TakeDamage() {
 
-        if(!this.cooldown) {
-            int damage = this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
-            this.health -= damage;
+        if(!this.cooldown) { 
+            this.health -= this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
             Invoke("DisableCooldown", 1.5f);
             this.cooldown = true;
 
@@ -152,7 +137,7 @@ public class EnemyController : MonoBehaviour {
                     this.deathCount = true;
                 }
             } else {
-                ApplyKnockback();
+                this.ApplyKnockback();
             }
         }
     }
@@ -168,9 +153,9 @@ public class EnemyController : MonoBehaviour {
 
     private void Death() {
         this.animator.SetInteger("Death", GameController.Random(1, 3));
-        canMove = false;
-        canAttack = false;
-        isAlive = false;
+        this.canMove = false;
+        this.canAttack = false;
+        this.isAlive = false;
         this.gameObject.tag = "Untagged";
 
         Invoke("DestroyEnemy", 2f);
@@ -183,7 +168,7 @@ public class EnemyController : MonoBehaviour {
         if(WillDropWeapon())
             this.weaponsDropper.CreateWeapon(transform.position);
         
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public void ApplyKnockback() {

@@ -8,12 +8,12 @@ public class MovieController : MonoBehaviour {
     [SerializeField] private VideoPlayer videoPlayer; 
 
     void Start() {
-        videoPlayer.loopPointReached += EndReached; 
-        Invoke("LoadScene", (float) videoPlayer.clip.length);
+        this.videoPlayer.loopPointReached += EndReached; 
+        Invoke("LoadScene", (float) this.videoPlayer.clip.length);
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if(Input.GetKeyDown(KeyCode.Space)) 
             LoadNextScene(); 
     }
 

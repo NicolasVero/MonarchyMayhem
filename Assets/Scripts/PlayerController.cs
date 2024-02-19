@@ -130,6 +130,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        if(!this.isAlive) return;
+
+
         this.animator.SetFloat("AttackSpeed", (1 / (this.GetAttackSpeed() + this.GetWeaponAttackSpeed())*2));
 
         foreach (var kvp in keyActions) {
@@ -212,6 +215,8 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
+        if(!this.isAlive) return;
+        
         this.Move();
 
         if(this.isAlive && !this.inDanseMenu) {

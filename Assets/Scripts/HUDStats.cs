@@ -54,8 +54,8 @@ public class HUDStats : MonoBehaviour {
     }
 
     private void SetDifficulty() {
-        difficultyController = FindObjectOfType<Difficulty>();
-        difficultyController.DisableChoice();
+        this.difficultyController = FindObjectOfType<Difficulty>();
+        this.difficultyController.DisableChoice();
 
         this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + this.difficultyController.GetDifficulty());
         string name = "";
@@ -68,57 +68,57 @@ public class HUDStats : MonoBehaviour {
     }
 
     public void UpdateHealth() {
-        healthStat.text = (player.GetHealth() >= 0) ? player.GetHealth() + " / " + player.GetMaxActualHealth() : "0 / " + player.GetMaxActualHealth();
+        this.healthStat.text = (this.player.GetHealth() >= 0) ? this.player.GetHealth() + " / " + this.player.GetMaxActualHealth() : "0 / " + this.player.GetMaxActualHealth();
     }
 
     public void UpdateStats() {
-        UpdateHealth();
-        levelStat.text        = "" + player.GetLevel();
-        killStat.text         = "" + player.GetKillCounter();
-        attackStat.text       = "" + player.GetAttack();
-        attackSpeedStat.text  = "" + player.GetAttackSpeed();
-        rangeStat.text        = "" + player.GetRange();
-        resistanceStat.text   = "" + player.GetResistance();
-        speedStat.text        = "" + player.GetSpeed();
-        knockbackStat.text    = "" + player.GetKnockback();
-        regenerationStat.text = "" + player.GetRegeneration();
-        weaponName.text       = "" + player.GetWeaponName();
+        this.UpdateHealth();
+        this.levelStat.text        = "" + this.player.GetLevel();
+        this.killStat.text         = "" + this.player.GetKillCounter();
+        this.attackStat.text       = "" + this.player.GetAttack();
+        this.attackSpeedStat.text  = "" + this.player.GetAttackSpeed();
+        this.rangeStat.text        = "" + this.player.GetRange();
+        this.resistanceStat.text   = "" + this.player.GetResistance();
+        this.speedStat.text        = "" + this.player.GetSpeed();
+        this.knockbackStat.text    = "" + this.player.GetKnockback();
+        this.regenerationStat.text = "" + this.player.GetRegeneration();
+        this.weaponName.text       = "" + this.player.GetWeaponName();
 
-        weaponAttack.text = "";
-        weaponRange.text = "";
-        weaponAttackSpeed.text = "";
-        weaponSpeed.text = "";
-        weaponRegeneration.text = "";
-        weaponKnockback.text = "";
+        this.weaponAttack.text = "";
+        this.weaponRange.text = "";
+        this.weaponAttackSpeed.text = "";
+        this.weaponSpeed.text = "";
+        this.weaponRegeneration.text = "";
+        this.weaponKnockback.text = "";
 
-        if(player.GetWeaponAttack() != 0) {
-            weaponAttack.text = "" + player.GetWeaponAttack();
-            weaponAttack.color = (player.GetWeaponAttack() > 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponAttack() != 0) {
+            this.weaponAttack.text = "" + this.player.GetWeaponAttack();
+            this.weaponAttack.color = (this.player.GetWeaponAttack() > 0) ? Color.green : Color.red;
         }
 
-        if(player.GetWeaponRange() != 0) {
-            weaponRange.text = "" + player.GetWeaponRange();
-            weaponRange.color = (player.GetWeaponRange() > 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponRange() != 0) {
+            this.weaponRange.text = "" + this.player.GetWeaponRange();
+            this.weaponRange.color = (this.player.GetWeaponRange() > 0) ? Color.green : Color.red;
         }
     
-        if(player.GetWeaponAttackSpeed() != 0) {
-            weaponAttackSpeed.text = "" + player.GetWeaponAttackSpeed();
-            weaponAttackSpeed.color = (player.GetWeaponAttackSpeed() < 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponAttackSpeed() != 0) {
+            this.weaponAttackSpeed.text = "" + this.player.GetWeaponAttackSpeed();
+            this.weaponAttackSpeed.color = (this.player.GetWeaponAttackSpeed() < 0) ? Color.green : Color.red;
         }
 
-        if(player.GetWeaponSpeed() != 0) {
-            weaponSpeed.text = "" + player.GetWeaponSpeed();
-            weaponSpeed.color = (player.GetWeaponSpeed() > 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponSpeed() != 0) {
+            this.weaponSpeed.text = "" + this.player.GetWeaponSpeed();
+            this.weaponSpeed.color = (this.player.GetWeaponSpeed() > 0) ? Color.green : Color.red;
         }
 
-        if(player.GetWeaponRegeneration() != 0) {
-            weaponRegeneration.text = "" + player.GetWeaponRegeneration();
-            weaponRegeneration.color = (player.GetWeaponRegeneration() > 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponRegeneration() != 0) {
+            this.weaponRegeneration.text = "" + this.player.GetWeaponRegeneration();
+            this.weaponRegeneration.color = (this.player.GetWeaponRegeneration() > 0) ? Color.green : Color.red;
         }
 
-        if(player.GetWeaponKnockback() != 0) {
-            weaponKnockback.text = "" + player.GetWeaponKnockback();
-            weaponKnockback.color = (player.GetWeaponKnockback() > 0) ? Color.green : Color.red;
+        if(this.player.GetWeaponKnockback() != 0) {
+            this.weaponKnockback.text = "" + this.player.GetWeaponKnockback();
+            this.weaponKnockback.color = (this.player.GetWeaponKnockback() > 0) ? Color.green : Color.red;
         }
     }
     

@@ -41,8 +41,6 @@ public class DialogueController : MonoBehaviour {
 
     void Start() {
 
-        Debug.Log("CDSI : " + currentDialogueSetIndex);
-        Debug.Log("CQI : " + currentQuestIndex);
         this.currentDialogueSetIndex = 0;
         this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
         this.dialogueCanvas = GameObject.Find("Dialogue").GetComponent<Canvas>();
@@ -62,9 +60,6 @@ public class DialogueController : MonoBehaviour {
             this.dialogueText = dialogueTextTransform.GetComponent<TextMeshProUGUI>();
             this.nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
             this.picture = pictureTextTransform.GetComponent<Image>();
-            
-            Debug.Log(picture);
-            // this.picture.GetComponent<Image>().sprite = npcController.GetPictureSprite();
         }
 
 
@@ -74,84 +69,83 @@ public class DialogueController : MonoBehaviour {
 
         combinedCanvasList.Add(questMenuCanvas);
         combinedCanvasList.Add(hudCanvas);
-        disabledCanvas = combinedCanvasList.ToArray();
+        this.disabledCanvas = combinedCanvasList.ToArray();
 
-        npcObject = GameObject.FindGameObjectWithTag("NPC");
+        this.npcObject = GameObject.FindGameObjectWithTag("NPC");
 
         GameController.SetCanvasVisibility(dialogueCanvas, false);
 
 
-        nextButton.onClick.AddListener(ShowNextMessage);
-        prevButton.onClick.AddListener(ShowPreviousMessage);
-        closeButton.onClick.AddListener(CloseDialogue);
+        this.nextButton.onClick.AddListener(ShowNextMessage);
+        this.prevButton.onClick.AddListener(ShowPreviousMessage);
+        this.closeButton.onClick.AddListener(CloseDialogue);
 
-        npcController = npcObject.GetComponent<NPCController>();
+        this.npcController = this.npcObject.GetComponent<NPCController>();
 
-        dialogueSets = npcController.GetDialogueSets();
-        questList = npcController.GetQuestList();
+        this.dialogueSets = this.npcController.GetDialogueSets();
+        this.questList = this.npcController.GetQuestList();
     }
 
     void Update() {
 
-        if(isInRange && Input.GetKeyDown(KeyCode.E))
-            StartDialogue();
+        if(this.isInRange && Input.GetKeyDown(KeyCode.E))
+            this.StartDialogue();
 
-        Interaction();
+        this.Interaction();
     }
 
     private void Interaction() {
-        interaction.enabled = isInRange && !dialogueCanvas.enabled;
+        this.interaction.enabled = this.isInRange && !this.dialogueCanvas.enabled;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player") && npcObject != null && npcObject.CompareTag("NPC")) 
-            isInRange = true;
+        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) 
+            this.isInRange = true;
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player") && npcObject != null && npcObject.CompareTag("NPC")) 
-            isInRange = false;
+        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) 
+            this.isInRange = false;
     }
 
     private void ShowNextMessage() {
-        this.currentIndex += messagesPerStep; 
-        ShowMessage();
+        this.currentIndex += this.messagesPerStep; 
+        this.ShowMessage();
 
-        if(this.currentIndex >= dynamicDialogue.Count) {
-            CloseDialogue(); 
+        if(this.currentIndex >= this.dynamicDialogue.Count) {
+            this.CloseDialogue(); 
         }
     }
 
     private void ShowPreviousMessage() {
-        this.currentIndex -= messagesPerStep; 
+        this.currentIndex -= this.messagesPerStep; 
         if (this.currentIndex < 0)
             this.currentIndex = 0; 
 
-        ShowMessage();
+        this.ShowMessage();
     }
 
     private void ShowMessage() {
 
-        nameText.text = npcController.GetName();
-        picture.sprite = npcController.GetPictureSprite();
-        int endIndex = Mathf.Min(this.currentIndex + messagesPerStep, dynamicDialogue.Count); 
-        dialogueText.text = ""; 
+        this.nameText.text = this.npcController.GetName();
+        this.picture.sprite = this.npcController.GetPictureSprite();
+        int endIndex = Mathf.Min(this.currentIndex + this.messagesPerStep, this.dynamicDialogue.Count); 
+        this.dialogueText.text = ""; 
         for (int i = this.currentIndex; i < endIndex; i++) {
-            dialogueText.text += dynamicDialogue[i] + "\n"; 
+            this.dialogueText.text += this.dynamicDialogue[i] + "\n"; 
         }
     }
 
     private void CloseDialogue() {
-        ManageDialogue(false);
+        this.ManageDialogue(false);
     }
 
     private void StartDialogue() {
 
         this.currentIndex = 0; 
-        ManageDialogue(true);
-        SetCurrentDialogueSet(); 
+        this.ManageDialogue(true);
+        this.SetCurrentDialogueSet(); 
 
-        // Vérifiez si la quête actuelle est une quête de type "Speaking" pour démarrer une nouvelle quête
         if(questController.currentQuest.GetType() == "Speaking" && currentQuestIndex == 0){
 
             dialogueInitiated = true;
@@ -159,9 +153,11 @@ public class DialogueController : MonoBehaviour {
             
             questController.AddQuestFromDialogue(questList[currentQuestIndex].GetTitle(), questList[currentQuestIndex].GetDescription(), questList[currentQuestIndex].GetRequired(), questList[currentQuestIndex].GetType());
         }
+
+
+        //TODO REVOIR
         if(questList[currentQuestIndex].GetType() == "Speaking"){ 
             currentDialogueSetIndex++;
-            Debug.Log("+");
             currentQuestIndex++;
             SetCurrentDialogueSet(); // Changer le dialogue en fonction de la nouvelle quête
             if(currentQuestIndex < questList.Count) {
@@ -169,9 +165,9 @@ public class DialogueController : MonoBehaviour {
             }
             dialogueInitiated = true;
         }
+
         if(dialogueInitiated == false && questController.currentQuest.IsComplete() ){ 
             currentQuestIndex++;
-            Debug.Log("+");
             currentDialogueSetIndex++;
             SetCurrentDialogueSet(); // Changer le dialogue en fonction de la nouvelle quête
             dialogueInitiated = true;
@@ -185,32 +181,32 @@ public class DialogueController : MonoBehaviour {
     }
 
     private void SetCurrentDialogueSet() {
-        if(currentDialogueSetIndex >= 0 && currentDialogueSetIndex < dialogueSets.Length) {
-            dynamicDialogue = dialogueSets[currentDialogueSetIndex]; // Définir le nouvel ensemble de dialogues
+        if(this.currentDialogueSetIndex >= 0 && this.currentDialogueSetIndex < this.dialogueSets.Length) {
+            this.dynamicDialogue = this.dialogueSets[this.currentDialogueSetIndex];
         }
     }
 
     private void ManageDialogue(bool state) {
-        dialogueCanvas.enabled = state;
+        this.dialogueCanvas.enabled = state;
         GameController.SetGameState(!state);
 
         Cursor.visible = state;
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
 
         for(int i = 0; i < disabledCanvas.Length; i++)
-            disabledCanvas[i].enabled = !state;
+            this.disabledCanvas[i].enabled = !state;
     }
 
     public bool GetDialogueInitiated() {
-        return dialogueInitiated;
+        return this.dialogueInitiated;
     }
 
     public void SetDialogueInitiated(bool state) {
         this.dialogueInitiated = state;
     }
 
-    public bool GetIsInRangeFalse() {
-        return isInRange= false;
+    public void SetIsInRange(bool state) {
+        this.isInRange = state;
     }
 
     public void ResetCurrentQuestIndex() {

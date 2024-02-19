@@ -74,7 +74,11 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    public Vector3 SetSpawnPoint() { return GameObject.FindGameObjectWithTag("SpawnPoint").transform.position; }
-    public string GetSceneName() { return SceneManager.GetActiveScene().name; }
+    public Vector3 SetSpawnPoint() { 
+        return GameObject.FindGameObjectWithTag("SpawnPoint").transform.position; 
+    }
 
+    public string GetSceneName() { 
+        return SceneManager.GetActiveScene().name; 
+    }
 }

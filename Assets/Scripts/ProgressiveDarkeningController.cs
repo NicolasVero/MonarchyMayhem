@@ -9,22 +9,22 @@ public class ProgressiveDarkeningController : MonoBehaviour {
 
     void Update() {
         
-        if (isFading) {
+        if(this.isFading) {
 
-            float elapsedTime = Time.realtimeSinceStartup - startTime;
+            float elapsedTime = Time.realtimeSinceStartup - this.startTime;
             float percentage = elapsedTime / this.fadeDuration;
             percentage = Mathf.Clamp01(percentage);
             float alpha = Mathf.Lerp(0f, 1f, percentage);
             GetComponent<Image>().color = new Color(0f, 0f, 0f, alpha);
 
             if (alpha >= 1.0f) {
-                isFading = false;
+                this.isFading = false;
             }
         }
     }
 
     public void StartFading() {
-        startTime = Time.realtimeSinceStartup;
-        isFading = true;
+        this.startTime = Time.realtimeSinceStartup;
+        this.isFading = true;
     }
 }

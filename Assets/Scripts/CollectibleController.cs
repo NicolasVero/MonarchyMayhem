@@ -5,15 +5,15 @@ using UnityEngine;
 public class CollectibleController : MonoBehaviour {
 
     private int childrenNumber;
-    [SerializeField] private float floatHeight = 0.05f;
-    [SerializeField] private float floatSpeed = 1.0f; 
+    private float floatHeight = 0.05f;
+    private float floatSpeed = 1.0f; 
 
     void Start() {
-        childrenNumber = GetChildrenNumber(transform);
+        this.childrenNumber = GetChildrenNumber(transform);
     }
 
     void Update() {
-        RotateAndFloatChildren(transform);
+        this.RotateAndFloatChildren(transform);
     }
 
     public int GetCollectibleCounter() {
@@ -26,11 +26,11 @@ public class CollectibleController : MonoBehaviour {
     } 
 
     private void RotateAndFloatChildren(Transform parentTransform) {
-        foreach (Transform child in parentTransform) {
+        foreach(Transform child in parentTransform) {
             
             child.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
             
-            float newY = Mathf.Sin(Time.time * floatSpeed) * floatHeight;
+            float newY = Mathf.Sin(Time.time * floatSpeed) * this.floatHeight;
             child.Translate(Vector3.up * newY * Time.deltaTime, Space.World);
         }
     }

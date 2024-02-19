@@ -16,12 +16,12 @@ public class PickUp : MonoBehaviour {
         if(other.gameObject.CompareTag("PickUp")) {   
             this.audio.PlayPickUpSFX();
             Destroy(other.gameObject);
-            collectedItemsCount++;
-            questController.UpdateQuestText();
+            this.collectedItemsCount++;
+            this.questController.UpdateQuestText();
         }
     }
 
     public int GetCollectedItemsCount() {
-        return collectedItemsCount;
+        return this.collectedItemsCount;
     }
 }

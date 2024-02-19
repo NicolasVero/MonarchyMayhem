@@ -8,6 +8,7 @@ public class DanceWheelController : MonoBehaviour {
 
     [SerializeField] private Canvas danceMenu;
     [SerializeField] private GameObject danceText;
+    
     private List<string> listDances = new List<string> { "Fortnite_Dance", "ElectroShuffle", "RobotDance", "BreakDance", "Wave", "IBreakYou" };
     private PlayerController playerController;
     private Animator animator;
@@ -32,12 +33,12 @@ public class DanceWheelController : MonoBehaviour {
             GameController.SetCursorVisibility(this.danceWheelSelected);
             this.ToggleWheelAnimation(this.danceWheelSelected);
         }
+
         try {
             if (listDances.IndexOf(this.playerController.GetAnimator().GetCurrentAnimatorClipInfo(this.playerController.GetAnimator().GetLayerIndex("Movement Layer"))[0].clip.name) != -1) {
                 this.DisableCanOpenMenu();
                 GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
-            }
-            else if (listDances.IndexOf(this.playerController.GetAnimator().GetCurrentAnimatorClipInfo(this.playerController.GetAnimator().GetLayerIndex("UpperBody Layer"))[0].clip.name) != -1) {
+            } else if (listDances.IndexOf(this.playerController.GetAnimator().GetCurrentAnimatorClipInfo(this.playerController.GetAnimator().GetLayerIndex("UpperBody Layer"))[0].clip.name) != -1) {
                 this.DisableCanOpenMenu(); 
                 GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0, 0, 0);
             }

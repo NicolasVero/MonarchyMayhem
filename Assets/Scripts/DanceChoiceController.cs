@@ -34,6 +34,8 @@ public class DanceChoiceController : MonoBehaviour
         this.itemText.text = "";
     }
 
-    private void DeselectClickedButton() { UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null); }
+    private void DeselectClickedButton() { 
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null); 
+    }
 
 }

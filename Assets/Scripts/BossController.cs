@@ -59,28 +59,18 @@ public class BossController : MonoBehaviour {
     }
 
     private void LoadBossStats() {
-    TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
-    string phase = !this.firstPhasePassed ? "boss_1" : "boss_2";
-
-    if(enemiesStats != null) {
-        EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+        TextAsset enemiesStats = Resources.Load<TextAsset>("Data/EnemiesStats");
+        string phase = !this.firstPhasePassed ? "boss_1" : "boss_2";
         DifficultyStats difficultyStats = null;
-        this.difficultyController = FindObjectOfType<Difficulty>();
-        string difficulty = difficultyController.GetDifficulty();
-        
-        switch(difficulty) {
-            case "easy":
-                difficultyStats = enemiesStatsData.easy;
-                break;
-            case "medium":
-                difficultyStats = enemiesStatsData.medium;
-                break;
-            case "hard":
-                difficultyStats = enemiesStatsData.hard;
-                break;
-            default:
-                difficultyStats = enemiesStatsData.easy; // Par défaut, utilise les stats de difficulté facile
-                break;
+
+        if(enemiesStats != null) {
+            EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
+            this.difficultyController = FindObjectOfType<Difficulty>();
+            string difficulty = difficultyController.GetDifficulty();
+            
+            if(difficulty == "easy") difficultyStats = enemiesStatsData.easy;
+            if(difficulty == "medium") difficultyStats = enemiesStatsData.medium;
+            if(difficulty == "hard") difficultyStats = enemiesStatsData.hard;
         }
 
         if(difficultyStats != null) {
@@ -99,8 +89,6 @@ public class BossController : MonoBehaviour {
             this.navMeshAgent.stoppingDistance = this.range;
         }
     }
-}
-
 
     private void FixedUpdate() {
 
@@ -110,7 +98,7 @@ public class BossController : MonoBehaviour {
             this.BossRegen();
         }        
 
-        if(isAlive) {
+        if(this.isAlive) {
             
             ResetAnims();
             if (!this.isInTransition)
@@ -163,8 +151,7 @@ public class BossController : MonoBehaviour {
     public void TakeDamage() {
 
         if(!this.cooldown) {
-            int damage = this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
-            this.health -= damage;
+            this.health -= this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
             this.SetHealthBar(this.GetHealth());
             Invoke("DisableCooldown", 1.5f);
             this.cooldown = true;
@@ -221,14 +208,14 @@ public class BossController : MonoBehaviour {
     }
 
     private void StopMovement() {
-        canMove = false;
-        canAttack = false;
-        isAlive = false;
+        this.canMove = false;
+        this.canAttack = false;
+        this.isAlive = false;
     }
     private void StartMovement() {
-        canMove = true;
-        canAttack = true;
-        isAlive = true;
+        this.canMove = true;
+        this.canAttack = true;
+        this.isAlive = true;
     }
 
     private void StartPhaseTwo() {
@@ -283,15 +270,26 @@ public class BossController : MonoBehaviour {
         this.SetHealthBarMax(this.maxHealth);
     }
 
-    private void SetHealthBar(int hp) { this.healthBar.value = hp; }
-    private void SetHealthBarMax(int max) { this.healthBar.maxValue = max; }
+    private void SetHealthBar(int hp) { 
+        this.healthBar.value = hp; 
+    }
+
+    private void SetHealthBarMax(int max) { 
+        this.healthBar.maxValue = max; 
+    }
+
     private void BossRegen() {
         float currentHealth = Mathf.MoveTowards(this.healthBar.value, this.maxHealth, 300 * Time.deltaTime);
         this.healthBar.value = currentHealth;
     }
 
-    public int GetHealth()               { return this.health;             }
-    public int GetMaxHealth()            { return this.maxHealth;          }    
+    public int GetHealth() { 
+        return this.health;          
+    }
+    
+    public int GetMaxHealth() {
+        return this.maxHealth;
+    }    
 
 
 }

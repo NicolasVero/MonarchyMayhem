@@ -49,7 +49,7 @@ public class WeaponsDropper : MonoBehaviour {
 
         weaponID = (weaponID == -1) ? GiveRandomWeaponID() : weaponID;
 
-        var instance = Instantiate(models[weaponID], position, Quaternion.Euler(0f, 0f, 90f));
+        var instance = Instantiate(this.models[weaponID], position, Quaternion.Euler(0f, 0f, 90f));
         instance.transform.parent = this.weaponsContainer.transform;
     }
 

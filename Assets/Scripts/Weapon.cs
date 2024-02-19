@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour {
             tierColors.TryGetValue(tier, out hexColor);
             lightComponent.color = GetColorFromHexadecimal(hexColor);
 
-            Destroy(gameObject, 120f);
+            Destroy(this.gameObject, 120f);
         }       
     }
 
