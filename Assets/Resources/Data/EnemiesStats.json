@@ -3,8 +3,8 @@
     [
         {
             "type" : "peasant",
-            "chanceToDrop" : 0.30,
-            "health" : 15,
+            "chanceToDrop" : 0.05,
+            "health" : 20,
             "attack" : 5, 
             "attackSpeed" : 2.0,
             "speed" : 1.0, 
@@ -13,23 +13,23 @@
         },
         {
             "type" : "bourgeois",
-            "chanceToDrop" : 0.50,
-            "health" : 20,
+            "chanceToDrop" : 0.2,
+            "health" : 35,
             "attack" : 7, 
             "attackSpeed" : 1.5,
             "speed" : 2.5, 
             "range" : 2.5, 
-            "xp" : 2
+            "xp" : 5
         },
         {
             "type" : "knight",
-            "chanceToDrop" : 1,
-            "health" : 50,
+            "chanceToDrop" : 0.5,
+            "health" : 60,
             "attack" : 20, 
             "attackSpeed" : 2,
             "speed" : 4.0, 
             "range" : 3.0, 
-            "xp" : 5
+            "xp" : 15
         },
         
         {

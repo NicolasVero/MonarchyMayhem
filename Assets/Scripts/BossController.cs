@@ -259,7 +259,6 @@ public class BossController : MonoBehaviour {
         Instantiate(smokeGO, new Vector3(this.transform.position.x, 0, this.transform.position.z), Quaternion.identity);
         GameObject.FindGameObjectWithTag("Smoke").GetComponent<ParticleSystem>().Play();
 
-        // Regen Tah Dark Souls un jour
         this.SetHealthBarMax(this.maxHealth);
     }
 
