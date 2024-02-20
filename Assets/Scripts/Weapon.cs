@@ -41,13 +41,13 @@ public class Weapon : MonoBehaviour {
             lightComponent.color = Color.red; 
 
 
-			Dictionary<string, string> tierColors = new Dictionary<string, string> {
-				{ "S", "#FF7C00" },         
-				{ "A", "#8E00FF" },
-				{ "B", "#0046FF" },
-				{ "C", "#77FF00" },
-				{ "D", "#FFFFFF" }
-			};
+            Dictionary<string, string> tierColors = new Dictionary<string, string> {
+                { "S", "#FF7C00" },         
+                { "A", "#8E00FF" },
+                { "B", "#0046FF" },
+                { "C", "#77FF00" },
+                { "D", "#FFFFFF" }
+            };
 
             string hexColor;
             tierColors.TryGetValue(tier, out hexColor);
@@ -56,6 +56,8 @@ public class Weapon : MonoBehaviour {
             Destroy(this.gameObject, 120f);
         }       
     }
+
+    
 
 	private Color GetColorFromHexadecimal(string hexColor) {
 		Color color;

@@ -9,15 +9,14 @@ public class DialogueController : MonoBehaviour {
     private QuestController questController; 
     [SerializeField] private NPCController npcController;
 
-    [Header("Canvas Settings")]
-    [SerializeField] private Canvas dialogueCanvas;
-    [SerializeField] private Canvas interaction;
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private Image picture;
-    [SerializeField] private Button closeButton;
-    [SerializeField] private Button nextButton;
-    [SerializeField] private Button prevButton;
+    private Canvas dialogueCanvas;
+    private Canvas interaction;
+    private TextMeshProUGUI dialogueText;
+    private TextMeshProUGUI nameText;
+    private Image picture;
+    private Button closeButton;
+    private Button nextButton;
+    private Button prevButton;
 
     [Header("Canvas to Deactivate")]
     [SerializeField] private Canvas[] disabledCanvas;
@@ -179,6 +178,7 @@ public class DialogueController : MonoBehaviour {
         ShowMessage(); 
 
     }
+
 
     private void SetCurrentDialogueSet() {
         if(this.currentDialogueSetIndex >= 0 && this.currentDialogueSetIndex < this.dialogueSets.Length) {

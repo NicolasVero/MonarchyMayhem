@@ -45,6 +45,11 @@ public class GameController : MonoBehaviour {
         canvas.enabled = state;
     }
 
+    public static void SetCanvasVisibility(Canvas[] canvas, bool state) {
+        foreach(Canvas canva in canvas)
+            canva.enabled = state;
+    }
+
     public static void DrawCircleAroundObject(Vector3 position, float range, int numRays = 36) {
         float angleIncrement = 360.0f / numRays;
         Color rayColor = Color.red;

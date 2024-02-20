@@ -302,8 +302,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void CameraDeathAnimation() {
-        GameController.SetCanvasVisibility(hudScreen, false);
-        GameController.SetCanvasVisibility(questScreen, false);
+        GameController.SetCanvasVisibility(new Canvas[] { this.hudScreen, this.questScreen }, false);
         
         if(this.sceneController.GetSceneName() == "Salle_combat_final")
             GameController.SetCanvasVisibility(this.bossCanvas, false);
