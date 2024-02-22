@@ -16,4 +16,5 @@ public class WeaponStat {
     public float range;
     public int regeneration;
     public float speed;
+    public float dropProbability;
 }
