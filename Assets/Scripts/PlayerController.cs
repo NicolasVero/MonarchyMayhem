@@ -101,8 +101,9 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
 
         this.keyActions.Add(KeyCode.E, TakeWeapon);
-        // this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
+        this.keyActions.Add(KeyCode.R, ToggleQuestMenu);
         this.keyActions.Add(KeyCode.P, TogglePauseMenu);
+        this.keyActions.Add(KeyCode.Escape, TogglePauseMenu);
 
         this.audio.PlayThemeSFX();
         DontDestroyOnLoad(this.gameObject);
@@ -181,8 +182,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ToggleQuestMenu() {
-        if(this.canResume) 
-            this.questMenu.SetActive(!this.questMenu.activeSelf);
+        if(this.canResume) {
+            if(GameController.GetGameObjectAlpha(this.questMenu) > 0f) {
+                GameController.SetMenuAlpha(this.questMenu, 0f);
+            } else {
+                GameController.SetMenuAlpha(this.questMenu, 1f);
+            }
+        }
     }
 
     private IEnumerator DisableGoingAttack() {

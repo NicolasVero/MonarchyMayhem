@@ -89,4 +89,22 @@ public class GameController : MonoBehaviour {
         pauseMenu.SetActive(false);
         GameController.SetCursorVisibility(false);
     }
+
+    public static void SetMenuAlpha(GameObject gameObject, float alpha) {
+    
+        CanvasRenderer[] renderers = gameObject.GetComponentsInChildren<CanvasRenderer>();
+
+        foreach (CanvasRenderer renderer in renderers) {
+            renderer.SetAlpha(alpha);
+        }
+    }
+
+    public static float GetGameObjectAlpha(GameObject gameObject) {
+        CanvasRenderer[] renderers = gameObject.GetComponentsInChildren<CanvasRenderer>();
+
+        if(renderers.Length > 0) 
+            return renderers[0].GetAlpha();
+        
+        return -1f;
+    }
 }
