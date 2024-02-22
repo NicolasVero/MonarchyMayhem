@@ -405,14 +405,16 @@ public class PlayerController : MonoBehaviour {
 
     // Animations
     private void Move() {
-        transform.Translate(2 * Vector3.forward * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
-        transform.Translate(2 * Vector3.right   * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
-        float moveZ = Input.GetAxis("Vertical");
-        this.moveDirection = new Vector3(0, 0, moveZ);
-        this.moveDirection = this.transform.TransformDirection(this.moveDirection);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+        transform.Translate((movement * (this.GetSpeed() + this.GetWeaponSpeed() + this.sprint) * Time.fixedDeltaTime) * 2);
 
         MoveAnims();
     }
+
 
     private void ResetAnims() {
         this.animator.SetInteger("Dance", 0);
