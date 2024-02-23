@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
-    [Header("Spawnable")]
-    [SerializeField] bool allowPeasants;
-    [SerializeField] bool allowBourgeois;
-    [SerializeField] bool allowKnights;
 
-    [Header("Chance of spawn")]
-    [Range(0, 100)][SerializeField] float chancePeasants;
-    [Range(0, 100)][SerializeField] float chanceBourgeois;
-    [Range(0, 100)][SerializeField] float chanceKnights;
+    private bool allowPeasants;
+    private bool allowBourgeois;
+    private bool allowKnights;
 
-    [Header("Spawn parameters")]
-    [SerializeField] bool viewSpawnPoint;
-    [SerializeField] private float spawnDelay;
-    [SerializeField] private GameObject enemiesContainer;
-    [SerializeField] private GameObject collectiblesContainer;
+    private int chancePeasants;
+    private int chanceBourgeois;
+    private int chanceKnights;
+
+    private bool viewSpawnPoint;
+    private float spawnDelay;
 
     [Header("Instances")]
     [SerializeField] GameObject[] peasants;
@@ -26,6 +22,9 @@ public class Spawner : MonoBehaviour {
     [SerializeField] GameObject[] knights;
     [SerializeField] GameObject[] pickUps;
 
+
+    private GameObject enemiesContainer;
+    private GameObject collectiblesContainer;
     private bool isActive = false, isPaused = false, allowPickUp;
     private float timer = 0f;
     private int currentPickUpIndex = 0;
@@ -58,6 +57,20 @@ public class Spawner : MonoBehaviour {
         this.player = GameObject.FindWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.spawnerController = GetComponentInParent<SpawnersController>();
         this.radius = this.spawnerController.GetRadius();
+
+        this.allowPeasants = this.spawnerController.GetAllowPeasant();
+        this.allowBourgeois = this.spawnerController.GetAllowBouregois();
+        this.allowKnights = this.spawnerController.GetAllowKnights();
+
+        this.chancePeasants = this.spawnerController.GetChancePeasants();
+        this.chanceBourgeois = this.spawnerController.GetChanceBourgeois();
+        this.chanceKnights = this.spawnerController.GetChanceKnights();
+    
+        this.enemiesContainer = this.spawnerController.GetEnemiesContainer();
+        this.collectiblesContainer = this.spawnerController.GetColleciblesContainer();
+    
+        this.viewSpawnPoint = this.spawnerController.GetViewSpawnPoint();
+        this.spawnDelay = this.spawnerController.GetSpawnDelay();
     }
 
     void Update() {

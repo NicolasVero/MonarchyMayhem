@@ -6,15 +6,32 @@ public class SpawnersController : MonoBehaviour {
     
     [Header("Spawners")]
     [SerializeField] private int maxActive;
-    [SerializeField] private float radius;
     [SerializeField] private int maxEntities;
+    [SerializeField] private float radius;
+
+    [Header("Containers")]
     [SerializeField] private GameObject enemiesContainer;
+    [SerializeField] private GameObject collectiblesContainer;
     
+    [Header("Spawnable")]
+    [SerializeField] bool allowPeasants;
+    [SerializeField] bool allowBourgeois;
+    [SerializeField] bool allowKnights;
+
+    [Header("Chance of spawn")]
+    [Range(0, 100)][SerializeField] int chancePeasants;
+    [Range(0, 100)][SerializeField] int chanceBourgeois;
+    [Range(0, 100)][SerializeField] int chanceKnights;
+
+    [Header("Spawn parameters")]
+    [SerializeField] private bool viewSpawnPoint;
+    [SerializeField] private float spawnDelay;
+
     private bool isPaused = false;
     private GameObject[] spawnerObjects;
     private Difficulty difficultyController;
 
-    void Start(){
+    void Start() {
 
         this.difficultyController = FindObjectOfType<Difficulty>();
         this.difficultyController.DisableChoice();
@@ -85,5 +102,45 @@ public class SpawnersController : MonoBehaviour {
 
     public float GetRadius() {
         return this.radius;
+    }
+
+    public bool GetAllowPeasant() {
+        return this.allowPeasants;
+    }
+
+    public bool GetAllowBouregois() {
+        return this.allowBourgeois;
+    }
+
+    public bool GetAllowKnights() {
+        return this.allowKnights;
+    }
+
+    public int GetChancePeasants() {
+        return this.chancePeasants;
+    }
+
+    public int GetChanceBourgeois() {
+        return this.chanceBourgeois;
+    }
+
+    public int GetChanceKnights() {
+        return this.chanceKnights;
+    }
+
+    public GameObject GetColleciblesContainer() {
+        return this.collectiblesContainer;
+    }
+    
+    public GameObject GetEnemiesContainer() {
+        return this.enemiesContainer;
+    }
+
+    public bool GetViewSpawnPoint() {
+        return this.viewSpawnPoint;
+    }
+
+    public float GetSpawnDelay() {
+        return this.spawnDelay;
     }
 }
