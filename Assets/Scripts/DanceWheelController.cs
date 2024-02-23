@@ -71,25 +71,25 @@ public class DanceWheelController : MonoBehaviour {
                 break;
             case 1:
                 // Fortnite
-                this.playerController.GetAnimator().SetInteger("Dance", danceID);
+                this.playerController.ChangeAnimationState("Fortnite_Dance");
                 break;
             case 2:
                 // Electroshuffle                
-                this.playerController.GetAnimator().SetInteger("Dance", danceID);
+                this.playerController.ChangeAnimationState("Electro_Shuffle");
                 break;
             case 3:
                 // Breakdance
-                this.playerController.GetAnimator().SetInteger("Dance", danceID);
+                this.playerController.ChangeAnimationState("Break_Dance");
                 break;
             case 4:
                 // Robot Dance
-                this.playerController.GetAnimator().SetInteger("Dance", danceID);
+                this.playerController.ChangeAnimationState("Robot_Dance");
                 break;
             case 5:
-                this.playerController.GetAnimator().SetTrigger("Ibreakyou");
+                this.playerController.ChangeAnimationState("Ibreakyou");
                 break;
             case 6:
-                this.playerController.GetAnimator().SetTrigger("Wave");
+                this.playerController.ChangeAnimationState("Wave");
                 break;
         }
 

@@ -1,8 +1,12 @@
 {
-    "weapons": [
+    "weapons": 
+    [
         {
             "id": 1,
-            "name": "Hallebarde",
+            "name": {
+                "fr": "Hallebarde",
+                "en": "Halberd"
+            },
             "tier": "A",
             "attack": 15,
             "attackSpeed": 1.5,
@@ -14,7 +18,10 @@
         },
         {
             "id": 2,
-            "name": "Marteau Rafistolé ",
+            "name": {
+                "fr": "Marteau Rafistolé",
+                "en": "Patched Hammer"
+            },
             "tier": "D",
             "attack": -1,
             "attackSpeed": -0.2,
@@ -26,7 +33,10 @@
         },
         {
             "id": 3,
-            "name": "Faux Lunaire",
+            "name": {
+                "fr": "Faux Lunaire",
+                "en": "Lunar Scythe"
+            },
             "tier": "S",
             "attack": 10,
             "attackSpeed": -0.3,
@@ -38,7 +48,10 @@
         },
         {
             "id": 4,
-            "name": "Cercle Tranchant",
+            "name": {
+                "fr": "Cercle Tranchant",
+                "en": "Sharp Circle"
+            },
             "tier": "B",
             "attack": 1,
             "attackSpeed": -0.5,
@@ -50,7 +63,10 @@
         },
         {
             "id": 5,
-            "name": "Épée Royale",
+            "name": {
+                "fr": "Épée Royale",
+                "en": "Royal Sword"
+            },
             "tier": "B",
             "attack": 6,
             "attackSpeed": 0.0,
@@ -62,7 +78,10 @@
         },
         {
             "id": 6,
-            "name": "Lance Lunaire",
+            "name": {
+                "fr": "Lance Lunaire",
+                "en": "Lunar Lance"
+            },
             "tier": "A",
             "attack": 8,
             "attackSpeed": 0.0,
@@ -74,7 +93,10 @@
         },
         {
             "id": 7,
-            "name": "Sceptre du guérisseur",
+            "name": {
+                "fr": "Sceptre du guérisseur",
+                "en": "Healer's Scepter"
+            },
             "tier": "B",
             "attack": -1,
             "attackSpeed": 0.0,
@@ -86,7 +108,10 @@
         },
         {
             "id": 8,
-            "name": "Dague Noire",
+            "name": {
+                "fr": "Dague Noire",
+                "en": "Black Dagger"
+            },
             "tier": "C",
             "attack": -1.5,
             "attackSpeed": -0.3,
@@ -98,7 +123,10 @@
         },
         {
             "id": 9,
-            "name": "Hache émoussée de Paysan",
+            "name": {
+                "fr": "Hache émoussée de Paysan",
+                "en": "Blunt Peasant Axe"
+            },
             "tier": "C",
             "attack": 3,
             "attackSpeed": 0.5,
@@ -110,7 +138,10 @@
         },
         {
             "id": 10,
-            "name": "Espadon",
+            "name": {
+                "fr": "Espadon",
+                "en": "Greatsword"
+            },
             "tier": "B",
             "attack": 8,
             "attackSpeed": 1.0,
@@ -122,7 +153,10 @@
         },
         {
             "id": 11,
-            "name": "Grande Hallebarde",
+            "name": {
+                "fr": "Grande Hallebarde",
+                "en": "Great Halberd"
+            },
             "tier": "C",
             "attack": 4,
             "attackSpeed": 0.0,
@@ -134,7 +168,10 @@
         },
         {
             "id": 12,
-            "name": "Petite masse contondante",
+            "name": {
+                "fr": "Petite masse contondante",
+                "en": "Small Blunt Mace"
+            },
             "tier": "D",
             "attack": -2,
             "attackSpeed": -0.1,
@@ -146,7 +183,10 @@
         },
         {
             "id": 13,
-            "name": "Hallebarde aiguisée",
+            "name": {
+                "fr": "Hallebarde aiguisée",
+                "en": "Sharpened Halberd"
+            },
             "tier": "B",
             "attack": 7,
             "attackSpeed": 0.5,
@@ -158,7 +198,10 @@
         },
         {
             "id": 14,
-            "name": "Marteau du Conquérant",
+            "name": {
+                "fr": "Marteau du Conquérant",
+                "en": "Conqueror's Hammer"
+            },
             "tier": "S",
             "attack": 20,
             "attackSpeed": 2.0,
@@ -170,7 +213,10 @@
         },
         {
             "id": 15,
-            "name": "Enclume",
+            "name": {
+                "fr": "Enclume",
+                "en": "Anvil"
+            },
             "tier": "B",
             "attack": 10,
             "attackSpeed": 1.5,
@@ -182,7 +228,10 @@
         },
         {
             "id": 16,
-            "name": "Epée de paysan",
+            "name": {
+                "fr": "Epée de paysan",
+                "en": "Peasant's Sword"
+            },
             "tier": "C",
             "attack": 3,
             "attackSpeed": 0.5,
@@ -194,7 +243,10 @@
         },
         {
             "id": 17,
-            "name": "Gourdin grossié",
+            "name": {
+                "fr": "Gourdin grossié",
+                "en": "Rough Mace"
+            },
             "tier": "D",
             "attack": 3,
             "attackSpeed": 1.0,
@@ -206,7 +258,10 @@
         },
         {
             "id": 18,
-            "name": "Pierre",
+            "name": {
+                "fr": "Pierre",
+                "en": "Rock"
+            },
             "tier": "D",
             "attack": -4,
             "attackSpeed": -0.5,
@@ -218,7 +273,10 @@
         },
         {
             "id": 19,
-            "name": "Petite dague",
+            "name": {
+                "fr": "Petite dague",
+                "en": "Small Dagger"
+            },
             "tier": "D",
             "attack": 1,
             "attackSpeed": -0.2,
@@ -230,7 +288,10 @@
         },
         {
             "id": 20,
-            "name": "Hache tordue",
+            "name": {
+                "fr": "Hache tordue",
+                "en": "Twisted Axe"
+            },
             "tier": "D",
             "attack": 10,
             "attackSpeed": 2,
@@ -242,7 +303,10 @@
         },
         {
             "id": 21,
-            "name": "Ecraseur",
+            "name": {
+                "fr": "Ecraseur",
+                "en": "Crusher"
+            },
             "tier": "C",
             "attack": 5,
             "attackSpeed": 1.0,
@@ -254,7 +318,10 @@
         },
         {
             "id": 22,
-            "name": "Pique",
+            "name": {
+                "fr": "Pique",
+                "en": "Pike"
+            },
             "tier": "D",
             "attack": 1,
             "attackSpeed": 1,
@@ -266,7 +333,10 @@
         },
         {
             "id": 23,
-            "name": "Vieille épée",
+            "name": {
+                "fr": "Vieille épée",
+                "en": "Old Sword"
+            },
             "tier": "D",
             "attack": 3,
             "attackSpeed": 0.0,
@@ -278,7 +348,10 @@
         },
         {
             "id": 24,
-            "name": "Perceur",
+            "name": {
+                "fr": "Perceur",
+                "en": "Piercer"
+            },
             "tier": "B",
             "attack": 10,
             "attackSpeed": 1.0,
@@ -290,7 +363,10 @@
         },
         {
             "id": 25,
-            "name": "Hachette",
+            "name": {
+                "fr": "Hachette",
+                "en": "Hatchet"
+            },
             "tier": "D",
             "attack": 3,
             "attackSpeed": 0.1,
@@ -302,7 +378,10 @@
         },
         {
             "id": 26,
-            "name": "Epée courbée",
+            "name": {
+                "fr": "Epée courbée",
+                "en": "Curved Sword"
+            },
             "tier": "C",
             "attack": 5,
             "attackSpeed": 0.0,
@@ -314,7 +393,10 @@
         },
         {
             "id": 27,
-            "name": "Sabre",
+            "name": {
+                "fr": "Sabre",
+                "en": "Sabre"
+            },
             "tier": "C",
             "attack": 6,
             "attackSpeed": -0.1,
@@ -326,7 +408,10 @@
         },
         {
             "id": 28,
-            "name": "Kukuri",
+            "name": {
+                "fr": "Kukuri",
+                "en": "Kukri"
+            },
             "tier": "D",
             "attack": -4,
             "attackSpeed": -0.5,
@@ -338,7 +423,10 @@
         },
         {
             "id": 29,
-            "name": "Epée d'entrainement",
+            "name": {
+                "fr": "Epée d'entrainement",
+                "en": "Training Sword"
+            },
             "tier": "D",
             "attack": -1,
             "attackSpeed": 0.3,
@@ -350,7 +438,10 @@
         },
         {
             "id": 30,
-            "name": "Grande épée tordue",
+            "name": {
+                "fr": "Grande épée tordue",
+                "en": "Large Twisted Sword"
+            },
             "tier": "C",
             "attack": 5,
             "attackSpeed": 0.0,
@@ -362,7 +453,10 @@
         },
         {
             "id": 31,
-            "name": "Fourche",
+            "name": {
+                "fr": "Fourche",
+                "en": "Fork"
+            },
             "tier": "D",
             "attack": 1,
             "attackSpeed": 0.5,
@@ -374,7 +468,10 @@
         },
         {
             "id": 32,
-            "name": "Petite pique",
+            "name": {
+                "fr": "Petite pique",
+                "en": "Small Pike"
+            },
             "tier": "D",
             "attack": -2,
             "attackSpeed": 0.5,
@@ -386,7 +483,10 @@
         },
         {
             "id": 33,
-            "name": "Gourdin à pointe",
+            "name": {
+                "fr": "Gourdin à pointe",
+                "en": "Spiked Mace"
+            },
             "tier": "B",
             "attack": 10,
             "attackSpeed": 2.0,
@@ -398,7 +498,10 @@
         },
         {
             "id": 34,
-            "name": "Marteau à pique",
+            "name": {
+                "fr": "Marteau à pique",
+                "en": "Spike Hammer"
+            },
             "tier": "C",
             "attack": 5,
             "attackSpeed": 1.0,

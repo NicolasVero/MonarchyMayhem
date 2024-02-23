@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DanceChoiceController : MonoBehaviour
-{
+public class DanceChoiceController : MonoBehaviour {
 
     [SerializeField] private DanceWheelController DanceWheelController;
     [SerializeField] private GameObject danceText;

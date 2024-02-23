@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour {
     private Canvas bossCanvas;
     private Dictionary<KeyCode, Action> keyActions = new Dictionary<KeyCode, Action>();
 
+    private string currentAnimation;
+    private string[] secondLayerAnimations = { "Attack", "Ibreakyou", "Wave" };
+
 
 
     void Awake() {
@@ -153,7 +156,7 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetMouseButtonDown(0) && this.canResume && !GameController.GameIsFreeze() && this.canAttack) {
             this.goingAttack = true;
             this.hudStats.ChangeEnableAttackIcon(false);
-            this.animator.SetTrigger("Attack");
+            this.ChangeAnimationState("Attack");
             StartCoroutine(DisableGoingAttack());
         }
     }
@@ -313,7 +316,8 @@ public class PlayerController : MonoBehaviour {
         if(this.sceneController.GetSceneName() == "Salle_combat_final")
             GameController.SetCanvasVisibility(this.bossCanvas, false);
                 
-        this.animator.SetInteger("Death", GameController.Random(1, 3));
+        string deathRnd = "Death_" + GameController.Random(1, 3);
+        this.ChangeAnimationState(deathRnd);
         this.camera.EnableBlackAndWhiteEffect();
         GameController.SetGameState(0.3f);
         Invoke("DeathScreen", 0.55f);
@@ -416,64 +420,43 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    private void ResetAnims() {
-        this.animator.SetInteger("Dance", 0);
-        this.animator.SetBool("Idle", false);
-        this.animator.SetInteger("Walk", 0);
-        this.animator.SetInteger("Strafe", 0);
-        this.animator.SetInteger("Strafe_Forward", 0);
-        this.animator.SetInteger("Strafe_Backward", 0);
-        this.animator.SetInteger("Sprint", 0);
-        this.animator.SetInteger("Sprint_Strafe", 0);
-        this.animator.SetInteger("Sprint_Forward_Strafe", 0);
+    private void MoveAnims() {
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        string animationState = "Idle";
+
+        if(verticalInput > 0) {
+            if(horizontalInput > 0 ) animationState = this.isSprinting ? "Sprint_Forward_Right" : "Strafe_Forward_Right";
+            if(horizontalInput < 0 ) animationState = this.isSprinting ? "Sprint_Forward_Left"  : "Strafe_Forward_Left";
+            if(horizontalInput == 0) animationState = this.isSprinting ? "Sprint_Forward"       : "Walk_Forward";
+        }
+
+        if(verticalInput < 0) {
+            if(horizontalInput > 0 ) animationState = "Strafe_Back_Right";
+            if(horizontalInput < 0 ) animationState = "Strafe_Back_Left";
+            if(horizontalInput == 0) animationState = "Walk_Back";
+        }
+
+        if(verticalInput == 0) {
+            if(horizontalInput > 0) animationState = this.isSprinting ? "Sprint_Right" : "Strafe_Right";
+            if(horizontalInput < 0) animationState = this.isSprinting ? "Sprint_Left"  : "Strafe_Left";
+        }
+
+        this.ChangeAnimationState(animationState);
     }
 
-    private void MoveAnims() {
-        ResetAnims();
-        
-        if (Input.GetAxis("Vertical") > 0) {
-            if(Input.GetAxis("Horizontal") > 0) {
-                if (this.isSprinting)
-                    this.animator.SetInteger("Sprint_Forward_Strafe", 1);
-                else
-                    this.animator.SetInteger("Strafe_Forward", 1);
-            }
-            else if(Input.GetAxis("Horizontal") < 0) {
-                if (this.isSprinting)
-                    this.animator.SetInteger("Sprint_Forward_Strafe", -1);
-                else
-                    this.animator.SetInteger("Strafe_Forward", -1);
-            }
-            else {
-                if (this.isSprinting) 
-                    this.animator.SetInteger("Sprint", 1);
-                else
-                    this.animator.SetInteger("Walk", 1);
-            }
-        } else if(Input.GetAxis("Vertical") < 0) {
-            if(Input.GetAxis("Horizontal") > 0)
-                this.animator.SetInteger("Strafe_Backward", 1);
-            else if (Input.GetAxis("Horizontal") < 0)
-                this.animator.SetInteger("Strafe_Backward", -1);
-            else
-                this.animator.SetInteger("Walk", -1);
-        } else {
-            if(Input.GetAxis("Horizontal") > 0){
-                if (this.isSprinting)
-                    this.animator.SetInteger("Sprint_Strafe", 1);
-                else
-                    this.animator.SetInteger("Strafe", 1);
-            }
-            else if (Input.GetAxis("Horizontal") < 0){
-                if (this.isSprinting)
-                    this.animator.SetInteger("Sprint_Strafe", -1);
-                else
-                    this.animator.SetInteger("Strafe", -1);
-            }
-            else
-                this.animator.SetBool("Idle", true);
-        }
+    public void ChangeAnimationState(string newAnimation) {
+        if(this.currentAnimation == newAnimation) return;
+
+        if(Array.IndexOf(this.secondLayerAnimations, newAnimation) != -1)
+            this.animator.CrossFade(newAnimation, 0.2f, 1);
+        else
+            this.animator.CrossFade(newAnimation, 0.2f, 0);
+
+        this.currentAnimation = newAnimation;
     }
+
 
     public void WeaponAppearance() {
         GameObject.Find("WeaponHolder").transform.localScale = new Vector3(0.1295791f, 0.1295791f, 0.1295791f);

@@ -8,7 +8,7 @@ public class WeaponsStats {
 [Serializable]
 public class WeaponStat {
     public int id;
-    public string name;
+    public WeaponName name;
     public string tier;
     public int attack;
     public float attackSpeed;
@@ -17,4 +17,10 @@ public class WeaponStat {
     public int regeneration;
     public float speed;
     public float dropProbability;
+}
+
+[Serializable]
+public class WeaponName {
+    public string fr;
+    public string en;
 }

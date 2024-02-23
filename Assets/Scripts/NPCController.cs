@@ -12,29 +12,27 @@ public class NPCController : MonoBehaviour {
 
     void Start() {
 
-        this.language = (Application.systemLanguage == SystemLanguage.French) ? "FR" : "EN";
-
         if(this.id != 0)
             this.LoadNPCData();
     }
 
     private void LoadNPCData() {
-        string jsonFilePath = "Data/NpcDatas" + this.language; 
+        string jsonFilePath = (Application.systemLanguage == SystemLanguage.French) ? "Data/NpcDatasFR" : "Data/NpcDatasEN"; 
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath);
 
-        if (jsonFile != null){
+        if (jsonFile != null) {
             NpcDatas npcDatas = JsonUtility.FromJson<NpcDatas>(jsonFile.text);
             NpcData npcData = Array.Find(npcDatas.npcs, e => e.id == this.id);
 
             this.name = npcData.name;
             
             this.dialogueSets = new List<string>[npcData.dialogues.Length];
-            for (int i = 0; i < npcData.dialogues.Length; i++) {
+            for(int i = 0; i < npcData.dialogues.Length; i++) {
                 this.dialogueSets[i] = new List<string>(npcData.dialogues[i].messages);
             }
 
             this.questList = new List<Quest>();
-            foreach (CustomQuest customQuest in npcData.quests) {
+            foreach(CustomQuest customQuest in npcData.quests) {
                 this.questList.Add(new Quest(customQuest.title, customQuest.description, customQuest.required, customQuest.type));
             }
         }
