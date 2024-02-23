@@ -31,6 +31,9 @@ public class Spawner : MonoBehaviour {
     private int currentPickUpIndex = 0;
     private GameObject[] currentPickUpGroup;
     private Difficulty difficultyController;
+    private SpawnersController spawnerController;
+    private float radius;
+    private PlayerController player;
 
 
     void Awake(){
@@ -51,9 +54,15 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    void Start() {
+        this.player = GameObject.FindWithTag(Names.MainCharacter).GetComponent<PlayerController>();
+        this.spawnerController = GetComponentInParent<SpawnersController>();
+        this.radius = this.spawnerController.GetRadius();
+    }
+
     void Update() {
 
-        if(this.isActive && !this.isPaused) {
+        if(this.isActive && !this.isPaused && !this.IsPlayerInRadius()) {
             this.timer += Time.deltaTime;
 
             if(this.timer >= this.spawnDelay) {
@@ -123,5 +132,9 @@ public class Spawner : MonoBehaviour {
 
     public void IncrementIndex(){
         this.currentPickUpIndex++;
+    }
+
+    public bool IsPlayerInRadius() {
+        return Vector3.Distance(this.player.transform.position, transform.position) <= this.radius;
     }
 }

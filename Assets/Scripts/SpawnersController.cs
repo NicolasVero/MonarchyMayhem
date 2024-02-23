@@ -82,4 +82,8 @@ public class SpawnersController : MonoBehaviour {
     public void SetMaxEntities(int maxEntities) {
         this.maxEntities = maxEntities;
     } 
+
+    public float GetRadius() {
+        return this.radius;
+    }
 }

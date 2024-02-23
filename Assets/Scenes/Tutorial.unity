@@ -7134,10 +7134,10 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
+  viewSpawnPoint: 1
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -9305,10 +9305,10 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
+  viewSpawnPoint: 1
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -9377,11 +9377,11 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
-  spawnDelay: 2
+  viewSpawnPoint: 1
+  spawnDelay: 3
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
   peasants:
@@ -9988,10 +9988,10 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
+  viewSpawnPoint: 1
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -19285,10 +19285,10 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
+  viewSpawnPoint: 1
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
@@ -31032,8 +31032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fcc0f6a97bba24d8797e0d484c8b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxActive: 5
-  radius: 0
+  maxActive: 1
+  radius: 15
   maxEntities: 10
   enemiesContainer: {fileID: 379407981}
 --- !u!1001 &1046621875
@@ -56560,10 +56560,10 @@ MonoBehaviour:
   allowPeasants: 1
   allowBourgeois: 0
   allowKnights: 0
-  chancePeasants: 50
+  chancePeasants: 100
   chanceBourgeois: 0
   chanceKnights: 0
-  viewSpawnPoint: 0
+  viewSpawnPoint: 1
   spawnDelay: 2
   enemiesContainer: {fileID: 379407981}
   collectiblesContainer: {fileID: 72405800}
