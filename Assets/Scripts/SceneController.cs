@@ -42,13 +42,16 @@ public class SceneController : MonoBehaviour {
         if(this.isInRange && Input.GetKeyDown(KeyCode.E)){
             ChooseNextZone(this.GetSceneName());
         }
+
+        if(this.playerController.transform.position.y <= -10)
+            this.playerController.transform.position = SetSpawnPoint();
     }
 
     private void ChooseNextZone(string sceneName) {
         if(!questController.GetIsAllQuestCompleted())
             return;
 
-        string[] sceneNames = {"Tutorial", "Village", "Chateau", "Salle_combat_final"};
+        string[] sceneNames = Names.Scenes;
         int index = Array.IndexOf(sceneNames, sceneName);
         if (index >= 0)
             ChangeScene(sceneNames[(index + 1) % sceneNames.Length]);
@@ -59,8 +62,8 @@ public class SceneController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")){
-            if(questController.GetIsAllQuestCompleted()){
+        if(other.CompareTag("Player")) {
+            if(questController.GetIsAllQuestCompleted()) {
                 GameController.SetCanvasVisibility(this.interactionScreen, true);
                 this.isInRange = true;
             }

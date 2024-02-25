@@ -206,6 +206,7 @@ public class DialogueController : MonoBehaviour {
 
     public void SetIsInRange(bool state) {
         GameController.SetCanvasVisibility(this.interaction, state);
+        this.isInRange = state;
     }
 
     public void ResetCurrentQuestIndex() {
