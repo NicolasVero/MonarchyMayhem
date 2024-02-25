@@ -15,7 +15,7 @@ public class Difficulty : MonoBehaviour {
 
 	public void ChooseDifficulty(string choice) {
 		this.difficulty = choice;
-		SceneManager.LoadScene("Tutorial");
+		SceneManager.LoadScene(Names.Scenes[0]);
 	}
 
 	public string GetDifficulty() {
