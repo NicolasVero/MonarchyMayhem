@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class DanceWheelController : MonoBehaviour {
     private List<string> listDances = new List<string> { "Fortnite_Dance", "ElectroShuffle", "RobotDance", "BreakDance", "Wave", "IBreakYou" };
     private PlayerController playerController;
     private Animator animator;
-    private bool danceWheelSelected;
+    private bool danceWheelSelected, frameChecked = false;
     private bool canOpenWheelMenu = true;
     private QuestController questController;
 
@@ -46,6 +47,7 @@ public class DanceWheelController : MonoBehaviour {
         catch { 
             this.EnableCanOpenMenu();
             this.playerController.WeaponAppearance();
+            if (this.frameChecked) this.playerController.SetIsDancing(false);
         }
     }
 
@@ -72,18 +74,22 @@ public class DanceWheelController : MonoBehaviour {
             case 1:
                 // Fortnite
                 this.playerController.ChangeAnimationState("Fortnite_Dance");
+                this.SetDance("Fortnite_Dance");
                 break;
             case 2:
                 // Electroshuffle                
                 this.playerController.ChangeAnimationState("Electro_Shuffle");
+                this.SetDance("ElectroShuffle");
                 break;
             case 3:
                 // Breakdance
                 this.playerController.ChangeAnimationState("Break_Dance");
+                this.SetDance("BreakDance");
                 break;
             case 4:
                 // Robot Dance
                 this.playerController.ChangeAnimationState("Robot_Dance");
+                this.SetDance("RobotDance");
                 break;
             case 5:
                 this.playerController.ChangeAnimationState("Ibreakyou");
@@ -106,5 +112,16 @@ public class DanceWheelController : MonoBehaviour {
 
     private void DisableCanOpenMenu() { 
         this.canOpenWheelMenu = false; 
+    }
+
+    private void SetDance(string animationName) {
+        this.playerController.SetIsDancing(true);
+        this.playerController.Invoke("DisableIsDancing", this.playerController.GetAnimator().runtimeAnimatorController.animationClips.ToList().FirstOrDefault(clip => clip.name == animationName).length);
+        this.frameChecked = false;
+        Invoke("CheckFrame", 1f);
+    }
+
+    private void CheckFrame() {
+        this.frameChecked = true;
     }
 }

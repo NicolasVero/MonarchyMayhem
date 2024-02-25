@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 
     private float sensitivity = 10;
     private int enemyKillCounter, sprint = 0, danceCounter = 0;
-    private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false, inDanseMenu = false;
+    private bool goingAttack = false, canAttack = false, canResume = true, isAlive = true, inPause = false, isSprinting = false, inDanseMenu = false, isDancing;
 
     private float timeSinceLastAttack = 0f;
     private float timeSinceLastRegeneration = 0f;
@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour {
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        string animationState = "Idle";
+        string animationState = (this.GetIsDancing()) ? null : "Idle";
 
         if(verticalInput > 0) {
             if(horizontalInput > 0 ) animationState = this.isSprinting ? "Sprint_Forward_Right" : "Strafe_Forward_Right";
@@ -443,7 +443,19 @@ public class PlayerController : MonoBehaviour {
             if(horizontalInput < 0) animationState = this.isSprinting ? "Sprint_Left"  : "Strafe_Left";
         }
 
-        this.ChangeAnimationState(animationState);
+        if (animationState != null) this.ChangeAnimationState(animationState);
+    }
+
+    public void SetIsDancing(bool state) {
+        this.isDancing = state;
+    }
+
+    public void DisableIsDancing() {
+        this.isDancing = false;
+    }
+    
+    public bool GetIsDancing() {
+        return this.isDancing;
     }
 
     public void ChangeAnimationState(string newAnimation) {
