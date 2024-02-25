@@ -63,9 +63,9 @@ public class Quest {
         questDetails.Message = this.description;
 
         if(this.currentCount < this.required)
-            questDetails.Progression = (this.type == "Speaking") ? "Complétée : non" : "Complétée : " + this.currentCount + " / " + this.required;
+            questDetails.Progression = (this.type == "Speaking") ? ((GameController.GetSystemLanguageUpper() == "FR") ? "Complétée : Non" : "Completed: No") : ((GameController.GetSystemLanguageUpper() == "FR") ? "Complétée : " + this.currentCount + " / " + this.required : "Completed: " + this.currentCount + " / " + this.required);
         else 
-            questDetails.Progression = "Retournez voir le donneur de quête.";
+            questDetails.Progression = (GameController.GetSystemLanguageUpper() == "FR") ? "Retournez voir le donneur de quête." : "Go back to the quest giver.";
 
 
         return questDetails;

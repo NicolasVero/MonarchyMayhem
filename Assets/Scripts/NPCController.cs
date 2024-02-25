@@ -17,7 +17,7 @@ public class NPCController : MonoBehaviour {
     }
 
     private void LoadNPCData() {
-        string jsonFilePath = (Application.systemLanguage == SystemLanguage.French) ? "Data/NpcDatasFR" : "Data/NpcDatasEN"; 
+        string jsonFilePath = "Data/NpcDatas" + GameController.GetSystemLanguageUpper();
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath);
 
         if (jsonFile != null) {

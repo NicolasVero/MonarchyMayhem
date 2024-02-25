@@ -12,6 +12,7 @@ public class QuestController : MonoBehaviour {
     private bool isAllQuestCompleted = false;
     private DialogueController dialogueController; 
     private SpawnersController spawnersController; 
+    private string questDescription, questInstructions;
     [SerializeField] private SceneController sceneController;
 
     [Header("Text")]
@@ -20,7 +21,9 @@ public class QuestController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI questProgression;
 
 
-    void Start() {}
+    void Start() {
+        this.gameObject.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/quest_background_"+GameController.GetSystemLanguageLower());
+    }
 
     void Update() {
         if(this.spawnersController == null){
@@ -39,19 +42,24 @@ public class QuestController : MonoBehaviour {
     }
 
 
-    void InitializeQuests() {
+    private void InitializeQuests() {
         IsAllQuestCompleted(false);
-
 
         switch (this.sceneController.GetSceneName()){
             case "Tutorial":
-                quests.Add(new Quest("Parlez au prêtre", "Parlez au prêtre près du point d'apparition", 1, "Speaking")); 
+                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre" : "Talk to the priest";
+                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre près du point d'apparition" : "Talk to the priest near the spawn point";
+                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
                 break;
             case "Village":
-                quests.Add(new Quest("Parlez au docteur", "Parlez au docteur près du point d'apparition", 1, "Speaking")); 
+                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur" : "Talk to the doctor";
+                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur près du point d'apparition" : "Talk to the doctor near the spawn point";
+                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
                 break;
             case "Chateau":
-                quests.Add(new Quest("Parlez au fou", "Parlez à l'étrange individu dans le château", 1, "Speaking")); 
+                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au fou" : "Talk to the madman";
+                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez à l'étrange individu près du point d'apparition" : "Talk to the weird guy near the spawn point";
+                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
                 break;
         }  
     }
@@ -100,7 +108,11 @@ public class QuestController : MonoBehaviour {
 
         }
         else {
-            quests.Add(new Quest("Changement de zone", "Rendez-vous dans la zone suivante", 0, "Speaking"));
+
+            string questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Changement de zone" : "Switch zones";
+            string questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Rendez-vous dans la zone suivante" : "Proceed to the next zone";
+            quests.Add(new Quest(questDescription, questInstructions, 0, "None"));
+
             ShowCurrentQuest();
 
             GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");

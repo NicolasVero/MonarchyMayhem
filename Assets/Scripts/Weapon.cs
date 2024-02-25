@@ -27,7 +27,7 @@
                 WeaponStat weapon = Array.Find(weaponsStats.weapons, e => e.id == this.weaponID);
 
                 this.id = weapon.id;
-                this.weaponName = (Application.systemLanguage == SystemLanguage.French) ? weapon.name.fr : weapon.name.en;
+                this.weaponName = (GameController.GetSystemLanguageUpper() == "FR") ? weapon.name.fr : weapon.name.en;
                 this.tier = weapon.tier;
                 this.attack = weapon.attack;
                 this.attackSpeed = weapon.attackSpeed;

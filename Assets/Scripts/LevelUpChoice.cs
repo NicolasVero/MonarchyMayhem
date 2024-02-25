@@ -24,6 +24,8 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void Awake() {
 
+        GameObject.Find("Upgrade Interface").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/controle_" + GameController.GetSystemLanguageLower());
+
         this.bannersNames = new string[] {
             "attack_",
             "health_",
@@ -177,6 +179,6 @@ public class LevelUpChoice : MonoBehaviour {
     }
 
     private Sprite LoadBannerSprite(string spriteName, int level) {
-        return Resources.Load<Sprite>("Interface/Banners/" + spriteName + level);
+        return Resources.Load<Sprite>("Interface/Banners/" + GameController.GetSystemLanguageUpper() + "/" + spriteName + level);
     }
 }

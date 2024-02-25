@@ -107,4 +107,12 @@ public class GameController : MonoBehaviour {
         
         return -1f;
     }
+
+    public static string GetSystemLanguageUpper() {
+        return (Application.systemLanguage == SystemLanguage.French) ? "FR" : "EN";
+    }
+    
+    public static string GetSystemLanguageLower() {
+        return (Application.systemLanguage == SystemLanguage.French) ? "fr" : "en";
+    }
 }

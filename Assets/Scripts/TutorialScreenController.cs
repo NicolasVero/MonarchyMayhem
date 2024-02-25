@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class TutorialScreenController : MonoBehaviour {
 
+    void Start() {
+        this.gameObject.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/keyboard_"+GameController.GetSystemLanguageLower());
+    }
+
     void Awake() {
         GameController.SetGameState(false);
     }
