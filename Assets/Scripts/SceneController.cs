@@ -19,7 +19,8 @@ public class SceneController : MonoBehaviour {
         this.playerController.transform.position = SetSpawnPoint();
         this.playerController.ConfigureQuestCanvas();
 
-        if(this.GetSceneName() != "Salle_combat_final"){
+        if(this.GetSceneName() != "Salle_combat_final") {
+
             this.playerController.AddWeaponsDropper();
             this.danceWheelController = GameObject.Find("DanceWheel").GetComponent<DanceWheelController>();
             this.danceWheelController.InitQuestController();
@@ -30,6 +31,8 @@ public class SceneController : MonoBehaviour {
             this.questController.InitQuestController();
             this.pickUp.InitPickUp();
             this.playerController.ConfigureQuestCanvas();
+
+            GameController.SetCanvasVisibility(this.interactionScreen, false);
         } else {
             this.playerController.InitBossCanvas();
         }
@@ -39,12 +42,6 @@ public class SceneController : MonoBehaviour {
         if(this.isInRange && Input.GetKeyDown(KeyCode.E)){
             ChooseNextZone(this.GetSceneName());
         }
-        this.ShowInteraction();
-    }
-
-    private void ShowInteraction() {
-        if (this.GetSceneName() != "Salle_combat_final")
-            this.interactionScreen.enabled = this.isInRange;
     }
 
     private void ChooseNextZone(string sceneName) {
@@ -62,18 +59,21 @@ public class SceneController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")) {
-            if(questController.GetIsAllQuestCompleted())
+        if(other.CompareTag("Player")){
+            if(questController.GetIsAllQuestCompleted()){
+                GameController.SetCanvasVisibility(this.interactionScreen, true);
                 this.isInRange = true;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player")) {
+        if(other.CompareTag("Player")){
+            GameController.SetCanvasVisibility(this.interactionScreen, false);
             this.isInRange = false;
         }
     }
-
+    
     public Vector3 SetSpawnPoint() { 
         return GameObject.FindGameObjectWithTag("SpawnPoint").transform.position; 
     }

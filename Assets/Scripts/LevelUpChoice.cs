@@ -24,8 +24,6 @@ public class LevelUpChoice : MonoBehaviour {
 
     public void Awake() {
 
-        GameObject.Find("Upgrade Interface").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/controle_" + GameController.GetSystemLanguageLower());
-
         this.bannersNames = new string[] {
             "attack_",
             "health_",
@@ -35,6 +33,7 @@ public class LevelUpChoice : MonoBehaviour {
             "speed_",
             "regeneration_"
         };
+        GameObject.Find("Upgrade Interface").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/controle_" + GameController.GetSystemLanguageLower());
     }
 
     public void UpdateStatsDisplay() {
@@ -62,9 +61,13 @@ public class LevelUpChoice : MonoBehaviour {
         GameController.SetGameState(false);
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
-        GameController.SetCursorVisibility(true);
-        GameController.SetPanelVisibility(this.dancePanel, false);
+        StartCoroutine(ShowCursor());
         // Cursor.position = new Vector3(targetPosition.x, targetPosition.y, 0);
+    }
+
+    private IEnumerator ShowCursor() {
+        yield return new WaitForSecondsRealtime(1f);
+        GameController.SetCursorVisibility(true);
     }
 
     public int[] GenerateUniquesRandom(int min, int max, int[] excludes) {

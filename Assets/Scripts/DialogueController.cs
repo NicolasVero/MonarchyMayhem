@@ -39,7 +39,7 @@ public class DialogueController : MonoBehaviour {
     private GameObject npcObject;
 
     void Start() {
-
+        
         this.currentDialogueSetIndex = 0;
         this.questController = GameObject.Find("Quest Menu").GetComponent<QuestController>();
         this.dialogueCanvas = GameObject.Find("Dialogue").GetComponent<Canvas>();
@@ -68,6 +68,7 @@ public class DialogueController : MonoBehaviour {
 
         combinedCanvasList.Add(questMenuCanvas);
         combinedCanvasList.Add(hudCanvas);
+        combinedCanvasList.Add(this.interaction);
         this.disabledCanvas = combinedCanvasList.ToArray();
 
         this.npcObject = GameObject.FindGameObjectWithTag("NPC");
@@ -89,22 +90,20 @@ public class DialogueController : MonoBehaviour {
 
         if(this.isInRange && Input.GetKeyDown(KeyCode.E))
             this.StartDialogue();
-
-        this.Interaction();
-    }
-
-    private void Interaction() {
-        this.interaction.enabled = this.isInRange && !this.dialogueCanvas.enabled;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) 
+        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) {
+            GameController.SetCanvasVisibility(this.interaction, !this.dialogueCanvas.enabled);
             this.isInRange = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) 
+        if(other.CompareTag("Player") && this.npcObject != null && this.npcObject.CompareTag("NPC")) {
+            GameController.SetCanvasVisibility(this.interaction, false);
             this.isInRange = false;
+        }
     }
 
     private void ShowNextMessage() {
@@ -206,7 +205,7 @@ public class DialogueController : MonoBehaviour {
     }
 
     public void SetIsInRange(bool state) {
-        this.isInRange = state;
+        GameController.SetCanvasVisibility(this.interaction, state);
     }
 
     public void ResetCurrentQuestIndex() {
