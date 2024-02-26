@@ -76,7 +76,7 @@ public class HUDStats : MonoBehaviour {
         this.levelStat.text        = "" + this.player.GetLevel();
         this.killStat.text         = "" + this.player.GetKillCounter();
         this.attackStat.text       = "" + this.player.GetAttack();
-        this.attackSpeedStat.text  = "" + this.player.GetAttackSpeed();
+        this.attackSpeedStat.text  = "" + this.player.GetAttackSpeed().ToString("F1");
         this.rangeStat.text        = "" + this.player.GetRange();
         this.resistanceStat.text   = "" + this.player.GetResistance();
         this.speedStat.text        = "" + this.player.GetSpeed();
