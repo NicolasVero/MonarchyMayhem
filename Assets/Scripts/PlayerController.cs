@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour {
             GameController.HidePauseMenu(pauseMenu);
             this.audio.StopPauseMenuSFX();
 
-            if(this.sceneController.GetSceneName() != "Salle_combat_final")
+            if(this.sceneController.GetSceneName() != Names.Scenes[3])
                 this.audio.PlayThemeSFX();
             else
                 this.audio.PlayBossThemeSFX(0);
@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour {
     private void CameraDeathAnimation() {
         GameController.SetCanvasVisibility(new Canvas[] { this.hudScreen, this.questScreen }, false);
         
-        if(this.sceneController.GetSceneName() == "Salle_combat_final")
+        if(this.sceneController.GetSceneName() == Names.Scenes[3])
             GameController.SetCanvasVisibility(this.bossCanvas, false);
                 
         string deathRnd = "Death_" + GameController.Random(1, 3);

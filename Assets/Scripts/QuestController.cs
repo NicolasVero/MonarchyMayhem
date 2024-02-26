@@ -45,27 +45,24 @@ public class QuestController : MonoBehaviour {
     private void InitializeQuests() {
         IsAllQuestCompleted(false);
 
-        switch (this.sceneController.GetSceneName()){
-            case "Tutorial":
-                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre" : "Talk to the priest";
-                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre près du point d'apparition" : "Talk to the priest near the spawn point";
-                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
-                break;
-            case "Village":
-                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur" : "Talk to the doctor";
-                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur près du point d'apparition" : "Talk to the doctor near the spawn point";
-                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
-                break;
-            case "Chateau":
-                this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au fou" : "Talk to the madman";
-                this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez à l'étrange individu près du point d'apparition" : "Talk to the weird guy near the spawn point";
-                quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
-                break;
-        }  
+        if(this.sceneController.GetSceneName() == Names.Scenes[0]) {
+            this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre" : "Talk to the priest";
+            this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au prêtre près du point d'apparition" : "Talk to the priest near the spawn point";
+            quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
+        }
+        else if(this.sceneController.GetSceneName() == Names.Scenes[1]) {
+            this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur" : "Talk to the doctor";
+            this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au docteur près du point d'apparition" : "Talk to the doctor near the spawn point";
+            quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
+        }
+        else /*if(this.sceneController.GetSceneName() == Names.Scenes[2])*/ {
+            this.questDescription = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez au fou" : "Talk to the madman";
+            this.questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Parlez à l'étrange individu près du point d'apparition" : "Talk to the weird guy near the spawn point";
+            quests.Add(new Quest(this.questDescription, this.questInstructions, 1, "Speaking")); 
+        }
     }
 
-    void ShowCurrentQuest()
-    {
+    void ShowCurrentQuest() {
         currentQuest = quests[currentQuestIndex];
         UpdateQuestText();
     }
@@ -86,13 +83,10 @@ public class QuestController : MonoBehaviour {
 
                 List<int> selectedIndices = new List<int>();
 
-                if (spawners != null && spawners.Length > 0)
-                {
-                    for (int i = 0; i < required; i++)
-                    {
+                if (spawners != null && spawners.Length > 0) {
+                    for (int i = 0; i < required; i++) {
                         int randomIndex;
-                        do
-                        {
+                        do {
                             randomIndex = GameController.Random(0, spawners.Length -1 );
                         } while (selectedIndices.Contains(randomIndex)); 
 

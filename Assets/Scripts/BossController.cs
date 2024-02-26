@@ -301,6 +301,6 @@ public class BossController : MonoBehaviour {
     } 
 
     private void ChangeScene() {
-        SceneManager.LoadScene("Conclusion", LoadSceneMode.Single);
+        SceneManager.LoadScene(Names.CinematicScenes[1], LoadSceneMode.Single);
     }
 }
