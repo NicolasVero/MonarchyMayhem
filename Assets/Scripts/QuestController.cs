@@ -22,6 +22,7 @@ public class QuestController : MonoBehaviour {
 
 
     void Start() {
+        DeactivateLight();
         this.gameObject.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Interface/Backgrounds/quest_background_"+GameController.GetSystemLanguageLower());
     }
 
@@ -107,6 +108,7 @@ public class QuestController : MonoBehaviour {
             string questInstructions = GameController.GetSystemLanguageUpper() == "FR" ? "Rendez-vous dans la zone suivante" : "Proceed to the next zone";
             quests.Add(new Quest(questDescription, questInstructions, 0, "None"));
 
+            ActivateLight();
             ShowCurrentQuest();
 
             GameObject npcObject = GameObject.FindGameObjectWithTag("NPC");
@@ -158,5 +160,36 @@ public class QuestController : MonoBehaviour {
 
     public bool GetIsAllQuestCompleted(){
         return isAllQuestCompleted;
+    }
+
+    void ActivateLight()
+    {
+        GameObject lightObject = GameObject.FindGameObjectWithTag("LightNextZone");
+
+        if (lightObject != null)
+        {
+            Light lightComponent = lightObject.GetComponent<Light>();
+            lightComponent.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("Aucune lumière avec le tag 'LightNextZone' n'a été trouvée !");
+        }
+        
+    }
+
+    void DeactivateLight()
+    {
+        GameObject lightObject = GameObject.FindGameObjectWithTag("LightNextZone");
+
+        if (lightObject != null)
+        {
+            Light lightComponent = lightObject.GetComponent<Light>();
+            lightComponent.enabled = false;
+        }
+        else
+        {
+            Debug.LogError("Aucune lumière avec le tag 'LightNextZone' n'a été trouvée !");
+        }
     }
 }
