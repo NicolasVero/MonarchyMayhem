@@ -64,8 +64,11 @@ public class Quest {
 
         if(this.currentCount < this.required)
             questDetails.Progression = (this.type == "Speaking") ? ((GameController.GetSystemLanguageUpper() == "FR") ? "Complétée : Non" : "Completed: No") : ((GameController.GetSystemLanguageUpper() == "FR") ? "Complétée : " + this.currentCount + " / " + this.required : "Completed: " + this.currentCount + " / " + this.required);
-        else 
-            questDetails.Progression = (GameController.GetSystemLanguageUpper() == "FR") ? "Retournez voir le donneur de quête." : "Go back to the quest giver.";
+        else {
+            if(this.type != "None")
+                questDetails.Progression = (GameController.GetSystemLanguageUpper() == "FR") ? "Retournez voir le donneur de quête." : "Go back to the quest giver.";
+        }
+        
 
 
         return questDetails;
