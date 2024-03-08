@@ -52341,7 +52341,7 @@ GameObject:
   - component: {fileID: 1723556954}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: LightNextZone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52355,7 +52355,7 @@ Transform:
   m_GameObject: {fileID: 1723556952}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6844835, y: 0, z: 0, w: 0.72902834}
-  m_LocalPosition: {x: -0.57, y: 0.68, z: 0.164}
+  m_LocalPosition: {x: -1.81, y: -3.5, z: 1.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52370,13 +52370,13 @@ Light:
   m_GameObject: {fileID: 1723556952}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 4
   m_Shape: 0
-  m_Color: {r: 0.006182432, g: 1, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 80.1
-  m_InnerSpotAngle: 15.1
+  m_Color: {r: 0.6698113, g: 0.22411555, b: 0.10426309, a: 1}
+  m_Intensity: 2
+  m_Range: 16
+  m_SpotAngle: 12.8
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -52414,8 +52414,8 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 7.2, y: 7.25}
-  m_BounceIntensity: 1
+  m_AreaSize: {x: 4.5, y: 6}
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
