@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09723408, g: 0.22980109, b: 0.4099575, a: 1}
+  m_IndirectSpecularColor: {r: 0.09723414, g: 0.22980216, b: 0.40995762, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7338,23 +7338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1 &278290394
 GameObject:
   m_ObjectHideFlags: 0
@@ -9605,23 +9588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1 &365134208
 GameObject:
   m_ObjectHideFlags: 0
@@ -9667,23 +9633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1001 &369972358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10268,23 +10217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1 &374333140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1839786891944690, guid: c96016c34e7be62488e588470988ef5b, type: 3}
@@ -19980,23 +19912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1001 &673243167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32009,12 +31924,29 @@ MonoBehaviour:
   collectiblesContainer: {fileID: 72405800}
   allowPeasants: 1
   allowBourgeois: 0
-  allowKnights: 0
+  allowKnights: 1
   chancePeasants: 100
   chanceBourgeois: 100
   chanceKnights: 100
   viewSpawnPoint: 0
   spawnDelay: 1
+  peasants:
+  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
+  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
+  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
+  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
+  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
+  bourgeois:
+  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
+  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
+  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
+  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
+  knights:
+  - {fileID: 5288202799372711008, guid: 3e84e5fd94d34cd408500ca4271e00bb, type: 3}
+  - {fileID: 1347104552687574274, guid: 4faef2f7b6b572142a0a618313b86c46, type: 3}
+  pickUps:
+  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
+  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1001 &1046621875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57990,23 +57922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c1e6b77d063d4ca74b47e4ec2dcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasants:
-  - {fileID: 4210120146069136114, guid: d1fdb59d4571b7341b241028d93bd3a4, type: 3}
-  - {fileID: 5433868032060976591, guid: fd5795e7435f81a40afa5ddc824de180, type: 3}
-  - {fileID: 6654567643492728147, guid: cb786362c4de39b469b430cc8d584e70, type: 3}
-  - {fileID: 2054635497018555853, guid: 846f43a9348646149944f584e5d30da3, type: 3}
-  - {fileID: 1602717852895875950, guid: 152fc5283a843874192fb2fc8d744778, type: 3}
-  bourgeois:
-  - {fileID: 657695750382253779, guid: 8754ad2ece8da4a4291a5fe44dbe8061, type: 3}
-  - {fileID: 9204259751938893281, guid: 06bb94629cef3a94181e5f3db7052ec8, type: 3}
-  - {fileID: 254430314315344165, guid: dbc89912be414864f8c413530c00420e, type: 3}
-  - {fileID: 7071854494588549194, guid: 5152e40ab3c6cb341a62e15a250849fd, type: 3}
-  knights:
-  - {fileID: 8644048700502738441, guid: 6167d34dee52c334fa68360ca376e103, type: 3}
-  - {fileID: 1287052963411304474, guid: 0f2c255643511ea4f88728ac51b5b478, type: 3}
-  pickUps:
-  - {fileID: 3165993481580082769, guid: 6b608e05187ffa942a5dea11ccd0242f, type: 3}
-  - {fileID: 6400524849028982966, guid: 3e4483372ebd8894e9a967f77d007be2, type: 3}
 --- !u!1001 &1888918646
 PrefabInstance:
   m_ObjectHideFlags: 0

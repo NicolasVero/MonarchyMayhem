@@ -16,11 +16,10 @@ public class Spawner : MonoBehaviour {
     private bool viewSpawnPoint;
     private float spawnDelay;
 
-    [Header("Instances")]
-    [SerializeField] GameObject[] peasants;
-    [SerializeField] GameObject[] bourgeois;
-    [SerializeField] GameObject[] knights;
-    [SerializeField] GameObject[] pickUps;
+    private GameObject[] peasants;
+    private GameObject[] bourgeois;
+    private GameObject[] knights;
+    private GameObject[] pickUps;
 
 
     private GameObject enemiesContainer;
@@ -47,10 +46,6 @@ public class Spawner : MonoBehaviour {
         if(this.difficultyController.GetDifficulty() == "easy") this.spawnDelay = 5;
         if(this.difficultyController.GetDifficulty() == "medium") this.spawnDelay = 4;
         if(this.difficultyController.GetDifficulty() == "hard") this.spawnDelay = 2;
-        
-        if(this.currentPickUpGroup == null || this.currentPickUpGroup.Length == 0) {
-            this.GeneratePickUpGroup();
-        }
     }
 
     void Start() {
@@ -71,6 +66,15 @@ public class Spawner : MonoBehaviour {
     
         this.viewSpawnPoint = this.spawnerController.GetViewSpawnPoint();
         this.spawnDelay = this.spawnerController.GetSpawnDelay();
+    
+        this.peasants = this.spawnerController.GetPeasantsPrefabs();
+        this.bourgeois = this.spawnerController.GetBourgeoisPrefabs();
+        this.knights = this.spawnerController.GetKnightsPrefabs();
+        this.pickUps = this.spawnerController.GetPickUpsPrefabs();
+
+        if(this.currentPickUpGroup == null || this.currentPickUpGroup.Length == 0) {
+            this.GeneratePickUpGroup();
+        }
     }
 
     void Update() {

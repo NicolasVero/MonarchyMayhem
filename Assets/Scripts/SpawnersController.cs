@@ -27,6 +27,14 @@ public class SpawnersController : MonoBehaviour {
     [SerializeField] private bool viewSpawnPoint;
     [SerializeField] private float spawnDelay;
 
+
+    [Header("Instances")]
+    [SerializeField] private GameObject[] peasants;
+    [SerializeField] private GameObject[] bourgeois;
+    [SerializeField] private GameObject[] knights;
+    [SerializeField] private GameObject[] pickUps;
+
+
     private bool isPaused = false;
     private GameObject[] spawnerObjects;
     private Difficulty difficultyController;
@@ -142,5 +150,21 @@ public class SpawnersController : MonoBehaviour {
 
     public float GetSpawnDelay() {
         return this.spawnDelay;
+    }
+
+    public GameObject[] GetPeasantsPrefabs() {
+        return this.peasants;
+    }
+
+    public GameObject[] GetBourgeoisPrefabs() {
+        return this.bourgeois;
+    }
+
+    public GameObject[] GetKnightsPrefabs() {
+        return this.knights;
+    }
+
+    public GameObject[] GetPickUpsPrefabs() {
+        return this.pickUps;
     }
 }
