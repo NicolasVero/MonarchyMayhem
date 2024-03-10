@@ -88,7 +88,7 @@ public class DialogueController : MonoBehaviour {
 
     void Update() {
 
-        if(this.isInRange && Input.GetKeyDown(KeyCode.E))
+        if(this.isInRange && Input.GetKeyDown(KeyCode.E) && GameController.GetCanInteract())
             this.StartDialogue();
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
     
-    private int randomFS = -1;
     private int randomTheme = -1;
     private int randomBossTheme = 0;
     private int randomMenuSFX = -1;

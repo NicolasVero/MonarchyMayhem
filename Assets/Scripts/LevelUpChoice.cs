@@ -59,6 +59,7 @@ public class LevelUpChoice : MonoBehaviour {
         this._audio.PlayLevelUpSFX();
 
         GameController.SetGameState(false);
+        GameController.SetCanInteract(false);
         GameController.SetPanelVisibility(levelUpPanel, true);
         this.HideBanners(excludes);
         StartCoroutine(ShowCursor());
@@ -139,6 +140,7 @@ public class LevelUpChoice : MonoBehaviour {
             GameController.SetPanelVisibility(banners[i], true);
         
         GameController.SetGameState(true);
+        GameController.SetCanInteract(true);
         GameController.SetCursorVisibility(false);
         GameController.SetPanelVisibility(levelUpPanel, false);   
         GameController.SetCanvasVisibility(this.playerController.GetQuestCanvas(), this.playerController.IsQuestCanvasVisible());

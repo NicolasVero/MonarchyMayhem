@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     private Camera playerCamera = FindObjectOfType<Camera>();
+    private static bool canInteract = true;
 
     public static int Random(int min, int max) {
         return UnityEngine.Random.Range(min, max + 1);
@@ -62,6 +63,19 @@ public class GameController : MonoBehaviour {
             Vector3 rayDirection = new Vector3(x, 0.0f, z);
             Debug.DrawRay(position, rayDirection, rayColor);
         }
+    }
+
+    public static void SetCanInteract(bool state) {
+        canInteract = state;
+    }
+    
+    public static void SetCanInteract() {
+        canInteract = false;
+    }
+
+    
+    public static bool GetCanInteract() {
+        return canInteract;
     }
 
     public static void DestroyWeapon(Weapon weapon) {
