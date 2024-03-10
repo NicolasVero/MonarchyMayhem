@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4362467152383101296, guid: d1ed410fad7aa3d44896ddfcceb43132, type: 3}
+      propertyPath: m_Name
+      value: EnemySkin
+      objectReference: {fileID: 0}
     - target: {fileID: 5847886814571690005, guid: d1ed410fad7aa3d44896ddfcceb43132, type: 3}
       propertyPath: m_RootBone
       value: 
@@ -5403,8 +5407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8050141904676330968}
-  player: {fileID: 0}
 --- !u!54 &4858448878012104524
 Rigidbody:
   m_ObjectHideFlags: 0

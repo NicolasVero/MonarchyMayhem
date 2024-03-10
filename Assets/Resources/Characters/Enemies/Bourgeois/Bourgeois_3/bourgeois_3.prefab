@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 611001211418645280, guid: 2ced36862a802b149992ccc63715a91b, type: 3}
+      propertyPath: m_Name
+      value: EnemySkin
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2ced36862a802b149992ccc63715a91b, type: 3}
       propertyPath: m_Name
       value: bourgeois_3
@@ -383,8 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 7244288392823530580}
-  player: {fileID: 0}
 --- !u!54 &6235629251528914580
 Rigidbody:
   m_ObjectHideFlags: 0

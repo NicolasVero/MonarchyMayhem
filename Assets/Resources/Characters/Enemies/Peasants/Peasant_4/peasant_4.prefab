@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7803001621953157296, guid: 496c3e1781b0e8b4ab5f6c07ba98cc2b, type: 3}
+      propertyPath: m_Name
+      value: EnemySkin
+      objectReference: {fileID: 0}
     - target: {fileID: 127296647840260459, guid: 496c3e1781b0e8b4ab5f6c07ba98cc2b, type: 3}
       propertyPath: m_RootBone
       value: 
@@ -398,8 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 3379426230233949929}
-  player: {fileID: 0}
+  damageM: {fileID: 2100000, guid: 9621a36e417a3084893e68fbcd0a835a, type: 2}
 --- !u!54 &5274527545189509649
 Rigidbody:
   m_ObjectHideFlags: 0

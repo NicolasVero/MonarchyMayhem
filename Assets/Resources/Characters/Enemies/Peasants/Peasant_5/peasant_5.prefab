@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5571184664596746549, guid: c97198362d3f5354fb9bdf3ff911a7c7, type: 3}
+      propertyPath: m_Name
+      value: EnemySkin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -393,8 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 2844724092371877047}
-  player: {fileID: 0}
+  damageM: {fileID: 2100000, guid: 9621a36e417a3084893e68fbcd0a835a, type: 2}
 --- !u!54 &599407510012184735
 Rigidbody:
   m_ObjectHideFlags: 0

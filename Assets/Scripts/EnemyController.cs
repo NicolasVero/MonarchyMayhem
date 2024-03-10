@@ -17,6 +17,10 @@ public class EnemyController : MonoBehaviour {
     private QuestController questController;
     private Difficulty difficultyController;
 
+    private Material baseSkin;
+    public Material damageSkin;
+    private Renderer renderer;
+
     private string enemyType;
     private int attack, health, xp;
     private float chanceToDrop, attackSpeed, range, speed, timeSinceLastAttack, attackDelay = .5f;
@@ -64,11 +68,16 @@ public class EnemyController : MonoBehaviour {
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
         this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
         this.navMeshAgent.speed = this.speed;
+
+        this.renderer = transform.Find("EnemySkin").GetComponent<Renderer>();
+        this.baseSkin = renderer.material;
+        this.damageSkin = Resources.Load<Material>("Materials/DamageSkin");
+        Debug.Log(damageSkin);
     }
 
     private void FixedUpdate() {
 
-        GameController.DrawCircleAroundObject(transform.position, this.range, 10);
+        // GameController.DrawCircleAroundObject(transform.position, this.range, 10);
 
         if(isAlive) {
 
@@ -128,6 +137,7 @@ public class EnemyController : MonoBehaviour {
             this.cooldown = true;
 
             if(this.health <= 0) {
+                this.ApplyKnockback();
                 this.Death();
 
                 if(!this.deathCount) {
@@ -136,8 +146,6 @@ public class EnemyController : MonoBehaviour {
                     questController.UpdateQuestText();
                     this.deathCount = true;
                 }
-            } else {
-                this.ApplyKnockback();
             }
         }
     }
@@ -184,13 +192,12 @@ public class EnemyController : MonoBehaviour {
         StartCoroutine(KnockbackEffect(knockbackDirection, knockbackDistance, knockbackDuration));
     }
 
-    private IEnumerator DelayedKnockbackEffect(Vector3 direction, float distance, float duration) {
-        yield return new WaitForSeconds(0f);
-        StartCoroutine(KnockbackEffect(direction, distance, duration));
-    }
-
     private IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
+       
+        this.renderer.material = damageSkin;
+        Invoke("RestoreBasicSkin", 0.2f);
         float elapsed = 0f;
+
 
         while(elapsed < duration) {
             float step = distance * (Time.deltaTime / duration);
@@ -200,6 +207,10 @@ public class EnemyController : MonoBehaviour {
 
             yield return null;
         }
+    }
+
+    private void RestoreBasicSkin() {
+        this.renderer.material = baseSkin;
     }
 
     private bool WillDropWeapon() {

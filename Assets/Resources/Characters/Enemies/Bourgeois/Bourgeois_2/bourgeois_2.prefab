@@ -248,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -5384310264625689397, guid: 886ae6ef2dc473e44bcbd0e462724a5b, type: 3}
+    - target: {fileID: -3768028032075931491, guid: 0211e17da31b89e4e9f2936d52f54c36, type: 3}
+      propertyPath: m_Name
+      value: EnemySkin
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0211e17da31b89e4e9f2936d52f54c36, type: 3}
       propertyPath: m_Name
       value: bourgeois_2
@@ -5429,8 +5433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad5f5ea308c1746905a59c588c3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6110441963004668994}
-  player: {fileID: 0}
 --- !u!54 &3078579738317499670
 Rigidbody:
   m_ObjectHideFlags: 0
