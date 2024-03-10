@@ -133,7 +133,7 @@ public class EnemyController : MonoBehaviour {
 
         if(!this.cooldown) { 
             this.health -= this.playerController.GetAttack() + this.playerController.GetWeaponAttack();
-            Invoke("DisableCooldown", 1.5f);
+            Invoke("DisableCooldown", this.playerController.GetAttackSpeed());
             this.cooldown = true;
 
             if(this.health <= 0) {
