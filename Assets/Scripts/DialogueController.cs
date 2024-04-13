@@ -206,6 +206,7 @@ public class DialogueController : MonoBehaviour {
 
     public void SetIsInRange(bool state) {
         GameController.SetCanvasVisibility(this.interaction, state);
+        GameController.SetPanelVisibility(this.interaction.gameObject, state);
         this.isInRange = state;
     }
 

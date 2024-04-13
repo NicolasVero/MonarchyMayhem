@@ -65,6 +65,7 @@ public class SceneController : MonoBehaviour {
         if(other.CompareTag("Player")) {
             if(questController.GetIsAllQuestCompleted()) {
                 GameController.SetCanvasVisibility(this.interactionScreen, true);
+                GameController.SetPanelVisibility(this.interactionScreen.gameObject, true);
                 this.isInRange = true;
             }
         }
@@ -73,6 +74,7 @@ public class SceneController : MonoBehaviour {
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Player")){
             GameController.SetCanvasVisibility(this.interactionScreen, false);
+            GameController.SetPanelVisibility(this.interactionScreen.gameObject, false);
             this.isInRange = false;
         }
     }

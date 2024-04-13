@@ -123,8 +123,7 @@ public class QuestController : MonoBehaviour {
         UpdateQuestText();
     }
 
-    public void UpdateQuestText()
-    {
+    public void UpdateQuestText() {
         Quest.QuestDetails questDetails = currentQuest.GetQuestDetails();
         string yellowTitle = questDetails.YellowTitle;
         string message = questDetails.Message;
