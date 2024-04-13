@@ -36,11 +36,16 @@ public class EnemyController : MonoBehaviour {
             EnemiesStats enemiesStatsData = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
             DifficultyStats difficultyStats = null;
             this.difficultyController = FindObjectOfType<Difficulty>();
-            string difficulty = difficultyController.GetDifficulty();
 
-            if(difficulty == "easy") difficultyStats = enemiesStatsData.easy;
-            if(difficulty == "medium") difficultyStats = enemiesStatsData.medium;
-            if(difficulty == "hard") difficultyStats = enemiesStatsData.hard;
+            if(this.difficultyController != null) {
+                string difficulty = this.difficultyController.GetDifficulty();
+                
+                if(difficulty == "easy") difficultyStats = enemiesStatsData.easy;
+                if(difficulty == "medium") difficultyStats = enemiesStatsData.medium;
+                if(difficulty == "hard") difficultyStats = enemiesStatsData.hard;
+            } else {
+                difficultyStats = enemiesStatsData.medium;
+            }
             
 
             if(difficultyStats != null) {

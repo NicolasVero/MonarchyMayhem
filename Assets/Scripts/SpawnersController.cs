@@ -42,11 +42,17 @@ public class SpawnersController : MonoBehaviour {
     void Start() {
 
         this.difficultyController = FindObjectOfType<Difficulty>();
-        this.difficultyController.DisableChoice();
 
-        if(this.difficultyController.GetDifficulty() == "easy") this.maxEntities = 10;
-        if(this.difficultyController.GetDifficulty() == "medium") this.maxEntities = 20;
-        if(this.difficultyController.GetDifficulty() == "hard") this.maxEntities = 40;
+        if(this.difficultyController != null) {
+
+            this.difficultyController.DisableChoice();
+
+            if(this.difficultyController.GetDifficulty() == "easy") this.maxEntities = 10;
+            if(this.difficultyController.GetDifficulty() == "medium") this.maxEntities = 20;
+            if(this.difficultyController.GetDifficulty() == "hard") this.maxEntities = 40;
+        } else {
+            this.maxEntities = 20;
+        }
         
     
         List<GameObject> spawnerList = new List<GameObject>();

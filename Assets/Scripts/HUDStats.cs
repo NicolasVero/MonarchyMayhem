@@ -55,14 +55,21 @@ public class HUDStats : MonoBehaviour {
 
     private void SetDifficulty() {
         this.difficultyController = FindObjectOfType<Difficulty>();
-        this.difficultyController.DisableChoice();
-
-        this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + this.difficultyController.GetDifficulty());
         string name = "";
 
-        if(this.difficultyController.GetDifficulty() == "easy") name = "Agitation"; 
-        if(this.difficultyController.GetDifficulty() == "medium") name = "Soulèvement"; 
-        if(this.difficultyController.GetDifficulty() == "hard") name = "Insurrection";
+        if(this.difficultyController != null) {
+        
+            this.difficultyController.DisableChoice();
+
+            this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + this.difficultyController.GetDifficulty());
+
+            if(this.difficultyController.GetDifficulty() == "easy") name = "Agitation"; 
+            if(this.difficultyController.GetDifficulty() == "medium") name = "Soulèvement"; 
+            if(this.difficultyController.GetDifficulty() == "hard") name = "Insurrection";
+        } else {
+            this.difficultyIcon.texture = Resources.Load<Texture2D>(this.iconsPath + "medium");
+            name = "Soulèvement";
+        }
 
         this.difficultyName.text = name; 
     }

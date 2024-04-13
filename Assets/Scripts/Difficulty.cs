@@ -19,7 +19,7 @@ public class Difficulty : MonoBehaviour {
 	}
 
 	public string GetDifficulty() {
-		return this.difficulty;
+		return (this.difficulty == null) ? "medium" : this.difficulty;
 	}
 
 	public void EnableChoice() {

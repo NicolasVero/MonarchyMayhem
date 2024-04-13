@@ -41,11 +41,17 @@ public class Spawner : MonoBehaviour {
 
 
         this.difficultyController = FindObjectOfType<Difficulty>();
-        this.difficultyController.DisableChoice();
 
-        if(this.difficultyController.GetDifficulty() == "easy") this.spawnDelay = 5;
-        if(this.difficultyController.GetDifficulty() == "medium") this.spawnDelay = 4;
-        if(this.difficultyController.GetDifficulty() == "hard") this.spawnDelay = 2;
+        if(this.difficultyController != null) {
+
+            this.difficultyController.DisableChoice();
+
+            if(this.difficultyController.GetDifficulty() == "easy") this.spawnDelay = 5;
+            if(this.difficultyController.GetDifficulty() == "medium") this.spawnDelay = 4;
+            if(this.difficultyController.GetDifficulty() == "hard") this.spawnDelay = 2;
+        } else {
+            this.spawnDelay = 4;
+        }
     }
 
     void Start() {
