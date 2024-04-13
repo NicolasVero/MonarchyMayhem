@@ -1,35 +1,6 @@
 {
-    "weapons": [
-        {
-            "id": 3,
-            "name": {
-                "fr": "Faux Lunaire",
-                "en": "Lunar Scythe"
-            },
-            "tier": "S",
-            "attack": 15,
-            "attackSpeed": -0.3,
-            "knockback": 1.0,
-            "range": 1.0,
-            "regeneration": 5,
-            "speed": 1.0,
-            "dropProbability": 0.05,
-        },
-        {
-            "id": 14,
-            "name": {
-                "fr": "Marteau du Conquérant",
-                "en": "Conqueror's Hammer"
-            },
-            "tier": "A",
-            "attack": 20,
-            "attackSpeed": 2.0,
-            "knockback": 2.0,
-            "range": 1.0,
-            "regeneration": 1,
-            "speed": 0.5,
-            "dropProbability": 0.1,
-        },
+    "weapons": 
+    [
         {
             "id": 1,
             "name": {
@@ -43,67 +14,37 @@
             "range": 1.0,
             "regeneration": 0,
             "speed": -0.3,
-            "dropProbability": 0.1,
+            "dropProbability": 0.1
         },
         {
-            "id": 6,
+            "id": 2,
             "name": {
-                "fr": "Lance Lunaire",
-                "en": "Lunar Lance"
+                "fr": "Marteau Rafistolé",
+                "en": "Patched Hammer"
             },
-            "tier": "A",
-            "attack": 8,
-            "attackSpeed": 0.0,
-            "knockback": 0.5,
-            "range": 1.0,
-            "regeneration": 0,
-            "speed": 0.3,
-            "dropProbability": 0.1,
-        },
-        {
-            "id": 24,
-            "name": {
-                "fr": "Perceur",
-                "en": "Piercer"
-            },
-            "tier": "B",
-            "attack": 10,
-            "attackSpeed": 1.0,
-            "knockback": 0.5,
-            "range": 1.0,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 13,
-            "name": {
-                "fr": "Hallebarde aiguisée",
-                "en": "Sharpened Halberd"
-            },
-            "tier": "B",
-            "attack": 7,
-            "attackSpeed": 0.5,
-            "knockback": 0.0,
+            "tier": "D",
+            "attack": 1,
+            "attackSpeed": -0.5,
+            "knockback": -1.0,
             "range": 0.5,
             "regeneration": 0,
-            "speed": -0.2,
-            "dropProbability": 0.15,
+            "speed": 0.2,
+            "dropProbability": 0.35
         },
         {
-            "id": 10,
+            "id": 3,
             "name": {
-                "fr": "Espadon",
-                "en": "Greatsword"
+                "fr": "Faux Lunaire",
+                "en": "Lunar Scythe"
             },
-            "tier": "B",
-            "attack": 8,
-            "attackSpeed": 1.0,
+            "tier": "S",
+            "attack": 15,
+            "attackSpeed": -0.3,
             "knockback": 1.0,
             "range": 1.0,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.15,
+            "regeneration": 5,
+            "speed": 1.0,
+            "dropProbability": 0.05
         },
         {
             "id": 4,
@@ -118,7 +59,7 @@
             "range": -1.0,
             "regeneration": 0,
             "speed": 2.0,
-            "dropProbability": 0.15,
+            "dropProbability": 0.15
         },
         {
             "id": 5,
@@ -133,112 +74,52 @@
             "range": 0.0,
             "regeneration": 0,
             "speed": 0.0,
-            "dropProbability": 0.15,
+            "dropProbability": 0.15
         },
         {
-            "id": 15,
+            "id": 6,
             "name": {
-                "fr": "Enclume",
-                "en": "Anvil"
+                "fr": "Lance Lunaire",
+                "en": "Lunar Lance"
             },
-            "tier": "B",
-            "attack": 10,
-            "attackSpeed": 1.5,
-            "knockback": 1.0,
-            "range": 2,
-            "regeneration": 0,
-            "speed": -0.5,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 16,
-            "name": {
-                "fr": "Epée de paysan",
-                "en": "Peasant's Sword"
-            },
-            "tier": "C",
-            "attack": 3,
-            "attackSpeed": 0.5,
-            "knockback": 0,
-            "range": 0,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 21,
-            "name": {
-                "fr": "Ecraseur",
-                "en": "Crusher"
-            },
-            "tier": "C",
-            "attack": 5,
-            "attackSpeed": 1.0,
-            "knockback": 2.0,
+            "tier": "A",
+            "attack": 8,
+            "attackSpeed": 0.0,
+            "knockback": 0.5,
             "range": 1.0,
             "regeneration": 0,
-            "speed": -0.6,
-            "dropProbability": 0.15,
+            "speed": 0.3,
+            "dropProbability": 0.1
         },
         {
-            "id": 27,
+            "id": 7,
             "name": {
-                "fr": "Sabre",
-                "en": "Sabre"
+                "fr": "Sceptre du guérisseur",
+                "en": "Healer's Scepter"
             },
-            "tier": "C",
-            "attack": 6,
-            "attackSpeed": -0.1,
-            "knockback": -0.5,
-            "range": -0.5,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 26,
-            "name": {
-                "fr": "Epée courbée",
-                "en": "Curved Sword"
-            },
-            "tier": "C",
-            "attack": 5,
+            "tier": "B",
+            "attack": -1,
             "attackSpeed": 0.0,
             "knockback": 0.0,
-            "range": 0.2,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.35,
+            "range": 0.0,
+            "regeneration": 20,
+            "speed": 0.0,
+            "dropProbability": 0.15
         },
         {
-            "id": 34,
+            "id": 8,
             "name": {
-                "fr": "Marteau à pique",
-                "en": "Spike Hammer"
+                "fr": "Dague Noire",
+                "en": "Black Dagger"
             },
             "tier": "C",
-            "attack": 5,
-            "attackSpeed": 1.0,
-            "knockback": -0.5,
-            "range": 0.5,
+            "attack": -1.5,
+            "attackSpeed": -0.3,
+            "knockback": -1.0,
+            "range": -1.0,
             "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 11,
-            "name": {
-                "fr": "Grande Hallebarde",
-                "en": "Great Halberd"
-            },
-            "tier": "C",
-            "attack": 4,
-            "attackSpeed": 0.0,
-            "knockback": 0.0,
-            "range": 0.3,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.25,
+            "speed": 1.5,
+            "dropProbability": 0.25
         },
         {
             "id": 9,
@@ -253,232 +134,37 @@
             "range": 0,
             "regeneration": 0,
             "speed": 0.0,
-            "dropProbability": 0.25,
+            "dropProbability": 0.25
         },
         {
-            "id": 16,
+            "id": 10,
             "name": {
-                "fr": "Epée de paysan",
-                "en": "Peasant's Sword"
+                "fr": "Espadon",
+                "en": "Greatsword"
             },
-            "tier": "C",
-            "attack": 3,
-            "attackSpeed": 0.5,
-            "knockback": 0,
-            "range": 0,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 26,
-            "name": {
-                "fr": "Epée courbée",
-                "en": "Curved Sword"
-            },
-            "tier": "C",
-            "attack": 5,
-            "attackSpeed": 0.0,
-            "knockback": 0.0,
-            "range": 0.2,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.35,
-        },
-        {
-            "id": 27,
-            "name": {
-                "fr": "Sabre",
-                "en": "Sabre"
-            },
-            "tier": "C",
-            "attack": 6,
-            "attackSpeed": -0.1,
-            "knockback": -0.5,
-            "range": -0.5,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 21,
-            "name": {
-                "fr": "Ecraseur",
-                "en": "Crusher"
-            },
-            "tier": "C",
-            "attack": 5,
+            "tier": "B",
+            "attack": 8,
             "attackSpeed": 1.0,
-            "knockback": 2.0,
+            "knockback": 1.0,
             "range": 1.0,
             "regeneration": 0,
-            "speed": -0.6,
-            "dropProbability": 0.15,
+            "speed": 0.0,
+            "dropProbability": 0.15
         },
         {
-            "id": 30,
+            "id": 11,
             "name": {
-                "fr": "Grande épée tordue",
-                "en": "Large Twisted Sword"
+                "fr": "Grande Hallebarde",
+                "en": "Great Halberd"
             },
             "tier": "C",
-            "attack": 5,
-            "attackSpeed": 0.0,
-            "knockback": 1.0,
-            "range": 0.5,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 20,
-            "name": {
-                "fr": "Hache tordue",
-                "en": "Twisted Axe"
-            },
-            "tier": "D",
-            "attack": 10,
-            "attackSpeed": 2,
-            "knockback": 2,
-            "range": 0.5,
-            "regeneration": 0,
-            "speed": -0.9,
-            "dropProbability": 0.35,
-        },
-        {
-            "id": 17,
-            "name": {
-                "fr": "Gourdin grossié",
-                "en": "Rough Mace"
-            },
-            "tier": "D",
-            "attack": 3,
-            "attackSpeed": 1.0,
-            "knockback": 1.0,
-            "range": 0.5,
-            "regeneration": 0,
-            "speed": -0.5,
-            "dropProbability": 0.35,
-        },
-        {
-            "id": 18,
-            "name": {
-                "fr": "Pierre",
-                "en": "Rock"
-            },
-            "tier": "D",
-            "attack": -4,
-            "attackSpeed": -0.5,
-            "knockback": -1.0,
-            "range": -1.0,
-            "regeneration": 0,
-            "speed": 0,
-            "dropProbability": 0.15,
-        },
-        {
-            "id": 19,
-            "name": {
-                "fr": "Petite dague",
-                "en": "Small Dagger"
-            },
-            "tier": "D",
-            "attack": 1,
-            "attackSpeed": -0.2,
-            "knockback": -1.0,
-            "range": -2,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 25,
-            "name": {
-                "fr": "Hachette",
-                "en": "Hatchet"
-            },
-            "tier": "D",
-            "attack": 3,
-            "attackSpeed": 0.1,
-            "knockback": -0.5,
-            "range": -0.5,
-            "regeneration": 0,
-            "speed": 0.5,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 28,
-            "name": {
-                "fr": "Kukuri",
-                "en": "Kukri"
-            },
-            "tier": "D",
-            "attack": 3,
-            "attackSpeed": -0.2,
-            "knockback": -1.0,
-            "range": -0.5,
-            "regeneration": 0,
-            "speed": 1.5,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 22,
-            "name": {
-                "fr": "Pique",
-                "en": "Pike"
-            },
-            "tier": "D",
-            "attack": 1,
-            "attackSpeed": 1,
-            "knockback": 0.5,
-            "range": 0.5,
-            "regeneration": 0,
-            "speed": -0.5,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 31,
-            "name": {
-                "fr": "Fourche",
-                "en": "Fork"
-            },
-            "tier": "D",
-            "attack": 1,
-            "attackSpeed": 0.5,
-            "knockback": 0.2,
-            "range": 0.2,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.25,
-        },
-        {
-            "id": 23,
-            "name": {
-                "fr": "Vieille épée",
-                "en": "Old Sword"
-            },
-            "tier": "D",
-            "attack": 3,
+            "attack": 4,
             "attackSpeed": 0.0,
             "knockback": 0.0,
-            "range": 0.0,
-            "regeneration": 0,
-            "speed": 0.0,
-            "dropProbability": 0.35,
-        },
-        {
-            "id": 29,
-            "name": {
-                "fr": "Epée d'entrainement",
-                "en": "Training Sword"
-            },
-            "tier": "D",
-            "attack": 1,
-            "attackSpeed": 0.3,
-            "knockback": -0.5,
-            "range": 0.5,
+            "range": 0.3,
             "regeneration": 0,
             "speed": 0.5,
-            "dropProbability": 0.35,
+            "dropProbability": 0.25
         },
         {
             "id": 12,
@@ -493,7 +179,292 @@
             "range": 0.5,
             "regeneration": 0,
             "speed": 0.4,
-            "dropProbability": 0.35,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 13,
+            "name": {
+                "fr": "Hallebarde aiguisée",
+                "en": "Sharpened Halberd"
+            },
+            "tier": "B",
+            "attack": 7,
+            "attackSpeed": 0.5,
+            "knockback": 0.0,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": -0.2,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 14,
+            "name": {
+                "fr": "Marteau du Conquérant",
+                "en": "Conqueror's Hammer"
+            },
+            "tier": "A",
+            "attack": 20,
+            "attackSpeed": 2.0,
+            "knockback": 2.0,
+            "range": 1.0,
+            "regeneration": 1,
+            "speed": 0.5,
+            "dropProbability": 0.05
+        },
+        {
+            "id": 15,
+            "name": {
+                "fr": "Enclume",
+                "en": "Anvil"
+            },
+            "tier": "B",
+            "attack": 10,
+            "attackSpeed": 1.5,
+            "knockback": 1.0,
+            "range": 2,
+            "regeneration": 0,
+            "speed": -0.5,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 16,
+            "name": {
+                "fr": "Epée de paysan",
+                "en": "Peasant's Sword"
+            },
+            "tier": "C",
+            "attack": 3,
+            "attackSpeed": 0.5,
+            "knockback": 0,
+            "range": 0,
+            "regeneration": 0,
+            "speed": 0.0,
+            "dropProbability": 0.25
+        },
+        {
+            "id": 17,
+            "name": {
+                "fr": "Gourdin grossié",
+                "en": "Rough Mace"
+            },
+            "tier": "D",
+            "attack": 3,
+            "attackSpeed": 1.0,
+            "knockback": 1.0,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": -0.5,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 18,
+            "name": {
+                "fr": "Pierre",
+                "en": "Rock"
+            },
+            "tier": "D",
+            "attack": -4,
+            "attackSpeed": -0.5,
+            "knockback": -1.0,
+            "range": -1.0,
+            "regeneration": 0,
+            "speed": 0,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 19,
+            "name": {
+                "fr": "Petite dague",
+                "en": "Small Dagger"
+            },
+            "tier": "D",
+            "attack": 1,
+            "attackSpeed": -0.2,
+            "knockback": -1.0,
+            "range": -2.0,
+            "regeneration": 0,
+            "speed": 0.5,
+            "dropProbability": 0.25
+        },
+        {
+            "id": 20,
+            "name": {
+                "fr": "Hache tordue",
+                "en": "Twisted Axe"
+            },
+            "tier": "D",
+            "attack": 10,
+            "attackSpeed": 2,
+            "knockback": 2,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": -0.9,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 21,
+            "name": {
+                "fr": "Ecraseur",
+                "en": "Crusher"
+            },
+            "tier": "C",
+            "attack": 5,
+            "attackSpeed": 1.0,
+            "knockback": 2.0,
+            "range": 1.0,
+            "regeneration": 0,
+            "speed": -0.6,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 22,
+            "name": {
+                "fr": "Pique",
+                "en": "Pike"
+            },
+            "tier": "D",
+            "attack": 1,
+            "attackSpeed": 1,
+            "knockback": 0.5,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": -0.5,
+            "dropProbability": 0.25
+        },
+        {
+            "id": 23,
+            "name": {
+                "fr": "Vieille épée",
+                "en": "Old Sword"
+            },
+            "tier": "D",
+            "attack": 3,
+            "attackSpeed": 0.0,
+            "knockback": 0.0,
+            "range": 0.0,
+            "regeneration": 0,
+            "speed": 0.0,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 24,
+            "name": {
+                "fr": "Perceur",
+                "en": "Piercer"
+            },
+            "tier": "B",
+            "attack": 10,
+            "attackSpeed": 1.0,
+            "knockback": 0.5,
+            "range": 1.0,
+            "regeneration": 0,
+            "speed": 0.0,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 25,
+            "name": {
+                "fr": "Hachette",
+                "en": "Hatchet"
+            },
+            "tier": "D",
+            "attack": 3,
+            "attackSpeed": 0.1,
+            "knockback": -0.5,
+            "range": -0.5,
+            "regeneration": 0,
+            "speed": 0.5,
+            "dropProbability": 0.25
+        },
+        {
+            "id": 26,
+            "name": {
+                "fr": "Epée courbée",
+                "en": "Curved Sword"
+            },
+            "tier": "C",
+            "attack": 5,
+            "attackSpeed": 0.0,
+            "knockback": 0.0,
+            "range": 0.2,
+            "regeneration": 0,
+            "speed": 0.5,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 27,
+            "name": {
+                "fr": "Sabre",
+                "en": "Sabre"
+            },
+            "tier": "C",
+            "attack": 6,
+            "attackSpeed": -0.1,
+            "knockback": -0.5,
+            "range": -0.5,
+            "regeneration": 0,
+            "speed": 0.5,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 28,
+            "name": {
+                "fr": "Kukuri",
+                "en": "Kukri"
+            },
+            "tier": "D",
+            "attack": 3,
+            "attackSpeed": -0.2,
+            "knockback": -1.0,
+            "range": -0.5,
+            "regeneration": 0,
+            "speed": 1.5,
+            "dropProbability": 0.25
+        },
+        {
+            "id": 29,
+            "name": {
+                "fr": "Epée d'entrainement",
+                "en": "Training Sword"
+            },
+            "tier": "D",
+            "attack": 1,
+            "attackSpeed": 0.3,
+            "knockback": -0.5,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": 0.5,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 30,
+            "name": {
+                "fr": "Grande épée tordue",
+                "en": "Large Twisted Sword"
+            },
+            "tier": "C",
+            "attack": 5,
+            "attackSpeed": 0.0,
+            "knockback": 1.0,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": 0.0,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 31,
+            "name": {
+                "fr": "Fourche",
+                "en": "Fork"
+            },
+            "tier": "D",
+            "attack": 1,
+            "attackSpeed": 0.5,
+            "knockback": 0.2,
+            "range": 0.2,
+            "regeneration": 0,
+            "speed": 0.0,
+            "dropProbability": 0.25
         },
         {
             "id": 32,
@@ -507,8 +478,38 @@
             "knockback": 0.0,
             "range": 1,
             "regeneration": 0,
+            "speed": 1.0,
+            "dropProbability": 0.35
+        },
+        {
+            "id": 33,
+            "name": {
+                "fr": "Gourdin à pointe",
+                "en": "Spiked Mace"
+            },
+            "tier": "B",
+            "attack": 10,
+            "attackSpeed": 2.0,
+            "knockback": 2.0,
+            "range": 0.5,
+            "regeneration": 0,
+            "speed": -0.8,
+            "dropProbability": 0.15
+        },
+        {
+            "id": 34,
+            "name": {
+                "fr": "Marteau à pique",
+                "en": "Spike Hammer"
+            },
+            "tier": "C",
+            "attack": 5,
+            "attackSpeed": 1.0,
+            "knockback": -0.5,
+            "range": 0.5,
+            "regeneration": 0,
             "speed": 0.5,
-            "dropProbability": 0.35,
+            "dropProbability": 0.25
         }
     ]
 }
