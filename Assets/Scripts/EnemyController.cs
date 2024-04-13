@@ -74,15 +74,16 @@ public class EnemyController : MonoBehaviour {
         this.weaponsDropper = GameObject.FindGameObjectWithTag("WeaponsDropper").GetComponent<WeaponsDropper>();
         this.navMeshAgent.speed = this.speed;
 
-        this.renderer = transform.Find("EnemySkin").GetComponent<Renderer>();
-        this.baseSkin = renderer.material;
+        Transform enemySkin = transform.Find("EnemySkin"); 
+        if(enemySkin != null) {
+            this.renderer = enemySkin.GetComponent<Renderer>();
+            this.baseSkin = renderer.material;
+        }
+
         this.damageSkin = Resources.Load<Material>("Materials/DamageSkin");
-        Debug.Log(damageSkin);
     }
 
     private void FixedUpdate() {
-
-        // GameController.DrawCircleAroundObject(transform.position, this.range, 10);
 
         if(isAlive) {
 
@@ -199,8 +200,11 @@ public class EnemyController : MonoBehaviour {
 
     private IEnumerator KnockbackEffect(Vector3 direction, float distance, float duration) {
        
-        this.renderer.material = damageSkin;
-        Invoke("RestoreBasicSkin", 0.2f);
+        if(this.renderer != null) {
+            this.renderer.material = damageSkin;
+            Invoke("RestoreBasicSkin", 0.2f);
+        }
+        
         float elapsed = 0f;
 
 
