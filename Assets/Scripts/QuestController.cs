@@ -133,7 +133,6 @@ public class QuestController : MonoBehaviour {
         questTitle.text = questDetails.YellowTitle;
         questMessage.text = questDetails.Message;
         questProgression.text = questDetails.Progression;
-         Debug.Log("UpdateQuestText");
     }
 
     public Quest GetCurrentQuest()
@@ -142,14 +141,7 @@ public class QuestController : MonoBehaviour {
     }
 
     public void AddQuestFromDialogue(string questTitle, string questMessage, int requiredAmount, string questType) {
-
         quests.Add(new Quest(questTitle, questMessage, requiredAmount, questType));
-
-        Debug.Log("Quêtes actuelles :");
-
-        foreach (Quest quest in quests) {
-            Debug.Log($"- {quest.GetQuestDetails().YellowTitle}");
-        }
     }
 
 
@@ -161,18 +153,12 @@ public class QuestController : MonoBehaviour {
         return isAllQuestCompleted;
     }
 
-    void ActivateLight()
-    {
+    void ActivateLight() {
         GameObject lightObject = GameObject.FindGameObjectWithTag("LightNextZone");
 
-        if (lightObject != null)
-        {
+        if (lightObject != null) {
             Light lightComponent = lightObject.GetComponent<Light>();
             lightComponent.enabled = true;
-        }
-        else
-        {
-            Debug.LogError("Aucune lumière avec le tag 'LightNextZone' n'a été trouvée !");
         }
         
     }
@@ -181,14 +167,9 @@ public class QuestController : MonoBehaviour {
     {
         GameObject lightObject = GameObject.FindGameObjectWithTag("LightNextZone");
 
-        if (lightObject != null)
-        {
+        if (lightObject != null) {
             Light lightComponent = lightObject.GetComponent<Light>();
             lightComponent.enabled = false;
-        }
-        else
-        {
-            Debug.LogError("Aucune lumière avec le tag 'LightNextZone' n'a été trouvée !");
         }
     }
 }
