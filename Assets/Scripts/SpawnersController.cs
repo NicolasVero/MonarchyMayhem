@@ -51,7 +51,7 @@ public class SpawnersController : MonoBehaviour {
             if(this.difficultyController.GetDifficulty() == "medium") this.maxEntities = 20;
             if(this.difficultyController.GetDifficulty() == "hard") this.maxEntities = 40;
         } else {
-            this.maxEntities = 0;
+            this.maxEntities = 20;
         }
         
     

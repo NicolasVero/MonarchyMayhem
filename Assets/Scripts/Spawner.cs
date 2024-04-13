@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour {
             if(this.difficultyController.GetDifficulty() == "medium") this.spawnDelay = 4;
             if(this.difficultyController.GetDifficulty() == "hard") this.spawnDelay = 2;
         } else {
-            this.spawnDelay = 6000;
+            this.spawnDelay = 4;
         }
     }
 
