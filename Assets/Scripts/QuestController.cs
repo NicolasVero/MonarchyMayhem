@@ -142,6 +142,13 @@ public class QuestController : MonoBehaviour {
 
     public void AddQuestFromDialogue(string questTitle, string questMessage, int requiredAmount, string questType) {
         quests.Add(new Quest(questTitle, questMessage, requiredAmount, questType));
+
+		//! Apparemment les quêtes marchent plus si t'enlèves ça
+	    Debug.Log("Quêtes actuelles :");
+
+        foreach (Quest quest in quests) {
+            Debug.Log($"- {quest.GetQuestDetails().YellowTitle}");
+        }
     }
 
 
