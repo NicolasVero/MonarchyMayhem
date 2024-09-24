@@ -67,7 +67,9 @@ public class BossController : MonoBehaviour {
         if(enemiesStats != null) {
             EnemiesStats enemiesStatsData  = JsonUtility.FromJson<EnemiesStats>(enemiesStats.text);
             this.difficultyController = FindObjectOfType<Difficulty>();
+			Debug.Log(this.difficultyController);
             string difficulty = difficultyController.GetDifficulty();
+			Debug.Log(difficulty);
 
             if(difficulty == "easy"  ) difficultyStats = enemiesStatsData.easy;
             if(difficulty == "medium") difficultyStats = enemiesStatsData.medium;
