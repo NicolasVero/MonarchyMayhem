@@ -47,8 +47,8 @@ public class SceneController : MonoBehaviour {
     }
 
     private void ChooseNextZone(string sceneName) {
-        if(!questController.GetIsAllQuestCompleted())
-            return;
+        // if(!questController.GetIsAllQuestCompleted())
+            // return;
 
         string[] sceneNames = Names.Scenes;
         int index = Array.IndexOf(sceneNames, sceneName);
@@ -62,11 +62,11 @@ public class SceneController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")) {
-            if(questController.GetIsAllQuestCompleted()) {
+            // if(questController.GetIsAllQuestCompleted()) {
                 GameController.SetCanvasVisibility(this.interactionScreen, true);
                 GameController.SetPanelVisibility(this.interactionScreen.gameObject, true);
                 this.isInRange = true;
-            }
+            // }
         }
     }
 

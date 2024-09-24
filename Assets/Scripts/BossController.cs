@@ -49,7 +49,6 @@ public class BossController : MonoBehaviour {
         
         this.playerController = GameObject.FindGameObjectWithTag(Names.MainCharacter).GetComponent<PlayerController>();
 
-        
         this.healthBar.maxValue = this.GetHealth();
         this.healthBar.value = this.GetHealth();
         
